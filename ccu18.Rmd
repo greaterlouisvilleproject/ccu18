@@ -1,0 +1,424 @@
+---
+title: "ccu18"
+output: html_notebook
+---
+
+Setup
+```{r setup}
+knitr::opts_knit$set(root.dir = "C:/Users/Harrison Kirby/Desktop/GLP/CCU18")
+```
+
+Libraries
+```{r libraries, message = FALSE}
+library(lubridate)
+library(ggthemes)
+library(classInt)
+library(showtext)
+library(feather)
+library(survey)
+library(tidyverse)
+library(magrittr)
+library(reshape2)
+```
+
+Add functions
+```{r}
+insurance_time <- function(starting.year=2006){
+  wd <- getwd()
+  directory <- "Health/sahie_2008/"
+  file_names <- list.files(directory)
+  n<-length(file_names)
+  y<-starting.year
+  for (i in 1:n){
+    file_path <- paste(directory, file_names[i], sep = "")
+    data<-read_csv(file_path, skip=79)
+    
+    if(y > 2007){ data <- data %>% select(-X26) }
+    
+    data$statefips <- as.character(data$statefips)
+    data$countyfips <- as.character(data$countyfips)
+    
+    data$statefips <- if_else( nchar(data$statefips) < 2, paste0("0",data$statefips), data$statefips)
+    data$countyfips <- if_else( nchar(data$countyfips) < 3, paste0("0",data$countyfips), data$countyfips)
+    data$countyfips <- if_else( nchar(data$countyfips) < 3, paste0("0",data$countyfips), data$countyfips)
+    
+    data$FIPS <- as.numeric(paste0(data$statefips, data$countyfips))
+    all.peers <-subset(data, data$FIPS == 1073 |data$FIPS == 37119
+                       |data$FIPS == 39061 |data$FIPS == 39049
+                       |data$FIPS == 26081 |data$FIPS == 37081
+                       |data$FIPS == 45045 |data$FIPS == 18097
+                       |data$FIPS == 29095 |data$FIPS == 47093
+                       |data$FIPS == 21111 |data$FIPS == 47157
+                       |data$FIPS == 47037 |data$FIPS == 40109
+                       |data$FIPS == 31055 |data$FIPS == 29189
+                       |data$FIPS == 29510
+                       |data$FIPS == 40143 |data$FIPS == 39113
+                       |data$FIPS == 12031 |data$FIPS == 37183
+                       |data$FIPS == 51760)
+    
+    all.peers$year<-y
+    y<-y+1
+    
+    if(i==1){
+     df<-all.peers 
+    }
+    else{
+      names(all.peers)<-names(df)
+      df<-rbind(df, all.peers)
+    }
+  }
+  df
+}
+
+
+pull_peers_MSA<-function(data){
+  all.peers <- filter(data, data$MSA %in% c("24340", "41180", "36420", "46140", "24860", "28940", "13820", "26900", "31140", "28140", "36540", "24660", "16740", "18140", "17140", "34980", "32820", "27260", "39580", "19380", "40060"))
+  
+  all.peers$baseline <- 1
+  all.peers$current  <- 1
+  
+  all.peers$baseline[all.peers$MSA == 24340 | all.peers$MSA == 41180
+                     |all.peers$MSA == 36420 | all.peers$MSA == 46140
+                     |all.peers$MSA == 24860 | all.peers$MSA == 28940] <-0
+  
+  all.peers$current[all.peers$MSA == 27260 | all.peers$MSA == 39580
+                    |all.peers$MSA == 19380 | all.peers$MSA == 40060] <-0
+  all.peers
+}
+
+pull_peers_FIPS <- function(dat){
+  all.peers <- subset(dat, dat$FIPS == 1073 | dat$FIPS == 37119
+                      |dat$FIPS == 39061 |dat$FIPS == 39049
+                      |dat$FIPS == 26081 |dat$FIPS == 37081
+                      |dat$FIPS == 45045 |dat$FIPS == 18097
+                      |dat$FIPS == 29095 |dat$FIPS == 47093
+                      |dat$FIPS == 21111 |dat$FIPS == 47157
+                      |dat$FIPS == 47037 |dat$FIPS == 40109
+                      |dat$FIPS == 31055 |dat$FIPS == 29189
+                      |dat$FIPS == 29510 |dat$FIPS == 40143
+                      |dat$FIPS == 12031 |dat$FIPS == 37183
+                      |dat$FIPS == 39113 |dat$FIPS == 51760
+                      |dat$FIPS == "01073" | dat$FIPS == "MERGED")
+  all.peers$baseline <- 1
+  all.peers$current <- 1
+  all.peers$baseline[all.peers$FIPS==26081|all.peers$FIPS==29189
+                     |all.peers$FIPS==29510|all.peers$FIPS==40109
+                     |all.peers$FIPS==40143|all.peers$FIPS==45045
+                     |all.peers$FIPS==47093|all.peers$FIPS=="MERGED"]<-0
+  all.peers$current[all.peers$FIPS== 12031|all.peers$FIPS==37183|
+                      all.peers$FIPS==39113|all.peers$FIPS==51760]<-0
+  all.peers
+}
+```
+
+*Health Insurance Data*
+
+
+```{r, messsage = FALSE, eval = FALSE}
+data <- insurance_time()
+
+hie_06_15 <- data %>%
+  filter(agecat == 0) %>%
+  filter(racecat == 0) %>%
+  filter(sexcat == 0) %>%
+  filter(iprcat == 0) %>%
+  select(FIPS, year, PCTELIG)
+
+data <- read_fwf("Health/sahie_2005/sahie-2005.txt", 
+                 fwf_cols(statefips = c(1,2), countyfips = c(4,6), geocat = c(8,9), 
+                          agecat = c(11,11), racecat = c(13,13), sexcat = c(15,15), iprcat = c(17,17), 
+                          pop = c(19, 26), nic = c(28, 35), nic_moe = c(37, 44), nui = c(46, 53),
+                          nui_moe = c(55, 62), PCTELIG = c(64, 67), pctelig_moe = c(69,73)),
+                 col_types = cols("statefips" = col_character(), countyfips = col_character()),
+                 skip = 41)
+
+data$statefips <- if_else( nchar(data$statefips) < 2, paste0("0",data$statefips), data$statefips)
+data$countyfips <- if_else( nchar(data$countyfips) < 3, paste0("0",data$countyfips), data$countyfips)
+data$countyfips <- if_else( nchar(data$countyfips) < 3, paste0("0",data$countyfips), data$countyfips)
+
+hie_05 <- data %>%
+  mutate(FIPS = as.numeric(paste0(statefips, countyfips)),
+         year = 2005) %>%
+  filter(agecat == 0) %>%
+  filter(racecat == 0) %>%
+  filter(sexcat == 0) %>%
+  filter(iprcat == 0) %>%
+  select(FIPS, year, PCTELIG)
+
+hie_05 <- subset(hie_05, hie_05$FIPS == 1073 | hie_05$FIPS == 37119
+                  |hie_05$FIPS == 39061 |hie_05$FIPS == 39049
+                  |hie_05$FIPS == 26081 |hie_05$FIPS == 37081
+                  |hie_05$FIPS == 45045 |hie_05$FIPS == 18097
+                  |hie_05$FIPS == 29095 |hie_05$FIPS == 47093
+                  |hie_05$FIPS == 21111 |hie_05$FIPS == 47157
+                  |hie_05$FIPS == 47037 |hie_05$FIPS == 40109
+                  |hie_05$FIPS == 31055 |hie_05$FIPS == 29189
+                  |hie_05$FIPS == 29510 |hie_05$FIPS == 40143
+                  |hie_05$FIPS == 12031 |hie_05$FIPS == 37183
+                  |hie_05$FIPS == 39113 |hie_05$FIPS == 51760
+                  | hie_05$FIPS == "01073")
+
+hie <- rbind(hie_06_15, hie_05)
+
+hie$FIPS <- as.character(hie$FIPS)
+hie$year <- as.character(hie$year)
+```
+
+*ACS data*
+
+Read in data and construct conuties from PUMAs. PUMAs are identified using State FIPS codes and PUMA numbers. PUMAs boundaries were redrawn in 2012 based on the 2010 census, so 
+```{r}
+acs <- read_feather("C:/Users/Harrison Kirby/Desktop/GLP/ccu17_beyond_poverty/data/all_obs.feather")
+
+acs$FIPS <- NA
+
+#PUMAs from 2005-2011
+acs$FIPS[acs$STATEFIP == 1 & (acs$YEAR < 2012 & acs$PUMA %in% c(901, 905, 902, 903, 904))] <- 1073
+acs$FIPS[acs$STATEFIP == 12 & (acs$YEAR < 2012 & acs$PUMA %in% c(1106, 1105, 1103, 1104, 1102, 1107))] <- 12031
+acs$FIPS[acs$STATEFIP == 18 & (acs$YEAR < 2012 & acs$PUMA %in% c(2303, 2302, 2301, 2307, 2306, 2304, 2305))] <- 18097
+acs$FIPS[acs$STATEFIP == 21 & (acs$YEAR < 2012 & acs$PUMA %in% c(1702, 1704, 1705, 1701, 1703))] <- 21111
+acs$FIPS[acs$STATEFIP == 26 & (acs$YEAR < 2012 & acs$PUMA %in% c(1402, 1403, 1401, 1300))] <- 26081
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR < 2012 & acs$PUMA %in% c(1004, 1002, 1100, 1003, 902, 901))] <- 29095
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR < 2012 & acs$PUMA %in% c(1704, 1706, 1703, 1705, 1708, 1701, 1702, 1707))] <- 29189
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR < 2012 & acs$PUMA %in% c(1802, 1801, 1803))] <- 29510
+acs$FIPS[acs$STATEFIP == 31 & (acs$YEAR < 2012 & acs$PUMA %in% c(903, 904, 902, 901))] <- 31055
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR < 2012 & acs$PUMA %in% c(1601, 1602, 1700))] <- 37081
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR < 2012 & acs$PUMA %in% c(901, 904, 902, 903, 905, 1000))] <- 37119
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR < 2012 & acs$PUMA %in% c(2701, 2703, 2702, 2602, 2601))] <- 37183
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR < 2012 & acs$PUMA %in% c(3107, 3101, 3103, 3109, 3106, 3108, 3102, 3104, 3105))] <- 39049
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR < 2012 & acs$PUMA %in% c(4503, 4502, 4401, 4404, 4501, 4403, 4402))] <- 39061
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR < 2012 & acs$PUMA %in% c(4102, 4101, 4103, 4000))] <- 39113
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR < 2012 & acs$PUMA %in% c(1400, 1302, 1301))] <- 40109
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR < 2012 & acs$PUMA %in% c(1200, 1100))] <- 40143
+acs$FIPS[acs$STATEFIP == 45 & (acs$YEAR < 2012 & acs$PUMA %in% c(202, 201))] <- 45045
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR < 2012 & acs$PUMA %in% c(2202, 2205, 2204, 2201, 2203))] <- 47037
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR < 2012 & acs$PUMA %in% c(1400, 1301))] <- 47093
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR < 2012 & acs$PUMA %in% c(3202, 3105, 3104, 3103, 3102, 3201, 3101))] <- 47157
+acs$FIPS[acs$STATEFIP == 51 & (acs$YEAR < 2012 & acs$PUMA %in% c(1200))] <- 51760
+
+#PUMAs from 2012 and after
+acs$FIPS[acs$STATEFIP == 1 & (acs$YEAR > 2011 & acs$PUMA %in% c(1301, 1302, 1303, 1304, 1305))] <- 1073
+acs$FIPS[acs$STATEFIP == 12 & (acs$YEAR > 2011 & acs$PUMA %in% c(3101, 3102, 3103, 3104, 3105, 3106, 3107))] <- 12031
+acs$FIPS[acs$STATEFIP == 18 & (acs$YEAR > 2011 & acs$PUMA %in% c(2301, 2302, 2303, 2304, 2305, 2306, 2307))] <- 18097
+acs$FIPS[acs$STATEFIP == 21 & (acs$YEAR > 2011 & acs$PUMA %in% c(1701, 1702, 1703, 1704, 1705, 1706))] <- 21111
+acs$FIPS[acs$STATEFIP == 26 & (acs$YEAR > 2011 & acs$PUMA %in% c(1001, 1002, 1003, 1004))] <- 26081
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR > 2011 & acs$PUMA %in% c(1001, 1002, 1003, 1004, 1005))] <- 29095
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR > 2011 & acs$PUMA %in% c(1801, 1802, 1803, 1804, 1805, 1806, 1807, 1808))] <- 29189
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR > 2011 & acs$PUMA %in% c(1901, 1902))] <- 29510
+acs$FIPS[acs$STATEFIP == 31 & (acs$YEAR > 2011 & acs$PUMA %in% c(901, 902, 903, 904))] <- 31055
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR > 2011 & acs$PUMA %in% c(1701, 1702, 1703, 1704))] <- 37081
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR > 2011 & acs$PUMA %in% c(3101, 3102, 3103, 3104, 3105, 3106, 3107, 3108))] <- 37119
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR > 2011 & acs$PUMA %in% c(1201, 1202, 1203, 1204, 1205, 1206, 1207, 1208))] <- 37183
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR > 2011 & acs$PUMA %in% c(4101, 4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109, 4110, 4111))] <- 39049
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR > 2011 & acs$PUMA %in% c(5501, 5502, 5503, 5504, 5505, 5506, 5507))] <- 39061
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR > 2011 & acs$PUMA %in% c(4601, 4602, 4603, 4604))] <- 39113
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR > 2011 & acs$PUMA %in% c(1001, 1002, 1003, 1004, 1005, 1006))] <- 40109
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR > 2011 & acs$PUMA %in% c(1201, 1202, 1203))] <- 40143
+acs$FIPS[acs$STATEFIP == 45 & (acs$YEAR > 2011 & acs$PUMA %in% c(102, 103, 104, 105))] <- 45045
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR > 2011 & acs$PUMA %in% c(2501, 2502, 2503, 2504, 2505))] <- 47037
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR > 2011 & acs$PUMA %in% c(1602, 1603, 1604))] <- 47093
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR > 2011 & acs$PUMA %in% c(3201, 3202, 3203, 3204, 3205, 3206, 3207, 3208))] <- 47157
+acs$FIPS[acs$STATEFIP == 51 & (acs$YEAR > 2011 & acs$PUMA %in% c(51235))] <- 51760
+```
+
+Subset data to peer and exclude group quarters residents. Add recognizable city names.
+```{r}
+acs <- pull_peers_FIPS(acs)
+acs <- acs %>% filter(GQ == 1 | GQ == 2)
+
+acs$FIPS[acs$FIPS == 29189] = 'MERGED'
+acs$FIPS[acs$FIPS == 29510] = 'MERGED'
+
+acs$city <- NA
+acs$city[acs$FIPS == 1073]  = 'Birmingham'
+acs$city[acs$FIPS == 12031] = 'Jacksonville'
+acs$city[acs$FIPS == 18097] = 'Indianapolis'
+acs$city[acs$FIPS == 21111] = 'Louisville'
+acs$city[acs$FIPS == 26081] = 'Grand Rapids'
+acs$city[acs$FIPS == 29095] = 'Kansas City'
+acs$city[acs$FIPS == 'MERGED'] = 'St. Louis'
+acs$city[acs$FIPS == 31055] = 'Omaha'
+acs$city[acs$FIPS == 37081] = 'Greensboro'
+acs$city[acs$FIPS == 37119] = 'Charlotte'
+acs$city[acs$FIPS == 37183] = 'Raleigh'
+acs$city[acs$FIPS == 39049] = 'Columbus'
+acs$city[acs$FIPS == 39061] = 'Cincinnati'
+acs$city[acs$FIPS == 39113] = 'Dayton'
+acs$city[acs$FIPS == 40109] = 'Oklahoma City'
+acs$city[acs$FIPS == 40143] = 'Tulsa'
+acs$city[acs$FIPS == 45045] = 'Greenville'
+acs$city[acs$FIPS == 47037] = 'Nashville'
+acs$city[acs$FIPS == 47093] = 'Knoxville'
+acs$city[acs$FIPS == 47157] = 'Memphis'
+acs$city[acs$FIPS == 51760] = 'Richmond'
+```
+
+**Create variables**
+
+Education
+```{r}
+acs %<>%
+  mutate(assoc = if_else(EDUCD > 80, 1, 0),
+         assoc = replace(assoc, EDUCD == 1 , NA),
+         bach = if_else(EDUCD > 100, 1, 0),
+         bach = replace(bach, EDUCD == 1 , NA))
+
+acs$assoc[acs$AGE <= 24 | acs$AGE >= 35] <- NA
+acs$bach[acs$AGE <= 24 | acs$AGE >= 35] <- NA
+```
+
+Race
+```{r}
+acs$race <- NA
+acs$race[acs$RACE == 1 & acs$HISPAN == 0] <- 0
+acs$race[acs$RACE == 2 & acs$HISPAN == 0] <- 1
+```
+
+Unemployment
+```{r}
+acs %<>%
+  mutate(unemp = if_else(EMPSTAT == 2, 1, 0))
+
+acs$unemp[acs$EMPSTAT == 0] <- NA
+acs$unemp[acs$EMPSTAT == 3] <- NA
+```
+
+**Create output**
+```{r}
+survey_df <- svydesign(ids = ~1, weights = ~PERWT, data = acs)
+
+results <- svyby(~assoc+bach+unemp, ~FIPS+YEAR+race, design = survey_df, svymean, na.rm = TRUE)
+
+output <- results %>%
+  select(FIPS, race, year = YEAR, assoc, bach, unemp) %>%
+  mutate(assoc = assoc * 100,
+         unemp = unemp * 100,
+         bach = bach * 100) %>%
+  {
+    x <- .
+    full_join(
+      x %>% 
+        filter(race == 0) %>% 
+        select(-race) %>%
+        rename(assoc_w = assoc,
+               unemp_w = unemp,
+               bach_w = bach),
+      x %>% 
+        filter(race == 1) %>%
+        select(-race) %>%
+        rename(assoc_b = assoc,
+               unemp_b = unemp,
+               bach_b = bach),
+      by = c('FIPS', 'year'))
+  }
+
+output %<>% pull_peers_FIPS()
+
+output$city <- NA
+output$city[output$FIPS == 1073]  = 'Birmingham'
+output$city[output$FIPS == 12031] = 'Jacksonville'
+output$city[output$FIPS == 18097] = 'Indianapolis'
+output$city[output$FIPS == 21111] = 'Louisville'
+output$city[output$FIPS == 26081] = 'Grand Rapids'
+output$city[output$FIPS == 29095] = 'Kansas City'
+output$city[output$FIPS == 'MERGED'] = 'St. Louis'
+output$city[output$FIPS == 31055] = 'Omaha'
+output$city[output$FIPS == 37081] = 'Greensboro'
+output$city[output$FIPS == 37119] = 'Charlotte'
+output$city[output$FIPS == 37183] = 'Raleigh'
+output$city[output$FIPS == 39049] = 'Columbus'
+output$city[output$FIPS == 39061] = 'Cincinnati'
+output$city[output$FIPS == 39113] = 'Dayton'
+output$city[output$FIPS == 40109] = 'Oklahoma City'
+output$city[output$FIPS == 40143] = 'Tulsa'
+output$city[output$FIPS == 45045] = 'Greenville'
+output$city[output$FIPS == 47037] = 'Nashville'
+output$city[output$FIPS == 47093] = 'Knoxville'
+output$city[output$FIPS == 47157] = 'Memphis'
+output$city[output$FIPS == 51760] = 'Richmond'
+  
+```
+
+**Graph data**
+
+```{r}
+source('C:/Users/Harrison Kirby/Desktop/GLP/glp_website/graphing_functions.R')
+font_add("Museo Sans 300", "MuseoSans_300.otf")
+font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
+```
+
+```{r}
+setwd('Images')
+
+png("associates_white.png", 900, 600, res = 100, type = "cairo")
+graph_trendline(output, 
+                "assoc_w",
+                plot_title = "Associate Degrees or Higher, White, Ages 25-34",
+                rollmean = 3,
+                xmin = 2005,
+                xmax = 2015,
+                y_title = "Percent")
+dev.off()
+
+png("associates_black.png", 900, 600, res = 100, type = "cairo")
+graph_trendline(output, 
+                "assoc_b",
+                plot_title = "Associate Degrees or Higher, Black, Ages 25-34",
+                rollmean = 3,
+                xmin = 2005,
+                xmax = 2015,
+                y_title = "Percent")
+dev.off()
+
+png("bach_white.png", 900, 600, res = 100, type = "cairo")
+graph_trendline(output, 
+                "bach_w",
+                plot_title = "Bachelor's Degrees or Higher, White, Ages 25-34",
+                rollmean = 3,
+                xmin = 2005,
+                xmax = 2015,
+                y_title = "Percent")
+dev.off()
+
+png("bach_black.png", 900, 600, res = 100, type = "cairo")
+graph_trendline(output, 
+                "bach_b",
+                plot_title = "Bachelor's Degrees of Higher, Black, Ages 25-34",
+                rollmean = 3,
+                xmin = 2005,
+                xmax = 2015,
+                y_title = "Percent")
+dev.off()
+
+png("unemployment_white.png", 900, 600, res = 100, type = "cairo")
+graph_trendline(output, 
+                "unemp_w",
+                plot_title = "Unemployment, White",
+                rollmean = 3,
+                xmin = 2005,
+                xmax = 2015,
+                y_title = "Percent")
+dev.off()
+
+png("unemployment_black.png", 900, 600, res = 100, type = "cairo")
+graph_trendline(output, 
+                "unemp_b",
+                plot_title = "Unemployment, Black",
+                rollmean = 3,
+                xmin = 2005,
+                xmax = 2015,
+                y_title = "Percent")
+dev.off()
+```
+
+
+
+
+
+
+
+
+
+
+
+
