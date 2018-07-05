@@ -1,0 +1,8 @@
+name: "ccu18_draft"
+output_dir: "."
+output:
+  html_document:
+    theme: yeti
+    toc: true
+    toc_depth: 2
+    toc_float: true
