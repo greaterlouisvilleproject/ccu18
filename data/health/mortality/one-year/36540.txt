@@ -1,0 +1,1898 @@
+"Notes"	"Year"	"Year Code"	"Single-Year Ages"	"Single-Year Ages Code"	Deaths	Population	Crude Rate
+	"1999"	"1999"	"< 1 year"	"0"	76	11198	678.7
+	"1999"	"1999"	"1 year"	"1"	Suppressed	11146	Suppressed
+	"1999"	"1999"	"2 years"	"2"	Suppressed	11210	Suppressed
+	"1999"	"1999"	"3 years"	"3"	Suppressed	11024	Suppressed
+	"1999"	"1999"	"4 years"	"4"	Suppressed	11284	Suppressed
+	"1999"	"1999"	"5 years"	"5"	Suppressed	11374	Suppressed
+	"1999"	"1999"	"6 years"	"6"	Suppressed	11239	Suppressed
+	"1999"	"1999"	"7 years"	"7"	Suppressed	11564	Suppressed
+	"1999"	"1999"	"8 years"	"8"	Suppressed	11862	Suppressed
+	"1999"	"1999"	"9 years"	"9"	Suppressed	12307	Suppressed
+	"1999"	"1999"	"10 years"	"10"	Suppressed	12025	Suppressed
+	"1999"	"1999"	"11 years"	"11"	Suppressed	11431	Suppressed
+	"1999"	"1999"	"12 years"	"12"	Suppressed	11604	Suppressed
+	"1999"	"1999"	"13 years"	"13"	Suppressed	11837	Suppressed
+	"1999"	"1999"	"14 years"	"14"	Suppressed	11896	Suppressed
+	"1999"	"1999"	"15 years"	"15"	Suppressed	11862	Suppressed
+	"1999"	"1999"	"16 years"	"16"	Suppressed	11830	Suppressed
+	"1999"	"1999"	"17 years"	"17"	10	11859	Unreliable
+	"1999"	"1999"	"18 years"	"18"	Suppressed	10991	Suppressed
+	"1999"	"1999"	"19 years"	"19"	Suppressed	10656	Suppressed
+	"1999"	"1999"	"20 years"	"20"	Suppressed	10138	Suppressed
+	"1999"	"1999"	"21 years"	"21"	13	9827	Unreliable
+	"1999"	"1999"	"22 years"	"22"	15	10135	Unreliable
+	"1999"	"1999"	"23 years"	"23"	10	10411	Unreliable
+	"1999"	"1999"	"24 years"	"24"	10	10832	Unreliable
+	"1999"	"1999"	"25 years"	"25"	Suppressed	10855	Suppressed
+	"1999"	"1999"	"26 years"	"26"	Suppressed	10728	Suppressed
+	"1999"	"1999"	"27 years"	"27"	Suppressed	11314	Suppressed
+	"1999"	"1999"	"28 years"	"28"	Suppressed	11722	Suppressed
+	"1999"	"1999"	"29 years"	"29"	Suppressed	11372	Suppressed
+	"1999"	"1999"	"30 years"	"30"	Suppressed	11187	Suppressed
+	"1999"	"1999"	"31 years"	"31"	Suppressed	10655	Suppressed
+	"1999"	"1999"	"32 years"	"32"	11	10911	Unreliable
+	"1999"	"1999"	"33 years"	"33"	Suppressed	11015	Suppressed
+	"1999"	"1999"	"34 years"	"34"	19	11782	Unreliable
+	"1999"	"1999"	"35 years"	"35"	15	12811	Unreliable
+	"1999"	"1999"	"36 years"	"36"	16	12596	Unreliable
+	"1999"	"1999"	"37 years"	"37"	19	13057	Unreliable
+	"1999"	"1999"	"38 years"	"38"	19	12843	Unreliable
+	"1999"	"1999"	"39 years"	"39"	23	13070	176.0
+	"1999"	"1999"	"40 years"	"40"	22	13115	167.7
+	"1999"	"1999"	"41 years"	"41"	19	12296	Unreliable
+	"1999"	"1999"	"42 years"	"42"	20	12471	160.4
+	"1999"	"1999"	"43 years"	"43"	24	11697	205.2
+	"1999"	"1999"	"44 years"	"44"	31	11796	262.8
+	"1999"	"1999"	"45 years"	"45"	31	11599	267.3
+	"1999"	"1999"	"46 years"	"46"	18	11150	Unreliable
+	"1999"	"1999"	"47 years"	"47"	31	10738	288.7
+	"1999"	"1999"	"48 years"	"48"	30	10380	289.0
+	"1999"	"1999"	"49 years"	"49"	36	10561	340.9
+	"1999"	"1999"	"50 years"	"50"	31	10175	304.7
+	"1999"	"1999"	"51 years"	"51"	41	9734	421.2
+	"1999"	"1999"	"52 years"	"52"	43	10303	417.4
+	"1999"	"1999"	"53 years"	"53"	41	7318	560.3
+	"1999"	"1999"	"54 years"	"54"	53	7333	722.8
+	"1999"	"1999"	"55 years"	"55"	59	7255	813.2
+	"1999"	"1999"	"56 years"	"56"	62	7420	835.6
+	"1999"	"1999"	"57 years"	"57"	44	6494	677.5
+	"1999"	"1999"	"58 years"	"58"	50	6086	821.6
+	"1999"	"1999"	"59 years"	"59"	61	5842	1044.2
+	"1999"	"1999"	"60 years"	"60"	61	5950	1025.2
+	"1999"	"1999"	"61 years"	"61"	62	5468	1133.9
+	"1999"	"1999"	"62 years"	"62"	77	5190	1483.6
+	"1999"	"1999"	"63 years"	"63"	67	5146	1302.0
+	"1999"	"1999"	"64 years"	"64"	76	5265	1443.5
+	"1999"	"1999"	"65 years"	"65"	94	4745	1981.0
+	"1999"	"1999"	"66 years"	"66"	85	4725	1798.9
+	"1999"	"1999"	"67 years"	"67"	109	4697	2320.6
+	"1999"	"1999"	"68 years"	"68"	107	4777	2239.9
+	"1999"	"1999"	"69 years"	"69"	107	4693	2280.0
+	"1999"	"1999"	"70 years"	"70"	111	4417	2513.0
+	"1999"	"1999"	"71 years"	"71"	112	4451	2516.3
+	"1999"	"1999"	"72 years"	"72"	142	4150	3421.7
+	"1999"	"1999"	"73 years"	"73"	136	4013	3389.0
+	"1999"	"1999"	"74 years"	"74"	157	4094	3834.9
+	"1999"	"1999"	"75 years"	"75"	170	3790	4485.5
+	"1999"	"1999"	"76 years"	"76"	167	3584	4659.6
+	"1999"	"1999"	"77 years"	"77"	151	3485	4332.9
+	"1999"	"1999"	"78 years"	"78"	176	3273	5377.3
+	"1999"	"1999"	"79 years"	"79"	194	2921	6641.6
+	"1999"	"1999"	"80 years"	"80"	162	2638	6141.0
+	"1999"	"1999"	"81 years"	"81"	186	2491	7466.9
+	"1999"	"1999"	"82 years"	"82"	188	2277	8256.5
+	"1999"	"1999"	"83 years"	"83"	161	2060	7815.5
+	"1999"	"1999"	"84 years"	"84"	191	1832	10425.8
+	"1999"	"1999"	"85 years"	"85"	144	Not Applicable	Not Applicable
+	"1999"	"1999"	"86 years"	"86"	157	Not Applicable	Not Applicable
+	"1999"	"1999"	"87 years"	"87"	144	Not Applicable	Not Applicable
+	"1999"	"1999"	"88 years"	"88"	144	Not Applicable	Not Applicable
+	"1999"	"1999"	"89 years"	"89"	171	Not Applicable	Not Applicable
+	"1999"	"1999"	"90 years"	"90"	123	Not Applicable	Not Applicable
+	"1999"	"1999"	"91 years"	"91"	119	Not Applicable	Not Applicable
+	"1999"	"1999"	"92 years"	"92"	120	Not Applicable	Not Applicable
+	"1999"	"1999"	"93 years"	"93"	82	Not Applicable	Not Applicable
+	"1999"	"1999"	"94 years"	"94"	78	Not Applicable	Not Applicable
+	"1999"	"1999"	"95 years"	"95"	71	Not Applicable	Not Applicable
+	"1999"	"1999"	"96 years"	"96"	48	Not Applicable	Not Applicable
+	"1999"	"1999"	"97 years"	"97"	47	Not Applicable	Not Applicable
+	"1999"	"1999"	"98 years"	"98"	20	Not Applicable	Not Applicable
+	"1999"	"1999"	"99 years"	"99"	26	Not Applicable	Not Applicable
+	"1999"	"1999"	"100+ years"	"100"	69	Not Applicable	Not Applicable
+	"1999"	"1999"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2000"	"2000"	"< 1 year"	"0"	91	11317	804.1
+	"2000"	"2000"	"1 year"	"1"	Suppressed	11317	Suppressed
+	"2000"	"2000"	"2 years"	"2"	Suppressed	11166	Suppressed
+	"2000"	"2000"	"3 years"	"3"	Suppressed	11081	Suppressed
+	"2000"	"2000"	"4 years"	"4"	Suppressed	11351	Suppressed
+	"2000"	"2000"	"5 years"	"5"	Suppressed	11422	Suppressed
+	"2000"	"2000"	"6 years"	"6"	Suppressed	11385	Suppressed
+	"2000"	"2000"	"7 years"	"7"	Suppressed	11496	Suppressed
+	"2000"	"2000"	"8 years"	"8"	Suppressed	11983	Suppressed
+	"2000"	"2000"	"9 years"	"9"	Suppressed	12047	Suppressed
+	"2000"	"2000"	"10 years"	"10"	Suppressed	12163	Suppressed
+	"2000"	"2000"	"11 years"	"11"	Suppressed	11555	Suppressed
+	"2000"	"2000"	"12 years"	"12"	Suppressed	11636	Suppressed
+	"2000"	"2000"	"13 years"	"13"	Suppressed	11719	Suppressed
+	"2000"	"2000"	"14 years"	"14"	Suppressed	11792	Suppressed
+	"2000"	"2000"	"15 years"	"15"	Suppressed	11956	Suppressed
+	"2000"	"2000"	"16 years"	"16"	10	11600	Unreliable
+	"2000"	"2000"	"17 years"	"17"	Suppressed	11825	Suppressed
+	"2000"	"2000"	"18 years"	"18"	Suppressed	11047	Suppressed
+	"2000"	"2000"	"19 years"	"19"	14	10675	Unreliable
+	"2000"	"2000"	"20 years"	"20"	14	10461	Unreliable
+	"2000"	"2000"	"21 years"	"21"	10	9982	Unreliable
+	"2000"	"2000"	"22 years"	"22"	Suppressed	10333	Suppressed
+	"2000"	"2000"	"23 years"	"23"	Suppressed	10619	Suppressed
+	"2000"	"2000"	"24 years"	"24"	10	10798	Unreliable
+	"2000"	"2000"	"25 years"	"25"	Suppressed	11185	Suppressed
+	"2000"	"2000"	"26 years"	"26"	Suppressed	10653	Suppressed
+	"2000"	"2000"	"27 years"	"27"	Suppressed	10865	Suppressed
+	"2000"	"2000"	"28 years"	"28"	12	11360	Unreliable
+	"2000"	"2000"	"29 years"	"29"	11	11763	Unreliable
+	"2000"	"2000"	"30 years"	"30"	Suppressed	11665	Suppressed
+	"2000"	"2000"	"31 years"	"31"	Suppressed	10979	Suppressed
+	"2000"	"2000"	"32 years"	"32"	13	10830	Unreliable
+	"2000"	"2000"	"33 years"	"33"	Suppressed	10929	Suppressed
+	"2000"	"2000"	"34 years"	"34"	10	11346	Unreliable
+	"2000"	"2000"	"35 years"	"35"	Suppressed	12360	Suppressed
+	"2000"	"2000"	"36 years"	"36"	18	12417	Unreliable
+	"2000"	"2000"	"37 years"	"37"	13	12821	Unreliable
+	"2000"	"2000"	"38 years"	"38"	19	12917	Unreliable
+	"2000"	"2000"	"39 years"	"39"	23	12945	177.7
+	"2000"	"2000"	"40 years"	"40"	13	13252	Unreliable
+	"2000"	"2000"	"41 years"	"41"	21	12325	170.4
+	"2000"	"2000"	"42 years"	"42"	32	12490	256.2
+	"2000"	"2000"	"43 years"	"43"	27	11928	226.4
+	"2000"	"2000"	"44 years"	"44"	25	11843	211.1
+	"2000"	"2000"	"45 years"	"45"	29	11726	247.3
+	"2000"	"2000"	"46 years"	"46"	32	11279	283.7
+	"2000"	"2000"	"47 years"	"47"	29	10877	266.6
+	"2000"	"2000"	"48 years"	"48"	40	10996	363.8
+	"2000"	"2000"	"49 years"	"49"	36	10551	341.2
+	"2000"	"2000"	"50 years"	"50"	41	10341	396.5
+	"2000"	"2000"	"51 years"	"51"	35	9936	352.3
+	"2000"	"2000"	"52 years"	"52"	37	9985	370.6
+	"2000"	"2000"	"53 years"	"53"	46	9702	474.1
+	"2000"	"2000"	"54 years"	"54"	55	7077	777.2
+	"2000"	"2000"	"55 years"	"55"	31	7164	432.7
+	"2000"	"2000"	"56 years"	"56"	35	7182	487.3
+	"2000"	"2000"	"57 years"	"57"	64	7222	886.2
+	"2000"	"2000"	"58 years"	"58"	45	6478	694.7
+	"2000"	"2000"	"59 years"	"59"	41	5909	693.9
+	"2000"	"2000"	"60 years"	"60"	56	5852	956.9
+	"2000"	"2000"	"61 years"	"61"	62	5581	1110.9
+	"2000"	"2000"	"62 years"	"62"	64	5332	1200.3
+	"2000"	"2000"	"63 years"	"63"	62	5155	1202.7
+	"2000"	"2000"	"64 years"	"64"	86	5137	1674.1
+	"2000"	"2000"	"65 years"	"65"	68	5070	1341.2
+	"2000"	"2000"	"66 years"	"66"	77	4631	1662.7
+	"2000"	"2000"	"67 years"	"67"	97	4638	2091.4
+	"2000"	"2000"	"68 years"	"68"	86	4662	1844.7
+	"2000"	"2000"	"69 years"	"69"	95	4682	2029.0
+	"2000"	"2000"	"70 years"	"70"	122	4436	2750.2
+	"2000"	"2000"	"71 years"	"71"	105	4373	2401.1
+	"2000"	"2000"	"72 years"	"72"	130	4281	3036.7
+	"2000"	"2000"	"73 years"	"73"	127	4045	3139.7
+	"2000"	"2000"	"74 years"	"74"	150	4064	3690.9
+	"2000"	"2000"	"75 years"	"75"	150	3854	3892.1
+	"2000"	"2000"	"76 years"	"76"	166	3647	4551.7
+	"2000"	"2000"	"77 years"	"77"	162	3399	4766.1
+	"2000"	"2000"	"78 years"	"78"	148	3327	4448.5
+	"2000"	"2000"	"79 years"	"79"	155	3028	5118.9
+	"2000"	"2000"	"80 years"	"80"	178	2711	6565.8
+	"2000"	"2000"	"81 years"	"81"	166	2544	6525.2
+	"2000"	"2000"	"82 years"	"82"	149	2323	6414.1
+	"2000"	"2000"	"83 years"	"83"	182	2067	8805.0
+	"2000"	"2000"	"84 years"	"84"	164	1830	8961.7
+	"2000"	"2000"	"85 years"	"85"	175	Not Applicable	Not Applicable
+	"2000"	"2000"	"86 years"	"86"	152	Not Applicable	Not Applicable
+	"2000"	"2000"	"87 years"	"87"	182	Not Applicable	Not Applicable
+	"2000"	"2000"	"88 years"	"88"	163	Not Applicable	Not Applicable
+	"2000"	"2000"	"89 years"	"89"	140	Not Applicable	Not Applicable
+	"2000"	"2000"	"90 years"	"90"	116	Not Applicable	Not Applicable
+	"2000"	"2000"	"91 years"	"91"	121	Not Applicable	Not Applicable
+	"2000"	"2000"	"92 years"	"92"	101	Not Applicable	Not Applicable
+	"2000"	"2000"	"93 years"	"93"	104	Not Applicable	Not Applicable
+	"2000"	"2000"	"94 years"	"94"	101	Not Applicable	Not Applicable
+	"2000"	"2000"	"95 years"	"95"	84	Not Applicable	Not Applicable
+	"2000"	"2000"	"96 years"	"96"	55	Not Applicable	Not Applicable
+	"2000"	"2000"	"97 years"	"97"	50	Not Applicable	Not Applicable
+	"2000"	"2000"	"98 years"	"98"	34	Not Applicable	Not Applicable
+	"2000"	"2000"	"99 years"	"99"	23	Not Applicable	Not Applicable
+	"2000"	"2000"	"100+ years"	"100"	42	Not Applicable	Not Applicable
+	"2000"	"2000"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2001"	"2001"	"< 1 year"	"0"	80	12196	656.0
+	"2001"	"2001"	"1 year"	"1"	Suppressed	11386	Suppressed
+	"2001"	"2001"	"2 years"	"2"	Suppressed	11296	Suppressed
+	"2001"	"2001"	"3 years"	"3"	Suppressed	11125	Suppressed
+	"2001"	"2001"	"4 years"	"4"	Suppressed	11155	Suppressed
+	"2001"	"2001"	"5 years"	"5"	Suppressed	11243	Suppressed
+	"2001"	"2001"	"6 years"	"6"	Suppressed	11470	Suppressed
+	"2001"	"2001"	"7 years"	"7"	Suppressed	11361	Suppressed
+	"2001"	"2001"	"8 years"	"8"	Suppressed	11440	Suppressed
+	"2001"	"2001"	"9 years"	"9"	Suppressed	11968	Suppressed
+	"2001"	"2001"	"10 years"	"10"	Suppressed	12041	Suppressed
+	"2001"	"2001"	"11 years"	"11"	Suppressed	12363	Suppressed
+	"2001"	"2001"	"12 years"	"12"	Suppressed	11701	Suppressed
+	"2001"	"2001"	"13 years"	"13"	Suppressed	11724	Suppressed
+	"2001"	"2001"	"14 years"	"14"	Suppressed	11976	Suppressed
+	"2001"	"2001"	"15 years"	"15"	Suppressed	11862	Suppressed
+	"2001"	"2001"	"16 years"	"16"	Suppressed	12245	Suppressed
+	"2001"	"2001"	"17 years"	"17"	11	11612	Unreliable
+	"2001"	"2001"	"18 years"	"18"	Suppressed	11132	Suppressed
+	"2001"	"2001"	"19 years"	"19"	12	10725	Unreliable
+	"2001"	"2001"	"20 years"	"20"	12	10670	Unreliable
+	"2001"	"2001"	"21 years"	"21"	Suppressed	10475	Suppressed
+	"2001"	"2001"	"22 years"	"22"	Suppressed	10319	Suppressed
+	"2001"	"2001"	"23 years"	"23"	Suppressed	10875	Suppressed
+	"2001"	"2001"	"24 years"	"24"	Suppressed	11125	Suppressed
+	"2001"	"2001"	"25 years"	"25"	Suppressed	11116	Suppressed
+	"2001"	"2001"	"26 years"	"26"	15	11269	Unreliable
+	"2001"	"2001"	"27 years"	"27"	Suppressed	10754	Suppressed
+	"2001"	"2001"	"28 years"	"28"	Suppressed	10699	Suppressed
+	"2001"	"2001"	"29 years"	"29"	10	11199	Unreliable
+	"2001"	"2001"	"30 years"	"30"	Suppressed	11722	Suppressed
+	"2001"	"2001"	"31 years"	"31"	Suppressed	11638	Suppressed
+	"2001"	"2001"	"32 years"	"32"	Suppressed	11252	Suppressed
+	"2001"	"2001"	"33 years"	"33"	15	10834	Unreliable
+	"2001"	"2001"	"34 years"	"34"	12	10903	Unreliable
+	"2001"	"2001"	"35 years"	"35"	11	11233	Unreliable
+	"2001"	"2001"	"36 years"	"36"	17	12074	Unreliable
+	"2001"	"2001"	"37 years"	"37"	13	12402	Unreliable
+	"2001"	"2001"	"38 years"	"38"	11	12825	Unreliable
+	"2001"	"2001"	"39 years"	"39"	28	12820	218.4
+	"2001"	"2001"	"40 years"	"40"	30	12902	232.5
+	"2001"	"2001"	"41 years"	"41"	22	13124	167.6
+	"2001"	"2001"	"42 years"	"42"	34	12389	274.4
+	"2001"	"2001"	"43 years"	"43"	27	12421	217.4
+	"2001"	"2001"	"44 years"	"44"	37	12120	305.3
+	"2001"	"2001"	"45 years"	"45"	19	11837	Unreliable
+	"2001"	"2001"	"46 years"	"46"	40	11652	343.3
+	"2001"	"2001"	"47 years"	"47"	37	11499	321.8
+	"2001"	"2001"	"48 years"	"48"	30	10837	276.8
+	"2001"	"2001"	"49 years"	"49"	36	11008	327.0
+	"2001"	"2001"	"50 years"	"50"	44	10714	410.7
+	"2001"	"2001"	"51 years"	"51"	43	10353	415.3
+	"2001"	"2001"	"52 years"	"52"	46	9963	461.7
+	"2001"	"2001"	"53 years"	"53"	48	9677	496.0
+	"2001"	"2001"	"54 years"	"54"	67	10158	659.6
+	"2001"	"2001"	"55 years"	"55"	38	7179	529.3
+	"2001"	"2001"	"56 years"	"56"	33	7039	468.8
+	"2001"	"2001"	"57 years"	"57"	46	7037	653.7
+	"2001"	"2001"	"58 years"	"58"	59	7297	808.6
+	"2001"	"2001"	"59 years"	"59"	62	6510	952.4
+	"2001"	"2001"	"60 years"	"60"	68	5899	1152.7
+	"2001"	"2001"	"61 years"	"61"	58	5800	1000.0
+	"2001"	"2001"	"62 years"	"62"	67	5484	1221.7
+	"2001"	"2001"	"63 years"	"63"	67	5312	1261.3
+	"2001"	"2001"	"64 years"	"64"	77	5130	1501.0
+	"2001"	"2001"	"65 years"	"65"	71	5018	1414.9
+	"2001"	"2001"	"66 years"	"66"	78	4974	1568.2
+	"2001"	"2001"	"67 years"	"67"	93	4557	2040.8
+	"2001"	"2001"	"68 years"	"68"	111	4452	2493.3
+	"2001"	"2001"	"69 years"	"69"	116	4527	2562.4
+	"2001"	"2001"	"70 years"	"70"	147	4474	3285.7
+	"2001"	"2001"	"71 years"	"71"	120	4327	2773.3
+	"2001"	"2001"	"72 years"	"72"	124	4240	2924.5
+	"2001"	"2001"	"73 years"	"73"	133	4084	3256.6
+	"2001"	"2001"	"74 years"	"74"	172	3941	4364.4
+	"2001"	"2001"	"75 years"	"75"	155	3876	3999.0
+	"2001"	"2001"	"76 years"	"76"	186	3709	5014.8
+	"2001"	"2001"	"77 years"	"77"	169	3471	4868.9
+	"2001"	"2001"	"78 years"	"78"	183	3280	5579.3
+	"2001"	"2001"	"79 years"	"79"	160	3160	5063.3
+	"2001"	"2001"	"80 years"	"80"	170	2907	5848.0
+	"2001"	"2001"	"81 years"	"81"	173	2659	6506.2
+	"2001"	"2001"	"82 years"	"82"	161	2330	6909.9
+	"2001"	"2001"	"83 years"	"83"	201	2210	9095.0
+	"2001"	"2001"	"84 years"	"84"	160	1907	8390.1
+	"2001"	"2001"	"85 years"	"85"	142	Not Applicable	Not Applicable
+	"2001"	"2001"	"86 years"	"86"	193	Not Applicable	Not Applicable
+	"2001"	"2001"	"87 years"	"87"	177	Not Applicable	Not Applicable
+	"2001"	"2001"	"88 years"	"88"	163	Not Applicable	Not Applicable
+	"2001"	"2001"	"89 years"	"89"	139	Not Applicable	Not Applicable
+	"2001"	"2001"	"90 years"	"90"	138	Not Applicable	Not Applicable
+	"2001"	"2001"	"91 years"	"91"	118	Not Applicable	Not Applicable
+	"2001"	"2001"	"92 years"	"92"	108	Not Applicable	Not Applicable
+	"2001"	"2001"	"93 years"	"93"	97	Not Applicable	Not Applicable
+	"2001"	"2001"	"94 years"	"94"	72	Not Applicable	Not Applicable
+	"2001"	"2001"	"95 years"	"95"	74	Not Applicable	Not Applicable
+	"2001"	"2001"	"96 years"	"96"	70	Not Applicable	Not Applicable
+	"2001"	"2001"	"97 years"	"97"	38	Not Applicable	Not Applicable
+	"2001"	"2001"	"98 years"	"98"	42	Not Applicable	Not Applicable
+	"2001"	"2001"	"99 years"	"99"	23	Not Applicable	Not Applicable
+	"2001"	"2001"	"100+ years"	"100"	54	Not Applicable	Not Applicable
+	"2001"	"2001"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2002"	"2002"	"< 1 year"	"0"	97	12238	792.6
+	"2002"	"2002"	"1 year"	"1"	Suppressed	12129	Suppressed
+	"2002"	"2002"	"2 years"	"2"	Suppressed	11477	Suppressed
+	"2002"	"2002"	"3 years"	"3"	Suppressed	11279	Suppressed
+	"2002"	"2002"	"4 years"	"4"	Suppressed	11165	Suppressed
+	"2002"	"2002"	"5 years"	"5"	Suppressed	11178	Suppressed
+	"2002"	"2002"	"6 years"	"6"	Suppressed	11324	Suppressed
+	"2002"	"2002"	"7 years"	"7"	Suppressed	11482	Suppressed
+	"2002"	"2002"	"8 years"	"8"	Suppressed	11474	Suppressed
+	"2002"	"2002"	"9 years"	"9"	Suppressed	11561	Suppressed
+	"2002"	"2002"	"10 years"	"10"	Suppressed	12151	Suppressed
+	"2002"	"2002"	"11 years"	"11"	Suppressed	12064	Suppressed
+	"2002"	"2002"	"12 years"	"12"	Suppressed	12462	Suppressed
+	"2002"	"2002"	"13 years"	"13"	Suppressed	11784	Suppressed
+	"2002"	"2002"	"14 years"	"14"	Suppressed	11803	Suppressed
+	"2002"	"2002"	"15 years"	"15"	Suppressed	12112	Suppressed
+	"2002"	"2002"	"16 years"	"16"	Suppressed	11925	Suppressed
+	"2002"	"2002"	"17 years"	"17"	Suppressed	12186	Suppressed
+	"2002"	"2002"	"18 years"	"18"	Suppressed	10945	Suppressed
+	"2002"	"2002"	"19 years"	"19"	Suppressed	10763	Suppressed
+	"2002"	"2002"	"20 years"	"20"	Suppressed	10960	Suppressed
+	"2002"	"2002"	"21 years"	"21"	13	10816	Unreliable
+	"2002"	"2002"	"22 years"	"22"	11	10657	Unreliable
+	"2002"	"2002"	"23 years"	"23"	10	10684	Unreliable
+	"2002"	"2002"	"24 years"	"24"	10	11169	Unreliable
+	"2002"	"2002"	"25 years"	"25"	Suppressed	11504	Suppressed
+	"2002"	"2002"	"26 years"	"26"	10	11070	Unreliable
+	"2002"	"2002"	"27 years"	"27"	Suppressed	11248	Suppressed
+	"2002"	"2002"	"28 years"	"28"	Suppressed	10663	Suppressed
+	"2002"	"2002"	"29 years"	"29"	11	10701	Unreliable
+	"2002"	"2002"	"30 years"	"30"	Suppressed	11436	Suppressed
+	"2002"	"2002"	"31 years"	"31"	Suppressed	11597	Suppressed
+	"2002"	"2002"	"32 years"	"32"	10	11662	Unreliable
+	"2002"	"2002"	"33 years"	"33"	13	11169	Unreliable
+	"2002"	"2002"	"34 years"	"34"	15	10780	Unreliable
+	"2002"	"2002"	"35 years"	"35"	18	11076	Unreliable
+	"2002"	"2002"	"36 years"	"36"	21	11150	188.3
+	"2002"	"2002"	"37 years"	"37"	11	12067	Unreliable
+	"2002"	"2002"	"38 years"	"38"	18	12415	Unreliable
+	"2002"	"2002"	"39 years"	"39"	22	12821	171.6
+	"2002"	"2002"	"40 years"	"40"	28	12840	218.1
+	"2002"	"2002"	"41 years"	"41"	27	12778	211.3
+	"2002"	"2002"	"42 years"	"42"	29	13086	221.6
+	"2002"	"2002"	"43 years"	"43"	38	12350	307.7
+	"2002"	"2002"	"44 years"	"44"	34	12447	273.2
+	"2002"	"2002"	"45 years"	"45"	33	12150	271.6
+	"2002"	"2002"	"46 years"	"46"	39	11733	332.4
+	"2002"	"2002"	"47 years"	"47"	30	11642	257.7
+	"2002"	"2002"	"48 years"	"48"	33	11419	289.0
+	"2002"	"2002"	"49 years"	"49"	26	10806	240.6
+	"2002"	"2002"	"50 years"	"50"	41	11012	372.3
+	"2002"	"2002"	"51 years"	"51"	53	10678	496.3
+	"2002"	"2002"	"52 years"	"52"	49	10280	476.7
+	"2002"	"2002"	"53 years"	"53"	33	9930	332.3
+	"2002"	"2002"	"54 years"	"54"	66	9599	687.6
+	"2002"	"2002"	"55 years"	"55"	58	10116	573.3
+	"2002"	"2002"	"56 years"	"56"	44	7015	627.2
+	"2002"	"2002"	"57 years"	"57"	47	6964	674.9
+	"2002"	"2002"	"58 years"	"58"	54	6940	778.1
+	"2002"	"2002"	"59 years"	"59"	62	7182	863.3
+	"2002"	"2002"	"60 years"	"60"	62	6405	968.0
+	"2002"	"2002"	"61 years"	"61"	74	5831	1269.1
+	"2002"	"2002"	"62 years"	"62"	54	5670	952.4
+	"2002"	"2002"	"63 years"	"63"	69	5377	1283.2
+	"2002"	"2002"	"64 years"	"64"	78	5179	1506.1
+	"2002"	"2002"	"65 years"	"65"	71	5034	1410.4
+	"2002"	"2002"	"66 years"	"66"	97	4835	2006.2
+	"2002"	"2002"	"67 years"	"67"	102	4848	2104.0
+	"2002"	"2002"	"68 years"	"68"	109	4432	2459.4
+	"2002"	"2002"	"69 years"	"69"	107	4330	2471.1
+	"2002"	"2002"	"70 years"	"70"	110	4432	2481.9
+	"2002"	"2002"	"71 years"	"71"	110	4334	2538.1
+	"2002"	"2002"	"72 years"	"72"	147	4205	3495.8
+	"2002"	"2002"	"73 years"	"73"	140	4092	3421.3
+	"2002"	"2002"	"74 years"	"74"	167	3969	4207.6
+	"2002"	"2002"	"75 years"	"75"	151	3765	4010.6
+	"2002"	"2002"	"76 years"	"76"	159	3766	4222.0
+	"2002"	"2002"	"77 years"	"77"	151	3526	4282.5
+	"2002"	"2002"	"78 years"	"78"	169	3323	5085.8
+	"2002"	"2002"	"79 years"	"79"	171	3127	5468.5
+	"2002"	"2002"	"80 years"	"80"	189	2996	6308.4
+	"2002"	"2002"	"81 years"	"81"	177	2751	6434.0
+	"2002"	"2002"	"82 years"	"82"	178	2439	7298.1
+	"2002"	"2002"	"83 years"	"83"	174	2158	8063.0
+	"2002"	"2002"	"84 years"	"84"	187	2014	9285.0
+	"2002"	"2002"	"85 years"	"85"	160	Not Applicable	Not Applicable
+	"2002"	"2002"	"86 years"	"86"	182	Not Applicable	Not Applicable
+	"2002"	"2002"	"87 years"	"87"	155	Not Applicable	Not Applicable
+	"2002"	"2002"	"88 years"	"88"	152	Not Applicable	Not Applicable
+	"2002"	"2002"	"89 years"	"89"	141	Not Applicable	Not Applicable
+	"2002"	"2002"	"90 years"	"90"	135	Not Applicable	Not Applicable
+	"2002"	"2002"	"91 years"	"91"	118	Not Applicable	Not Applicable
+	"2002"	"2002"	"92 years"	"92"	113	Not Applicable	Not Applicable
+	"2002"	"2002"	"93 years"	"93"	92	Not Applicable	Not Applicable
+	"2002"	"2002"	"94 years"	"94"	77	Not Applicable	Not Applicable
+	"2002"	"2002"	"95 years"	"95"	79	Not Applicable	Not Applicable
+	"2002"	"2002"	"96 years"	"96"	66	Not Applicable	Not Applicable
+	"2002"	"2002"	"97 years"	"97"	45	Not Applicable	Not Applicable
+	"2002"	"2002"	"98 years"	"98"	37	Not Applicable	Not Applicable
+	"2002"	"2002"	"99 years"	"99"	21	Not Applicable	Not Applicable
+	"2002"	"2002"	"100+ years"	"100"	57	Not Applicable	Not Applicable
+	"2002"	"2002"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2003"	"2003"	"< 1 year"	"0"	80	12627	633.6
+	"2003"	"2003"	"1 year"	"1"	Suppressed	12117	Suppressed
+	"2003"	"2003"	"2 years"	"2"	Suppressed	12190	Suppressed
+	"2003"	"2003"	"3 years"	"3"	Suppressed	11407	Suppressed
+	"2003"	"2003"	"4 years"	"4"	Suppressed	11388	Suppressed
+	"2003"	"2003"	"5 years"	"5"	Suppressed	11314	Suppressed
+	"2003"	"2003"	"6 years"	"6"	Suppressed	11188	Suppressed
+	"2003"	"2003"	"7 years"	"7"	Suppressed	11350	Suppressed
+	"2003"	"2003"	"8 years"	"8"	Suppressed	11533	Suppressed
+	"2003"	"2003"	"9 years"	"9"	Suppressed	11459	Suppressed
+	"2003"	"2003"	"10 years"	"10"	Suppressed	11820	Suppressed
+	"2003"	"2003"	"11 years"	"11"	Suppressed	12104	Suppressed
+	"2003"	"2003"	"12 years"	"12"	Suppressed	12197	Suppressed
+	"2003"	"2003"	"13 years"	"13"	Suppressed	12527	Suppressed
+	"2003"	"2003"	"14 years"	"14"	Suppressed	11811	Suppressed
+	"2003"	"2003"	"15 years"	"15"	Suppressed	11925	Suppressed
+	"2003"	"2003"	"16 years"	"16"	Suppressed	12184	Suppressed
+	"2003"	"2003"	"17 years"	"17"	Suppressed	11938	Suppressed
+	"2003"	"2003"	"18 years"	"18"	10	11475	Unreliable
+	"2003"	"2003"	"19 years"	"19"	Suppressed	10583	Suppressed
+	"2003"	"2003"	"20 years"	"20"	Suppressed	10823	Suppressed
+	"2003"	"2003"	"21 years"	"21"	12	11168	Unreliable
+	"2003"	"2003"	"22 years"	"22"	Suppressed	11256	Suppressed
+	"2003"	"2003"	"23 years"	"23"	Suppressed	11195	Suppressed
+	"2003"	"2003"	"24 years"	"24"	Suppressed	11018	Suppressed
+	"2003"	"2003"	"25 years"	"25"	Suppressed	11633	Suppressed
+	"2003"	"2003"	"26 years"	"26"	10	11373	Unreliable
+	"2003"	"2003"	"27 years"	"27"	11	10982	Unreliable
+	"2003"	"2003"	"28 years"	"28"	10	11150	Unreliable
+	"2003"	"2003"	"29 years"	"29"	12	10717	Unreliable
+	"2003"	"2003"	"30 years"	"30"	12	11184	Unreliable
+	"2003"	"2003"	"31 years"	"31"	Suppressed	11269	Suppressed
+	"2003"	"2003"	"32 years"	"32"	Suppressed	11777	Suppressed
+	"2003"	"2003"	"33 years"	"33"	11	11588	Unreliable
+	"2003"	"2003"	"34 years"	"34"	13	11140	Unreliable
+	"2003"	"2003"	"35 years"	"35"	11	10998	Unreliable
+	"2003"	"2003"	"36 years"	"36"	13	10924	Unreliable
+	"2003"	"2003"	"37 years"	"37"	24	11163	215.0
+	"2003"	"2003"	"38 years"	"38"	18	12071	Unreliable
+	"2003"	"2003"	"39 years"	"39"	20	12361	161.8
+	"2003"	"2003"	"40 years"	"40"	17	12797	Unreliable
+	"2003"	"2003"	"41 years"	"41"	23	12750	180.4
+	"2003"	"2003"	"42 years"	"42"	32	12743	251.1
+	"2003"	"2003"	"43 years"	"43"	29	13115	221.1
+	"2003"	"2003"	"44 years"	"44"	22	12297	178.9
+	"2003"	"2003"	"45 years"	"45"	31	12457	248.9
+	"2003"	"2003"	"46 years"	"46"	29	12099	239.7
+	"2003"	"2003"	"47 years"	"47"	34	11720	290.1
+	"2003"	"2003"	"48 years"	"48"	30	11526	260.3
+	"2003"	"2003"	"49 years"	"49"	36	11441	314.7
+	"2003"	"2003"	"50 years"	"50"	30	10853	276.4
+	"2003"	"2003"	"51 years"	"51"	44	10981	400.7
+	"2003"	"2003"	"52 years"	"52"	54	10575	510.6
+	"2003"	"2003"	"53 years"	"53"	47	10220	459.9
+	"2003"	"2003"	"54 years"	"54"	59	9906	595.6
+	"2003"	"2003"	"55 years"	"55"	56	9544	586.8
+	"2003"	"2003"	"56 years"	"56"	73	9940	734.4
+	"2003"	"2003"	"57 years"	"57"	46	6965	660.4
+	"2003"	"2003"	"58 years"	"58"	56	6932	807.8
+	"2003"	"2003"	"59 years"	"59"	54	6845	788.9
+	"2003"	"2003"	"60 years"	"60"	58	7043	823.5
+	"2003"	"2003"	"61 years"	"61"	60	6328	948.2
+	"2003"	"2003"	"62 years"	"62"	64	5733	1116.3
+	"2003"	"2003"	"63 years"	"63"	81	5544	1461.0
+	"2003"	"2003"	"64 years"	"64"	69	5264	1310.8
+	"2003"	"2003"	"65 years"	"65"	61	5109	1194.0
+	"2003"	"2003"	"66 years"	"66"	107	4889	2188.6
+	"2003"	"2003"	"67 years"	"67"	81	4720	1716.1
+	"2003"	"2003"	"68 years"	"68"	89	4732	1880.8
+	"2003"	"2003"	"69 years"	"69"	83	4301	1929.8
+	"2003"	"2003"	"70 years"	"70"	105	4222	2487.0
+	"2003"	"2003"	"71 years"	"71"	131	4307	3041.6
+	"2003"	"2003"	"72 years"	"72"	116	4198	2763.2
+	"2003"	"2003"	"73 years"	"73"	118	4076	2895.0
+	"2003"	"2003"	"74 years"	"74"	146	3974	3673.9
+	"2003"	"2003"	"75 years"	"75"	156	3814	4090.2
+	"2003"	"2003"	"76 years"	"76"	157	3657	4293.1
+	"2003"	"2003"	"77 years"	"77"	158	3591	4399.9
+	"2003"	"2003"	"78 years"	"78"	176	3358	5241.2
+	"2003"	"2003"	"79 years"	"79"	170	3169	5364.5
+	"2003"	"2003"	"80 years"	"80"	190	2925	6495.7
+	"2003"	"2003"	"81 years"	"81"	201	2832	7097.5
+	"2003"	"2003"	"82 years"	"82"	192	2546	7541.2
+	"2003"	"2003"	"83 years"	"83"	170	2279	7459.4
+	"2003"	"2003"	"84 years"	"84"	188	1961	9586.9
+	"2003"	"2003"	"85 years"	"85"	169	Not Applicable	Not Applicable
+	"2003"	"2003"	"86 years"	"86"	165	Not Applicable	Not Applicable
+	"2003"	"2003"	"87 years"	"87"	176	Not Applicable	Not Applicable
+	"2003"	"2003"	"88 years"	"88"	176	Not Applicable	Not Applicable
+	"2003"	"2003"	"89 years"	"89"	175	Not Applicable	Not Applicable
+	"2003"	"2003"	"90 years"	"90"	138	Not Applicable	Not Applicable
+	"2003"	"2003"	"91 years"	"91"	144	Not Applicable	Not Applicable
+	"2003"	"2003"	"92 years"	"92"	109	Not Applicable	Not Applicable
+	"2003"	"2003"	"93 years"	"93"	102	Not Applicable	Not Applicable
+	"2003"	"2003"	"94 years"	"94"	106	Not Applicable	Not Applicable
+	"2003"	"2003"	"95 years"	"95"	76	Not Applicable	Not Applicable
+	"2003"	"2003"	"96 years"	"96"	62	Not Applicable	Not Applicable
+	"2003"	"2003"	"97 years"	"97"	40	Not Applicable	Not Applicable
+	"2003"	"2003"	"98 years"	"98"	34	Not Applicable	Not Applicable
+	"2003"	"2003"	"99 years"	"99"	24	Not Applicable	Not Applicable
+	"2003"	"2003"	"100+ years"	"100"	49	Not Applicable	Not Applicable
+	"2003"	"2003"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2004"	"2004"	"< 1 year"	"0"	85	12669	670.9
+	"2004"	"2004"	"1 year"	"1"	Suppressed	12568	Suppressed
+	"2004"	"2004"	"2 years"	"2"	Suppressed	12275	Suppressed
+	"2004"	"2004"	"3 years"	"3"	Suppressed	12223	Suppressed
+	"2004"	"2004"	"4 years"	"4"	Suppressed	11627	Suppressed
+	"2004"	"2004"	"5 years"	"5"	Suppressed	11623	Suppressed
+	"2004"	"2004"	"6 years"	"6"	Suppressed	11316	Suppressed
+	"2004"	"2004"	"7 years"	"7"	Suppressed	11205	Suppressed
+	"2004"	"2004"	"8 years"	"8"	Suppressed	11482	Suppressed
+	"2004"	"2004"	"9 years"	"9"	Suppressed	11618	Suppressed
+	"2004"	"2004"	"10 years"	"10"	Suppressed	11797	Suppressed
+	"2004"	"2004"	"11 years"	"11"	Suppressed	11722	Suppressed
+	"2004"	"2004"	"12 years"	"12"	Suppressed	12364	Suppressed
+	"2004"	"2004"	"13 years"	"13"	Suppressed	12215	Suppressed
+	"2004"	"2004"	"14 years"	"14"	Suppressed	12565	Suppressed
+	"2004"	"2004"	"15 years"	"15"	Suppressed	11952	Suppressed
+	"2004"	"2004"	"16 years"	"16"	Suppressed	12020	Suppressed
+	"2004"	"2004"	"17 years"	"17"	Suppressed	12127	Suppressed
+	"2004"	"2004"	"18 years"	"18"	Suppressed	11259	Suppressed
+	"2004"	"2004"	"19 years"	"19"	14	11017	Unreliable
+	"2004"	"2004"	"20 years"	"20"	Suppressed	10676	Suppressed
+	"2004"	"2004"	"21 years"	"21"	Suppressed	11042	Suppressed
+	"2004"	"2004"	"22 years"	"22"	17	11738	Unreliable
+	"2004"	"2004"	"23 years"	"23"	Suppressed	11938	Suppressed
+	"2004"	"2004"	"24 years"	"24"	Suppressed	11707	Suppressed
+	"2004"	"2004"	"25 years"	"25"	Suppressed	11550	Suppressed
+	"2004"	"2004"	"26 years"	"26"	Suppressed	11455	Suppressed
+	"2004"	"2004"	"27 years"	"27"	Suppressed	11391	Suppressed
+	"2004"	"2004"	"28 years"	"28"	Suppressed	10896	Suppressed
+	"2004"	"2004"	"29 years"	"29"	Suppressed	11404	Suppressed
+	"2004"	"2004"	"30 years"	"30"	Suppressed	11316	Suppressed
+	"2004"	"2004"	"31 years"	"31"	Suppressed	10909	Suppressed
+	"2004"	"2004"	"32 years"	"32"	Suppressed	11499	Suppressed
+	"2004"	"2004"	"33 years"	"33"	12	11852	Unreliable
+	"2004"	"2004"	"34 years"	"34"	13	11590	Unreliable
+	"2004"	"2004"	"35 years"	"35"	14	11422	Unreliable
+	"2004"	"2004"	"36 years"	"36"	12	10898	Unreliable
+	"2004"	"2004"	"37 years"	"37"	17	11061	Unreliable
+	"2004"	"2004"	"38 years"	"38"	19	11304	Unreliable
+	"2004"	"2004"	"39 years"	"39"	20	12045	166.0
+	"2004"	"2004"	"40 years"	"40"	15	12473	Unreliable
+	"2004"	"2004"	"41 years"	"41"	16	12701	Unreliable
+	"2004"	"2004"	"42 years"	"42"	27	12740	211.9
+	"2004"	"2004"	"43 years"	"43"	30	12783	234.7
+	"2004"	"2004"	"44 years"	"44"	15	13147	Unreliable
+	"2004"	"2004"	"45 years"	"45"	29	12421	233.5
+	"2004"	"2004"	"46 years"	"46"	35	12451	281.1
+	"2004"	"2004"	"47 years"	"47"	33	12105	272.6
+	"2004"	"2004"	"48 years"	"48"	42	11661	360.2
+	"2004"	"2004"	"49 years"	"49"	42	11521	364.6
+	"2004"	"2004"	"50 years"	"50"	51	11514	442.9
+	"2004"	"2004"	"51 years"	"51"	46	10802	425.8
+	"2004"	"2004"	"52 years"	"52"	56	10853	516.0
+	"2004"	"2004"	"53 years"	"53"	40	10551	379.1
+	"2004"	"2004"	"54 years"	"54"	52	10273	506.2
+	"2004"	"2004"	"55 years"	"55"	58	9865	587.9
+	"2004"	"2004"	"56 years"	"56"	67	9335	717.7
+	"2004"	"2004"	"57 years"	"57"	67	9861	679.4
+	"2004"	"2004"	"58 years"	"58"	44	6933	634.6
+	"2004"	"2004"	"59 years"	"59"	55	6836	804.6
+	"2004"	"2004"	"60 years"	"60"	60	6739	890.3
+	"2004"	"2004"	"61 years"	"61"	69	6984	988.0
+	"2004"	"2004"	"62 years"	"62"	62	6237	994.1
+	"2004"	"2004"	"63 years"	"63"	75	5626	1333.1
+	"2004"	"2004"	"64 years"	"64"	71	5427	1308.3
+	"2004"	"2004"	"65 years"	"65"	57	5219	1092.2
+	"2004"	"2004"	"66 years"	"66"	87	4943	1760.1
+	"2004"	"2004"	"67 years"	"67"	83	4761	1743.3
+	"2004"	"2004"	"68 years"	"68"	91	4599	1978.7
+	"2004"	"2004"	"69 years"	"69"	100	4599	2174.4
+	"2004"	"2004"	"70 years"	"70"	98	4188	2340.0
+	"2004"	"2004"	"71 years"	"71"	102	4100	2487.8
+	"2004"	"2004"	"72 years"	"72"	130	4182	3108.6
+	"2004"	"2004"	"73 years"	"73"	136	4083	3330.9
+	"2004"	"2004"	"74 years"	"74"	133	3944	3372.2
+	"2004"	"2004"	"75 years"	"75"	146	3759	3884.0
+	"2004"	"2004"	"76 years"	"76"	146	3711	3934.2
+	"2004"	"2004"	"77 years"	"77"	157	3446	4556.0
+	"2004"	"2004"	"78 years"	"78"	172	3423	5024.8
+	"2004"	"2004"	"79 years"	"79"	175	3202	5465.3
+	"2004"	"2004"	"80 years"	"80"	174	2995	5809.7
+	"2004"	"2004"	"81 years"	"81"	166	2796	5937.1
+	"2004"	"2004"	"82 years"	"82"	182	2576	7065.2
+	"2004"	"2004"	"83 years"	"83"	180	2365	7611.0
+	"2004"	"2004"	"84 years"	"84"	184	2062	8923.4
+	"2004"	"2004"	"85 years"	"85"	182	Not Applicable	Not Applicable
+	"2004"	"2004"	"86 years"	"86"	184	Not Applicable	Not Applicable
+	"2004"	"2004"	"87 years"	"87"	149	Not Applicable	Not Applicable
+	"2004"	"2004"	"88 years"	"88"	157	Not Applicable	Not Applicable
+	"2004"	"2004"	"89 years"	"89"	147	Not Applicable	Not Applicable
+	"2004"	"2004"	"90 years"	"90"	142	Not Applicable	Not Applicable
+	"2004"	"2004"	"91 years"	"91"	111	Not Applicable	Not Applicable
+	"2004"	"2004"	"92 years"	"92"	101	Not Applicable	Not Applicable
+	"2004"	"2004"	"93 years"	"93"	114	Not Applicable	Not Applicable
+	"2004"	"2004"	"94 years"	"94"	77	Not Applicable	Not Applicable
+	"2004"	"2004"	"95 years"	"95"	58	Not Applicable	Not Applicable
+	"2004"	"2004"	"96 years"	"96"	63	Not Applicable	Not Applicable
+	"2004"	"2004"	"97 years"	"97"	33	Not Applicable	Not Applicable
+	"2004"	"2004"	"98 years"	"98"	30	Not Applicable	Not Applicable
+	"2004"	"2004"	"99 years"	"99"	13	Not Applicable	Not Applicable
+	"2004"	"2004"	"100+ years"	"100"	48	Not Applicable	Not Applicable
+	"2004"	"2004"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2005"	"2005"	"< 1 year"	"0"	75	12653	592.7
+	"2005"	"2005"	"1 year"	"1"	Suppressed	12508	Suppressed
+	"2005"	"2005"	"2 years"	"2"	Suppressed	12722	Suppressed
+	"2005"	"2005"	"3 years"	"3"	Suppressed	12186	Suppressed
+	"2005"	"2005"	"4 years"	"4"	Suppressed	12292	Suppressed
+	"2005"	"2005"	"5 years"	"5"	Suppressed	11777	Suppressed
+	"2005"	"2005"	"6 years"	"6"	Suppressed	11606	Suppressed
+	"2005"	"2005"	"7 years"	"7"	Suppressed	11333	Suppressed
+	"2005"	"2005"	"8 years"	"8"	Suppressed	11386	Suppressed
+	"2005"	"2005"	"9 years"	"9"	Suppressed	11564	Suppressed
+	"2005"	"2005"	"10 years"	"10"	Suppressed	12009	Suppressed
+	"2005"	"2005"	"11 years"	"11"	Suppressed	11730	Suppressed
+	"2005"	"2005"	"12 years"	"12"	Suppressed	11945	Suppressed
+	"2005"	"2005"	"13 years"	"13"	Suppressed	12421	Suppressed
+	"2005"	"2005"	"14 years"	"14"	Suppressed	12231	Suppressed
+	"2005"	"2005"	"15 years"	"15"	Suppressed	12745	Suppressed
+	"2005"	"2005"	"16 years"	"16"	Suppressed	12012	Suppressed
+	"2005"	"2005"	"17 years"	"17"	Suppressed	11906	Suppressed
+	"2005"	"2005"	"18 years"	"18"	17	11410	Unreliable
+	"2005"	"2005"	"19 years"	"19"	Suppressed	10832	Suppressed
+	"2005"	"2005"	"20 years"	"20"	11	11061	Unreliable
+	"2005"	"2005"	"21 years"	"21"	13	10756	Unreliable
+	"2005"	"2005"	"22 years"	"22"	Suppressed	11472	Suppressed
+	"2005"	"2005"	"23 years"	"23"	Suppressed	12648	Suppressed
+	"2005"	"2005"	"24 years"	"24"	13	12429	Unreliable
+	"2005"	"2005"	"25 years"	"25"	14	12281	Unreliable
+	"2005"	"2005"	"26 years"	"26"	Suppressed	11398	Suppressed
+	"2005"	"2005"	"27 years"	"27"	15	11514	Unreliable
+	"2005"	"2005"	"28 years"	"28"	Suppressed	11173	Suppressed
+	"2005"	"2005"	"29 years"	"29"	Suppressed	11172	Suppressed
+	"2005"	"2005"	"30 years"	"30"	Suppressed	12027	Suppressed
+	"2005"	"2005"	"31 years"	"31"	12	10952	Unreliable
+	"2005"	"2005"	"32 years"	"32"	14	11168	Unreliable
+	"2005"	"2005"	"33 years"	"33"	11	11419	Unreliable
+	"2005"	"2005"	"34 years"	"34"	Suppressed	11843	Suppressed
+	"2005"	"2005"	"35 years"	"35"	10	11989	Unreliable
+	"2005"	"2005"	"36 years"	"36"	10	11252	Unreliable
+	"2005"	"2005"	"37 years"	"37"	15	10955	Unreliable
+	"2005"	"2005"	"38 years"	"38"	17	11212	Unreliable
+	"2005"	"2005"	"39 years"	"39"	15	11208	Unreliable
+	"2005"	"2005"	"40 years"	"40"	19	12239	Unreliable
+	"2005"	"2005"	"41 years"	"41"	22	12267	179.3
+	"2005"	"2005"	"42 years"	"42"	17	12758	Unreliable
+	"2005"	"2005"	"43 years"	"43"	22	12806	171.8
+	"2005"	"2005"	"44 years"	"44"	21	12785	164.3
+	"2005"	"2005"	"45 years"	"45"	35	13303	263.1
+	"2005"	"2005"	"46 years"	"46"	34	12335	275.6
+	"2005"	"2005"	"47 years"	"47"	45	12444	361.6
+	"2005"	"2005"	"48 years"	"48"	49	12091	405.3
+	"2005"	"2005"	"49 years"	"49"	34	11722	290.1
+	"2005"	"2005"	"50 years"	"50"	39	11597	336.3
+	"2005"	"2005"	"51 years"	"51"	54	11467	470.9
+	"2005"	"2005"	"52 years"	"52"	44	10722	410.4
+	"2005"	"2005"	"53 years"	"53"	48	10863	441.9
+	"2005"	"2005"	"54 years"	"54"	53	10661	497.1
+	"2005"	"2005"	"55 years"	"55"	59	10278	574.0
+	"2005"	"2005"	"56 years"	"56"	70	9763	717.0
+	"2005"	"2005"	"57 years"	"57"	64	9332	685.8
+	"2005"	"2005"	"58 years"	"58"	53	9900	535.4
+	"2005"	"2005"	"59 years"	"59"	47	6884	682.7
+	"2005"	"2005"	"60 years"	"60"	75	6695	1120.2
+	"2005"	"2005"	"61 years"	"61"	61	6706	909.6
+	"2005"	"2005"	"62 years"	"62"	69	6865	1005.1
+	"2005"	"2005"	"63 years"	"63"	65	6162	1054.9
+	"2005"	"2005"	"64 years"	"64"	68	5495	1237.5
+	"2005"	"2005"	"65 years"	"65"	78	5383	1449.0
+	"2005"	"2005"	"66 years"	"66"	83	5055	1641.9
+	"2005"	"2005"	"67 years"	"67"	78	4835	1613.2
+	"2005"	"2005"	"68 years"	"68"	104	4667	2228.4
+	"2005"	"2005"	"69 years"	"69"	94	4476	2100.1
+	"2005"	"2005"	"70 years"	"70"	128	4531	2825.0
+	"2005"	"2005"	"71 years"	"71"	103	4124	2497.6
+	"2005"	"2005"	"72 years"	"72"	122	3974	3070.0
+	"2005"	"2005"	"73 years"	"73"	111	4056	2736.7
+	"2005"	"2005"	"74 years"	"74"	110	3973	2768.7
+	"2005"	"2005"	"75 years"	"75"	138	3751	3679.0
+	"2005"	"2005"	"76 years"	"76"	136	3699	3676.7
+	"2005"	"2005"	"77 years"	"77"	153	3498	4373.9
+	"2005"	"2005"	"78 years"	"78"	156	3266	4776.5
+	"2005"	"2005"	"79 years"	"79"	151	3254	4640.4
+	"2005"	"2005"	"80 years"	"80"	172	3004	5725.7
+	"2005"	"2005"	"81 years"	"81"	175	2869	6099.7
+	"2005"	"2005"	"82 years"	"82"	163	2591	6291.0
+	"2005"	"2005"	"83 years"	"83"	196	2397	8176.9
+	"2005"	"2005"	"84 years"	"84"	181	2151	8414.7
+	"2005"	"2005"	"85 years"	"85"	168	Not Applicable	Not Applicable
+	"2005"	"2005"	"86 years"	"86"	162	Not Applicable	Not Applicable
+	"2005"	"2005"	"87 years"	"87"	180	Not Applicable	Not Applicable
+	"2005"	"2005"	"88 years"	"88"	153	Not Applicable	Not Applicable
+	"2005"	"2005"	"89 years"	"89"	151	Not Applicable	Not Applicable
+	"2005"	"2005"	"90 years"	"90"	132	Not Applicable	Not Applicable
+	"2005"	"2005"	"91 years"	"91"	123	Not Applicable	Not Applicable
+	"2005"	"2005"	"92 years"	"92"	145	Not Applicable	Not Applicable
+	"2005"	"2005"	"93 years"	"93"	91	Not Applicable	Not Applicable
+	"2005"	"2005"	"94 years"	"94"	90	Not Applicable	Not Applicable
+	"2005"	"2005"	"95 years"	"95"	59	Not Applicable	Not Applicable
+	"2005"	"2005"	"96 years"	"96"	78	Not Applicable	Not Applicable
+	"2005"	"2005"	"97 years"	"97"	43	Not Applicable	Not Applicable
+	"2005"	"2005"	"98 years"	"98"	37	Not Applicable	Not Applicable
+	"2005"	"2005"	"99 years"	"99"	19	Not Applicable	Not Applicable
+	"2005"	"2005"	"100+ years"	"100"	61	Not Applicable	Not Applicable
+	"2005"	"2005"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2006"	"2006"	"< 1 year"	"0"	80	13050	613.0
+	"2006"	"2006"	"1 year"	"1"	Suppressed	12455	Suppressed
+	"2006"	"2006"	"2 years"	"2"	Suppressed	12723	Suppressed
+	"2006"	"2006"	"3 years"	"3"	Suppressed	12645	Suppressed
+	"2006"	"2006"	"4 years"	"4"	Suppressed	12351	Suppressed
+	"2006"	"2006"	"5 years"	"5"	Suppressed	12485	Suppressed
+	"2006"	"2006"	"6 years"	"6"	Suppressed	11794	Suppressed
+	"2006"	"2006"	"7 years"	"7"	Suppressed	11649	Suppressed
+	"2006"	"2006"	"8 years"	"8"	Suppressed	11471	Suppressed
+	"2006"	"2006"	"9 years"	"9"	Suppressed	11473	Suppressed
+	"2006"	"2006"	"10 years"	"10"	Suppressed	11917	Suppressed
+	"2006"	"2006"	"11 years"	"11"	Suppressed	11860	Suppressed
+	"2006"	"2006"	"12 years"	"12"	Suppressed	12024	Suppressed
+	"2006"	"2006"	"13 years"	"13"	Suppressed	11862	Suppressed
+	"2006"	"2006"	"14 years"	"14"	Suppressed	12350	Suppressed
+	"2006"	"2006"	"15 years"	"15"	Suppressed	12398	Suppressed
+	"2006"	"2006"	"16 years"	"16"	Suppressed	12729	Suppressed
+	"2006"	"2006"	"17 years"	"17"	12	11885	Unreliable
+	"2006"	"2006"	"18 years"	"18"	Suppressed	11233	Suppressed
+	"2006"	"2006"	"19 years"	"19"	Suppressed	10877	Suppressed
+	"2006"	"2006"	"20 years"	"20"	14	10799	Unreliable
+	"2006"	"2006"	"21 years"	"21"	Suppressed	11238	Suppressed
+	"2006"	"2006"	"22 years"	"22"	Suppressed	11172	Suppressed
+	"2006"	"2006"	"23 years"	"23"	11	12209	Unreliable
+	"2006"	"2006"	"24 years"	"24"	Suppressed	13214	Suppressed
+	"2006"	"2006"	"25 years"	"25"	Suppressed	13106	Suppressed
+	"2006"	"2006"	"26 years"	"26"	Suppressed	12092	Suppressed
+	"2006"	"2006"	"27 years"	"27"	11	11563	Unreliable
+	"2006"	"2006"	"28 years"	"28"	14	11364	Unreliable
+	"2006"	"2006"	"29 years"	"29"	Suppressed	11461	Suppressed
+	"2006"	"2006"	"30 years"	"30"	Suppressed	11878	Suppressed
+	"2006"	"2006"	"31 years"	"31"	Suppressed	11570	Suppressed
+	"2006"	"2006"	"32 years"	"32"	10	11163	Unreliable
+	"2006"	"2006"	"33 years"	"33"	Suppressed	11102	Suppressed
+	"2006"	"2006"	"34 years"	"34"	14	11405	Unreliable
+	"2006"	"2006"	"35 years"	"35"	17	12181	Unreliable
+	"2006"	"2006"	"36 years"	"36"	15	11731	Unreliable
+	"2006"	"2006"	"37 years"	"37"	Suppressed	11375	Suppressed
+	"2006"	"2006"	"38 years"	"38"	18	11033	Unreliable
+	"2006"	"2006"	"39 years"	"39"	17	11072	Unreliable
+	"2006"	"2006"	"40 years"	"40"	18	11376	Unreliable
+	"2006"	"2006"	"41 years"	"41"	21	12004	174.9
+	"2006"	"2006"	"42 years"	"42"	29	12326	235.3
+	"2006"	"2006"	"43 years"	"43"	23	12728	180.7
+	"2006"	"2006"	"44 years"	"44"	29	12810	226.4
+	"2006"	"2006"	"45 years"	"45"	31	12902	240.3
+	"2006"	"2006"	"46 years"	"46"	37	13174	280.9
+	"2006"	"2006"	"47 years"	"47"	38	12299	309.0
+	"2006"	"2006"	"48 years"	"48"	40	12328	324.5
+	"2006"	"2006"	"49 years"	"49"	40	12073	331.3
+	"2006"	"2006"	"50 years"	"50"	45	11706	384.4
+	"2006"	"2006"	"51 years"	"51"	54	11480	470.4
+	"2006"	"2006"	"52 years"	"52"	49	11397	429.9
+	"2006"	"2006"	"53 years"	"53"	53	10654	497.5
+	"2006"	"2006"	"54 years"	"54"	59	10899	541.3
+	"2006"	"2006"	"55 years"	"55"	47	10643	441.6
+	"2006"	"2006"	"56 years"	"56"	67	10044	667.1
+	"2006"	"2006"	"57 years"	"57"	67	9703	690.5
+	"2006"	"2006"	"58 years"	"58"	68	9312	730.2
+	"2006"	"2006"	"59 years"	"59"	69	9742	708.3
+	"2006"	"2006"	"60 years"	"60"	53	6767	783.2
+	"2006"	"2006"	"61 years"	"61"	57	6682	853.0
+	"2006"	"2006"	"62 years"	"62"	93	6560	1417.7
+	"2006"	"2006"	"63 years"	"63"	86	6782	1268.1
+	"2006"	"2006"	"64 years"	"64"	79	5989	1319.1
+	"2006"	"2006"	"65 years"	"65"	77	5497	1400.8
+	"2006"	"2006"	"66 years"	"66"	84	5229	1606.4
+	"2006"	"2006"	"67 years"	"67"	79	4983	1585.4
+	"2006"	"2006"	"68 years"	"68"	77	4740	1624.5
+	"2006"	"2006"	"69 years"	"69"	101	4541	2224.2
+	"2006"	"2006"	"70 years"	"70"	89	4415	2015.9
+	"2006"	"2006"	"71 years"	"71"	106	4467	2373.0
+	"2006"	"2006"	"72 years"	"72"	104	4025	2583.9
+	"2006"	"2006"	"73 years"	"73"	110	3925	2802.5
+	"2006"	"2006"	"74 years"	"74"	129	3955	3261.7
+	"2006"	"2006"	"75 years"	"75"	135	3829	3525.7
+	"2006"	"2006"	"76 years"	"76"	162	3694	4385.5
+	"2006"	"2006"	"77 years"	"77"	140	3549	3944.8
+	"2006"	"2006"	"78 years"	"78"	162	3393	4774.5
+	"2006"	"2006"	"79 years"	"79"	159	3168	5018.9
+	"2006"	"2006"	"80 years"	"80"	194	3032	6398.4
+	"2006"	"2006"	"81 years"	"81"	179	2887	6200.2
+	"2006"	"2006"	"82 years"	"82"	155	2724	5690.2
+	"2006"	"2006"	"83 years"	"83"	171	2463	6942.8
+	"2006"	"2006"	"84 years"	"84"	192	2226	8625.3
+	"2006"	"2006"	"85 years"	"85"	160	Not Applicable	Not Applicable
+	"2006"	"2006"	"86 years"	"86"	172	Not Applicable	Not Applicable
+	"2006"	"2006"	"87 years"	"87"	163	Not Applicable	Not Applicable
+	"2006"	"2006"	"88 years"	"88"	160	Not Applicable	Not Applicable
+	"2006"	"2006"	"89 years"	"89"	150	Not Applicable	Not Applicable
+	"2006"	"2006"	"90 years"	"90"	137	Not Applicable	Not Applicable
+	"2006"	"2006"	"91 years"	"91"	124	Not Applicable	Not Applicable
+	"2006"	"2006"	"92 years"	"92"	114	Not Applicable	Not Applicable
+	"2006"	"2006"	"93 years"	"93"	123	Not Applicable	Not Applicable
+	"2006"	"2006"	"94 years"	"94"	102	Not Applicable	Not Applicable
+	"2006"	"2006"	"95 years"	"95"	74	Not Applicable	Not Applicable
+	"2006"	"2006"	"96 years"	"96"	62	Not Applicable	Not Applicable
+	"2006"	"2006"	"97 years"	"97"	48	Not Applicable	Not Applicable
+	"2006"	"2006"	"98 years"	"98"	38	Not Applicable	Not Applicable
+	"2006"	"2006"	"99 years"	"99"	24	Not Applicable	Not Applicable
+	"2006"	"2006"	"100+ years"	"100"	54	Not Applicable	Not Applicable
+	"2006"	"2006"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2007"	"2007"	"< 1 year"	"0"	98	13247	739.8
+	"2007"	"2007"	"1 year"	"1"	Suppressed	12784	Suppressed
+	"2007"	"2007"	"2 years"	"2"	Suppressed	12562	Suppressed
+	"2007"	"2007"	"3 years"	"3"	Suppressed	12531	Suppressed
+	"2007"	"2007"	"4 years"	"4"	Suppressed	12866	Suppressed
+	"2007"	"2007"	"5 years"	"5"	Suppressed	12582	Suppressed
+	"2007"	"2007"	"6 years"	"6"	Suppressed	12431	Suppressed
+	"2007"	"2007"	"7 years"	"7"	Suppressed	11770	Suppressed
+	"2007"	"2007"	"8 years"	"8"	Suppressed	11804	Suppressed
+	"2007"	"2007"	"9 years"	"9"	Suppressed	11397	Suppressed
+	"2007"	"2007"	"10 years"	"10"	Suppressed	11902	Suppressed
+	"2007"	"2007"	"11 years"	"11"	Suppressed	11775	Suppressed
+	"2007"	"2007"	"12 years"	"12"	Suppressed	12157	Suppressed
+	"2007"	"2007"	"13 years"	"13"	Suppressed	11936	Suppressed
+	"2007"	"2007"	"14 years"	"14"	Suppressed	11858	Suppressed
+	"2007"	"2007"	"15 years"	"15"	Suppressed	12589	Suppressed
+	"2007"	"2007"	"16 years"	"16"	Suppressed	12464	Suppressed
+	"2007"	"2007"	"17 years"	"17"	Suppressed	12590	Suppressed
+	"2007"	"2007"	"18 years"	"18"	Suppressed	11264	Suppressed
+	"2007"	"2007"	"19 years"	"19"	11	10748	Unreliable
+	"2007"	"2007"	"20 years"	"20"	Suppressed	10846	Suppressed
+	"2007"	"2007"	"21 years"	"21"	Suppressed	10897	Suppressed
+	"2007"	"2007"	"22 years"	"22"	Suppressed	11783	Suppressed
+	"2007"	"2007"	"23 years"	"23"	11	12006	Unreliable
+	"2007"	"2007"	"24 years"	"24"	10	12614	Unreliable
+	"2007"	"2007"	"25 years"	"25"	Suppressed	13968	Suppressed
+	"2007"	"2007"	"26 years"	"26"	Suppressed	12948	Suppressed
+	"2007"	"2007"	"27 years"	"27"	Suppressed	12103	Suppressed
+	"2007"	"2007"	"28 years"	"28"	Suppressed	11268	Suppressed
+	"2007"	"2007"	"29 years"	"29"	Suppressed	11709	Suppressed
+	"2007"	"2007"	"30 years"	"30"	Suppressed	12234	Suppressed
+	"2007"	"2007"	"31 years"	"31"	11	11145	Unreliable
+	"2007"	"2007"	"32 years"	"32"	Suppressed	11761	Suppressed
+	"2007"	"2007"	"33 years"	"33"	Suppressed	10996	Suppressed
+	"2007"	"2007"	"34 years"	"34"	Suppressed	11021	Suppressed
+	"2007"	"2007"	"35 years"	"35"	17	11693	Unreliable
+	"2007"	"2007"	"36 years"	"36"	16	11774	Unreliable
+	"2007"	"2007"	"37 years"	"37"	17	11793	Unreliable
+	"2007"	"2007"	"38 years"	"38"	17	11477	Unreliable
+	"2007"	"2007"	"39 years"	"39"	15	10831	Unreliable
+	"2007"	"2007"	"40 years"	"40"	19	11226	Unreliable
+	"2007"	"2007"	"41 years"	"41"	23	11120	206.8
+	"2007"	"2007"	"42 years"	"42"	26	12019	216.3
+	"2007"	"2007"	"43 years"	"43"	30	12333	243.2
+	"2007"	"2007"	"44 years"	"44"	47	12762	368.3
+	"2007"	"2007"	"45 years"	"45"	39	12928	301.7
+	"2007"	"2007"	"46 years"	"46"	37	12779	289.5
+	"2007"	"2007"	"47 years"	"47"	37	13104	282.4
+	"2007"	"2007"	"48 years"	"48"	28	12198	229.5
+	"2007"	"2007"	"49 years"	"49"	36	12379	290.8
+	"2007"	"2007"	"50 years"	"50"	58	12118	478.6
+	"2007"	"2007"	"51 years"	"51"	55	11598	474.2
+	"2007"	"2007"	"52 years"	"52"	47	11334	414.7
+	"2007"	"2007"	"53 years"	"53"	55	11267	488.2
+	"2007"	"2007"	"54 years"	"54"	50	10738	465.6
+	"2007"	"2007"	"55 years"	"55"	57	10881	523.8
+	"2007"	"2007"	"56 years"	"56"	55	10407	528.5
+	"2007"	"2007"	"57 years"	"57"	63	9981	631.2
+	"2007"	"2007"	"58 years"	"58"	67	9690	691.4
+	"2007"	"2007"	"59 years"	"59"	72	9211	781.7
+	"2007"	"2007"	"60 years"	"60"	67	9574	699.8
+	"2007"	"2007"	"61 years"	"61"	51	6777	752.5
+	"2007"	"2007"	"62 years"	"62"	77	6539	1177.6
+	"2007"	"2007"	"63 years"	"63"	78	6494	1201.1
+	"2007"	"2007"	"64 years"	"64"	86	6604	1302.2
+	"2007"	"2007"	"65 years"	"65"	83	5976	1388.9
+	"2007"	"2007"	"66 years"	"66"	95	5335	1780.7
+	"2007"	"2007"	"67 years"	"67"	92	5139	1790.2
+	"2007"	"2007"	"68 years"	"68"	110	4958	2218.6
+	"2007"	"2007"	"69 years"	"69"	89	4579	1943.7
+	"2007"	"2007"	"70 years"	"70"	97	4484	2163.2
+	"2007"	"2007"	"71 years"	"71"	109	4297	2536.7
+	"2007"	"2007"	"72 years"	"72"	118	4354	2710.2
+	"2007"	"2007"	"73 years"	"73"	111	3943	2815.1
+	"2007"	"2007"	"74 years"	"74"	105	3840	2734.4
+	"2007"	"2007"	"75 years"	"75"	130	3760	3457.4
+	"2007"	"2007"	"76 years"	"76"	159	3772	4215.3
+	"2007"	"2007"	"77 years"	"77"	155	3525	4397.2
+	"2007"	"2007"	"78 years"	"78"	157	3391	4629.9
+	"2007"	"2007"	"79 years"	"79"	168	3252	5166.1
+	"2007"	"2007"	"80 years"	"80"	186	2962	6279.5
+	"2007"	"2007"	"81 years"	"81"	175	2918	5997.3
+	"2007"	"2007"	"82 years"	"82"	171	2680	6380.6
+	"2007"	"2007"	"83 years"	"83"	170	2577	6596.8
+	"2007"	"2007"	"84 years"	"84"	189	2251	8396.3
+	"2007"	"2007"	"85 years"	"85"	207	Not Applicable	Not Applicable
+	"2007"	"2007"	"86 years"	"86"	181	Not Applicable	Not Applicable
+	"2007"	"2007"	"87 years"	"87"	162	Not Applicable	Not Applicable
+	"2007"	"2007"	"88 years"	"88"	170	Not Applicable	Not Applicable
+	"2007"	"2007"	"89 years"	"89"	159	Not Applicable	Not Applicable
+	"2007"	"2007"	"90 years"	"90"	146	Not Applicable	Not Applicable
+	"2007"	"2007"	"91 years"	"91"	130	Not Applicable	Not Applicable
+	"2007"	"2007"	"92 years"	"92"	134	Not Applicable	Not Applicable
+	"2007"	"2007"	"93 years"	"93"	101	Not Applicable	Not Applicable
+	"2007"	"2007"	"94 years"	"94"	107	Not Applicable	Not Applicable
+	"2007"	"2007"	"95 years"	"95"	80	Not Applicable	Not Applicable
+	"2007"	"2007"	"96 years"	"96"	52	Not Applicable	Not Applicable
+	"2007"	"2007"	"97 years"	"97"	49	Not Applicable	Not Applicable
+	"2007"	"2007"	"98 years"	"98"	30	Not Applicable	Not Applicable
+	"2007"	"2007"	"99 years"	"99"	25	Not Applicable	Not Applicable
+	"2007"	"2007"	"100+ years"	"100"	55	Not Applicable	Not Applicable
+	"2007"	"2007"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2008"	"2008"	"< 1 year"	"0"	66	13320	495.5
+	"2008"	"2008"	"1 year"	"1"	Suppressed	13143	Suppressed
+	"2008"	"2008"	"2 years"	"2"	Suppressed	13025	Suppressed
+	"2008"	"2008"	"3 years"	"3"	Suppressed	12532	Suppressed
+	"2008"	"2008"	"4 years"	"4"	Suppressed	12724	Suppressed
+	"2008"	"2008"	"5 years"	"5"	Suppressed	13100	Suppressed
+	"2008"	"2008"	"6 years"	"6"	Suppressed	12453	Suppressed
+	"2008"	"2008"	"7 years"	"7"	Suppressed	12505	Suppressed
+	"2008"	"2008"	"8 years"	"8"	Suppressed	11964	Suppressed
+	"2008"	"2008"	"9 years"	"9"	Suppressed	11857	Suppressed
+	"2008"	"2008"	"10 years"	"10"	Suppressed	12007	Suppressed
+	"2008"	"2008"	"11 years"	"11"	Suppressed	11698	Suppressed
+	"2008"	"2008"	"12 years"	"12"	Suppressed	12139	Suppressed
+	"2008"	"2008"	"13 years"	"13"	Suppressed	12086	Suppressed
+	"2008"	"2008"	"14 years"	"14"	Suppressed	11864	Suppressed
+	"2008"	"2008"	"15 years"	"15"	Suppressed	12091	Suppressed
+	"2008"	"2008"	"16 years"	"16"	Suppressed	12658	Suppressed
+	"2008"	"2008"	"17 years"	"17"	Suppressed	12269	Suppressed
+	"2008"	"2008"	"18 years"	"18"	13	12076	Unreliable
+	"2008"	"2008"	"19 years"	"19"	Suppressed	10807	Suppressed
+	"2008"	"2008"	"20 years"	"20"	Suppressed	10731	Suppressed
+	"2008"	"2008"	"21 years"	"21"	14	11090	Unreliable
+	"2008"	"2008"	"22 years"	"22"	Suppressed	11618	Suppressed
+	"2008"	"2008"	"23 years"	"23"	Suppressed	12588	Suppressed
+	"2008"	"2008"	"24 years"	"24"	12	12430	Unreliable
+	"2008"	"2008"	"25 years"	"25"	11	13424	Unreliable
+	"2008"	"2008"	"26 years"	"26"	15	13669	Unreliable
+	"2008"	"2008"	"27 years"	"27"	Suppressed	13018	Suppressed
+	"2008"	"2008"	"28 years"	"28"	18	11916	Unreliable
+	"2008"	"2008"	"29 years"	"29"	Suppressed	11748	Suppressed
+	"2008"	"2008"	"30 years"	"30"	10	12616	Unreliable
+	"2008"	"2008"	"31 years"	"31"	Suppressed	11506	Suppressed
+	"2008"	"2008"	"32 years"	"32"	Suppressed	11355	Suppressed
+	"2008"	"2008"	"33 years"	"33"	11	11541	Unreliable
+	"2008"	"2008"	"34 years"	"34"	Suppressed	10841	Suppressed
+	"2008"	"2008"	"35 years"	"35"	Suppressed	11332	Suppressed
+	"2008"	"2008"	"36 years"	"36"	18	11209	Unreliable
+	"2008"	"2008"	"37 years"	"37"	13	11780	Unreliable
+	"2008"	"2008"	"38 years"	"38"	16	11966	Unreliable
+	"2008"	"2008"	"39 years"	"39"	17	11314	Unreliable
+	"2008"	"2008"	"40 years"	"40"	18	11005	Unreliable
+	"2008"	"2008"	"41 years"	"41"	26	10932	237.8
+	"2008"	"2008"	"42 years"	"42"	22	11152	197.3
+	"2008"	"2008"	"43 years"	"43"	32	11976	267.2
+	"2008"	"2008"	"44 years"	"44"	37	12342	299.8
+	"2008"	"2008"	"45 years"	"45"	30	12871	233.1
+	"2008"	"2008"	"46 years"	"46"	38	12858	295.5
+	"2008"	"2008"	"47 years"	"47"	37	12693	291.5
+	"2008"	"2008"	"48 years"	"48"	51	13002	392.2
+	"2008"	"2008"	"49 years"	"49"	41	12180	336.6
+	"2008"	"2008"	"50 years"	"50"	40	12455	321.2
+	"2008"	"2008"	"51 years"	"51"	59	11989	492.1
+	"2008"	"2008"	"52 years"	"52"	54	11463	471.1
+	"2008"	"2008"	"53 years"	"53"	37	11279	328.0
+	"2008"	"2008"	"54 years"	"54"	69	11398	605.4
+	"2008"	"2008"	"55 years"	"55"	47	10778	436.1
+	"2008"	"2008"	"56 years"	"56"	69	10620	649.7
+	"2008"	"2008"	"57 years"	"57"	61	10336	590.2
+	"2008"	"2008"	"58 years"	"58"	70	9959	702.9
+	"2008"	"2008"	"59 years"	"59"	89	9491	937.7
+	"2008"	"2008"	"60 years"	"60"	84	9009	932.4
+	"2008"	"2008"	"61 years"	"61"	83	9569	867.4
+	"2008"	"2008"	"62 years"	"62"	49	6636	738.4
+	"2008"	"2008"	"63 years"	"63"	75	6432	1166.0
+	"2008"	"2008"	"64 years"	"64"	91	6373	1427.9
+	"2008"	"2008"	"65 years"	"65"	96	6618	1450.6
+	"2008"	"2008"	"66 years"	"66"	77	5767	1335.2
+	"2008"	"2008"	"67 years"	"67"	85	5188	1638.4
+	"2008"	"2008"	"68 years"	"68"	105	5015	2093.7
+	"2008"	"2008"	"69 years"	"69"	89	4783	1860.8
+	"2008"	"2008"	"70 years"	"70"	127	4503	2820.3
+	"2008"	"2008"	"71 years"	"71"	99	4376	2262.3
+	"2008"	"2008"	"72 years"	"72"	107	4174	2563.5
+	"2008"	"2008"	"73 years"	"73"	116	4306	2693.9
+	"2008"	"2008"	"74 years"	"74"	123	3845	3199.0
+	"2008"	"2008"	"75 years"	"75"	127	3620	3508.3
+	"2008"	"2008"	"76 years"	"76"	134	3701	3620.6
+	"2008"	"2008"	"77 years"	"77"	131	3570	3669.5
+	"2008"	"2008"	"78 years"	"78"	173	3375	5125.9
+	"2008"	"2008"	"79 years"	"79"	166	3255	5099.8
+	"2008"	"2008"	"80 years"	"80"	168	3025	5553.7
+	"2008"	"2008"	"81 years"	"81"	174	2878	6045.9
+	"2008"	"2008"	"82 years"	"82"	197	2707	7277.4
+	"2008"	"2008"	"83 years"	"83"	180	2541	7083.8
+	"2008"	"2008"	"84 years"	"84"	181	2346	7715.3
+	"2008"	"2008"	"85 years"	"85"	205	Not Applicable	Not Applicable
+	"2008"	"2008"	"86 years"	"86"	187	Not Applicable	Not Applicable
+	"2008"	"2008"	"87 years"	"87"	179	Not Applicable	Not Applicable
+	"2008"	"2008"	"88 years"	"88"	178	Not Applicable	Not Applicable
+	"2008"	"2008"	"89 years"	"89"	158	Not Applicable	Not Applicable
+	"2008"	"2008"	"90 years"	"90"	172	Not Applicable	Not Applicable
+	"2008"	"2008"	"91 years"	"91"	133	Not Applicable	Not Applicable
+	"2008"	"2008"	"92 years"	"92"	133	Not Applicable	Not Applicable
+	"2008"	"2008"	"93 years"	"93"	122	Not Applicable	Not Applicable
+	"2008"	"2008"	"94 years"	"94"	89	Not Applicable	Not Applicable
+	"2008"	"2008"	"95 years"	"95"	67	Not Applicable	Not Applicable
+	"2008"	"2008"	"96 years"	"96"	68	Not Applicable	Not Applicable
+	"2008"	"2008"	"97 years"	"97"	50	Not Applicable	Not Applicable
+	"2008"	"2008"	"98 years"	"98"	32	Not Applicable	Not Applicable
+	"2008"	"2008"	"99 years"	"99"	21	Not Applicable	Not Applicable
+	"2008"	"2008"	"100+ years"	"100"	54	Not Applicable	Not Applicable
+	"2008"	"2008"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2009"	"2009"	"< 1 year"	"0"	67	13177	508.5
+	"2009"	"2009"	"1 year"	"1"	Suppressed	13110	Suppressed
+	"2009"	"2009"	"2 years"	"2"	Suppressed	13301	Suppressed
+	"2009"	"2009"	"3 years"	"3"	Suppressed	12904	Suppressed
+	"2009"	"2009"	"4 years"	"4"	Suppressed	12751	Suppressed
+	"2009"	"2009"	"5 years"	"5"	Suppressed	13053	Suppressed
+	"2009"	"2009"	"6 years"	"6"	Suppressed	12988	Suppressed
+	"2009"	"2009"	"7 years"	"7"	Suppressed	12408	Suppressed
+	"2009"	"2009"	"8 years"	"8"	Suppressed	12756	Suppressed
+	"2009"	"2009"	"9 years"	"9"	Suppressed	11950	Suppressed
+	"2009"	"2009"	"10 years"	"10"	Suppressed	12448	Suppressed
+	"2009"	"2009"	"11 years"	"11"	Suppressed	11666	Suppressed
+	"2009"	"2009"	"12 years"	"12"	Suppressed	12118	Suppressed
+	"2009"	"2009"	"13 years"	"13"	Suppressed	11963	Suppressed
+	"2009"	"2009"	"14 years"	"14"	Suppressed	11992	Suppressed
+	"2009"	"2009"	"15 years"	"15"	Suppressed	12106	Suppressed
+	"2009"	"2009"	"16 years"	"16"	Suppressed	12145	Suppressed
+	"2009"	"2009"	"17 years"	"17"	Suppressed	12514	Suppressed
+	"2009"	"2009"	"18 years"	"18"	Suppressed	11767	Suppressed
+	"2009"	"2009"	"19 years"	"19"	Suppressed	11530	Suppressed
+	"2009"	"2009"	"20 years"	"20"	13	10764	Unreliable
+	"2009"	"2009"	"21 years"	"21"	13	10842	Unreliable
+	"2009"	"2009"	"22 years"	"22"	12	11602	Unreliable
+	"2009"	"2009"	"23 years"	"23"	10	12339	Unreliable
+	"2009"	"2009"	"24 years"	"24"	Suppressed	13030	Suppressed
+	"2009"	"2009"	"25 years"	"25"	Suppressed	13365	Suppressed
+	"2009"	"2009"	"26 years"	"26"	Suppressed	13133	Suppressed
+	"2009"	"2009"	"27 years"	"27"	10	13927	Unreliable
+	"2009"	"2009"	"28 years"	"28"	Suppressed	12787	Suppressed
+	"2009"	"2009"	"29 years"	"29"	13	12514	Unreliable
+	"2009"	"2009"	"30 years"	"30"	12	12806	Unreliable
+	"2009"	"2009"	"31 years"	"31"	10	11884	Unreliable
+	"2009"	"2009"	"32 years"	"32"	11	11703	Unreliable
+	"2009"	"2009"	"33 years"	"33"	10	11167	Unreliable
+	"2009"	"2009"	"34 years"	"34"	Suppressed	11382	Suppressed
+	"2009"	"2009"	"35 years"	"35"	15	11268	Unreliable
+	"2009"	"2009"	"36 years"	"36"	Suppressed	10846	Suppressed
+	"2009"	"2009"	"37 years"	"37"	17	11299	Unreliable
+	"2009"	"2009"	"38 years"	"38"	15	11994	Unreliable
+	"2009"	"2009"	"39 years"	"39"	12	11736	Unreliable
+	"2009"	"2009"	"40 years"	"40"	29	11599	250.0
+	"2009"	"2009"	"41 years"	"41"	17	10663	Unreliable
+	"2009"	"2009"	"42 years"	"42"	17	11036	Unreliable
+	"2009"	"2009"	"43 years"	"43"	22	11124	197.8
+	"2009"	"2009"	"44 years"	"44"	28	12048	232.4
+	"2009"	"2009"	"45 years"	"45"	36	12502	288.0
+	"2009"	"2009"	"46 years"	"46"	40	12780	313.0
+	"2009"	"2009"	"47 years"	"47"	29	12747	227.5
+	"2009"	"2009"	"48 years"	"48"	44	12609	349.0
+	"2009"	"2009"	"49 years"	"49"	50	13097	381.8
+	"2009"	"2009"	"50 years"	"50"	56	12222	458.2
+	"2009"	"2009"	"51 years"	"51"	55	12338	445.8
+	"2009"	"2009"	"52 years"	"52"	48	11811	406.4
+	"2009"	"2009"	"53 years"	"53"	54	11396	473.9
+	"2009"	"2009"	"54 years"	"54"	77	11478	670.8
+	"2009"	"2009"	"55 years"	"55"	64	11345	564.1
+	"2009"	"2009"	"56 years"	"56"	65	10542	616.6
+	"2009"	"2009"	"57 years"	"57"	76	10558	719.8
+	"2009"	"2009"	"58 years"	"58"	64	10246	624.6
+	"2009"	"2009"	"59 years"	"59"	63	9800	642.9
+	"2009"	"2009"	"60 years"	"60"	74	9303	795.4
+	"2009"	"2009"	"61 years"	"61"	84	9009	932.4
+	"2009"	"2009"	"62 years"	"62"	95	9424	1008.1
+	"2009"	"2009"	"63 years"	"63"	86	6601	1302.8
+	"2009"	"2009"	"64 years"	"64"	86	6305	1364.0
+	"2009"	"2009"	"65 years"	"65"	79	6421	1230.3
+	"2009"	"2009"	"66 years"	"66"	87	6408	1357.7
+	"2009"	"2009"	"67 years"	"67"	84	5672	1481.0
+	"2009"	"2009"	"68 years"	"68"	94	5150	1825.2
+	"2009"	"2009"	"69 years"	"69"	92	4846	1898.5
+	"2009"	"2009"	"70 years"	"70"	97	4737	2047.7
+	"2009"	"2009"	"71 years"	"71"	90	4432	2030.7
+	"2009"	"2009"	"72 years"	"72"	99	4254	2327.2
+	"2009"	"2009"	"73 years"	"73"	112	4129	2712.5
+	"2009"	"2009"	"74 years"	"74"	129	4182	3084.6
+	"2009"	"2009"	"75 years"	"75"	109	3692	2952.3
+	"2009"	"2009"	"76 years"	"76"	117	3669	3188.9
+	"2009"	"2009"	"77 years"	"77"	136	3534	3848.3
+	"2009"	"2009"	"78 years"	"78"	147	3466	4241.2
+	"2009"	"2009"	"79 years"	"79"	152	3263	4658.3
+	"2009"	"2009"	"80 years"	"80"	169	3042	5555.6
+	"2009"	"2009"	"81 years"	"81"	169	2954	5721.1
+	"2009"	"2009"	"82 years"	"82"	186	2661	6989.9
+	"2009"	"2009"	"83 years"	"83"	192	2577	7450.5
+	"2009"	"2009"	"84 years"	"84"	196	2333	8401.2
+	"2009"	"2009"	"85 years"	"85"	170	Not Applicable	Not Applicable
+	"2009"	"2009"	"86 years"	"86"	174	Not Applicable	Not Applicable
+	"2009"	"2009"	"87 years"	"87"	174	Not Applicable	Not Applicable
+	"2009"	"2009"	"88 years"	"88"	173	Not Applicable	Not Applicable
+	"2009"	"2009"	"89 years"	"89"	152	Not Applicable	Not Applicable
+	"2009"	"2009"	"90 years"	"90"	153	Not Applicable	Not Applicable
+	"2009"	"2009"	"91 years"	"91"	121	Not Applicable	Not Applicable
+	"2009"	"2009"	"92 years"	"92"	121	Not Applicable	Not Applicable
+	"2009"	"2009"	"93 years"	"93"	98	Not Applicable	Not Applicable
+	"2009"	"2009"	"94 years"	"94"	103	Not Applicable	Not Applicable
+	"2009"	"2009"	"95 years"	"95"	83	Not Applicable	Not Applicable
+	"2009"	"2009"	"96 years"	"96"	66	Not Applicable	Not Applicable
+	"2009"	"2009"	"97 years"	"97"	51	Not Applicable	Not Applicable
+	"2009"	"2009"	"98 years"	"98"	34	Not Applicable	Not Applicable
+	"2009"	"2009"	"99 years"	"99"	28	Not Applicable	Not Applicable
+	"2009"	"2009"	"100+ years"	"100"	47	Not Applicable	Not Applicable
+	"2009"	"2009"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2010"	"2010"	"< 1 year"	"0"	69	13167	524.0
+	"2010"	"2010"	"1 year"	"1"	Suppressed	13028	Suppressed
+	"2010"	"2010"	"2 years"	"2"	Suppressed	13318	Suppressed
+	"2010"	"2010"	"3 years"	"3"	Suppressed	13182	Suppressed
+	"2010"	"2010"	"4 years"	"4"	Suppressed	13145	Suppressed
+	"2010"	"2010"	"5 years"	"5"	Suppressed	13065	Suppressed
+	"2010"	"2010"	"6 years"	"6"	Suppressed	12993	Suppressed
+	"2010"	"2010"	"7 years"	"7"	Suppressed	12830	Suppressed
+	"2010"	"2010"	"8 years"	"8"	Suppressed	12743	Suppressed
+	"2010"	"2010"	"9 years"	"9"	Suppressed	12683	Suppressed
+	"2010"	"2010"	"10 years"	"10"	Suppressed	12525	Suppressed
+	"2010"	"2010"	"11 years"	"11"	Suppressed	12069	Suppressed
+	"2010"	"2010"	"12 years"	"12"	Suppressed	12103	Suppressed
+	"2010"	"2010"	"13 years"	"13"	Suppressed	11913	Suppressed
+	"2010"	"2010"	"14 years"	"14"	Suppressed	11976	Suppressed
+	"2010"	"2010"	"15 years"	"15"	Suppressed	12169	Suppressed
+	"2010"	"2010"	"16 years"	"16"	Suppressed	12158	Suppressed
+	"2010"	"2010"	"17 years"	"17"	Suppressed	12126	Suppressed
+	"2010"	"2010"	"18 years"	"18"	Suppressed	11965	Suppressed
+	"2010"	"2010"	"19 years"	"19"	Suppressed	11427	Suppressed
+	"2010"	"2010"	"20 years"	"20"	Suppressed	11261	Suppressed
+	"2010"	"2010"	"21 years"	"21"	10	10862	Unreliable
+	"2010"	"2010"	"22 years"	"22"	11	11581	Unreliable
+	"2010"	"2010"	"23 years"	"23"	12	12414	Unreliable
+	"2010"	"2010"	"24 years"	"24"	12	12939	Unreliable
+	"2010"	"2010"	"25 years"	"25"	12	13777	Unreliable
+	"2010"	"2010"	"26 years"	"26"	Suppressed	13066	Suppressed
+	"2010"	"2010"	"27 years"	"27"	Suppressed	13483	Suppressed
+	"2010"	"2010"	"28 years"	"28"	14	13352	Unreliable
+	"2010"	"2010"	"29 years"	"29"	11	13419	Unreliable
+	"2010"	"2010"	"30 years"	"30"	Suppressed	13580	Suppressed
+	"2010"	"2010"	"31 years"	"31"	10	11885	Unreliable
+	"2010"	"2010"	"32 years"	"32"	Suppressed	12056	Suppressed
+	"2010"	"2010"	"33 years"	"33"	11	11369	Unreliable
+	"2010"	"2010"	"34 years"	"34"	12	11139	Unreliable
+	"2010"	"2010"	"35 years"	"35"	11	11846	Unreliable
+	"2010"	"2010"	"36 years"	"36"	15	10621	Unreliable
+	"2010"	"2010"	"37 years"	"37"	Suppressed	10982	Suppressed
+	"2010"	"2010"	"38 years"	"38"	Suppressed	11557	Suppressed
+	"2010"	"2010"	"39 years"	"39"	21	11796	178.0
+	"2010"	"2010"	"40 years"	"40"	11	12097	Unreliable
+	"2010"	"2010"	"41 years"	"41"	20	11027	181.4
+	"2010"	"2010"	"42 years"	"42"	19	10836	Unreliable
+	"2010"	"2010"	"43 years"	"43"	20	11025	181.4
+	"2010"	"2010"	"44 years"	"44"	21	11313	185.6
+	"2010"	"2010"	"45 years"	"45"	28	12461	224.7
+	"2010"	"2010"	"46 years"	"46"	36	12437	289.5
+	"2010"	"2010"	"47 years"	"47"	36	12663	284.3
+	"2010"	"2010"	"48 years"	"48"	38	12627	300.9
+	"2010"	"2010"	"49 years"	"49"	44	12759	344.9
+	"2010"	"2010"	"50 years"	"50"	46	13065	352.1
+	"2010"	"2010"	"51 years"	"51"	40	12018	332.8
+	"2010"	"2010"	"52 years"	"52"	69	12125	569.1
+	"2010"	"2010"	"53 years"	"53"	56	11583	483.5
+	"2010"	"2010"	"54 years"	"54"	51	11506	443.2
+	"2010"	"2010"	"55 years"	"55"	67	11541	580.5
+	"2010"	"2010"	"56 years"	"56"	59	10858	543.4
+	"2010"	"2010"	"57 years"	"57"	65	10526	617.5
+	"2010"	"2010"	"58 years"	"58"	99	10528	940.3
+	"2010"	"2010"	"59 years"	"59"	68	9889	687.6
+	"2010"	"2010"	"60 years"	"60"	62	9581	647.1
+	"2010"	"2010"	"61 years"	"61"	74	9119	811.5
+	"2010"	"2010"	"62 years"	"62"	100	9066	1103.0
+	"2010"	"2010"	"63 years"	"63"	100	8735	1144.8
+	"2010"	"2010"	"64 years"	"64"	59	6297	937.0
+	"2010"	"2010"	"65 years"	"65"	70	6363	1100.1
+	"2010"	"2010"	"66 years"	"66"	87	6226	1397.4
+	"2010"	"2010"	"67 years"	"67"	106	6208	1707.5
+	"2010"	"2010"	"68 years"	"68"	112	5520	2029.0
+	"2010"	"2010"	"69 years"	"69"	101	4920	2052.8
+	"2010"	"2010"	"70 years"	"70"	106	4800	2208.3
+	"2010"	"2010"	"71 years"	"71"	93	4566	2036.8
+	"2010"	"2010"	"72 years"	"72"	105	4328	2426.1
+	"2010"	"2010"	"73 years"	"73"	119	4164	2857.8
+	"2010"	"2010"	"74 years"	"74"	112	4049	2766.1
+	"2010"	"2010"	"75 years"	"75"	154	3965	3884.0
+	"2010"	"2010"	"76 years"	"76"	122	3625	3365.5
+	"2010"	"2010"	"77 years"	"77"	147	3523	4172.6
+	"2010"	"2010"	"78 years"	"78"	146	3430	4256.6
+	"2010"	"2010"	"79 years"	"79"	126	3344	3767.9
+	"2010"	"2010"	"80 years"	"80"	155	3047	5087.0
+	"2010"	"2010"	"81 years"	"81"	191	2947	6481.2
+	"2010"	"2010"	"82 years"	"82"	184	2731	6737.5
+	"2010"	"2010"	"83 years"	"83"	175	2514	6961.0
+	"2010"	"2010"	"84 years"	"84"	202	2365	8541.2
+	"2010"	"2010"	"85 years"	"85"	209	Not Applicable	Not Applicable
+	"2010"	"2010"	"86 years"	"86"	196	Not Applicable	Not Applicable
+	"2010"	"2010"	"87 years"	"87"	225	Not Applicable	Not Applicable
+	"2010"	"2010"	"88 years"	"88"	172	Not Applicable	Not Applicable
+	"2010"	"2010"	"89 years"	"89"	161	Not Applicable	Not Applicable
+	"2010"	"2010"	"90 years"	"90"	171	Not Applicable	Not Applicable
+	"2010"	"2010"	"91 years"	"91"	124	Not Applicable	Not Applicable
+	"2010"	"2010"	"92 years"	"92"	126	Not Applicable	Not Applicable
+	"2010"	"2010"	"93 years"	"93"	115	Not Applicable	Not Applicable
+	"2010"	"2010"	"94 years"	"94"	98	Not Applicable	Not Applicable
+	"2010"	"2010"	"95 years"	"95"	93	Not Applicable	Not Applicable
+	"2010"	"2010"	"96 years"	"96"	79	Not Applicable	Not Applicable
+	"2010"	"2010"	"97 years"	"97"	51	Not Applicable	Not Applicable
+	"2010"	"2010"	"98 years"	"98"	26	Not Applicable	Not Applicable
+	"2010"	"2010"	"99 years"	"99"	29	Not Applicable	Not Applicable
+	"2010"	"2010"	"100+ years"	"100"	60	Not Applicable	Not Applicable
+	"2010"	"2010"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2011"	"2011"	"< 1 year"	"0"	67	13250	505.7
+	"2011"	"2011"	"1 year"	"1"	Suppressed	13254	Suppressed
+	"2011"	"2011"	"2 years"	"2"	Suppressed	12979	Suppressed
+	"2011"	"2011"	"3 years"	"3"	Suppressed	13378	Suppressed
+	"2011"	"2011"	"4 years"	"4"	Suppressed	13233	Suppressed
+	"2011"	"2011"	"5 years"	"5"	Suppressed	13196	Suppressed
+	"2011"	"2011"	"6 years"	"6"	Suppressed	13036	Suppressed
+	"2011"	"2011"	"7 years"	"7"	Suppressed	13035	Suppressed
+	"2011"	"2011"	"8 years"	"8"	Suppressed	12924	Suppressed
+	"2011"	"2011"	"9 years"	"9"	Suppressed	12728	Suppressed
+	"2011"	"2011"	"10 years"	"10"	Suppressed	12679	Suppressed
+	"2011"	"2011"	"11 years"	"11"	Suppressed	12658	Suppressed
+	"2011"	"2011"	"12 years"	"12"	Suppressed	12239	Suppressed
+	"2011"	"2011"	"13 years"	"13"	Suppressed	12184	Suppressed
+	"2011"	"2011"	"14 years"	"14"	Suppressed	12018	Suppressed
+	"2011"	"2011"	"15 years"	"15"	Suppressed	11993	Suppressed
+	"2011"	"2011"	"16 years"	"16"	Suppressed	12326	Suppressed
+	"2011"	"2011"	"17 years"	"17"	Suppressed	12169	Suppressed
+	"2011"	"2011"	"18 years"	"18"	Suppressed	11425	Suppressed
+	"2011"	"2011"	"19 years"	"19"	11	11615	Unreliable
+	"2011"	"2011"	"20 years"	"20"	Suppressed	11113	Suppressed
+	"2011"	"2011"	"21 years"	"21"	Suppressed	11147	Suppressed
+	"2011"	"2011"	"22 years"	"22"	Suppressed	10958	Suppressed
+	"2011"	"2011"	"23 years"	"23"	Suppressed	12007	Suppressed
+	"2011"	"2011"	"24 years"	"24"	Suppressed	12851	Suppressed
+	"2011"	"2011"	"25 years"	"25"	12	13435	Unreliable
+	"2011"	"2011"	"26 years"	"26"	Suppressed	13869	Suppressed
+	"2011"	"2011"	"27 years"	"27"	Suppressed	13280	Suppressed
+	"2011"	"2011"	"28 years"	"28"	11	13649	Unreliable
+	"2011"	"2011"	"29 years"	"29"	11	13569	Unreliable
+	"2011"	"2011"	"30 years"	"30"	17	13465	Unreliable
+	"2011"	"2011"	"31 years"	"31"	Suppressed	13708	Suppressed
+	"2011"	"2011"	"32 years"	"32"	Suppressed	12191	Suppressed
+	"2011"	"2011"	"33 years"	"33"	Suppressed	12015	Suppressed
+	"2011"	"2011"	"34 years"	"34"	13	11580	Unreliable
+	"2011"	"2011"	"35 years"	"35"	14	11186	Unreliable
+	"2011"	"2011"	"36 years"	"36"	14	11855	Unreliable
+	"2011"	"2011"	"37 years"	"37"	13	10796	Unreliable
+	"2011"	"2011"	"38 years"	"38"	18	10909	Unreliable
+	"2011"	"2011"	"39 years"	"39"	19	11440	Unreliable
+	"2011"	"2011"	"40 years"	"40"	10	11708	Unreliable
+	"2011"	"2011"	"41 years"	"41"	22	12086	182.0
+	"2011"	"2011"	"42 years"	"42"	24	11267	213.0
+	"2011"	"2011"	"43 years"	"43"	23	10866	211.7
+	"2011"	"2011"	"44 years"	"44"	24	10990	218.4
+	"2011"	"2011"	"45 years"	"45"	28	11180	250.4
+	"2011"	"2011"	"46 years"	"46"	40	12259	326.3
+	"2011"	"2011"	"47 years"	"47"	48	12484	384.5
+	"2011"	"2011"	"48 years"	"48"	45	12702	354.3
+	"2011"	"2011"	"49 years"	"49"	43	12591	341.5
+	"2011"	"2011"	"50 years"	"50"	49	12715	385.4
+	"2011"	"2011"	"51 years"	"51"	57	12992	438.7
+	"2011"	"2011"	"52 years"	"52"	50	12152	411.5
+	"2011"	"2011"	"53 years"	"53"	51	12022	424.2
+	"2011"	"2011"	"54 years"	"54"	53	11770	450.3
+	"2011"	"2011"	"55 years"	"55"	68	11538	589.4
+	"2011"	"2011"	"56 years"	"56"	83	11539	719.3
+	"2011"	"2011"	"57 years"	"57"	62	10998	563.7
+	"2011"	"2011"	"58 years"	"58"	97	10498	924.0
+	"2011"	"2011"	"59 years"	"59"	84	10525	798.1
+	"2011"	"2011"	"60 years"	"60"	93	9962	933.5
+	"2011"	"2011"	"61 years"	"61"	79	9473	833.9
+	"2011"	"2011"	"62 years"	"62"	81	9113	888.8
+	"2011"	"2011"	"63 years"	"63"	90	8766	1026.7
+	"2011"	"2011"	"64 years"	"64"	106	9091	1166.0
+	"2011"	"2011"	"65 years"	"65"	70	6296	1111.8
+	"2011"	"2011"	"66 years"	"66"	78	6258	1246.4
+	"2011"	"2011"	"67 years"	"67"	97	6055	1602.0
+	"2011"	"2011"	"68 years"	"68"	100	6171	1620.5
+	"2011"	"2011"	"69 years"	"69"	107	5483	1951.5
+	"2011"	"2011"	"70 years"	"70"	112	4920	2276.4
+	"2011"	"2011"	"71 years"	"71"	96	4741	2024.9
+	"2011"	"2011"	"72 years"	"72"	122	4470	2729.3
+	"2011"	"2011"	"73 years"	"73"	114	4270	2669.8
+	"2011"	"2011"	"74 years"	"74"	135	4111	3283.9
+	"2011"	"2011"	"75 years"	"75"	152	3918	3879.5
+	"2011"	"2011"	"76 years"	"76"	127	3869	3282.5
+	"2011"	"2011"	"77 years"	"77"	152	3528	4308.4
+	"2011"	"2011"	"78 years"	"78"	126	3346	3765.7
+	"2011"	"2011"	"79 years"	"79"	148	3260	4539.9
+	"2011"	"2011"	"80 years"	"80"	159	3165	5023.7
+	"2011"	"2011"	"81 years"	"81"	178	2894	6150.7
+	"2011"	"2011"	"82 years"	"82"	192	2761	6954.0
+	"2011"	"2011"	"83 years"	"83"	174	2514	6921.2
+	"2011"	"2011"	"84 years"	"84"	188	2372	7925.8
+	"2011"	"2011"	"85 years"	"85"	203	Not Applicable	Not Applicable
+	"2011"	"2011"	"86 years"	"86"	214	Not Applicable	Not Applicable
+	"2011"	"2011"	"87 years"	"87"	197	Not Applicable	Not Applicable
+	"2011"	"2011"	"88 years"	"88"	161	Not Applicable	Not Applicable
+	"2011"	"2011"	"89 years"	"89"	174	Not Applicable	Not Applicable
+	"2011"	"2011"	"90 years"	"90"	165	Not Applicable	Not Applicable
+	"2011"	"2011"	"91 years"	"91"	163	Not Applicable	Not Applicable
+	"2011"	"2011"	"92 years"	"92"	127	Not Applicable	Not Applicable
+	"2011"	"2011"	"93 years"	"93"	137	Not Applicable	Not Applicable
+	"2011"	"2011"	"94 years"	"94"	83	Not Applicable	Not Applicable
+	"2011"	"2011"	"95 years"	"95"	78	Not Applicable	Not Applicable
+	"2011"	"2011"	"96 years"	"96"	63	Not Applicable	Not Applicable
+	"2011"	"2011"	"97 years"	"97"	60	Not Applicable	Not Applicable
+	"2011"	"2011"	"98 years"	"98"	40	Not Applicable	Not Applicable
+	"2011"	"2011"	"99 years"	"99"	40	Not Applicable	Not Applicable
+	"2011"	"2011"	"100+ years"	"100"	59	Not Applicable	Not Applicable
+	"2011"	"2011"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2012"	"2012"	"< 1 year"	"0"	61	13332	457.5
+	"2012"	"2012"	"1 year"	"1"	10	13530	Unreliable
+	"2012"	"2012"	"2 years"	"2"	Suppressed	13356	Suppressed
+	"2012"	"2012"	"3 years"	"3"	Suppressed	13091	Suppressed
+	"2012"	"2012"	"4 years"	"4"	Suppressed	13465	Suppressed
+	"2012"	"2012"	"5 years"	"5"	Suppressed	13227	Suppressed
+	"2012"	"2012"	"6 years"	"6"	Suppressed	13288	Suppressed
+	"2012"	"2012"	"7 years"	"7"	Suppressed	13085	Suppressed
+	"2012"	"2012"	"8 years"	"8"	Suppressed	13138	Suppressed
+	"2012"	"2012"	"9 years"	"9"	Suppressed	12990	Suppressed
+	"2012"	"2012"	"10 years"	"10"	Suppressed	12705	Suppressed
+	"2012"	"2012"	"11 years"	"11"	Suppressed	12726	Suppressed
+	"2012"	"2012"	"12 years"	"12"	Suppressed	12629	Suppressed
+	"2012"	"2012"	"13 years"	"13"	Suppressed	12238	Suppressed
+	"2012"	"2012"	"14 years"	"14"	Suppressed	12263	Suppressed
+	"2012"	"2012"	"15 years"	"15"	Suppressed	11982	Suppressed
+	"2012"	"2012"	"16 years"	"16"	10	12090	Unreliable
+	"2012"	"2012"	"17 years"	"17"	Suppressed	12306	Suppressed
+	"2012"	"2012"	"18 years"	"18"	12	11547	Unreliable
+	"2012"	"2012"	"19 years"	"19"	Suppressed	11333	Suppressed
+	"2012"	"2012"	"20 years"	"20"	11	11547	Unreliable
+	"2012"	"2012"	"21 years"	"21"	11	11066	Unreliable
+	"2012"	"2012"	"22 years"	"22"	12	11445	Unreliable
+	"2012"	"2012"	"23 years"	"23"	Suppressed	11466	Suppressed
+	"2012"	"2012"	"24 years"	"24"	Suppressed	12552	Suppressed
+	"2012"	"2012"	"25 years"	"25"	Suppressed	13108	Suppressed
+	"2012"	"2012"	"26 years"	"26"	11	13401	Unreliable
+	"2012"	"2012"	"27 years"	"27"	12	14004	Unreliable
+	"2012"	"2012"	"28 years"	"28"	Suppressed	13355	Suppressed
+	"2012"	"2012"	"29 years"	"29"	13	13655	Unreliable
+	"2012"	"2012"	"30 years"	"30"	16	13748	Unreliable
+	"2012"	"2012"	"31 years"	"31"	Suppressed	13497	Suppressed
+	"2012"	"2012"	"32 years"	"32"	Suppressed	13726	Suppressed
+	"2012"	"2012"	"33 years"	"33"	18	12109	Unreliable
+	"2012"	"2012"	"34 years"	"34"	13	11897	Unreliable
+	"2012"	"2012"	"35 years"	"35"	11	11545	Unreliable
+	"2012"	"2012"	"36 years"	"36"	Suppressed	11153	Suppressed
+	"2012"	"2012"	"37 years"	"37"	14	11858	Unreliable
+	"2012"	"2012"	"38 years"	"38"	15	10765	Unreliable
+	"2012"	"2012"	"39 years"	"39"	15	10881	Unreliable
+	"2012"	"2012"	"40 years"	"40"	19	11392	Unreliable
+	"2012"	"2012"	"41 years"	"41"	23	11654	197.4
+	"2012"	"2012"	"42 years"	"42"	26	12153	213.9
+	"2012"	"2012"	"43 years"	"43"	13	11228	Unreliable
+	"2012"	"2012"	"44 years"	"44"	25	10831	230.8
+	"2012"	"2012"	"45 years"	"45"	24	10935	219.5
+	"2012"	"2012"	"46 years"	"46"	26	11148	233.2
+	"2012"	"2012"	"47 years"	"47"	34	12212	278.4
+	"2012"	"2012"	"48 years"	"48"	37	12396	298.5
+	"2012"	"2012"	"49 years"	"49"	40	12649	316.2
+	"2012"	"2012"	"50 years"	"50"	55	12531	438.9
+	"2012"	"2012"	"51 years"	"51"	46	12643	363.8
+	"2012"	"2012"	"52 years"	"52"	47	13000	361.5
+	"2012"	"2012"	"53 years"	"53"	67	12018	557.5
+	"2012"	"2012"	"54 years"	"54"	59	11973	492.8
+	"2012"	"2012"	"55 years"	"55"	59	11726	503.2
+	"2012"	"2012"	"56 years"	"56"	88	11425	770.2
+	"2012"	"2012"	"57 years"	"57"	76	11421	665.4
+	"2012"	"2012"	"58 years"	"58"	78	10879	717.0
+	"2012"	"2012"	"59 years"	"59"	95	10370	916.1
+	"2012"	"2012"	"60 years"	"60"	95	10361	916.9
+	"2012"	"2012"	"61 years"	"61"	96	9840	975.6
+	"2012"	"2012"	"62 years"	"62"	92	9347	984.3
+	"2012"	"2012"	"63 years"	"63"	102	8986	1135.1
+	"2012"	"2012"	"64 years"	"64"	83	8599	965.2
+	"2012"	"2012"	"65 years"	"65"	109	8938	1219.5
+	"2012"	"2012"	"66 years"	"66"	108	6179	1747.9
+	"2012"	"2012"	"67 years"	"67"	85	6170	1377.6
+	"2012"	"2012"	"68 years"	"68"	96	5914	1623.3
+	"2012"	"2012"	"69 years"	"69"	99	6050	1636.4
+	"2012"	"2012"	"70 years"	"70"	84	5358	1567.7
+	"2012"	"2012"	"71 years"	"71"	116	4768	2432.9
+	"2012"	"2012"	"72 years"	"72"	120	4643	2584.5
+	"2012"	"2012"	"73 years"	"73"	116	4379	2649.0
+	"2012"	"2012"	"74 years"	"74"	113	4173	2707.9
+	"2012"	"2012"	"75 years"	"75"	112	4001	2799.3
+	"2012"	"2012"	"76 years"	"76"	110	3793	2900.1
+	"2012"	"2012"	"77 years"	"77"	155	3730	4155.5
+	"2012"	"2012"	"78 years"	"78"	150	3352	4474.9
+	"2012"	"2012"	"79 years"	"79"	159	3221	4936.4
+	"2012"	"2012"	"80 years"	"80"	149	3140	4745.2
+	"2012"	"2012"	"81 years"	"81"	167	3025	5520.7
+	"2012"	"2012"	"82 years"	"82"	190	2709	7013.7
+	"2012"	"2012"	"83 years"	"83"	177	2557	6922.2
+	"2012"	"2012"	"84 years"	"84"	200	2376	8417.5
+	"2012"	"2012"	"85 years"	"85"	190	Not Applicable	Not Applicable
+	"2012"	"2012"	"86 years"	"86"	200	Not Applicable	Not Applicable
+	"2012"	"2012"	"87 years"	"87"	208	Not Applicable	Not Applicable
+	"2012"	"2012"	"88 years"	"88"	189	Not Applicable	Not Applicable
+	"2012"	"2012"	"89 years"	"89"	171	Not Applicable	Not Applicable
+	"2012"	"2012"	"90 years"	"90"	198	Not Applicable	Not Applicable
+	"2012"	"2012"	"91 years"	"91"	152	Not Applicable	Not Applicable
+	"2012"	"2012"	"92 years"	"92"	152	Not Applicable	Not Applicable
+	"2012"	"2012"	"93 years"	"93"	115	Not Applicable	Not Applicable
+	"2012"	"2012"	"94 years"	"94"	118	Not Applicable	Not Applicable
+	"2012"	"2012"	"95 years"	"95"	69	Not Applicable	Not Applicable
+	"2012"	"2012"	"96 years"	"96"	89	Not Applicable	Not Applicable
+	"2012"	"2012"	"97 years"	"97"	54	Not Applicable	Not Applicable
+	"2012"	"2012"	"98 years"	"98"	37	Not Applicable	Not Applicable
+	"2012"	"2012"	"99 years"	"99"	30	Not Applicable	Not Applicable
+	"2012"	"2012"	"100+ years"	"100"	57	Not Applicable	Not Applicable
+	"2012"	"2012"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2013"	"2013"	"< 1 year"	"0"	82	13113	625.3
+	"2013"	"2013"	"1 year"	"1"	Suppressed	13305	Suppressed
+	"2013"	"2013"	"2 years"	"2"	Suppressed	13162	Suppressed
+	"2013"	"2013"	"3 years"	"3"	Suppressed	13254	Suppressed
+	"2013"	"2013"	"4 years"	"4"	Suppressed	13092	Suppressed
+	"2013"	"2013"	"5 years"	"5"	Suppressed	13395	Suppressed
+	"2013"	"2013"	"6 years"	"6"	Suppressed	13316	Suppressed
+	"2013"	"2013"	"7 years"	"7"	Suppressed	13219	Suppressed
+	"2013"	"2013"	"8 years"	"8"	Suppressed	13057	Suppressed
+	"2013"	"2013"	"9 years"	"9"	Suppressed	13134	Suppressed
+	"2013"	"2013"	"10 years"	"10"	Suppressed	12969	Suppressed
+	"2013"	"2013"	"11 years"	"11"	Suppressed	12747	Suppressed
+	"2013"	"2013"	"12 years"	"12"	Suppressed	12807	Suppressed
+	"2013"	"2013"	"13 years"	"13"	Suppressed	12683	Suppressed
+	"2013"	"2013"	"14 years"	"14"	Suppressed	12291	Suppressed
+	"2013"	"2013"	"15 years"	"15"	Suppressed	12222	Suppressed
+	"2013"	"2013"	"16 years"	"16"	Suppressed	12226	Suppressed
+	"2013"	"2013"	"17 years"	"17"	Suppressed	12107	Suppressed
+	"2013"	"2013"	"18 years"	"18"	Suppressed	11659	Suppressed
+	"2013"	"2013"	"19 years"	"19"	11	11392	Unreliable
+	"2013"	"2013"	"20 years"	"20"	Suppressed	11159	Suppressed
+	"2013"	"2013"	"21 years"	"21"	10	11563	Unreliable
+	"2013"	"2013"	"22 years"	"22"	Suppressed	11568	Suppressed
+	"2013"	"2013"	"23 years"	"23"	12	11768	Unreliable
+	"2013"	"2013"	"24 years"	"24"	Suppressed	11886	Suppressed
+	"2013"	"2013"	"25 years"	"25"	12	12701	Unreliable
+	"2013"	"2013"	"26 years"	"26"	10	13177	Unreliable
+	"2013"	"2013"	"27 years"	"27"	Suppressed	13566	Suppressed
+	"2013"	"2013"	"28 years"	"28"	11	14025	Unreliable
+	"2013"	"2013"	"29 years"	"29"	Suppressed	13496	Suppressed
+	"2013"	"2013"	"30 years"	"30"	Suppressed	13723	Suppressed
+	"2013"	"2013"	"31 years"	"31"	11	13767	Unreliable
+	"2013"	"2013"	"32 years"	"32"	16	13529	Unreliable
+	"2013"	"2013"	"33 years"	"33"	10	13747	Unreliable
+	"2013"	"2013"	"34 years"	"34"	11	12295	Unreliable
+	"2013"	"2013"	"35 years"	"35"	12	11943	Unreliable
+	"2013"	"2013"	"36 years"	"36"	17	11654	Unreliable
+	"2013"	"2013"	"37 years"	"37"	10	11207	Unreliable
+	"2013"	"2013"	"38 years"	"38"	14	11772	Unreliable
+	"2013"	"2013"	"39 years"	"39"	18	11000	Unreliable
+	"2013"	"2013"	"40 years"	"40"	10	10969	Unreliable
+	"2013"	"2013"	"41 years"	"41"	16	11367	Unreliable
+	"2013"	"2013"	"42 years"	"42"	30	11852	253.1
+	"2013"	"2013"	"43 years"	"43"	25	12137	206.0
+	"2013"	"2013"	"44 years"	"44"	15	11371	Unreliable
+	"2013"	"2013"	"45 years"	"45"	20	10853	184.3
+	"2013"	"2013"	"46 years"	"46"	21	10991	191.1
+	"2013"	"2013"	"47 years"	"47"	25	11178	223.7
+	"2013"	"2013"	"48 years"	"48"	35	12149	288.1
+	"2013"	"2013"	"49 years"	"49"	33	12398	266.2
+	"2013"	"2013"	"50 years"	"50"	52	12589	413.1
+	"2013"	"2013"	"51 years"	"51"	52	12515	415.5
+	"2013"	"2013"	"52 years"	"52"	53	12698	417.4
+	"2013"	"2013"	"53 years"	"53"	62	12945	478.9
+	"2013"	"2013"	"54 years"	"54"	66	12126	544.3
+	"2013"	"2013"	"55 years"	"55"	71	11985	592.4
+	"2013"	"2013"	"56 years"	"56"	65	11703	555.4
+	"2013"	"2013"	"57 years"	"57"	67	11331	591.3
+	"2013"	"2013"	"58 years"	"58"	93	11291	823.7
+	"2013"	"2013"	"59 years"	"59"	78	10866	717.8
+	"2013"	"2013"	"60 years"	"60"	101	10260	984.4
+	"2013"	"2013"	"61 years"	"61"	75	10176	737.0
+	"2013"	"2013"	"62 years"	"62"	82	9762	840.0
+	"2013"	"2013"	"63 years"	"63"	87	9297	935.8
+	"2013"	"2013"	"64 years"	"64"	97	8874	1093.1
+	"2013"	"2013"	"65 years"	"65"	101	8546	1181.8
+	"2013"	"2013"	"66 years"	"66"	119	8840	1346.2
+	"2013"	"2013"	"67 years"	"67"	99	6143	1611.6
+	"2013"	"2013"	"68 years"	"68"	83	6060	1369.6
+	"2013"	"2013"	"69 years"	"69"	108	5786	1866.6
+	"2013"	"2013"	"70 years"	"70"	114	5937	1920.2
+	"2013"	"2013"	"71 years"	"71"	130	5196	2501.9
+	"2013"	"2013"	"72 years"	"72"	103	4724	2180.4
+	"2013"	"2013"	"73 years"	"73"	95	4498	2112.0
+	"2013"	"2013"	"74 years"	"74"	126	4279	2944.6
+	"2013"	"2013"	"75 years"	"75"	114	4080	2794.1
+	"2013"	"2013"	"76 years"	"76"	139	3800	3657.9
+	"2013"	"2013"	"77 years"	"77"	142	3639	3902.2
+	"2013"	"2013"	"78 years"	"78"	164	3548	4622.3
+	"2013"	"2013"	"79 years"	"79"	169	3214	5258.2
+	"2013"	"2013"	"80 years"	"80"	160	3100	5161.3
+	"2013"	"2013"	"81 years"	"81"	182	3002	6062.6
+	"2013"	"2013"	"82 years"	"82"	210	2859	7345.2
+	"2013"	"2013"	"83 years"	"83"	217	2578	8417.4
+	"2013"	"2013"	"84 years"	"84"	183	2357	7764.1
+	"2013"	"2013"	"85 years"	"85"	201	Not Applicable	Not Applicable
+	"2013"	"2013"	"86 years"	"86"	213	Not Applicable	Not Applicable
+	"2013"	"2013"	"87 years"	"87"	177	Not Applicable	Not Applicable
+	"2013"	"2013"	"88 years"	"88"	184	Not Applicable	Not Applicable
+	"2013"	"2013"	"89 years"	"89"	205	Not Applicable	Not Applicable
+	"2013"	"2013"	"90 years"	"90"	203	Not Applicable	Not Applicable
+	"2013"	"2013"	"91 years"	"91"	164	Not Applicable	Not Applicable
+	"2013"	"2013"	"92 years"	"92"	129	Not Applicable	Not Applicable
+	"2013"	"2013"	"93 years"	"93"	151	Not Applicable	Not Applicable
+	"2013"	"2013"	"94 years"	"94"	101	Not Applicable	Not Applicable
+	"2013"	"2013"	"95 years"	"95"	102	Not Applicable	Not Applicable
+	"2013"	"2013"	"96 years"	"96"	76	Not Applicable	Not Applicable
+	"2013"	"2013"	"97 years"	"97"	70	Not Applicable	Not Applicable
+	"2013"	"2013"	"98 years"	"98"	54	Not Applicable	Not Applicable
+	"2013"	"2013"	"99 years"	"99"	35	Not Applicable	Not Applicable
+	"2013"	"2013"	"100+ years"	"100"	78	Not Applicable	Not Applicable
+	"2013"	"2013"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2014"	"2014"	"< 1 year"	"0"	73	13215	552.4
+	"2014"	"2014"	"1 year"	"1"	Suppressed	13289	Suppressed
+	"2014"	"2014"	"2 years"	"2"	Suppressed	13314	Suppressed
+	"2014"	"2014"	"3 years"	"3"	Suppressed	13128	Suppressed
+	"2014"	"2014"	"4 years"	"4"	Suppressed	13275	Suppressed
+	"2014"	"2014"	"5 years"	"5"	Suppressed	13132	Suppressed
+	"2014"	"2014"	"6 years"	"6"	Suppressed	13413	Suppressed
+	"2014"	"2014"	"7 years"	"7"	Suppressed	13350	Suppressed
+	"2014"	"2014"	"8 years"	"8"	Suppressed	13242	Suppressed
+	"2014"	"2014"	"9 years"	"9"	Suppressed	13107	Suppressed
+	"2014"	"2014"	"10 years"	"10"	Suppressed	13178	Suppressed
+	"2014"	"2014"	"11 years"	"11"	Suppressed	13009	Suppressed
+	"2014"	"2014"	"12 years"	"12"	Suppressed	12742	Suppressed
+	"2014"	"2014"	"13 years"	"13"	Suppressed	12885	Suppressed
+	"2014"	"2014"	"14 years"	"14"	Suppressed	12793	Suppressed
+	"2014"	"2014"	"15 years"	"15"	Suppressed	12373	Suppressed
+	"2014"	"2014"	"16 years"	"16"	Suppressed	12323	Suppressed
+	"2014"	"2014"	"17 years"	"17"	Suppressed	12182	Suppressed
+	"2014"	"2014"	"18 years"	"18"	Suppressed	11548	Suppressed
+	"2014"	"2014"	"19 years"	"19"	Suppressed	11421	Suppressed
+	"2014"	"2014"	"20 years"	"20"	Suppressed	11150	Suppressed
+	"2014"	"2014"	"21 years"	"21"	Suppressed	11122	Suppressed
+	"2014"	"2014"	"22 years"	"22"	10	11964	Unreliable
+	"2014"	"2014"	"23 years"	"23"	10	12083	Unreliable
+	"2014"	"2014"	"24 years"	"24"	Suppressed	12373	Suppressed
+	"2014"	"2014"	"25 years"	"25"	11	12386	Unreliable
+	"2014"	"2014"	"26 years"	"26"	11	12912	Unreliable
+	"2014"	"2014"	"27 years"	"27"	11	13296	Unreliable
+	"2014"	"2014"	"28 years"	"28"	Suppressed	13715	Suppressed
+	"2014"	"2014"	"29 years"	"29"	11	14002	Unreliable
+	"2014"	"2014"	"30 years"	"30"	16	13510	Unreliable
+	"2014"	"2014"	"31 years"	"31"	12	13672	Unreliable
+	"2014"	"2014"	"32 years"	"32"	13	13705	Unreliable
+	"2014"	"2014"	"33 years"	"33"	Suppressed	13537	Suppressed
+	"2014"	"2014"	"34 years"	"34"	14	13794	Unreliable
+	"2014"	"2014"	"35 years"	"35"	13	12292	Unreliable
+	"2014"	"2014"	"36 years"	"36"	19	12026	Unreliable
+	"2014"	"2014"	"37 years"	"37"	21	11677	179.8
+	"2014"	"2014"	"38 years"	"38"	19	11250	Unreliable
+	"2014"	"2014"	"39 years"	"39"	18	11762	Unreliable
+	"2014"	"2014"	"40 years"	"40"	11	10990	Unreliable
+	"2014"	"2014"	"41 years"	"41"	16	10963	Unreliable
+	"2014"	"2014"	"42 years"	"42"	21	11429	183.7
+	"2014"	"2014"	"43 years"	"43"	25	11887	210.3
+	"2014"	"2014"	"44 years"	"44"	16	12124	Unreliable
+	"2014"	"2014"	"45 years"	"45"	24	11289	212.6
+	"2014"	"2014"	"46 years"	"46"	24	10871	220.8
+	"2014"	"2014"	"47 years"	"47"	35	11010	317.9
+	"2014"	"2014"	"48 years"	"48"	42	11198	375.1
+	"2014"	"2014"	"49 years"	"49"	49	12153	403.2
+	"2014"	"2014"	"50 years"	"50"	47	12360	380.3
+	"2014"	"2014"	"51 years"	"51"	50	12532	399.0
+	"2014"	"2014"	"52 years"	"52"	57	12543	454.4
+	"2014"	"2014"	"53 years"	"53"	64	12564	509.4
+	"2014"	"2014"	"54 years"	"54"	72	12855	560.1
+	"2014"	"2014"	"55 years"	"55"	79	12088	653.5
+	"2014"	"2014"	"56 years"	"56"	78	11944	653.0
+	"2014"	"2014"	"57 years"	"57"	76	11687	650.3
+	"2014"	"2014"	"58 years"	"58"	74	11181	661.8
+	"2014"	"2014"	"59 years"	"59"	91	11195	812.9
+	"2014"	"2014"	"60 years"	"60"	78	10739	726.3
+	"2014"	"2014"	"61 years"	"61"	84	10085	832.9
+	"2014"	"2014"	"62 years"	"62"	114	10049	1134.4
+	"2014"	"2014"	"63 years"	"63"	122	9567	1275.2
+	"2014"	"2014"	"64 years"	"64"	92	9207	999.2
+	"2014"	"2014"	"65 years"	"65"	114	8690	1311.9
+	"2014"	"2014"	"66 years"	"66"	113	8371	1349.9
+	"2014"	"2014"	"67 years"	"67"	120	8653	1386.8
+	"2014"	"2014"	"68 years"	"68"	109	6016	1811.8
+	"2014"	"2014"	"69 years"	"69"	103	5931	1736.6
+	"2014"	"2014"	"70 years"	"70"	124	5710	2171.6
+	"2014"	"2014"	"71 years"	"71"	131	5795	2260.6
+	"2014"	"2014"	"72 years"	"72"	127	5110	2485.3
+	"2014"	"2014"	"73 years"	"73"	110	4564	2410.2
+	"2014"	"2014"	"74 years"	"74"	112	4377	2558.8
+	"2014"	"2014"	"75 years"	"75"	128	4175	3065.9
+	"2014"	"2014"	"76 years"	"76"	143	3951	3619.3
+	"2014"	"2014"	"77 years"	"77"	137	3687	3715.8
+	"2014"	"2014"	"78 years"	"78"	150	3502	4283.3
+	"2014"	"2014"	"79 years"	"79"	155	3390	4572.3
+	"2014"	"2014"	"80 years"	"80"	167	3060	5457.5
+	"2014"	"2014"	"81 years"	"81"	173	2914	5936.9
+	"2014"	"2014"	"82 years"	"82"	226	2808	8048.4
+	"2014"	"2014"	"83 years"	"83"	185	2718	6806.5
+	"2014"	"2014"	"84 years"	"84"	211	2402	8784.3
+	"2014"	"2014"	"85 years"	"85"	191	Not Applicable	Not Applicable
+	"2014"	"2014"	"86 years"	"86"	204	Not Applicable	Not Applicable
+	"2014"	"2014"	"87 years"	"87"	199	Not Applicable	Not Applicable
+	"2014"	"2014"	"88 years"	"88"	200	Not Applicable	Not Applicable
+	"2014"	"2014"	"89 years"	"89"	197	Not Applicable	Not Applicable
+	"2014"	"2014"	"90 years"	"90"	186	Not Applicable	Not Applicable
+	"2014"	"2014"	"91 years"	"91"	163	Not Applicable	Not Applicable
+	"2014"	"2014"	"92 years"	"92"	158	Not Applicable	Not Applicable
+	"2014"	"2014"	"93 years"	"93"	150	Not Applicable	Not Applicable
+	"2014"	"2014"	"94 years"	"94"	115	Not Applicable	Not Applicable
+	"2014"	"2014"	"95 years"	"95"	91	Not Applicable	Not Applicable
+	"2014"	"2014"	"96 years"	"96"	93	Not Applicable	Not Applicable
+	"2014"	"2014"	"97 years"	"97"	63	Not Applicable	Not Applicable
+	"2014"	"2014"	"98 years"	"98"	42	Not Applicable	Not Applicable
+	"2014"	"2014"	"99 years"	"99"	20	Not Applicable	Not Applicable
+	"2014"	"2014"	"100+ years"	"100"	65	Not Applicable	Not Applicable
+	"2014"	"2014"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2015"	"2015"	"< 1 year"	"0"	80	13322	600.5
+	"2015"	"2015"	"1 year"	"1"	Suppressed	13385	Suppressed
+	"2015"	"2015"	"2 years"	"2"	Suppressed	13329	Suppressed
+	"2015"	"2015"	"3 years"	"3"	Suppressed	13303	Suppressed
+	"2015"	"2015"	"4 years"	"4"	Suppressed	13145	Suppressed
+	"2015"	"2015"	"5 years"	"5"	Suppressed	13369	Suppressed
+	"2015"	"2015"	"6 years"	"6"	Suppressed	13276	Suppressed
+	"2015"	"2015"	"7 years"	"7"	Suppressed	13537	Suppressed
+	"2015"	"2015"	"8 years"	"8"	Suppressed	13403	Suppressed
+	"2015"	"2015"	"9 years"	"9"	Suppressed	13288	Suppressed
+	"2015"	"2015"	"10 years"	"10"	Suppressed	13228	Suppressed
+	"2015"	"2015"	"11 years"	"11"	Suppressed	13257	Suppressed
+	"2015"	"2015"	"12 years"	"12"	Suppressed	13090	Suppressed
+	"2015"	"2015"	"13 years"	"13"	Suppressed	12871	Suppressed
+	"2015"	"2015"	"14 years"	"14"	Suppressed	12997	Suppressed
+	"2015"	"2015"	"15 years"	"15"	Suppressed	12959	Suppressed
+	"2015"	"2015"	"16 years"	"16"	Suppressed	12540	Suppressed
+	"2015"	"2015"	"17 years"	"17"	Suppressed	12509	Suppressed
+	"2015"	"2015"	"18 years"	"18"	Suppressed	11682	Suppressed
+	"2015"	"2015"	"19 years"	"19"	Suppressed	11340	Suppressed
+	"2015"	"2015"	"20 years"	"20"	14	11158	Unreliable
+	"2015"	"2015"	"21 years"	"21"	14	11098	Unreliable
+	"2015"	"2015"	"22 years"	"22"	11	11403	Unreliable
+	"2015"	"2015"	"23 years"	"23"	Suppressed	12681	Suppressed
+	"2015"	"2015"	"24 years"	"24"	10	12649	Unreliable
+	"2015"	"2015"	"25 years"	"25"	16	12770	Unreliable
+	"2015"	"2015"	"26 years"	"26"	14	12560	Unreliable
+	"2015"	"2015"	"27 years"	"27"	14	13120	Unreliable
+	"2015"	"2015"	"28 years"	"28"	11	13271	Unreliable
+	"2015"	"2015"	"29 years"	"29"	15	13746	Unreliable
+	"2015"	"2015"	"30 years"	"30"	Suppressed	14060	Suppressed
+	"2015"	"2015"	"31 years"	"31"	11	13570	Unreliable
+	"2015"	"2015"	"32 years"	"32"	11	13643	Unreliable
+	"2015"	"2015"	"33 years"	"33"	13	13797	Unreliable
+	"2015"	"2015"	"34 years"	"34"	20	13639	146.6
+	"2015"	"2015"	"35 years"	"35"	15	13942	Unreliable
+	"2015"	"2015"	"36 years"	"36"	13	12349	Unreliable
+	"2015"	"2015"	"37 years"	"37"	Suppressed	12127	Suppressed
+	"2015"	"2015"	"38 years"	"38"	12	11674	Unreliable
+	"2015"	"2015"	"39 years"	"39"	17	11319	Unreliable
+	"2015"	"2015"	"40 years"	"40"	15	11865	Unreliable
+	"2015"	"2015"	"41 years"	"41"	11	11016	Unreliable
+	"2015"	"2015"	"42 years"	"42"	22	11046	199.2
+	"2015"	"2015"	"43 years"	"43"	27	11523	234.3
+	"2015"	"2015"	"44 years"	"44"	28	11899	235.3
+	"2015"	"2015"	"45 years"	"45"	27	11968	225.6
+	"2015"	"2015"	"46 years"	"46"	35	11310	309.5
+	"2015"	"2015"	"47 years"	"47"	21	10834	193.8
+	"2015"	"2015"	"48 years"	"48"	29	10989	263.9
+	"2015"	"2015"	"49 years"	"49"	51	11169	456.6
+	"2015"	"2015"	"50 years"	"50"	32	12056	265.4
+	"2015"	"2015"	"51 years"	"51"	47	12281	382.7
+	"2015"	"2015"	"52 years"	"52"	65	12548	518.0
+	"2015"	"2015"	"53 years"	"53"	69	12473	553.2
+	"2015"	"2015"	"54 years"	"54"	66	12544	526.1
+	"2015"	"2015"	"55 years"	"55"	76	12778	594.8
+	"2015"	"2015"	"56 years"	"56"	74	12006	616.4
+	"2015"	"2015"	"57 years"	"57"	83	11875	698.9
+	"2015"	"2015"	"58 years"	"58"	110	11647	944.4
+	"2015"	"2015"	"59 years"	"59"	96	11102	864.7
+	"2015"	"2015"	"60 years"	"60"	89	11075	803.6
+	"2015"	"2015"	"61 years"	"61"	94	10596	887.1
+	"2015"	"2015"	"62 years"	"62"	101	9967	1013.3
+	"2015"	"2015"	"63 years"	"63"	103	9993	1030.7
+	"2015"	"2015"	"64 years"	"64"	126	9451	1333.2
+	"2015"	"2015"	"65 years"	"65"	101	9040	1117.3
+	"2015"	"2015"	"66 years"	"66"	119	8526	1395.7
+	"2015"	"2015"	"67 years"	"67"	130	8257	1574.4
+	"2015"	"2015"	"68 years"	"68"	116	8493	1365.8
+	"2015"	"2015"	"69 years"	"69"	113	5896	1916.6
+	"2015"	"2015"	"70 years"	"70"	108	5838	1849.9
+	"2015"	"2015"	"71 years"	"71"	114	5594	2037.9
+	"2015"	"2015"	"72 years"	"72"	136	5687	2391.4
+	"2015"	"2015"	"73 years"	"73"	133	4943	2690.7
+	"2015"	"2015"	"74 years"	"74"	122	4465	2732.4
+	"2015"	"2015"	"75 years"	"75"	143	4263	3354.4
+	"2015"	"2015"	"76 years"	"76"	137	4051	3381.9
+	"2015"	"2015"	"77 years"	"77"	151	3846	3926.2
+	"2015"	"2015"	"78 years"	"78"	158	3536	4468.3
+	"2015"	"2015"	"79 years"	"79"	168	3351	5013.4
+	"2015"	"2015"	"80 years"	"80"	178	3234	5504.0
+	"2015"	"2015"	"81 years"	"81"	165	2924	5643.0
+	"2015"	"2015"	"82 years"	"82"	195	2733	7135.0
+	"2015"	"2015"	"83 years"	"83"	197	2609	7550.8
+	"2015"	"2015"	"84 years"	"84"	200	2521	7933.4
+	"2015"	"2015"	"85 years"	"85"	188	Not Applicable	Not Applicable
+	"2015"	"2015"	"86 years"	"86"	202	Not Applicable	Not Applicable
+	"2015"	"2015"	"87 years"	"87"	204	Not Applicable	Not Applicable
+	"2015"	"2015"	"88 years"	"88"	205	Not Applicable	Not Applicable
+	"2015"	"2015"	"89 years"	"89"	196	Not Applicable	Not Applicable
+	"2015"	"2015"	"90 years"	"90"	233	Not Applicable	Not Applicable
+	"2015"	"2015"	"91 years"	"91"	207	Not Applicable	Not Applicable
+	"2015"	"2015"	"92 years"	"92"	173	Not Applicable	Not Applicable
+	"2015"	"2015"	"93 years"	"93"	143	Not Applicable	Not Applicable
+	"2015"	"2015"	"94 years"	"94"	151	Not Applicable	Not Applicable
+	"2015"	"2015"	"95 years"	"95"	103	Not Applicable	Not Applicable
+	"2015"	"2015"	"96 years"	"96"	79	Not Applicable	Not Applicable
+	"2015"	"2015"	"97 years"	"97"	73	Not Applicable	Not Applicable
+	"2015"	"2015"	"98 years"	"98"	49	Not Applicable	Not Applicable
+	"2015"	"2015"	"99 years"	"99"	29	Not Applicable	Not Applicable
+	"2015"	"2015"	"100+ years"	"100"	66	Not Applicable	Not Applicable
+	"2015"	"2015"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+	"2016"	"2016"	"< 1 year"	"0"	93	13556	686.0
+	"2016"	"2016"	"1 year"	"1"	Suppressed	13632	Suppressed
+	"2016"	"2016"	"2 years"	"2"	Suppressed	13529	Suppressed
+	"2016"	"2016"	"3 years"	"3"	Suppressed	13415	Suppressed
+	"2016"	"2016"	"4 years"	"4"	Suppressed	13473	Suppressed
+	"2016"	"2016"	"5 years"	"5"	Suppressed	13134	Suppressed
+	"2016"	"2016"	"6 years"	"6"	Suppressed	13538	Suppressed
+	"2016"	"2016"	"7 years"	"7"	Suppressed	13251	Suppressed
+	"2016"	"2016"	"8 years"	"8"	Suppressed	13475	Suppressed
+	"2016"	"2016"	"9 years"	"9"	Suppressed	13391	Suppressed
+	"2016"	"2016"	"10 years"	"10"	Suppressed	13320	Suppressed
+	"2016"	"2016"	"11 years"	"11"	Suppressed	13232	Suppressed
+	"2016"	"2016"	"12 years"	"12"	Suppressed	13233	Suppressed
+	"2016"	"2016"	"13 years"	"13"	Suppressed	12999	Suppressed
+	"2016"	"2016"	"14 years"	"14"	Suppressed	12832	Suppressed
+	"2016"	"2016"	"15 years"	"15"	Suppressed	12972	Suppressed
+	"2016"	"2016"	"16 years"	"16"	Suppressed	12876	Suppressed
+	"2016"	"2016"	"17 years"	"17"	Suppressed	12522	Suppressed
+	"2016"	"2016"	"18 years"	"18"	10	11778	Unreliable
+	"2016"	"2016"	"19 years"	"19"	Suppressed	11346	Suppressed
+	"2016"	"2016"	"20 years"	"20"	Suppressed	10960	Suppressed
+	"2016"	"2016"	"21 years"	"21"	Suppressed	11116	Suppressed
+	"2016"	"2016"	"22 years"	"22"	11	11385	Unreliable
+	"2016"	"2016"	"23 years"	"23"	Suppressed	12153	Suppressed
+	"2016"	"2016"	"24 years"	"24"	12	13458	Unreliable
+	"2016"	"2016"	"25 years"	"25"	13	13158	Unreliable
+	"2016"	"2016"	"26 years"	"26"	Suppressed	12990	Suppressed
+	"2016"	"2016"	"27 years"	"27"	13	12786	Unreliable
+	"2016"	"2016"	"28 years"	"28"	Suppressed	13274	Suppressed
+	"2016"	"2016"	"29 years"	"29"	16	13395	Unreliable
+	"2016"	"2016"	"30 years"	"30"	17	13784	Unreliable
+	"2016"	"2016"	"31 years"	"31"	17	14039	Unreliable
+	"2016"	"2016"	"32 years"	"32"	19	13556	Unreliable
+	"2016"	"2016"	"33 years"	"33"	17	13703	Unreliable
+	"2016"	"2016"	"34 years"	"34"	16	13800	Unreliable
+	"2016"	"2016"	"35 years"	"35"	13	13695	Unreliable
+	"2016"	"2016"	"36 years"	"36"	23	13936	165.0
+	"2016"	"2016"	"37 years"	"37"	11	12380	Unreliable
+	"2016"	"2016"	"38 years"	"38"	21	12048	174.3
+	"2016"	"2016"	"39 years"	"39"	17	11681	Unreliable
+	"2016"	"2016"	"40 years"	"40"	12	11319	Unreliable
+	"2016"	"2016"	"41 years"	"41"	15	11798	Unreliable
+	"2016"	"2016"	"42 years"	"42"	15	10962	Unreliable
+	"2016"	"2016"	"43 years"	"43"	20	11012	181.6
+	"2016"	"2016"	"44 years"	"44"	25	11447	218.4
+	"2016"	"2016"	"45 years"	"45"	22	11828	186.0
+	"2016"	"2016"	"46 years"	"46"	29	11941	242.9
+	"2016"	"2016"	"47 years"	"47"	31	11233	276.0
+	"2016"	"2016"	"48 years"	"48"	36	10799	333.4
+	"2016"	"2016"	"49 years"	"49"	31	10875	285.1
+	"2016"	"2016"	"50 years"	"50"	28	11102	252.2
+	"2016"	"2016"	"51 years"	"51"	39	11987	325.4
+	"2016"	"2016"	"52 years"	"52"	56	12211	458.6
+	"2016"	"2016"	"53 years"	"53"	50	12421	402.5
+	"2016"	"2016"	"54 years"	"54"	68	12447	546.3
+	"2016"	"2016"	"55 years"	"55"	79	12425	635.8
+	"2016"	"2016"	"56 years"	"56"	79	12715	621.3
+	"2016"	"2016"	"57 years"	"57"	69	11902	579.7
+	"2016"	"2016"	"58 years"	"58"	80	11802	677.9
+	"2016"	"2016"	"59 years"	"59"	91	11541	788.5
+	"2016"	"2016"	"60 years"	"60"	94	10964	857.4
+	"2016"	"2016"	"61 years"	"61"	103	10967	939.2
+	"2016"	"2016"	"62 years"	"62"	101	10444	967.1
+	"2016"	"2016"	"63 years"	"63"	114	9806	1162.6
+	"2016"	"2016"	"64 years"	"64"	130	9791	1327.7
+	"2016"	"2016"	"65 years"	"65"	116	9235	1256.1
+	"2016"	"2016"	"66 years"	"66"	99	8916	1110.4
+	"2016"	"2016"	"67 years"	"67"	105	8457	1241.6
+	"2016"	"2016"	"68 years"	"68"	112	8134	1376.9
+	"2016"	"2016"	"69 years"	"69"	163	8343	1953.7
+	"2016"	"2016"	"70 years"	"70"	98	5780	1695.5
+	"2016"	"2016"	"71 years"	"71"	123	5768	2132.5
+	"2016"	"2016"	"72 years"	"72"	147	5510	2667.9
+	"2016"	"2016"	"73 years"	"73"	122	5571	2189.9
+	"2016"	"2016"	"74 years"	"74"	128	4819	2656.2
+	"2016"	"2016"	"75 years"	"75"	133	4341	3063.8
+	"2016"	"2016"	"76 years"	"76"	132	4146	3183.8
+	"2016"	"2016"	"77 years"	"77"	144	3942	3653.0
+	"2016"	"2016"	"78 years"	"78"	144	3709	3882.4
+	"2016"	"2016"	"79 years"	"79"	152	3384	4491.7
+	"2016"	"2016"	"80 years"	"80"	181	3230	5603.7
+	"2016"	"2016"	"81 years"	"81"	155	3085	5024.3
+	"2016"	"2016"	"82 years"	"82"	175	2759	6342.9
+	"2016"	"2016"	"83 years"	"83"	171	2539	6734.9
+	"2016"	"2016"	"84 years"	"84"	157	2430	6460.9
+	"2016"	"2016"	"85 years"	"85"	196	Not Applicable	Not Applicable
+	"2016"	"2016"	"86 years"	"86"	199	Not Applicable	Not Applicable
+	"2016"	"2016"	"87 years"	"87"	183	Not Applicable	Not Applicable
+	"2016"	"2016"	"88 years"	"88"	208	Not Applicable	Not Applicable
+	"2016"	"2016"	"89 years"	"89"	192	Not Applicable	Not Applicable
+	"2016"	"2016"	"90 years"	"90"	178	Not Applicable	Not Applicable
+	"2016"	"2016"	"91 years"	"91"	193	Not Applicable	Not Applicable
+	"2016"	"2016"	"92 years"	"92"	161	Not Applicable	Not Applicable
+	"2016"	"2016"	"93 years"	"93"	153	Not Applicable	Not Applicable
+	"2016"	"2016"	"94 years"	"94"	107	Not Applicable	Not Applicable
+	"2016"	"2016"	"95 years"	"95"	108	Not Applicable	Not Applicable
+	"2016"	"2016"	"96 years"	"96"	68	Not Applicable	Not Applicable
+	"2016"	"2016"	"97 years"	"97"	55	Not Applicable	Not Applicable
+	"2016"	"2016"	"98 years"	"98"	52	Not Applicable	Not Applicable
+	"2016"	"2016"	"99 years"	"99"	41	Not Applicable	Not Applicable
+	"2016"	"2016"	"100+ years"	"100"	65	Not Applicable	Not Applicable
+	"2016"	"2016"	"Not Stated"	"NS"	Suppressed	Not Applicable	Not Applicable
+"---"
+"Dataset: Multiple Cause of Death, 1999-2016"
+"Query Parameters:"
+"Title:"
+"2013 Urbanization: All"
+"Autopsy: All"
+"Gender: All"
+"Hispanic Origin: All"
+"MCD - ICD-10 Codes: All"
+"Place of Death: All"
+"Race: All"
+"Single-Year Ages: All"
+"States: Harrison County, IA (19085), Mills County, IA (19129), Pottawattamie County, IA (19155), Cass County, NE (31025),"
+"Douglas County, NE (31055), Sarpy County, NE (31153), Saunders County, NE (31155), Washington County, NE (31177)"
+"UCD - ICD-10 Codes: All"
+"Weekday: All"
+"Year/Month: All"
+"Group By: Year, Single-Year Ages"
+"Show Totals: False"
+"Show Zero Values: True"
+"Show Suppressed: True"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
+"---"
+"Query Date: Apr 30, 2018 11:59:00 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Multiple Cause of Death"
+"1999-2016 on CDC WONDER Online Database, released December, 2017. Data are from the Multiple Cause of Death Files, 1999-2016, as"
+"compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
+"at http://wonder.cdc.gov/mcd-icd10.html on Apr 30, 2018 11:59:00 PM"
+"---"
+Caveats:
+"1. Population and rates are labeled 'Not Applicable' when they include a subset of ages 85-100+ because populations are not"
+"available for those ages. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Ages 85-100."
+"2. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2014-Revision."
+"3. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Assurance of Confidentiality."
+"4. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Unreliable."
+"5. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Not Stated."
+"6. The population figures for year 2016 are bridged-race estimates of the July 1 resident population, from the Vintage 2016"
+"postcensal series released by NCHS on June 26, 2017. The population figures for year 2015 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2015 postcensal series released by NCHS on June 28, 2016. The population figures for"
+"year 2014 are bridged-race estimates of the July 1 resident population, from the Vintage 2014 postcensal series released by NCHS"
+"on June 30, 2015. The population figures for year 2013 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2013 postcensal series released by NCHS on June 26, 2014. The population figures for year 2012 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2012 postcensal series released by NCHS on June 13, 2013."
+"Population figures for 2011 are bridged-race estimates of the July 1 resident population, from the county-level postcensal"
+"Vintage 2011 series released by NCHS on July 18, 2012. Population figures for 2010 are April 1 Census counts. The population"
+"figures for years 2001 - 2009, are bridged-race estimates of the July 1 resident population, from the revised intercensal"
+"county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population figures for 2000 are April 1 Census counts."
+"Population figures for 1999 are from the 1990-1999 intercensal series of July 1 estimates. Population figures for Infant Age"
+"Groups are the number of live births. <br/><b>Note:</b> Rates and population figures for years 2001 - 2009 differ slightly from"
+"previously published reports, due to use of the population estimates which were available at the time of release."
+"7. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Age Group."

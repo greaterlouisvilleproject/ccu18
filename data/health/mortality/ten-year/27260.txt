@@ -1,0 +1,276 @@
+"Notes"	"Ten-Year Age Groups"	"Ten-Year Age Groups Code"	"Year"	"Year Code"	Deaths	Population	Crude Rate
+	"< 1 year"	"1"	"1999"	"1999"	148	15675	944.2
+	"< 1 year"	"1"	"2000"	"2000"	147	15605	942.0
+	"< 1 year"	"1"	"2001"	"2001"	166	16175	1026.3
+	"< 1 year"	"1"	"2002"	"2002"	144	15971	901.6
+	"< 1 year"	"1"	"2003"	"2003"	167	16141	1034.6
+	"< 1 year"	"1"	"2004"	"2004"	167	16617	1005.0
+	"< 1 year"	"1"	"2005"	"2005"	191	16962	1126.0
+	"< 1 year"	"1"	"2006"	"2006"	158	17609	897.3
+	"< 1 year"	"1"	"2007"	"2007"	155	17685	876.4
+	"< 1 year"	"1"	"2008"	"2008"	166	17361	956.2
+	"< 1 year"	"1"	"2009"	"2009"	146	17121	852.8
+	"< 1 year"	"1"	"2010"	"2010"	131	16972	771.9
+	"< 1 year"	"1"	"2011"	"2011"	116	17531	661.7
+	"< 1 year"	"1"	"2012"	"2012"	128	17305	739.7
+	"< 1 year"	"1"	"2013"	"2013"	142	17384	816.8
+	"< 1 year"	"1"	"2014"	"2014"	143	17598	812.6
+	"< 1 year"	"1"	"2015"	"2015"	132	18014	732.8
+	"< 1 year"	"1"	"2016"	"2016"	139	18240	762.1
+	"1-4 years"	"1-4"	"1999"	"1999"	36	61638	58.4
+	"1-4 years"	"1-4"	"2000"	"2000"	22	61603	35.7
+	"1-4 years"	"1-4"	"2001"	"2001"	25	62431	40.0
+	"1-4 years"	"1-4"	"2002"	"2002"	25	64097	39.0
+	"1-4 years"	"1-4"	"2003"	"2003"	23	65815	34.9
+	"1-4 years"	"1-4"	"2004"	"2004"	25	66918	37.4
+	"1-4 years"	"1-4"	"2005"	"2005"	18	67672	Unreliable
+	"1-4 years"	"1-4"	"2006"	"2006"	19	68350	Unreliable
+	"1-4 years"	"1-4"	"2007"	"2007"	10	69598	Unreliable
+	"1-4 years"	"1-4"	"2008"	"2008"	18	70005	Unreliable
+	"1-4 years"	"1-4"	"2009"	"2009"	25	70411	35.5
+	"1-4 years"	"1-4"	"2010"	"2010"	22	70420	31.2
+	"1-4 years"	"1-4"	"2011"	"2011"	14	69858	Unreliable
+	"1-4 years"	"1-4"	"2012"	"2012"	21	69632	30.2
+	"1-4 years"	"1-4"	"2013"	"2013"	14	69430	Unreliable
+	"1-4 years"	"1-4"	"2014"	"2014"	25	70053	35.7
+	"1-4 years"	"1-4"	"2015"	"2015"	23	70958	32.4
+	"1-4 years"	"1-4"	"2016"	"2016"	17	73841	Unreliable
+	"5-14 years"	"5-14"	"1999"	"1999"	34	167285	20.3
+	"5-14 years"	"5-14"	"2000"	"2000"	44	167515	26.3
+	"5-14 years"	"5-14"	"2001"	"2001"	40	168508	23.7
+	"5-14 years"	"5-14"	"2002"	"2002"	28	169785	16.5
+	"5-14 years"	"5-14"	"2003"	"2003"	26	170524	15.2
+	"5-14 years"	"5-14"	"2004"	"2004"	34	172257	19.7
+	"5-14 years"	"5-14"	"2005"	"2005"	37	172993	21.4
+	"5-14 years"	"5-14"	"2006"	"2006"	45	175670	25.6
+	"5-14 years"	"5-14"	"2007"	"2007"	33	176895	18.7
+	"5-14 years"	"5-14"	"2008"	"2008"	20	176821	11.3
+	"5-14 years"	"5-14"	"2009"	"2009"	20	176724	11.3
+	"5-14 years"	"5-14"	"2010"	"2010"	20	177726	11.3
+	"5-14 years"	"5-14"	"2011"	"2011"	24	177711	13.5
+	"5-14 years"	"5-14"	"2012"	"2012"	17	178419	Unreliable
+	"5-14 years"	"5-14"	"2013"	"2013"	26	179419	14.5
+	"5-14 years"	"5-14"	"2014"	"2014"	28	181116	15.5
+	"5-14 years"	"5-14"	"2015"	"2015"	31	183275	16.9
+	"5-14 years"	"5-14"	"2016"	"2016"	26	184928	14.1
+	"15-24 years"	"15-24"	"1999"	"1999"	128	146327	87.5
+	"15-24 years"	"15-24"	"2000"	"2000"	151	149525	101.0
+	"15-24 years"	"15-24"	"2001"	"2001"	152	156289	97.3
+	"15-24 years"	"15-24"	"2002"	"2002"	167	161560	103.4
+	"15-24 years"	"15-24"	"2003"	"2003"	178	166069	107.2
+	"15-24 years"	"15-24"	"2004"	"2004"	185	172931	107.0
+	"15-24 years"	"15-24"	"2005"	"2005"	197	177174	111.2
+	"15-24 years"	"15-24"	"2006"	"2006"	185	181133	102.1
+	"15-24 years"	"15-24"	"2007"	"2007"	222	184354	120.4
+	"15-24 years"	"15-24"	"2008"	"2008"	196	185890	105.4
+	"15-24 years"	"15-24"	"2009"	"2009"	194	185647	104.5
+	"15-24 years"	"15-24"	"2010"	"2010"	152	185107	82.1
+	"15-24 years"	"15-24"	"2011"	"2011"	136	184345	73.8
+	"15-24 years"	"15-24"	"2012"	"2012"	142	185479	76.6
+	"15-24 years"	"15-24"	"2013"	"2013"	159	184569	86.1
+	"15-24 years"	"15-24"	"2014"	"2014"	146	184899	79.0
+	"15-24 years"	"15-24"	"2015"	"2015"	179	184657	96.9
+	"15-24 years"	"15-24"	"2016"	"2016"	195	182767	106.7
+	"25-34 years"	"25-34"	"1999"	"1999"	184	164203	112.1
+	"25-34 years"	"25-34"	"2000"	"2000"	188	162359	115.8
+	"25-34 years"	"25-34"	"2001"	"2001"	197	160938	122.4
+	"25-34 years"	"25-34"	"2002"	"2002"	225	162119	138.8
+	"25-34 years"	"25-34"	"2003"	"2003"	209	163350	127.9
+	"25-34 years"	"25-34"	"2004"	"2004"	229	166594	137.5
+	"25-34 years"	"25-34"	"2005"	"2005"	250	168970	148.0
+	"25-34 years"	"25-34"	"2006"	"2006"	248	172707	143.6
+	"25-34 years"	"25-34"	"2007"	"2007"	267	175128	152.5
+	"25-34 years"	"25-34"	"2008"	"2008"	237	176809	134.0
+	"25-34 years"	"25-34"	"2009"	"2009"	258	178735	144.3
+	"25-34 years"	"25-34"	"2010"	"2010"	239	180439	132.5
+	"25-34 years"	"25-34"	"2011"	"2011"	232	184909	125.5
+	"25-34 years"	"25-34"	"2012"	"2012"	264	189227	139.5
+	"25-34 years"	"25-34"	"2013"	"2013"	226	194695	116.1
+	"25-34 years"	"25-34"	"2014"	"2014"	279	201154	138.7
+	"25-34 years"	"25-34"	"2015"	"2015"	263	208775	126.0
+	"25-34 years"	"25-34"	"2016"	"2016"	367	215209	170.5
+	"35-44 years"	"35-44"	"1999"	"1999"	438	189231	231.5
+	"35-44 years"	"35-44"	"2000"	"2000"	464	190207	243.9
+	"35-44 years"	"35-44"	"2001"	"2001"	471	191238	246.3
+	"35-44 years"	"35-44"	"2002"	"2002"	493	190706	258.5
+	"35-44 years"	"35-44"	"2003"	"2003"	472	189539	249.0
+	"35-44 years"	"35-44"	"2004"	"2004"	464	190403	243.7
+	"35-44 years"	"35-44"	"2005"	"2005"	501	191240	262.0
+	"35-44 years"	"35-44"	"2006"	"2006"	488	192569	253.4
+	"35-44 years"	"35-44"	"2007"	"2007"	464	192373	241.2
+	"35-44 years"	"35-44"	"2008"	"2008"	442	189645	233.1
+	"35-44 years"	"35-44"	"2009"	"2009"	454	185649	244.5
+	"35-44 years"	"35-44"	"2010"	"2010"	366	183298	199.7
+	"35-44 years"	"35-44"	"2011"	"2011"	387	180440	214.5
+	"35-44 years"	"35-44"	"2012"	"2012"	420	179481	234.0
+	"35-44 years"	"35-44"	"2013"	"2013"	372	179350	207.4
+	"35-44 years"	"35-44"	"2014"	"2014"	362	180371	200.7
+	"35-44 years"	"35-44"	"2015"	"2015"	410	182806	224.3
+	"35-44 years"	"35-44"	"2016"	"2016"	502	184900	271.5
+	"45-54 years"	"45-54"	"1999"	"1999"	784	149391	524.8
+	"45-54 years"	"45-54"	"2000"	"2000"	820	155329	527.9
+	"45-54 years"	"45-54"	"2001"	"2001"	805	164224	490.2
+	"45-54 years"	"45-54"	"2002"	"2002"	863	168578	511.9
+	"45-54 years"	"45-54"	"2003"	"2003"	975	173132	563.2
+	"45-54 years"	"45-54"	"2004"	"2004"	947	178357	531.0
+	"45-54 years"	"45-54"	"2005"	"2005"	1048	184343	568.5
+	"45-54 years"	"45-54"	"2006"	"2006"	1016	190853	532.3
+	"45-54 years"	"45-54"	"2007"	"2007"	1094	196215	557.6
+	"45-54 years"	"45-54"	"2008"	"2008"	1067	200338	532.6
+	"45-54 years"	"45-54"	"2009"	"2009"	1042	203341	512.4
+	"45-54 years"	"45-54"	"2010"	"2010"	1007	204812	491.7
+	"45-54 years"	"45-54"	"2011"	"2011"	1049	203649	515.1
+	"45-54 years"	"45-54"	"2012"	"2012"	1003	202130	496.2
+	"45-54 years"	"45-54"	"2013"	"2013"	963	200572	480.1
+	"45-54 years"	"45-54"	"2014"	"2014"	884	199854	442.3
+	"45-54 years"	"45-54"	"2015"	"2015"	954	200575	475.6
+	"45-54 years"	"45-54"	"2016"	"2016"	939	200797	467.6
+	"55-64 years"	"55-64"	"1999"	"1999"	1116	92899	1201.3
+	"55-64 years"	"55-64"	"2000"	"2000"	1125	96186	1169.6
+	"55-64 years"	"55-64"	"2001"	"2001"	1176	101442	1159.3
+	"55-64 years"	"55-64"	"2002"	"2002"	1173	109675	1069.5
+	"55-64 years"	"55-64"	"2003"	"2003"	1295	117040	1106.5
+	"55-64 years"	"55-64"	"2004"	"2004"	1292	124360	1038.9
+	"55-64 years"	"55-64"	"2005"	"2005"	1322	131727	1003.6
+	"55-64 years"	"55-64"	"2006"	"2006"	1401	139976	1000.9
+	"55-64 years"	"55-64"	"2007"	"2007"	1453	146726	990.3
+	"55-64 years"	"55-64"	"2008"	"2008"	1528	152447	1002.3
+	"55-64 years"	"55-64"	"2009"	"2009"	1547	158434	976.4
+	"55-64 years"	"55-64"	"2010"	"2010"	1528	163704	933.4
+	"55-64 years"	"55-64"	"2011"	"2011"	1742	171445	1016.1
+	"55-64 years"	"55-64"	"2012"	"2012"	1722	174618	986.2
+	"55-64 years"	"55-64"	"2013"	"2013"	1829	178205	1026.3
+	"55-64 years"	"55-64"	"2014"	"2014"	1853	182659	1014.5
+	"55-64 years"	"55-64"	"2015"	"2015"	1940	188669	1028.3
+	"55-64 years"	"55-64"	"2016"	"2016"	2020	194605	1038.0
+	"65-74 years"	"65-74"	"1999"	"1999"	1980	68223	2902.2
+	"65-74 years"	"65-74"	"2000"	"2000"	1867	68135	2740.1
+	"65-74 years"	"65-74"	"2001"	"2001"	1863	68178	2732.6
+	"65-74 years"	"65-74"	"2002"	"2002"	1773	68812	2576.6
+	"65-74 years"	"65-74"	"2003"	"2003"	1727	70035	2465.9
+	"65-74 years"	"65-74"	"2004"	"2004"	1818	71691	2535.9
+	"65-74 years"	"65-74"	"2005"	"2005"	1729	74014	2336.0
+	"65-74 years"	"65-74"	"2006"	"2006"	1681	77509	2168.8
+	"65-74 years"	"65-74"	"2007"	"2007"	1734	80479	2154.6
+	"65-74 years"	"65-74"	"2008"	"2008"	1812	84751	2138.0
+	"65-74 years"	"65-74"	"2009"	"2009"	1900	89452	2124.0
+	"65-74 years"	"65-74"	"2010"	"2010"	1931	92700	2083.1
+	"65-74 years"	"65-74"	"2011"	"2011"	1990	97195	2047.4
+	"65-74 years"	"65-74"	"2012"	"2012"	1999	105998	1885.9
+	"65-74 years"	"65-74"	"2013"	"2013"	2221	113630	1954.6
+	"65-74 years"	"65-74"	"2014"	"2014"	2242	121237	1849.3
+	"65-74 years"	"65-74"	"2015"	"2015"	2403	128810	1865.5
+	"65-74 years"	"65-74"	"2016"	"2016"	2589	136767	1893.0
+	"75-84 years"	"75-84"	"1999"	"1999"	2595	42211	6147.7
+	"75-84 years"	"75-84"	"2000"	"2000"	2722	43081	6318.3
+	"75-84 years"	"75-84"	"2001"	"2001"	2797	44489	6286.9
+	"75-84 years"	"75-84"	"2002"	"2002"	2736	45585	6002.0
+	"75-84 years"	"75-84"	"2003"	"2003"	2650	46537	5694.4
+	"75-84 years"	"75-84"	"2004"	"2004"	2774	47619	5825.4
+	"75-84 years"	"75-84"	"2005"	"2005"	2695	48032	5610.8
+	"75-84 years"	"75-84"	"2006"	"2006"	2755	49103	5610.7
+	"75-84 years"	"75-84"	"2007"	"2007"	2660	49565	5366.7
+	"75-84 years"	"75-84"	"2008"	"2008"	2711	49813	5442.4
+	"75-84 years"	"75-84"	"2009"	"2009"	2486	49962	4975.8
+	"75-84 years"	"75-84"	"2010"	"2010"	2588	50456	5129.2
+	"75-84 years"	"75-84"	"2011"	"2011"	2666	51361	5190.7
+	"75-84 years"	"75-84"	"2012"	"2012"	2534	52774	4801.6
+	"75-84 years"	"75-84"	"2013"	"2013"	2666	53794	4955.9
+	"75-84 years"	"75-84"	"2014"	"2014"	2653	55913	4744.9
+	"75-84 years"	"75-84"	"2015"	"2015"	2769	58043	4770.6
+	"75-84 years"	"75-84"	"2016"	"2016"	2722	60553	4495.2
+	"85+ years"	"85+"	"1999"	"1999"	2058	12868	15993.2
+	"85+ years"	"85+"	"2000"	"2000"	2025	13205	15335.1
+	"85+ years"	"85+"	"2001"	"2001"	2297	14179	16200.0
+	"85+ years"	"85+"	"2002"	"2002"	2183	14475	15081.2
+	"85+ years"	"85+"	"2003"	"2003"	2262	14860	15222.1
+	"85+ years"	"85+"	"2004"	"2004"	2416	15119	15979.9
+	"85+ years"	"85+"	"2005"	"2005"	2467	15945	15471.9
+	"85+ years"	"85+"	"2006"	"2006"	2403	16832	14276.4
+	"85+ years"	"85+"	"2007"	"2007"	2559	17770	14400.7
+	"85+ years"	"85+"	"2008"	"2008"	2677	18848	14203.1
+	"85+ years"	"85+"	"2009"	"2009"	2728	19496	13992.6
+	"85+ years"	"85+"	"2010"	"2010"	2893	19962	14492.5
+	"85+ years"	"85+"	"2011"	"2011"	2959	21807	13569.0
+	"85+ years"	"85+"	"2012"	"2012"	3095	22787	13582.3
+	"85+ years"	"85+"	"2013"	"2013"	3358	23576	14243.3
+	"85+ years"	"85+"	"2014"	"2014"	3287	24273	13541.8
+	"85+ years"	"85+"	"2015"	"2015"	3399	24899	13651.2
+	"85+ years"	"85+"	"2016"	"2016"	3304	25605	12903.7
+	"Not Stated"	"NS"	"1999"	"1999"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2000"	"2000"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2001"	"2001"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2002"	"2002"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2003"	"2003"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2004"	"2004"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2005"	"2005"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2006"	"2006"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2007"	"2007"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2008"	"2008"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2009"	"2009"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2010"	"2010"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2011"	"2011"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2012"	"2012"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2013"	"2013"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2014"	"2014"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2015"	"2015"	Suppressed	Not Applicable	Not Applicable
+	"Not Stated"	"NS"	"2016"	"2016"	Suppressed	Not Applicable	Not Applicable
+"---"
+"Dataset: Multiple Cause of Death, 1999-2016"
+"Query Parameters:"
+"Title:"
+"2013 Urbanization: All"
+"Autopsy: All"
+"Gender: All"
+"Hispanic Origin: All"
+"MCD - ICD-10 Codes: All"
+"Place of Death: All"
+"Race: All"
+"States: Baker County, FL (12003), Clay County, FL (12019), Duval County, FL (12031), Nassau County, FL (12089), St. Johns"
+"County, FL (12109)"
+"Ten-Year Age Groups: All"
+"UCD - ICD-10 Codes: All"
+"Weekday: All"
+"Year/Month: All"
+"Group By: Ten-Year Age Groups, Year"
+"Show Totals: False"
+"Show Zero Values: True"
+"Show Suppressed: True"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
+"---"
+"Query Date: May 14, 2018 8:59:05 AM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Multiple Cause of Death"
+"1999-2016 on CDC WONDER Online Database, released December, 2017. Data are from the Multiple Cause of Death Files, 1999-2016, as"
+"compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
+"at http://wonder.cdc.gov/mcd-icd10.html on May 14, 2018 8:59:05 AM"
+"---"
+Caveats:
+"1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2014-Revision."
+"2. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Assurance of Confidentiality."
+"3. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Unreliable."
+"4. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Not Stated."
+"5. The population figures for year 2016 are bridged-race estimates of the July 1 resident population, from the Vintage 2016"
+"postcensal series released by NCHS on June 26, 2017. The population figures for year 2015 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2015 postcensal series released by NCHS on June 28, 2016. The population figures for"
+"year 2014 are bridged-race estimates of the July 1 resident population, from the Vintage 2014 postcensal series released by NCHS"
+"on June 30, 2015. The population figures for year 2013 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2013 postcensal series released by NCHS on June 26, 2014. The population figures for year 2012 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2012 postcensal series released by NCHS on June 13, 2013."
+"Population figures for 2011 are bridged-race estimates of the July 1 resident population, from the county-level postcensal"
+"Vintage 2011 series released by NCHS on July 18, 2012. Population figures for 2010 are April 1 Census counts. The population"
+"figures for years 2001 - 2009, are bridged-race estimates of the July 1 resident population, from the revised intercensal"
+"county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population figures for 2000 are April 1 Census counts."
+"Population figures for 1999 are from the 1990-1999 intercensal series of July 1 estimates. Population figures for Infant Age"
+"Groups are the number of live births. <br/><b>Note:</b> Rates and population figures for years 2001 - 2009 differ slightly from"
+"previously published reports, due to use of the population estimates which were available at the time of release."
+"6. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Age Group."

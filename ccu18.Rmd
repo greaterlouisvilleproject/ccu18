@@ -3,7 +3,9 @@ title: "ccu18"
 output: html_notebook
 ---
 
-Setup
+**Setup**
+
+Working Directory
 ```{r setup}
 knitr::opts_knit$set(root.dir = "C:/Users/Harrison Kirby/Desktop/GLP/CCU18")
 ```
@@ -111,9 +113,7 @@ pull_peers_FIPS <- function(dat){
 }
 ```
 
-*Health Insurance Data*
-
-
+**Health Insurance Data**
 ```{r, messsage = FALSE, eval = FALSE}
 data <- insurance_time()
 
@@ -164,14 +164,13 @@ hie$FIPS <- as.character(hie$FIPS)
 hie$year <- as.character(hie$year)
 ```
 
-*ACS data*
+**Read ACS data**
 
-Read in data and construct conuties from PUMAs. PUMAs are identified using State FIPS codes and PUMA numbers. PUMAs boundaries were redrawn in 2012 based on the 2010 census, so 
+Read in data and construct counties from PUMAs. PUMAs are identified using State FIPS codes and PUMA numbers. PUMAs boundaries were redrawn in 2012 based on the 2010 census, so 
 ```{r}
 acs <- read_feather("C:/Users/Harrison Kirby/Desktop/GLP/ccu17_beyond_poverty/data/all_obs.feather")
 
 acs$FIPS <- NA
-
 #PUMAs from 2005-2011
 acs$FIPS[acs$STATEFIP == 1 & (acs$YEAR < 2012 & acs$PUMA %in% c(901, 905, 902, 903, 904))] <- 1073
 acs$FIPS[acs$STATEFIP == 12 & (acs$YEAR < 2012 & acs$PUMA %in% c(1106, 1105, 1103, 1104, 1102, 1107))] <- 12031
@@ -253,26 +252,67 @@ acs$city[acs$FIPS == 47157] = 'Memphis'
 acs$city[acs$FIPS == 51760] = 'Richmond'
 ```
 
-**Create variables**
-
-Education
-```{r}
-acs %<>%
-  mutate(assoc = if_else(EDUCD > 80, 1, 0),
-         assoc = replace(assoc, EDUCD == 1 , NA),
-         bach = if_else(EDUCD > 100, 1, 0),
-         bach = replace(bach, EDUCD == 1 , NA))
-
-acs$assoc[acs$AGE <= 24 | acs$AGE >= 35] <- NA
-acs$bach[acs$AGE <= 24 | acs$AGE >= 35] <- NA
-```
-
 Race
 ```{r}
 acs$race <- NA
 acs$race[acs$RACE == 1 & acs$HISPAN == 0] <- 0
 acs$race[acs$RACE == 2 & acs$HISPAN == 0] <- 1
 ```
+
+**Create variables**
+
+*Education*
+
+Poverty and child poverty
+```{r}
+acs %<>%
+  mutate(pov = if_else(POVERTY <= 100, 1, 0),
+         pov = replace(pov, POVERTY == 1, 0))
+```
+
+Degree Attainment and Young Adult Degree Attainment
+```{r}
+educ_replace <- function(x) {replace(x, acs$EDUCD %in% c(0, 1, 999), NA)}
+
+acs %<>%
+  mutate(nohs = if_else(EDUC <= 61, 1, 0),
+         hs = if_else(EDUCD %in% c(62, 63, 64), 1, 0),
+         somecol = if_else(EDUCD %in% c(70, 71, 80, 90, 100, 110, 111, 112, 113), 1, 0),
+         assoc = if_else(EDUCD %in% c(81, 82, 83), 1, 0),
+         assoc_plus = if_else(EDUCD > 80, 1, 0),
+         bach = if_else(EDUCD == 101, 1, 0),
+         bach_plus = if_else(EDUCD > 100, 1, 0),
+         grad = if_else(EDUCD > 114, 1, 0)) %>%
+  map_at(c('nohs', 'hs', 'somecol', 'assoc', 'assoc_plus', 'bach', 'bach_plus', 'grad'), educ_replace) %>%
+  as.data.frame()
+```
+
+High Wage Occupations
+
+*Jobs*
+
+Working poverty
+```{r}
+#generate employment variable at the household level
+acs %<>%
+  mutate(emp = if_else(EMPSTAT == 1, 1, 0),
+         emp = replace(emp, EMPSTAT == 0, NA)) %>%
+  group_by(SERIAL, YEAR) %>%
+  mutate(fam_emp = if_else(any(emp == 1, na.rm = TRUE), 1, 0)) %>%
+  ungroup()
+
+#generate working poverty variable
+acs %<>%
+  mutate(working_poverty = if_else(fam_emp == 1 & pov == 1, 1, 0))
+```
+
+Transit
+
+Median Earnings
+
+Personal Income Per Capita
+
+Median Household Incomem
 
 Unemployment
 ```{r}
@@ -283,17 +323,52 @@ acs$unemp[acs$EMPSTAT == 0] <- NA
 acs$unemp[acs$EMPSTAT == 3] <- NA
 ```
 
+*Quality of Place*
+
+Burdened Households
+```{r}
+acs %<>%
+  mutate(OWNCOST = replace(OWNCOST, OWNCOST == 99999, NA),
+         FTOTINC = replace(FTOTINC, FTOTINC == 99999, NA),
+         hcost   = max(OWNCOST, FTOTINC, na.rm = TRUE),
+         hcost_burdened = if_else(hcost*12/FTOTINC > .5, 1, 0))
+
+#mpi_msa$hcost_burdened[is.na(mpi_msa$hcost_burdened)] <- 0
+```
+
+Disconnected Youth
+```{r}
+acs %<>%
+  mutate(
+    in_school = if_else(SCHOOL == 2, 1, 0),
+    in_school = replace(in_school, SCHOOL == 0 | SCHOOL == 9, NA),
+    disconnected_youth = if_else(in_school == 0 & emp == 0, 1, 0))
+```
+
+Homeownership
+
+Commute Time
+
+
 **Create output**
 ```{r}
 survey_df <- svydesign(ids = ~1, weights = ~PERWT, data = acs)
 
-results <- svyby(~assoc+bach+unemp, ~FIPS+YEAR+race, design = survey_df, svymean, na.rm = TRUE)
+svy_child <- survey_df %>% subset(AGE < 18)
+svy_young_child <- survey_df %>% subset(AGE < 5)
+svy_df_old_child <- survey_df %>% subset(AGE >= 5 & AGE <= 17)
+
+svy_25_34 <- survey_df %>% subset(AGE >= 25 & AGE <= 34)
+svy_25_64 <- survey_df %>% subset(AGE >= 25 & AGE <= 64)
+
+acs_hhold <- acs[!duplicated(acs[c('YEAR', 'SERIAL')]),]
+survey_df_hhold <- svydesign(ids = ~1, weights = ~HHWT, data = acs_hhold)
+
+results <- svyby(~assoc_plus + bach_plus + grad + unemp + working_poverty, ~FIPS+YEAR+race, design = survey_df, svymean, na.rm = TRUE)
 
 output <- results %>%
-  select(FIPS, race, year = YEAR, assoc, bach, unemp) %>%
-  mutate(assoc = assoc * 100,
-         unemp = unemp * 100,
-         bach = bach * 100) %>%
+  select(FIPS, race, year = YEAR, assoc_plus, bach_plus, grad, unemp, working_poverty) %>%
+  mutate_at(vars(assoc_plus, bach_plus, grad, unemp, working_poverty), function(x) {x * 100}) %>%
   {
     x <- .
     full_join(
@@ -311,7 +386,9 @@ output <- results %>%
                bach_b = bach),
       by = c('FIPS', 'year'))
   }
+```
 
+```{r}
 output %<>% pull_peers_FIPS()
 
 output$city <- NA

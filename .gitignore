@@ -6,3 +6,7 @@ ccu18\.nb\.html
 Images/
 
 Other/
+
+data/health/brfss\.feather
+
+data/qop/disconnected\.feather

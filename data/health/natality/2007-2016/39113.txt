@@ -1,0 +1,177 @@
+"Notes"	"Year"	"Year Code"	"Birth Weight 12"	"Birth Weight 12 Code"	Births
+	"2007"	"2007"	"499 grams or less"	"01"	11
+	"2007"	"2007"	"500 - 999 grams"	"02"	45
+	"2007"	"2007"	"1000 - 1499 grams"	"03"	51
+	"2007"	"2007"	"1500 - 1999 grams"	"04"	127
+	"2007"	"2007"	"2000 - 2499 grams"	"05"	393
+	"2007"	"2007"	"2500 - 2999 grams"	"06"	1430
+	"2007"	"2007"	"3000 - 3499 grams"	"07"	2695
+	"2007"	"2007"	"3500 - 3999 grams"	"08"	1886
+	"2007"	"2007"	"4000 - 4499 grams"	"09"	531
+	"2007"	"2007"	"4500 - 4999 grams"	"10"	65
+	"2007"	"2007"	"5000 - 8165 grams"	"11"	Suppressed
+	"2007"	"2007"	"Not stated"	"12"	Suppressed
+	"2008"	"2008"	"499 grams or less"	"01"	12
+	"2008"	"2008"	"500 - 999 grams"	"02"	35
+	"2008"	"2008"	"1000 - 1499 grams"	"03"	68
+	"2008"	"2008"	"1500 - 1999 grams"	"04"	110
+	"2008"	"2008"	"2000 - 2499 grams"	"05"	400
+	"2008"	"2008"	"2500 - 2999 grams"	"06"	1348
+	"2008"	"2008"	"3000 - 3499 grams"	"07"	2746
+	"2008"	"2008"	"3500 - 3999 grams"	"08"	1875
+	"2008"	"2008"	"4000 - 4499 grams"	"09"	489
+	"2008"	"2008"	"4500 - 4999 grams"	"10"	66
+	"2008"	"2008"	"5000 - 8165 grams"	"11"	Suppressed
+	"2008"	"2008"	"Not stated"	"12"	Suppressed
+	"2009"	"2009"	"499 grams or less"	"01"	16
+	"2009"	"2009"	"500 - 999 grams"	"02"	41
+	"2009"	"2009"	"1000 - 1499 grams"	"03"	72
+	"2009"	"2009"	"1500 - 1999 grams"	"04"	140
+	"2009"	"2009"	"2000 - 2499 grams"	"05"	426
+	"2009"	"2009"	"2500 - 2999 grams"	"06"	1299
+	"2009"	"2009"	"3000 - 3499 grams"	"07"	2694
+	"2009"	"2009"	"3500 - 3999 grams"	"08"	1779
+	"2009"	"2009"	"4000 - 4499 grams"	"09"	509
+	"2009"	"2009"	"4500 - 4999 grams"	"10"	68
+	"2009"	"2009"	"5000 - 8165 grams"	"11"	Suppressed
+	"2009"	"2009"	"Not stated"	"12"	Suppressed
+	"2010"	"2010"	"499 grams or less"	"01"	17
+	"2010"	"2010"	"500 - 999 grams"	"02"	39
+	"2010"	"2010"	"1000 - 1499 grams"	"03"	64
+	"2010"	"2010"	"1500 - 1999 grams"	"04"	116
+	"2010"	"2010"	"2000 - 2499 grams"	"05"	398
+	"2010"	"2010"	"2500 - 2999 grams"	"06"	1251
+	"2010"	"2010"	"3000 - 3499 grams"	"07"	2599
+	"2010"	"2010"	"3500 - 3999 grams"	"08"	1672
+	"2010"	"2010"	"4000 - 4499 grams"	"09"	490
+	"2010"	"2010"	"4500 - 4999 grams"	"10"	67
+	"2010"	"2010"	"5000 - 8165 grams"	"11"	10
+	"2010"	"2010"	"Not stated"	"12"	Suppressed
+	"2011"	"2011"	"499 grams or less"	"01"	20
+	"2011"	"2011"	"500 - 999 grams"	"02"	52
+	"2011"	"2011"	"1000 - 1499 grams"	"03"	46
+	"2011"	"2011"	"1500 - 1999 grams"	"04"	120
+	"2011"	"2011"	"2000 - 2499 grams"	"05"	360
+	"2011"	"2011"	"2500 - 2999 grams"	"06"	1249
+	"2011"	"2011"	"3000 - 3499 grams"	"07"	2476
+	"2011"	"2011"	"3500 - 3999 grams"	"08"	1724
+	"2011"	"2011"	"4000 - 4499 grams"	"09"	453
+	"2011"	"2011"	"4500 - 4999 grams"	"10"	76
+	"2011"	"2011"	"5000 - 8165 grams"	"11"	Suppressed
+	"2011"	"2011"	"Not stated"	"12"	Suppressed
+	"2012"	"2012"	"499 grams or less"	"01"	16
+	"2012"	"2012"	"500 - 999 grams"	"02"	57
+	"2012"	"2012"	"1000 - 1499 grams"	"03"	69
+	"2012"	"2012"	"1500 - 1999 grams"	"04"	129
+	"2012"	"2012"	"2000 - 2499 grams"	"05"	386
+	"2012"	"2012"	"2500 - 2999 grams"	"06"	1301
+	"2012"	"2012"	"3000 - 3499 grams"	"07"	2491
+	"2012"	"2012"	"3500 - 3999 grams"	"08"	1771
+	"2012"	"2012"	"4000 - 4499 grams"	"09"	446
+	"2012"	"2012"	"4500 - 4999 grams"	"10"	71
+	"2012"	"2012"	"5000 - 8165 grams"	"11"	17
+	"2012"	"2012"	"Not stated"	"12"	Suppressed
+	"2013"	"2013"	"499 grams or less"	"01"	19
+	"2013"	"2013"	"500 - 999 grams"	"02"	54
+	"2013"	"2013"	"1000 - 1499 grams"	"03"	64
+	"2013"	"2013"	"1500 - 1999 grams"	"04"	145
+	"2013"	"2013"	"2000 - 2499 grams"	"05"	349
+	"2013"	"2013"	"2500 - 2999 grams"	"06"	1290
+	"2013"	"2013"	"3000 - 3499 grams"	"07"	2404
+	"2013"	"2013"	"3500 - 3999 grams"	"08"	1828
+	"2013"	"2013"	"4000 - 4499 grams"	"09"	510
+	"2013"	"2013"	"4500 - 4999 grams"	"10"	77
+	"2013"	"2013"	"5000 - 8165 grams"	"11"	Suppressed
+	"2013"	"2013"	"Not stated"	"12"	Suppressed
+	"2014"	"2014"	"499 grams or less"	"01"	15
+	"2014"	"2014"	"500 - 999 grams"	"02"	41
+	"2014"	"2014"	"1000 - 1499 grams"	"03"	48
+	"2014"	"2014"	"1500 - 1999 grams"	"04"	119
+	"2014"	"2014"	"2000 - 2499 grams"	"05"	374
+	"2014"	"2014"	"2500 - 2999 grams"	"06"	1236
+	"2014"	"2014"	"3000 - 3499 grams"	"07"	2491
+	"2014"	"2014"	"3500 - 3999 grams"	"08"	1715
+	"2014"	"2014"	"4000 - 4499 grams"	"09"	474
+	"2014"	"2014"	"4500 - 4999 grams"	"10"	65
+	"2014"	"2014"	"5000 - 8165 grams"	"11"	11
+	"2014"	"2014"	"Not stated"	"12"	Suppressed
+	"2015"	"2015"	"499 grams or less"	"01"	15
+	"2015"	"2015"	"500 - 999 grams"	"02"	49
+	"2015"	"2015"	"1000 - 1499 grams"	"03"	59
+	"2015"	"2015"	"1500 - 1999 grams"	"04"	133
+	"2015"	"2015"	"2000 - 2499 grams"	"05"	381
+	"2015"	"2015"	"2500 - 2999 grams"	"06"	1273
+	"2015"	"2015"	"3000 - 3499 grams"	"07"	2447
+	"2015"	"2015"	"3500 - 3999 grams"	"08"	1771
+	"2015"	"2015"	"4000 - 4499 grams"	"09"	452
+	"2015"	"2015"	"4500 - 4999 grams"	"10"	69
+	"2015"	"2015"	"5000 - 8165 grams"	"11"	Suppressed
+	"2015"	"2015"	"Not stated"	"12"	Suppressed
+	"2016"	"2016"	"499 grams or less"	"01"	12
+	"2016"	"2016"	"500 - 999 grams"	"02"	42
+	"2016"	"2016"	"1000 - 1499 grams"	"03"	51
+	"2016"	"2016"	"1500 - 1999 grams"	"04"	118
+	"2016"	"2016"	"2000 - 2499 grams"	"05"	403
+	"2016"	"2016"	"2500 - 2999 grams"	"06"	1282
+	"2016"	"2016"	"3000 - 3499 grams"	"07"	2526
+	"2016"	"2016"	"3500 - 3999 grams"	"08"	1701
+	"2016"	"2016"	"4000 - 4499 grams"	"09"	438
+	"2016"	"2016"	"4500 - 4999 grams"	"10"	49
+	"2016"	"2016"	"5000 - 8165 grams"	"11"	Suppressed
+	"2016"	"2016"	"Not stated"	"12"	Suppressed
+"---"
+"Dataset: Natality, 2007-2016"
+"Query Parameters:"
+"Title:"
+"Age of Mother 9: All"
+"Birthplace: All"
+"Birth Weight 12: All"
+"Bridged Race: All"
+"Chronic Hypertension: All"
+"Delivery Method: All"
+"Diabetes: All"
+"Eclampsia: All"
+"Education: All"
+"Expanded Hispanic Origin: All"
+"Gender: All"
+"Hispanic Origin: All"
+"Live Birth Order: All"
+"LMP Gestational Age 11: All"
+"Marital Status: All"
+"Medical Attendant: All"
+"Month: All"
+"Month Prenatal Care Began: All"
+"OE Gestational Age 11: All"
+"Plurality or Multiple Birth: All"
+"Pregnancy-associated Hypertension: All"
+"Single Race: All"
+"States: Montgomery County, OH (39113)"
+"Tobacco Use: All"
+"Weekday: All"
+"Year: All, 2007 to 2016"
+"Group By: Year, Birth Weight 12"
+"Show Totals: Disabled"
+"Show Zero Values: True"
+"Show Suppressed: True"
+"Calculate Rates Per: 1,000"
+"Population Option: No populations shown because rates were not selected."
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/Natality.html for more information."
+"---"
+"Query Date: May 1, 2018 12:09:47 AM"
+"---"
+"Suggested Citation: United States Department of Health and Human Services (US DHHS), Centers for Disease Control and Prevention"
+"(CDC), National Center for Health Statistics (NCHS), Division of Vital Statistics, Natality public-use data 2007-2016, on CDC"
+"WONDER Online Database, February 2018. Accessed at http://wonder.cdc.gov/natality-current.html on May 1, 2018 12:09:47 AM"
+"---"
+Messages:
+"1. Totals are not available for these results due to suppression constraints. More Information:"
+"http://wonder.cdc.gov/wonder/help/faq.html#Privacy."
+"---"
+Caveats:
+"1. 'Suppressed' appears when the data do not meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/Natality.html#Assurance of Confidentiality."
+"2. Each birth record represents one living baby."
+"3. For birth weight data shown in WONDER before May 8, 2015, 21 births that occurred in year 2011 were erroneously reported in"
+"the birth weight category 5000-8165 grams, instead of the ""Not stated"" birth weight category. These 21 births are now reported"
+"in ""Not stated"" birth weight category."

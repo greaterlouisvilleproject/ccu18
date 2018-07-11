@@ -1,0 +1,105 @@
+"Notes"	"Year"	"Year Code"	"Birth Weight 12"	"Birth Weight 12 Code"	Births
+	"2003"	"2003"	"499 grams or less"	"01"	21
+	"2003"	"2003"	"500 - 999 grams"	"02"	76
+	"2003"	"2003"	"1000 - 1499 grams"	"03"	70
+	"2003"	"2003"	"1500 - 1999 grams"	"04"	155
+	"2003"	"2003"	"2000 - 2499 grams"	"05"	519
+	"2003"	"2003"	"2500 - 2999 grams"	"06"	1793
+	"2003"	"2003"	"3000 - 3499 grams"	"07"	3802
+	"2003"	"2003"	"3500 - 3999 grams"	"08"	2813
+	"2003"	"2003"	"4000 - 4499 grams"	"09"	764
+	"2003"	"2003"	"4500 - 4999 grams"	"10"	106
+	"2003"	"2003"	"5000 - 8165 grams"	"11"	11
+	"2003"	"2003"	"Not stated"	"12"	13
+	"2004"	"2004"	"499 grams or less"	"01"	24
+	"2004"	"2004"	"500 - 999 grams"	"02"	82
+	"2004"	"2004"	"1000 - 1499 grams"	"03"	88
+	"2004"	"2004"	"1500 - 1999 grams"	"04"	173
+	"2004"	"2004"	"2000 - 2499 grams"	"05"	536
+	"2004"	"2004"	"2500 - 2999 grams"	"06"	1810
+	"2004"	"2004"	"3000 - 3499 grams"	"07"	3974
+	"2004"	"2004"	"3500 - 3999 grams"	"08"	2779
+	"2004"	"2004"	"4000 - 4499 grams"	"09"	711
+	"2004"	"2004"	"4500 - 4999 grams"	"10"	110
+	"2004"	"2004"	"5000 - 8165 grams"	"11"	18
+	"2004"	"2004"	"Not stated"	"12"	Suppressed
+	"2005"	"2005"	"499 grams or less"	"01"	17
+	"2005"	"2005"	"500 - 999 grams"	"02"	88
+	"2005"	"2005"	"1000 - 1499 grams"	"03"	87
+	"2005"	"2005"	"1500 - 1999 grams"	"04"	176
+	"2005"	"2005"	"2000 - 2499 grams"	"05"	564
+	"2005"	"2005"	"2500 - 2999 grams"	"06"	1842
+	"2005"	"2005"	"3000 - 3499 grams"	"07"	3991
+	"2005"	"2005"	"3500 - 3999 grams"	"08"	2760
+	"2005"	"2005"	"4000 - 4499 grams"	"09"	727
+	"2005"	"2005"	"4500 - 4999 grams"	"10"	99
+	"2005"	"2005"	"5000 - 8165 grams"	"11"	14
+	"2005"	"2005"	"Not stated"	"12"	Suppressed
+	"2006"	"2006"	"499 grams or less"	"01"	38
+	"2006"	"2006"	"500 - 999 grams"	"02"	58
+	"2006"	"2006"	"1000 - 1499 grams"	"03"	81
+	"2006"	"2006"	"1500 - 1999 grams"	"04"	167
+	"2006"	"2006"	"2000 - 2499 grams"	"05"	553
+	"2006"	"2006"	"2500 - 2999 grams"	"06"	1990
+	"2006"	"2006"	"3000 - 3499 grams"	"07"	4108
+	"2006"	"2006"	"3500 - 3999 grams"	"08"	2826
+	"2006"	"2006"	"4000 - 4499 grams"	"09"	758
+	"2006"	"2006"	"4500 - 4999 grams"	"10"	99
+	"2006"	"2006"	"5000 - 8165 grams"	"11"	12
+	"2006"	"2006"	"Not stated"	"12"	13
+"---"
+"Dataset: Natality, 2003-2006"
+"Query Parameters:"
+"Title:"
+"Age of Mother 9: All"
+"Anemia: All"
+"Birthplace: All"
+"Birth Weight 12: All"
+"Bridged Race: All"
+"Cardiac Disease: All"
+"Chronic Hypertension: All"
+"Delivery Method: All"
+"Diabetes: All"
+"Eclampsia: All"
+"Education: All"
+"Expanded Hispanic Origin: All"
+"Gender: All"
+"Hispanic Origin: All"
+"Hydramnios / Oligohydramnios: All"
+"Incompetent Cervix: All"
+"Live Birth Order: All"
+"LMP Gestational Age 11: All"
+"Lung Disease: All"
+"Marital Status: All"
+"Medical Attendant: All"
+"Month: All"
+"Month Prenatal Care Began: All"
+"Plurality or Multiple Birth: All"
+"Pregnancy-associated Hypertension: All"
+"States: Jackson County, MO (29095)"
+"Tobacco Use: All"
+"Weekday: All"
+"Year: All, 2003 to 2006"
+"Group By: Year, Birth Weight 12"
+"Show Totals: Disabled"
+"Show Zero Values: True"
+"Show Suppressed: True"
+"Calculate Rates Per: 1,000"
+"Population Option: No populations shown because rates were not selected."
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/Natality.html for more information."
+"---"
+"Query Date: Apr 30, 2018 11:57:14 PM"
+"---"
+"Suggested Citation: United States Department of Health and Human Services (US DHHS), Centers for Disease Control and Prevention"
+"(CDC), National Center for Health Statistics (NCHS), Division of Vital Statistics, Natality public-use data 2003-2006, on CDC"
+"WONDER Online Database, March 2009. Accessed at http://wonder.cdc.gov/natality-v2006.html on Apr 30, 2018 11:57:14 PM"
+"---"
+Messages:
+"1. Totals are not available for these results due to suppression constraints. More Information:"
+"http://wonder.cdc.gov/wonder/help/faq.html#Privacy."
+"---"
+Caveats:
+"1. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/Natality.html#Assurance of Confidentiality."
+"2. Each birth record represents one living baby."
