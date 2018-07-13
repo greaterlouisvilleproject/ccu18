@@ -1,0 +1,493 @@
+---
+title: "Quality of Place"
+---
+<div style="margin-top:50px;">
+</div>
+```{r "setup", include = FALSE}
+knitr::opts_knit$set(root.dir = "C:/Users/Harrison Kirby/Desktop/GLP/ccu18")
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.showtext=TRUE)
+```
+
+```{r libraries}
+#Data
+library(survey)
+library(tidyverse)
+library(magrittr)
+library(feather)
+library(labelled)
+
+#Graphing
+library(ggthemes)
+library(classInt)
+library(showtext)
+library(reshape2)
+library(plotly)
+library(wesanderson)
+library(kableExtra)
+library(scales)
+
+#Mapping
+library(rgdal)
+library(RColorBrewer)
+library(leaflet)
+
+#Make the dplyr select function the default over the plotly select function
+select <- function(...){dplyr::select(...)}
+```
+
+```{r functions}
+source('helper_functions.R')
+```
+
+```{r graphing}
+source('graphing_functions.R')
+
+font_add("Museo Sans 300", "MuseoSans_300.otf")
+font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
+
+#Tract Map
+map_jc = readOGR('data/maps/tract', layer = "JC Tracts",
+                 GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
+
+map_jc$TRACT <- as.numeric(map_jc$TRACT)
+
+nh_names <- read_csv('data/maps/tract_to_nh.csv')
+
+nh_names$Id2 <- substr(nh_names$Id2, 6, 13)
+nh_names$Id2 <- as.numeric(nh_names$Id2)
+
+map_jc@data <- full_join(map_jc@data, nh_names, by = c('TRACT' = 'Id2'))
+
+map_jc@data$l_line1 <- paste("Tract #:", map_jc@data$TRACT, "in the")
+map_jc@data$l_line2 <- paste(map_jc@data$Neighborhood, "neighborhood")
+
+rm(nh_names)
+
+#Zip Code map
+map_jc_zip = readOGR('data/maps/zip', layer = 'Jefferson_County_KY_ZIP_Codes',
+                     GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
+
+map_jc_zip$ZIPCODE <- as.numeric(map_jc_zip$ZIPCODE)
+
+map_jc_zip@data$l_line1 <- paste0("Zip Code ", map_jc_zip@data$ZIPCODE)
+```
+
+```{r Website / output toggle}
+web = TRUE
+```
+
+# Population in Core County
+```{r data26, eval=FALSE}
+#Read in data
+fips_core_county_pop <- read_csv("data/population_data_one_stl.csv")
+  
+#Create "key" for core FIPS county to MSA
+msa_fips_key <- read_csv("data/msa_to_fips.csv")
+
+msa_fips_key %<>% 
+  mutate(FIPS = as.character(FIPS)) %>%
+  pull_peers_FIPS()
+
+msa_fips_key$FIPS[msa_fips_key$MSA == 41180]<- "MERGED"
+
+#Add MSA code
+fips_core_county_pop %<>% left_join(msa_fips_key, by = "FIPS")
+fips_core_county_pop %<>% filter(year >= 2010)
+
+#Tidy MSA Population estimate Data
+msa_pop_est <- read_csv("data/qop/cbsa-est2016-alldata.csv", n_max = 1581)
+msa_pop_est %<>% filter(LSAD == "Metropolitan Statistical Area") %>%
+  mutate(MSA = CBSA) %>%
+  pull_peers_MSA() %>%
+  select(MSA, POPESTIMATE2010:POPESTIMATE2015) %>%
+  gather(POPESTIMATE2010:POPESTIMATE2015, key = 'year',value = population_estimate)
+
+msa_pop_est$year = substr(msa_pop_est$year, 12,15)
+msa_pop_est$year = as.numeric(msa_pop_est$year)
+
+#Combine datasets and create core county pct estimates
+fips_core_county_pop %<>% left_join(msa_pop_est, by = c("MSA", "year"))
+
+fips_core_county_pop %<>% 
+  mutate(pct_pop_core_county = 100 * population / population_estimate) %>%
+  rename(core_county_pop = population,
+         msa_population_estimate = population_estimate) %>%
+  select(FIPS, year, pct_pop_core_county)
+
+data %<>% bind_df(fips_core_county_pop)
+
+rm(fips_core_county_pop, msa_fips_key, msa_pop_est)
+```
+
+## Ranking
+![](qp_pct_pop_core_county.png)
+```{r graph26, eval = FALSE}
+rank_and_nb_group(data[data$year == 2015,],
+                  'pct_pop_core_county',
+                  plot_title = 'Percent of the population living in the Core County')
+```
+
+## Trendline
+![](pct_pop_living_in_core_county_trendline.png)
+```{r graph 26.1, eval = FALSE}
+graph_trendline(data,
+                'pct_pop_core_county',
+                plot_title = 'Percent of the population living in the Core County',
+                xmin = 2010,
+                xmax = 2015)
+```
+
+# Homeownership
+```{r data22}
+tenure <- acs_time('/data/qop/B25003/')
+
+tenure %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership', 'total')
+
+data <- tenure
+
+data %<>% pull_peers_FIPS() %>% select(FIPS, city, year, current, baseline, everything())
+
+rm(tenure)
+```
+
+## Ranking
+```{r graph22}
+rank_and_nb_group(data[data$year == 2016,],
+                  'homeownership', 
+                  plot_title = 'Homeownership, 2016')
+```
+
+## Trendline {.tabset}
+
+### Overall
+```{r graph 23.1}
+graph_trendline(data,
+                'homeownership',
+                'Homeownership')
+```
+
+### By Ethnicity
+```{r data23}
+tenure_white <- acs_time('/data/qop/B25003H/')
+
+tenure_white %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership_white = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership_white', 'total')
+
+tenure_black <- acs_time('/data/qop/B25003B/')
+
+tenure_black %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership_black = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership_black', 'total')
+
+tenure_hisp <- acs_time('/data/qop/B25003I/')
+
+tenure_hisp %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership_hispanic = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership_hispanic', 'total')
+
+data %<>% bind_df(tenure_white, tenure_black, tenure_hisp)
+
+data %<>% mutate(homeownership_gap_black = homeownership_white - homeownership_black)
+                  
+rm(tenure_white, tenure_black, tenure_hisp)
+```
+
+```{r graph23}
+graph_df <- data %>%
+  filter(FIPS == 21111)%>%
+  select(year, homeownership_white, homeownership_black, homeownership_hispanic)%>%
+  mutate_at(c('homeownership_white', 'homeownership_black', 'homeownership_hispanic'), rollmean3) %>%
+  gather(homeownership_white:homeownership_hispanic, 
+         key = "var", value = "value")%>%
+  arrange(var)
+
+graph_df$var <- factor(graph_df$var, levels = unique(graph_df$var))
+
+graph_trendline_race(
+  graph_df,
+  xmin = 2006,
+  xmax = 2015,
+  plot_title = "Homeownership by Ethnicity",
+  subtitle_text = '3-year rolling average',
+  labels = c("African American", "Hispanic", "White"),
+  y_title = "Percent",
+  color_pal = wes_palette("Moonrise2"))
+```
+
+### Gap
+```{r graph 23.2}
+graph_trendline(data, 
+                'homeownership_gap_black', 
+                plot_title = 'Homeownership Gap: Black and White Residents',
+                rollmean = 3)
+```
+
+## Map {.tabset}
+```{r data24}
+tenure_map <- read_csv('data/qop/ACS_16_5YR_B25003_with_ann.csv', skip = 1)
+
+tenure_map %<>%
+  mutate(
+    homeownership = `Estimate; Total: - Owner occupied` / `Estimate; Total:` * 100) %>%
+  select(Id, homeownership)
+
+
+burdened_map <- read_csv('data/qop/ACS_16_5YR_B25106_with_ann.csv', skip = 1)
+
+burdened_map %<>%
+  mutate(
+    burdened = 
+      (`Estimate; Owner-occupied housing units: - Less than $20,000: - 30 percent or more` + 
+      `Estimate; Owner-occupied housing units: - $20,000 to $34,999: - 30 percent or more` +
+      `Estimate; Owner-occupied housing units: - $35,000 to $49,999: - 30 percent or more` +       
+      `Estimate; Owner-occupied housing units: - $50,000 to $74,999: - 30 percent or more` +       
+      `Estimate; Owner-occupied housing units: - $75,000 or more: - 30 percent or more` +
+      `Estimate; Owner-occupied housing units: - Zero or negative income` +
+      `Estimate; Renter-occupied housing units: - Less than $20,000: - 30 percent or more` +        
+      `Estimate; Renter-occupied housing units: - $20,000 to $34,999: - 30 percent or more` +     
+      `Estimate; Renter-occupied housing units: - $35,000 to $49,999: - 30 percent or more` +   
+      `Estimate; Renter-occupied housing units: - $50,000 to $74,999: - 30 percent or more` +    
+      `Estimate; Renter-occupied housing units: - $75,000 or more: - 30 percent or more` +
+      `Estimate; Renter-occupied housing units: - Zero or negative income`)
+      / `Estimate; Total:` * 100) %>%
+  select(Id, burdened)
+
+map_data %<>% full_join(tenure_map)
+map_data %<>% full_join(burdened_map)
+```
+
+### Homeownership
+```{r graph24}
+map_jc@data <- full_join(map_jc@data, tenure_map, by = c('GEO_ID' = 'Id'))
+map_jc@data <- full_join(map_jc@data, burdened_map, by = c('GEO_ID' = 'Id'))
+```
+```{r graph24.1}
+make_map("homeownership", 
+         name = "Homeownership",
+         legend_title = "Homeownership",
+         units = "Percent")
+```
+
+### Burdened Households
+```{r graph24.2}
+make_map("burdened", 
+         name = "Burdened Households",
+         legend_title = "Burdened Households",
+         units = "Percent")
+
+rm(tenure_map, burdened_map)
+```
+
+# Change in Home Values by Zip {.tabset}
+```{r data25, warning=TRUE}
+map_data %<>% mutate(tract = str_sub(Id, start = 10))
+
+HPI <- read_feather('data/qop/HPI_AT_BDL_ZIP5.feather')
+
+HPI %<>%
+  rename(
+    zip = `Five-Digit ZIP Code`,
+    year = Year,
+    annual_change = `Annual Change (%)`) %>%
+  mutate(
+    zip = as.numeric(zip),
+    annual_change = replace(annual_change, annual_change == '.', NA),
+    annual_change = as.numeric(annual_change)) %>%
+  select(zip, year, annual_change) %>%
+  group_by(zip) %>%
+  mutate(avg_change = mean(annual_change, na.rm = TRUE),
+         avg_change5 = rollmean5(annual_change)) %>%
+  filter(year > 1999) %>%
+  mutate(avg_change_2000 = mean(annual_change, na.rm = TRUE)) %>%
+  ungroup()
+
+HPI_2015 <- HPI %>% filter(year == 2015) %>% select(zip, avg_change5)
+HPI_2017 <- HPI %>% filter(year == 2017) %>% select(zip, annual_change, avg_change_2000)
+
+map_jc_zip@data %<>% left_join(HPI_2015, by = c('ZIPCODE' = 'zip'))
+map_jc_zip@data %<>% left_join(HPI_2017, by = c('ZIPCODE' = 'zip'))
+
+rm(HPI, HPI_2015, HPI_2017)
+```
+
+## 2000 to 2017
+```{r graph25.3}
+make_map_zip("avg_change_2000", 
+             name = "Average Home Price Increase",
+             legend_title = "Average<br>Home Price<br>Increase",
+             units = "Percent")
+```
+
+## 2013 to 2017
+```{r graph25.2}
+make_map_zip("avg_change5", 
+             name = "Average Home Price Increase",
+             legend_title = "Average<br>Home Price<br>Increase",
+             units = "Percent")
+```
+
+## 2017
+```{r graph25.1}
+make_map_zip("annual_change", 
+             name = "Average Home Price Increase",
+             legend_title = "Average<br>Home Price<br>Increase",
+             units = "Percent")
+```
+
+```{r data27}
+
+```
+
+```{r graph27}
+
+```
+
+# Segregation
+```{r data28}
+seg_data <- read_csv('data/qop/ACS_16_5YR_B03002_with_ann.csv', skip = 1)
+
+seg_data %<>%
+  transmute(
+    total = `Estimate; Total:`,
+    
+    pct_of_all_residents = total / sum(total) * 100,
+    
+    pct_black_tract = `Estimate; Not Hispanic or Latino: - Black or African American alone` / total * 100,
+    
+    pct_of_all_black_residents = 
+      `Estimate; Not Hispanic or Latino: - Black or African American alone` / 
+      sum(`Estimate; Not Hispanic or Latino: - Black or African American alone`) * 100) %>%
+  mutate(
+    pct_of_all_residents = round(pct_of_all_residents, 1),
+    pct_black_tract = round(pct_black_tract, 1),
+    pct_of_all_black_residents = round(pct_of_all_black_residents, 1)) %>%
+  arrange(desc(pct_of_all_black_residents))
+
+seg_data$cumulative_pct_black_residents <- cumsum(seg_data$pct_of_all_black_residents)
+seg_data$cumuative_pct_all_residents <- cumsum(seg_data$pct_of_all_residents)
+
+seg_data %<>%
+  transmute(
+    `Percent of City in Tract` = pct_of_all_residents,
+    `Percent of Black Residents in Tract` = pct_of_all_black_residents,
+    `Percent of Tract that is Black` = pct_black_tract,
+    `Cumulative % of Black Residents` = cumulative_pct_black_residents,
+    `Cumulative % of All Residents` = cumuative_pct_all_residents)
+```
+
+Numbers do not add to 100% due to rounding.
+```{r graph28}
+kable(seg_data) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%", height = "500px")
+```
+
+
+# Disconnected Youth
+```{r data30.1, eval = FALSE}
+acs <- read_csv('data/qop/disconnected.csv')
+
+acs$FIPS <- NA
+
+#PUMAs from 2005-2011
+acs$FIPS[acs$STATEFIP == 1 & (acs$YEAR < 2012 & acs$PUMA %in% c(901, 905, 902, 903, 904))] <- 1073
+acs$FIPS[acs$STATEFIP == 12 & (acs$YEAR < 2012 & acs$PUMA %in% c(1106, 1105, 1103, 1104, 1102, 1107))] <- 12031
+acs$FIPS[acs$STATEFIP == 18 & (acs$YEAR < 2012 & acs$PUMA %in% c(2303, 2302, 2301, 2307, 2306, 2304, 2305))] <- 18097
+acs$FIPS[acs$STATEFIP == 21 & (acs$YEAR < 2012 & acs$PUMA %in% c(1702, 1704, 1705, 1701, 1703))] <- 21111
+acs$FIPS[acs$STATEFIP == 26 & (acs$YEAR < 2012 & acs$PUMA %in% c(1402, 1403, 1401, 1300))] <- 26081
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR < 2012 & acs$PUMA %in% c(1004, 1002, 1100, 1003, 902, 901))] <- 29095
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR < 2012 & acs$PUMA %in% c(1704, 1706, 1703, 1705, 1708, 1701, 1702, 1707))] <- 29189
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR < 2012 & acs$PUMA %in% c(1802, 1801, 1803))] <- 29510
+acs$FIPS[acs$STATEFIP == 31 & (acs$YEAR < 2012 & acs$PUMA %in% c(903, 904, 902, 901))] <- 31055
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR < 2012 & acs$PUMA %in% c(1601, 1602, 1700))] <- 37081
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR < 2012 & acs$PUMA %in% c(901, 904, 902, 903, 905, 1000))] <- 37119
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR < 2012 & acs$PUMA %in% c(2701, 2703, 2702, 2602, 2601))] <- 37183
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR < 2012 & acs$PUMA %in% c(3107, 3101, 3103, 3109, 3106, 3108, 3102, 3104, 3105))] <- 39049
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR < 2012 & acs$PUMA %in% c(4503, 4502, 4401, 4404, 4501, 4403, 4402))] <- 39061
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR < 2012 & acs$PUMA %in% c(4102, 4101, 4103, 4000))] <- 39113
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR < 2012 & acs$PUMA %in% c(1400, 1302, 1301))] <- 40109
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR < 2012 & acs$PUMA %in% c(1200, 1100))] <- 40143
+acs$FIPS[acs$STATEFIP == 45 & (acs$YEAR < 2012 & acs$PUMA %in% c(202, 201))] <- 45045
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR < 2012 & acs$PUMA %in% c(2202, 2205, 2204, 2201, 2203))] <- 47037
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR < 2012 & acs$PUMA %in% c(1400, 1301))] <- 47093
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR < 2012 & acs$PUMA %in% c(3202, 3105, 3104, 3103, 3102, 3201, 3101))] <- 47157
+acs$FIPS[acs$STATEFIP == 51 & (acs$YEAR < 2012 & acs$PUMA %in% c(1200))] <- 51760
+
+#PUMAs from 2012 and after
+acs$FIPS[acs$STATEFIP == 1 & (acs$YEAR > 2011 & acs$PUMA %in% c(1301, 1302, 1303, 1304, 1305))] <- 1073
+acs$FIPS[acs$STATEFIP == 12 & (acs$YEAR > 2011 & acs$PUMA %in% c(3101, 3102, 3103, 3104, 3105, 3106, 3107))] <- 12031
+acs$FIPS[acs$STATEFIP == 18 & (acs$YEAR > 2011 & acs$PUMA %in% c(2301, 2302, 2303, 2304, 2305, 2306, 2307))] <- 18097
+acs$FIPS[acs$STATEFIP == 21 & (acs$YEAR > 2011 & acs$PUMA %in% c(1701, 1702, 1703, 1704, 1705, 1706))] <- 21111
+acs$FIPS[acs$STATEFIP == 26 & (acs$YEAR > 2011 & acs$PUMA %in% c(1001, 1002, 1003, 1004))] <- 26081
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR > 2011 & acs$PUMA %in% c(1001, 1002, 1003, 1004, 1005))] <- 29095
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR > 2011 & acs$PUMA %in% c(1801, 1802, 1803, 1804, 1805, 1806, 1807, 1808))] <- 29189
+acs$FIPS[acs$STATEFIP == 29 & (acs$YEAR > 2011 & acs$PUMA %in% c(1901, 1902))] <- 29510
+acs$FIPS[acs$STATEFIP == 31 & (acs$YEAR > 2011 & acs$PUMA %in% c(901, 902, 903, 904))] <- 31055
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR > 2011 & acs$PUMA %in% c(1701, 1702, 1703, 1704))] <- 37081
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR > 2011 & acs$PUMA %in% c(3101, 3102, 3103, 3104, 3105, 3106, 3107, 3108))] <- 37119
+acs$FIPS[acs$STATEFIP == 37 & (acs$YEAR > 2011 & acs$PUMA %in% c(1201, 1202, 1203, 1204, 1205, 1206, 1207, 1208))] <- 37183
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR > 2011 & acs$PUMA %in% c(4101, 4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109, 4110, 4111))] <- 39049
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR > 2011 & acs$PUMA %in% c(5501, 5502, 5503, 5504, 5505, 5506, 5507))] <- 39061
+acs$FIPS[acs$STATEFIP == 39 & (acs$YEAR > 2011 & acs$PUMA %in% c(4601, 4602, 4603, 4604))] <- 39113
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR > 2011 & acs$PUMA %in% c(1001, 1002, 1003, 1004, 1005, 1006))] <- 40109
+acs$FIPS[acs$STATEFIP == 40 & (acs$YEAR > 2011 & acs$PUMA %in% c(1201, 1202, 1203))] <- 40143
+acs$FIPS[acs$STATEFIP == 45 & (acs$YEAR > 2011 & acs$PUMA %in% c(102, 103, 104, 105))] <- 45045
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR > 2011 & acs$PUMA %in% c(2501, 2502, 2503, 2504, 2505))] <- 47037
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR > 2011 & acs$PUMA %in% c(1602, 1603, 1604))] <- 47093
+acs$FIPS[acs$STATEFIP == 47 & (acs$YEAR > 2011 & acs$PUMA %in% c(3201, 3202, 3203, 3204, 3205, 3206, 3207, 3208))] <- 47157
+acs$FIPS[acs$STATEFIP == 51 & (acs$YEAR > 2011 & acs$PUMA %in% c(51235))] <- 51760
+
+acs$FIPS[acs$FIPS == 29189] = 'MERGED'
+acs$FIPS[acs$FIPS == 29510] = 'MERGED'
+
+acs <- pull_peers_FIPS(acs)
+acs <- acs %>% filter(GQ == 1 | GQ == 2)
+
+write_feather(acs, 'disconnected.feather')
+```
+
+```{r data 30.2}
+disconnected <- read_feather('data/qop/disconnected.feather')
+
+disconnected %<>%
+  filter(AGE < 25 & AGE > 15) %>%
+  mutate(
+    in_school = if_else(SCHOOL == 2, 1, 0),
+    in_school = replace(in_school, SCHOOL == 0 | SCHOOL == 9, NA),
+    working = if_else(EMPSTAT == 1, 1, 0),
+    working = replace(working, EMPSTAT == 0, NA),
+    disconnected_youth = if_else(in_school == 0 & working == 0, 1, 0),
+    race = if_else(RACE == 1 & HISPAN == 0, 1, 0))
+
+disconnected_svy <- svydesign(ids = ~1, weights = ~PERWT, data = disconnected)
+
+discon_youth <- svyby(~disconnected_youth, ~FIPS+YEAR, design = disconnected_svy, svymean, na.rm = TRUE) %>% 
+  rename(year = YEAR) %>%
+  mutate(disconnected_youth = disconnected_youth * 100) %>%
+  select(-se)
+
+data %<>% bind_df(discon_youth)
+
+rm(disconnected, disconnected_svy)
+```
+
+Disconnected youth are ages 16 to 24 and are not working or in school.
+
+```{r graph30}
+graph_trendline(data,
+                'disconnected_youth',
+                'Disconnected Youth',
+                rollmean = 3)
+```
+

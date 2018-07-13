@@ -1,8 +1,18 @@
 name: "ccu18_draft"
 output_dir: "."
+navbar:
+  title: "Competitive Cities Update 2018"
+  left:
+    - text: "Education"
+      href: index.html
+    - text: "Jobs"
+      href: jobs.html
+    - text: "Health"
+      href: health.html
+    - text: "Quality of Place"
+      href: qop.html
 output:
   html_document:
-    theme: yeti
+    theme: paper
     toc: true
-    toc_depth: 2
     toc_float: true
