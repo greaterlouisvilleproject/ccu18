@@ -650,16 +650,3 @@ graph_trendline(data,
                 'out_bach_plus')
 ```
 
-## Inmigration and Outmigration
-Inmigration and Outmigration are NOT currently adjusted for population size. I will adjust those numbers to percents to make this graph peer city comparable. I included it now to get a sense of inmigration and outmigration.
-```{r graph29.3}
-data$out_bach_plus = data$out_bach_plus * -1
-
-graph_trendline_mig(data, 
-                          vars = c('net_bach_plus', 'in_bach_plus', 'out_bach_plus'),
-                          plot_title = 'Bachelor Degree Migration',
-                          xmin = 2007,
-                y_title = "Residents")                     
-
-```
-
