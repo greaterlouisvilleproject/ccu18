@@ -240,7 +240,6 @@ graph_trendline_race(
   color_pal = wes_palette("Moonrise2"))
 ```
 
-
 ```{r graph 10.3}
 graph_trendline_race_peer(data, 
                           vars = c('median_earnings_white', 'median_earnings_black', 'median_earnings_hispanic'),
@@ -276,9 +275,18 @@ high_wage <- read_csv('C:/Users/Harrison Kirby/Desktop/GLP/glp_website/output da
 ```
 
 ```{r graph12}
+rank_and_nb_group(high_wage,
+                  'per_high_wage',
+                  plot_title = 'High Wage Occupations')
+
+graph_trendline(high_wage,
+                'per_high_wage',
+                plot_title = 'High Wage Occupations',
+                rollmean = 3)
+
 graph_trendline_change(high_wage,
                  'per_high_wage',
-                 plot_title = 'Percentage of High Wage Jobs')
+                 plot_title = 'High Wage Occupations')
 ```
 
 
@@ -292,13 +300,13 @@ data %<>%
 ```{r graph13}
 graph_trendline(data,
                 'earnings_gap_black',
-                plot_title = 'Earnings Gap Between Black and White Residents',
+                plot_title = 'Earnings Gap: Black and White Residents',
                 y_title = "Dollars",
                 rollmean = 5)
 
 graph_trendline(data,
                 'earnings_gap_hispanic',
-                plot_title = 'Earnings Gap Between Hispanic and White Residents',
+                plot_title = 'Earnings Gap: Hispanic and White Residents',
                 y_title = "Dollars",
                 rollmean = 5)
 ```
@@ -626,8 +634,15 @@ rm(inflow, outflow, migration)
 
 ```{r graph29.5}
 graph_trendline(data,
-                'net_bach_plus',
-                plot_title = 'Net Migration: Bachelor Degree or Higher',
+                'net_bach',
+                plot_title = 'Net Migration: Bachelor Degree Holders',
+                xmin = 2007,
+                rollmean = 3,
+                y_title = "Residents")
+
+graph_trendline(data,
+                'net_grad',
+                plot_title = 'Net Migration: Graduate Degree Holders',
                 xmin = 2007,
                 rollmean = 3,
                 y_title = "Residents")

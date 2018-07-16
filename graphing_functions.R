@@ -183,7 +183,7 @@ graph_trendline<-function(df,var, plot_title="",y_title="Percent", peers = "Curr
     
     dat <- dat %>% filter((year < xmax))
     xmax = xmax -1
-    subtitle_text = "3-year rolling average"
+    subtitle_text = paste0(subtitle_text, "3-year rolling average")
   }
   if (rollmean == 5){
     dat$var = rollmean5(dat$var)
@@ -193,7 +193,7 @@ graph_trendline<-function(df,var, plot_title="",y_title="Percent", peers = "Curr
     dat = dat %>% filter((year > xmin+1) & (year < xmax-1))
     xmin = xmin + 2
     xmax = xmax - 2
-    subtitle_text = "5-year rolling average"
+    subtitle_text = paste0(subtitle_text, "5-year rolling average")
   }
   
   if(xmin == 2000 & rollmean == 3){
@@ -530,6 +530,177 @@ graph_trendline_race_peer<-function(df,vars, plot_title="",y_title="Percent", pe
   p <- p + geom_polygon(data = positions, 
                         aes(x = x, y = y, group = race, fill = factor(race), color = factor(race)), 
                         col = NA, alpha = 0.3)
+  
+  #p <- p + scale_fill_manual(values = c('#7fc97f', '#beaed4', '#fdc086'))
+  
+  p <- p + guides(linetype = FALSE, color = FALSE, alpha = FALSE)
+  
+  p
+}
+
+graph_trendline_race_peer_two<-function(df,vars, plot_title="",y_title="Percent", peers = "Current", 
+                                    caption_text = "", subtitle_text = "",
+                                    rollmean = 1, xmin = 2005, xmax = 2016,
+                                    break_settings = ""){
+  
+  #create a new variable to use var with the '$' operator
+  df$var_white <- df[[vars[1]]]
+  df$var_black <- df[[vars[2]]]
+  
+  #if(is.na(df$var[df$year == 2016 & df$city == "Louisville"]))  xmax = 2015
+  
+  #subset to peers and remove Louisville
+  if(peers=="Current"){
+    df.wol <- subset(df,current == 1 & FIPS!=21111)
+  }
+  
+  if(peers=="Baseline"){
+    df.wol <- subset(df,baseline == 1 & FIPS!=21111)
+  }
+  
+  #calculate 25th and 75th percentiles
+  output_wol = df %>% 
+    group_by(year) %>%
+    summarise(
+      white_q1   = quantile(var_white, prob = 0.25, na.rm = TRUE),
+      white_mean = mean(var_white, na.rm = TRUE),
+      white_q3   = quantile(var_white, prob = 0.75, na.rm = TRUE),
+      black_q1   = quantile(var_black, prob = 0.25, na.rm = TRUE),
+      black_mean = mean(var_black, na.rm = TRUE),
+      black_q3    = quantile(var_black, prob = 0.75, na.rm = TRUE))
+  
+  #extract Louisville values
+  lville = df %>% 
+    filter(FIPS == 21111) %>% 
+    select(var_white, var_black, year)
+  
+  #join 25th percentile, 75th percentile, and Louisville values
+  dat = full_join(lville, output_wol, by = "year")
+  
+  if(xmin == 2000 & rollmean == 3){
+    var_2000 <- dat$var[dat$year == 2000]
+    first_quarter_2000 <- dat$first_quarter[dat$year == 2000]
+    mean_2000 <- dat$mean[dat$year == 2000]
+    third_quarter_2000 <- dat$third_quarter[dat$year == 2000]
+  }
+  
+  #Calculate 3- or 5-year rolling average
+  if (rollmean == 3){
+    dat <- dat %>%
+      mutate_at(vars(var_white, var_black,
+                     white_q1, white_mean, white_q3,
+                     black_q1, black_mean, black_q3), rollmean3)
+    if(xmin != 2000){
+      dat <- dat %>% filter((year > xmin))
+      xmin = xmin +1
+    }
+    
+    dat <- dat %>% filter((year < xmax))
+    xmax = xmax -1
+    subtitle_text = "3-year rolling average"
+  }
+  if (rollmean == 5){
+    dat <- dat %>%
+      mutate_at(vars(var_white, var_black,
+                     white_q1, white_mean, white_q3,
+                     black_q1, black_mean, black_q3), rollmean5)
+    dat = dat %>% filter((year > xmin+1) & (year < xmax-1))
+    xmin = xmin + 2
+    xmax = xmax - 2
+    subtitle_text = "5-year rolling average"
+  }
+  
+  if(xmin == 2000 & rollmean == 3){
+    dat$var[dat$year == 2000] <- var_2000
+    dat$first_quarter[dat$year == 2000] <- first_quarter_2000
+    dat$mean[dat$year == 2000] <- mean_2000
+    dat$third_quarter[dat$year == 2000] <- third_quarter_2000
+  }
+  
+  #set x-axis labels based on break_settings parameter
+  if(break_settings == ""){
+    if(xmax - xmin > 5) {skip = 2}
+    else {skip = 1}
+    if((xmax - xmin) %% 2 == 0 || skip == 1){
+      break_settings = seq(xmin, xmax, skip)
+    } 
+    else{
+      break_settings = seq(xmin + 1, xmax, skip)
+    }
+  }
+  
+  #reshape data
+  data_long <- melt(dat, id="year")
+  data_long <- data_long[!is.na(data_long$value),]
+  
+  data_long$race[data_long$variable %in% c('var_white', 'white_q1', 'white_mean', 'white_q3')] <- "White"
+  data_long$race[data_long$variable %in% c('var_black', 'black_q1', 'black_mean', 'black_q3')] <- "African American"
+  
+  #initial line plot
+  p <- ggplot(data=data_long,aes(x=year, y=value, color = variable, linetype = variable, alpha = variable))+
+    geom_point(size = 1.8)+
+    geom_line(size = 1, aes(group = variable))
+  p <- p + theme_bw()
+  midpoint <- (max(data_long$value, na.rm = TRUE)+min(data_long$value, na.rm = TRUE))/2
+  border_space <- .1 * midpoint
+  p <- p + ylim(c(min(data_long$value, na.rm = TRUE) - border_space, max(data_long$value, na.rm=TRUE) + border_space))
+  p<-p+scale_x_continuous(limits = c(xmin, xmax), breaks = break_settings)
+  p<-p+scale_y_continuous(labels = comma)
+  
+  #var_white var_black var_hisp white_q1 white_mean white_q3 black_q1 black_mean blackq3 hisp_q1 hisp_mean hisp_q3
+  
+  #add color and line types
+  cPalette <- c('blue', 'red',
+                "black", "blue", "black",
+                "black", "red", "black")
+  p <- p + 
+    scale_colour_manual(
+      values = cPalette)
+  
+  p <- p + scale_linetype_manual(
+    values = c("solid", "solid",
+               "dashed", "dashed", "dashed",
+               "dashed", "dashed", "dashed"))
+  
+  p <- p + scale_alpha_manual(
+    values = c(1, 1, .2, .8, .2,
+               .2, .8, .2))
+  
+  #add remaining style and elements
+  p<-p+theme(text = element_text(family = "Museo Sans 300"),
+             legend.title=element_blank(),
+             legend.position = "top",
+             axis.text=element_text(size=24, family = "Museo Sans 300"),
+             axis.title = element_text(size = 24),
+             axis.ticks.y=element_blank(),
+             plot.title=element_text(size=36, hjust=.5, family = "Museo Sans 300",
+                                     margin=margin(b=10,unit="pt")),
+             legend.text=element_text(size=24, family = "Museo Sans 300"),
+             plot.caption = element_text(family = "Museo Sans 300"),
+             plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 20))
+  p<-p+labs(title=plot_title,x="Year",
+            y=y_title, caption = caption_text, subtitle = subtitle_text)
+  
+  ribbon_dat <- data_long %>% 
+    filter(variable %in% c('white_q1', 'black_q1', 'white_q3', 'black_q3'))
+  
+  positions <- data.frame(
+    variable = ribbon_dat$variable,
+    race = ribbon_dat$race,
+    x  = ribbon_dat$year,
+    y  = ribbon_dat$value)
+  
+  positions <- positions %>% 
+  {
+    x <- .
+    bind_rows(
+      x %>% filter(variable %in% c('white_q1', 'black_q1')),
+      x %>% filter(variable %in% c('white_q3', 'black_q3')) %>% arrange(desc(x)))
+  }
+  
+  p <- p + geom_polygon(data = positions, 
+                        aes(x = x, y = y, group = race, fill = factor(race), color = factor(race)), 
+                        col = NA, alpha = 0.2)
   
   #p <- p + scale_fill_manual(values = c('#7fc97f', '#beaed4', '#fdc086'))
   

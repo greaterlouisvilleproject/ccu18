@@ -170,7 +170,7 @@ rank_and_nb_group(data[data$year == 2016,],
 ```
 
 ## Trendline {.tabset}
-```{r data2, fig.width = 10}
+```{r data2}
 #White
 degree_white_05 <- acs_time("/data/education/B15002H/Y05/", starting_year = 2005)
 degree_white_08 <- acs_time("/data/education/B15002H/Y08/", starting_year = 2008)
@@ -354,12 +354,34 @@ graph_trendline_race(
   color_pal = wes_palette("Moonrise2"))
 ```
 
-```{r graph2.3, eval = FALSE}
+### Gap
+```{r graph2.3}
+data %<>%
+  mutate(bach_plus_per_gap = bach_plus_per_white - bach_plus_per_black)
+
+graph_trendline(data,
+                'bach_plus_per_gap',
+                'Bachelor Degree Gap: White and Black Residents',
+                subtitle_text = 'Ages 25-64, ',
+                rollmean = 3,
+                y_title = "Percentage Points")
+
+```
+
+```{r graph2.4}
 graph_trendline_race_peer(data, 
                           vars = c('bach_plus_per_white', 'bach_plus_per_black', 'bach_plus_per_hispanic'),
                           plot_title = 'Bachelor Degrees by Ethnicity',
                           subtitle_text = 'Ages 25-64',
                           rollmean = 5)
+
+graph_trendline_race_peer_two(data, 
+                          vars = c('bach_plus_per_white', 'bach_plus_per_black'),
+                          plot_title = 'Bachelor Degrees by Ethnicity',
+                          subtitle_text = 'Ages 25-64',
+                          rollmean = 5)
+
+
 ```
 
 ## Map
@@ -519,12 +541,27 @@ graph_trendline_race(
   color_pal = wes_palette("Moonrise2"))
 ```
 
+### Gap
+```{r graph6.3}
+data %<>%
+  mutate(assoc_plus_per_gap = assoc_plus_per_white - assoc_plus_per_black)
 
-# Young Adult degrees
-<div style="margin-top:10px;">
-</div>
+graph_trendline(data,
+                'assoc_plus_per_gap',
+                'Associate Degree Gap: White and Black Residents',
+                subtitle_text = 'Ages 25-64, ',
+                rollmean = 3,
+                y_title = "Percentage Points")
+```
+
+# Young Adult Degrees
+
 ## Bachelor Degrees
 ```{r graph7.1}
+rank_and_nb_group(data[data$year == 2016,],
+                  'per_25_34_bach_plus',
+                  plot_title = 'Bachelor Degrees or Higher, Ages 25-34')
+                  
 graph_trendline(data,
                 'per_25_34_bach_plus',
                 plot_title = 'Bachelor Degrees or Higher, Ages 25-34, 2016',
@@ -533,6 +570,11 @@ graph_trendline(data,
 
 ## Associate Degrees
 ```{r graph7.2}
+rank_and_nb_group(data[data$year == 2016,],
+                  'per_25_34_assoc_plus',
+                  plot_title = 'Associate Degrees or Higher, Ages 25-34')
+                  
+
 graph_trendline(data,
                 'per_25_34_assoc_plus',
                 plot_title = 'Associate Degrees or Higher, Ages 25-34, 2016',
