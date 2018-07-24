@@ -21,7 +21,7 @@ library(ggthemes)
 library(classInt)
 library(showtext)
 library(reshape2)
-library(plotly)
+library(rbokeh)
 library(wesanderson)
 library(kableExtra)
 library(scales)
@@ -240,8 +240,12 @@ graph_trendline_race(
   color_pal = wes_palette("Moonrise2"))
 ```
 
-```{r graph 10.3}
-graph_trendline_race_peer(data, 
+
+```{r graph 10.3, eval = FALSE}
+
+source('graphing_functions.R')
+
+graph_trendline_race_peer_test(data, 
                           vars = c('median_earnings_white', 'median_earnings_black', 'median_earnings_hispanic'),
                           plot_title = 'Median Earnings by Ethnicity',
                           rollmean = 3,
@@ -274,7 +278,7 @@ rm(earn_map)
 high_wage <- read_csv('C:/Users/Harrison Kirby/Desktop/GLP/glp_website/output data/education_data_fips.csv')
 ```
 
-```{r graph12}
+```{r graph12, eval = FALSE}
 rank_and_nb_group(high_wage,
                   'per_high_wage',
                   plot_title = 'High Wage Occupations')
@@ -635,7 +639,7 @@ rm(inflow, outflow, migration)
 ```{r graph29.5}
 graph_trendline(data,
                 'net_bach',
-                plot_title = 'Net Migration: Bachelor Degree Holders',
+                plot_title = 'Net Migration: Graduate Degree Holders',
                 xmin = 2007,
                 rollmean = 3,
                 y_title = "Residents")
@@ -658,8 +662,8 @@ graph_trendline(data,
 ```
 
 ```{r graph29.2, eval = FALSE}
-graph_trendline(data,
-                'in_bach')
+graph_trendline_race_peer(data,
+                          'in_bach')
 
 graph_trendline(data,
                 'out_bach_plus')

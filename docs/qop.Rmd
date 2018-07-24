@@ -21,7 +21,7 @@ library(ggthemes)
 library(classInt)
 library(showtext)
 library(reshape2)
-library(plotly)
+library(rbokeh)
 library(wesanderson)
 library(kableExtra)
 library(scales)
@@ -391,6 +391,30 @@ Numbers do not add to 100% due to rounding.
 kable(seg_data) %>%
   kable_styling() %>%
   scroll_box(width = "100%", height = "500px")
+```
+
+# Commute Time
+```{r data31}
+commute_time <- read_csv('data/qop/ACS_16_5YR_B08013_with_ann.csv', skip = 1)
+
+commute_num <- read_csv('data/qop/ACS_16_5YR_B08012_with_ann.csv', skip = 1)
+
+commute <- full_join(commute_time, commute_num)
+
+commute %<>%
+    mutate(time = as.numeric(`Estimate; Aggregate travel time to work (in minutes):`),
+           number = `Estimate; Total:`,
+           commute = time / number) %>%
+  select(Id, commute)
+```
+
+```{r graph31}
+map_jc@data <- full_join(map_jc@data, commute, by = c('GEO_ID' = 'Id'))
+
+make_map("commute", 
+         name = "Commute Time",
+         legend_title = "Commute Time",
+         units = "minutes")
 ```
 
 

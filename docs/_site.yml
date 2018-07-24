@@ -11,6 +11,8 @@ navbar:
       href: health.html
     - text: "Quality of Place"
       href: qop.html
+    - text: "Main Metrics"
+      href: main_metrics.html
 output:
   html_document:
     theme: paper

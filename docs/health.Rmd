@@ -21,7 +21,7 @@ library(ggthemes)
 library(classInt)
 library(showtext)
 library(reshape2)
-library(plotly)
+library(rbokeh)
 library(wesanderson)
 library(kableExtra)
 library(scales)
@@ -376,7 +376,10 @@ insurance %<>%
     insured_rate = 100 - uninsured_rate) %>%
   weight_stl('insured_rate', 'total')
 
-data %<>% bind_df(insurance)
+
+data <- insurance
+
+data %<>% pull_peers_FIPS() %>% select(FIPS, city, year, current, baseline, everything())
 
 rm(insurance)
 ```

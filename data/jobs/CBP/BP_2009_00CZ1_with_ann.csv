@@ -1,0 +1,888 @@
+GEO.id,GEO.id2,GEO.display-label,NAICS.id,NAICS.display-label,YEAR.id,ESTAB,EMP,EMP_N,PAYQTR1,PAYQTR1_N,PAYANN,PAYANN_N
+Geographic identifier code,Id2,Geographic area name,2007 NAICS code,Meaning of 2007 NAICS code,Year,Number of establishments,Paid employees for pay period including March 12 (number),Noise range for paid employees for pay period including March 12 (%),"First-quarter payroll ($1,000)",Noise range for first-quarter payroll (%),"Annual payroll ($1,000)",Noise range for annual payroll (%)
+8610000US40003,40003,"ZIP 40003 (Bagdad, KY)",00,Total for all sectors,2009,23,192,G,998,G,4298,G
+8610000US40004,40004,"ZIP 40004 (Bardstown, KY)",00,Total for all sectors,2009,712,10593,G,81104,G,356797,G
+8610000US40006,40006,"ZIP 40006 (Bedford, KY)",00,Total for all sectors,2009,44,390,G,4272,G,16085,G
+8610000US40007,40007,"ZIP 40007 (Bethlehem, KY)",00,Total for all sectors,2009,5,e,D,D,D,D,D
+8610000US40008,40008,"ZIP 40008 (Bloomfield, KY)",00,Total for all sectors,2009,53,236,G,1287,G,6070,G
+8610000US40009,40009,"ZIP 40009 (Bradfordsville, KY)",00,Total for all sectors,2009,4,6,G,31,G,176,G
+8610000US40010,40010,"ZIP 40010 (Buckner, KY)",00,Total for all sectors,2009,56,1096,G,9996,G,42500,G
+8610000US40011,40011,"ZIP 40011 (Campbellsburg, KY)",00,Total for all sectors,2009,27,186,G,1193,G,4277,G
+8610000US40012,40012,"ZIP 40012 (Chaplin, KY)",00,Total for all sectors,2009,12,b,S,179,G,870,G
+8610000US40013,40013,"ZIP 40013 (Coxs Creek, KY)",00,Total for all sectors,2009,57,e,S,1788,H,8223,H
+8610000US40014,40014,"ZIP 40014 (Crestwood, KY)",00,Total for all sectors,2009,442,2228,G,13516,G,59130,G
+8610000US40018,40018,"ZIP 40018 (Eastwood, KY)",00,Total for all sectors,2009,4,a,D,D,D,D,D
+8610000US40019,40019,"ZIP 40019 (Eminence, KY)",00,Total for all sectors,2009,66,927,H,6857,H,26751,H
+8610000US40020,40020,"ZIP 40020 (Fairfield, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US40022,40022,"ZIP 40022 (Finchville, KY)",00,Total for all sectors,2009,21,65,G,355,G,2103,G
+8610000US40023,40023,"ZIP 40023 (Fisherville, KY)",00,Total for all sectors,2009,70,255,G,1420,G,6176,G
+8610000US40025,40025,"ZIP 40025 (Glenview, KY)",00,Total for all sectors,2009,4,a,S,135,G,536,G
+8610000US40026,40026,"ZIP 40026 (Goshen, KY)",00,Total for all sectors,2009,72,263,G,1534,G,8175,H
+8610000US40027,40027,"ZIP 40027 (Harrods Creek, KY)",00,Total for all sectors,2009,10,b,D,D,D,D,D
+8610000US40031,40031,"ZIP 40031 (La Grange, KY)",00,Total for all sectors,2009,446,5411,H,42101,G,169602,G
+8610000US40032,40032,"ZIP 40032 (La Grange, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40033,40033,"ZIP 40033 (Lebanon, KY)",00,Total for all sectors,2009,304,5720,H,37942,G,163940,G
+8610000US40036,40036,"ZIP 40036 (Lockport, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40037,40037,"ZIP 40037 (Loretto, KY)",00,Total for all sectors,2009,26,c,D,D,D,D,D
+8610000US40040,40040,"ZIP 40040 (Mackville, KY)",00,Total for all sectors,2009,9,14,G,80,G,345,G
+8610000US40041,40041,"ZIP 40041 (Masonic Home, KY)",00,Total for all sectors,2009,3,e,D,D,D,D,D
+8610000US40045,40045,"ZIP 40045 (Milton, KY)",00,Total for all sectors,2009,28,131,H,855,G,3692,G
+8610000US40046,40046,"ZIP 40046 (Mount Eden, KY)",00,Total for all sectors,2009,16,38,H,157,G,688,G
+8610000US40047,40047,"ZIP 40047 (Mount Washington, KY)",00,Total for all sectors,2009,240,1754,G,9512,G,41424,G
+8610000US40048,40048,"ZIP 40048 (Nazareth, KY)",00,Total for all sectors,2009,4,c,D,D,D,D,D
+8610000US40049,40049,"ZIP 40049 (Nerinx, KY)",00,Total for all sectors,2009,1,c,D,D,D,D,D
+8610000US40050,40050,"ZIP 40050 (New Castle, KY)",00,Total for all sectors,2009,35,221,G,1184,G,5149,G
+8610000US40051,40051,"ZIP 40051 (New Haven, KY)",00,Total for all sectors,2009,63,260,G,1300,G,5654,G
+8610000US40052,40052,"ZIP 40052 (New Hope, KY)",00,Total for all sectors,2009,7,b,D,D,D,D,D
+8610000US40055,40055,"ZIP 40055 (Pendleton, KY)",00,Total for all sectors,2009,28,205,G,944,G,4033,G
+8610000US40056,40056,"ZIP 40056 (Pewee Valley, KY)",00,Total for all sectors,2009,52,443,G,2935,G,12576,G
+8610000US40057,40057,"ZIP 40057 (Pleasureville, KY)",00,Total for all sectors,2009,19,b,S,S,S,1487,H
+8610000US40058,40058,"ZIP 40058 (Port Royal, KY)",00,Total for all sectors,2009,5,a,S,60,G,246,H
+8610000US40059,40059,"ZIP 40059 (Prospect, KY)",00,Total for all sectors,2009,365,2051,G,13179,G,56993,G
+8610000US40060,40060,"ZIP 40060 (Raywick, KY)",00,Total for all sectors,2009,7,29,G,44,G,179,G
+8610000US40061,40061,"ZIP 40061 (Saint Catharine, KY)",00,Total for all sectors,2009,5,e,D,D,D,D,D
+8610000US40062,40062,"ZIP 40062 (Saint Francis, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40063,40063,"ZIP 40063 (Saint Mary, KY)",00,Total for all sectors,2009,2,c,D,D,D,D,D
+8610000US40065,40065,"ZIP 40065 (Shelbyville, KY)",00,Total for all sectors,2009,641,9992,G,73080,G,301793,G
+8610000US40066,40066,"ZIP 40066 (Shelbyville, KY)",00,Total for all sectors,2009,22,95,G,752,G,3210,G
+8610000US40067,40067,"ZIP 40067 (Simpsonville, KY)",00,Total for all sectors,2009,127,1182,G,8919,G,34654,G
+8610000US40068,40068,"ZIP 40068 (Smithfield, KY)",00,Total for all sectors,2009,26,274,G,2100,G,8944,G
+8610000US40069,40069,"ZIP 40069 (Springfield, KY)",00,Total for all sectors,2009,214,2222,G,14215,G,63947,G
+8610000US40070,40070,"ZIP 40070 (Sulphur, KY)",00,Total for all sectors,2009,7,55,G,459,G,1979,G
+8610000US40071,40071,"ZIP 40071 (Taylorsville, KY)",00,Total for all sectors,2009,174,1050,G,5423,G,23615,G
+8610000US40075,40075,"ZIP 40075 (Turners Station, KY)",00,Total for all sectors,2009,7,a,S,56,H,363,G
+8610000US40076,40076,"ZIP 40076 (Waddy, KY)",00,Total for all sectors,2009,28,203,H,925,H,3828,H
+8610000US40077,40077,"ZIP 40077 (Westport, KY)",00,Total for all sectors,2009,8,b,S,108,G,514,G
+8610000US40078,40078,"ZIP 40078 (Willisburg, KY)",00,Total for all sectors,2009,18,39,G,138,G,639,G
+8610000US40104,40104,"ZIP 40104 (Battletown, KY)",00,Total for all sectors,2009,5,86,H,699,G,3356,G
+8610000US40107,40107,"ZIP 40107 (Boston, KY)",00,Total for all sectors,2009,22,c,D,D,D,D,D
+8610000US40108,40108,"ZIP 40108 (Brandenburg, KY)",00,Total for all sectors,2009,215,2208,G,13914,G,57416,G
+8610000US40109,40109,"ZIP 40109 (Brooks, KY)",00,Total for all sectors,2009,74,1494,G,10560,G,45015,G
+8610000US40110,40110,"ZIP 40110 (Clermont, KY)",00,Total for all sectors,2009,5,e,D,D,D,D,D
+8610000US40111,40111,"ZIP 40111 (Cloverport, KY)",00,Total for all sectors,2009,19,c,S,557,H,2434,H
+8610000US40115,40115,"ZIP 40115 (Custer, KY)",00,Total for all sectors,2009,3,18,G,85,G,361,G
+8610000US40117,40117,"ZIP 40117 (Ekron, KY)",00,Total for all sectors,2009,17,c,S,393,G,1844,H
+8610000US40118,40118,"ZIP 40118 (Fairdale, KY)",00,Total for all sectors,2009,87,801,G,5285,G,21806,G
+8610000US40119,40119,"ZIP 40119 (Falls of Rough, KY)",00,Total for all sectors,2009,17,91,H,417,H,1723,H
+8610000US40121,40121,"ZIP 40121 (Fort Knox, KY)",00,Total for all sectors,2009,76,1864,G,23738,G,94666,G
+8610000US40129,40129,"ZIP 40129 (Hillview, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40140,40140,"ZIP 40140 (Garfield, KY)",00,Total for all sectors,2009,4,a,D,D,D,D,D
+8610000US40142,40142,"ZIP 40142 (Guston, KY)",00,Total for all sectors,2009,8,18,G,109,G,407,G
+8610000US40143,40143,"ZIP 40143 (Hardinsburg, KY)",00,Total for all sectors,2009,153,1528,G,8954,G,38608,G
+8610000US40144,40144,"ZIP 40144 (Harned, KY)",00,Total for all sectors,2009,18,56,G,266,G,960,G
+8610000US40145,40145,"ZIP 40145 (Hudson, KY)",00,Total for all sectors,2009,6,25,G,133,H,747,H
+8610000US40146,40146,"ZIP 40146 (Irvington, KY)",00,Total for all sectors,2009,48,304,G,1804,G,7845,G
+8610000US40150,40150,"ZIP 40150 (Lebanon Junction, KY)",00,Total for all sectors,2009,48,1188,G,8853,G,33677,G
+8610000US40152,40152,"ZIP 40152 (Mc Daniels, KY)",00,Total for all sectors,2009,13,48,G,243,G,1172,G
+8610000US40153,40153,"ZIP 40153 (Mc Quady, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40155,40155,"ZIP 40155 (Muldraugh, KY)",00,Total for all sectors,2009,25,436,H,4166,H,16987,H
+8610000US40157,40157,"ZIP 40157 (Payneville, KY)",00,Total for all sectors,2009,7,b,S,108,G,494,G
+8610000US40159,40159,"ZIP 40159 (Radcliff, KY)",00,Total for all sectors,2009,8,f,D,D,D,D,D
+8610000US40160,40160,"ZIP 40160 (Radcliff, KY)",00,Total for all sectors,2009,385,5511,G,25258,G,107076,G
+8610000US40161,40161,"ZIP 40161 (Rhodelia, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40162,40162,"ZIP 40162 (Rineyville, KY)",00,Total for all sectors,2009,49,166,G,661,G,2965,G
+8610000US40165,40165,"ZIP 40165 (Shepherdsville, KY)",00,Total for all sectors,2009,528,7061,G,47955,G,202084,G
+8610000US40171,40171,"ZIP 40171 (Union Star, KY)",00,Total for all sectors,2009,2,c,D,D,D,D,D
+8610000US40175,40175,"ZIP 40175 (Vine Grove, KY)",00,Total for all sectors,2009,92,648,H,3078,H,15867,H
+8610000US40176,40176,"ZIP 40176 (Webster, KY)",00,Total for all sectors,2009,7,b,S,238,H,1075,H
+8610000US40177,40177,"ZIP 40177 (West Point, KY)",00,Total for all sectors,2009,17,b,S,257,H,1414,H
+8610000US40178,40178,"ZIP 40178 (Westview, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40201,40201,"ZIP 40201 (Louisville, KY)",00,Total for all sectors,2009,32,695,G,9225,G,36397,G
+8610000US40202,40202,"ZIP 40202 (Louisville, KY)",00,Total for all sectors,2009,1613,53581,G,747801,G,2843742,G
+8610000US40203,40203,"ZIP 40203 (Louisville, KY)",00,Total for all sectors,2009,545,12777,G,99830,G,413129,G
+8610000US40204,40204,"ZIP 40204 (Louisville, KY)",00,Total for all sectors,2009,533,7133,G,55142,G,225822,G
+8610000US40205,40205,"ZIP 40205 (Louisville, KY)",00,Total for all sectors,2009,649,11049,G,95875,G,406935,G
+8610000US40206,40206,"ZIP 40206 (Louisville, KY)",00,Total for all sectors,2009,606,10879,H,99710,H,406893,H
+8610000US40207,40207,"ZIP 40207 (Louisville, KY)",00,Total for all sectors,2009,1592,24654,G,203351,G,898159,G
+8610000US40208,40208,"ZIP 40208 (Louisville, KY)",00,Total for all sectors,2009,298,7109,H,77905,H,287746,H
+8610000US40209,40209,"ZIP 40209 (Louisville, KY)",00,Total for all sectors,2009,214,7019,G,60622,G,250173,G
+8610000US40210,40210,"ZIP 40210 (Louisville, KY)",00,Total for all sectors,2009,179,5548,G,66861,G,292644,G
+8610000US40211,40211,"ZIP 40211 (Louisville, KY)",00,Total for all sectors,2009,281,5186,G,52759,G,185911,G
+8610000US40212,40212,"ZIP 40212 (Louisville, KY)",00,Total for all sectors,2009,131,1661,G,9625,G,39512,G
+8610000US40213,40213,"ZIP 40213 (Louisville, KY)",00,Total for all sectors,2009,781,30640,H,406620,H,1606798,H
+8610000US40214,40214,"ZIP 40214 (Louisville, KY)",00,Total for all sectors,2009,661,11497,G,99006,G,404182,G
+8610000US40215,40215,"ZIP 40215 (Louisville, KY)",00,Total for all sectors,2009,204,3238,G,31315,G,130763,G
+8610000US40216,40216,"ZIP 40216 (Louisville, KY)",00,Total for all sectors,2009,667,11163,G,87442,G,352562,G
+8610000US40217,40217,"ZIP 40217 (Louisville, KY)",00,Total for all sectors,2009,289,5973,G,45685,G,201361,G
+8610000US40218,40218,"ZIP 40218 (Louisville, KY)",00,Total for all sectors,2009,977,19356,G,158006,G,669149,G
+8610000US40219,40219,"ZIP 40219 (Louisville, KY)",00,Total for all sectors,2009,838,16040,G,109889,G,480815,G
+8610000US40220,40220,"ZIP 40220 (Louisville, KY)",00,Total for all sectors,2009,606,10170,G,75894,G,309034,G
+8610000US40221,40221,"ZIP 40221 (Louisville, KY)",00,Total for all sectors,2009,16,153,G,751,G,3451,G
+8610000US40222,40222,"ZIP 40222 (Louisville, KY)",00,Total for all sectors,2009,1103,19117,G,188295,G,758259,G
+8610000US40223,40223,"ZIP 40223 (Louisville, KY)",00,Total for all sectors,2009,1052,24732,G,326323,G,1251140,G
+8610000US40224,40224,"ZIP 40224 (Louisville, KY)",00,Total for all sectors,2009,6,203,G,2117,G,8689,G
+8610000US40225,40225,"ZIP 40225 (Louisville, KY)",00,Total for all sectors,2009,8,g,D,D,D,D,D
+8610000US40228,40228,"ZIP 40228 (Louisville, KY)",00,Total for all sectors,2009,280,3216,G,24194,G,97034,G
+8610000US40229,40229,"ZIP 40229 (Louisville, KY)",00,Total for all sectors,2009,362,9620,G,82271,G,318672,G
+8610000US40231,40231,"ZIP 40231 (Louisville, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40232,40232,"ZIP 40232 (Louisville, KY)",00,Total for all sectors,2009,28,981,G,20032,G,64136,G
+8610000US40233,40233,"ZIP 40233 (Louisville, KY)",00,Total for all sectors,2009,9,128,G,1199,G,5193,G
+8610000US40241,40241,"ZIP 40241 (Louisville, KY)",00,Total for all sectors,2009,597,9174,G,58775,G,253123,G
+8610000US40242,40242,"ZIP 40242 (Louisville, KY)",00,Total for all sectors,2009,113,915,G,4682,G,19409,G
+8610000US40243,40243,"ZIP 40243 (Louisville, KY)",00,Total for all sectors,2009,545,6668,G,48904,G,202122,G
+8610000US40245,40245,"ZIP 40245 (Louisville, KY)",00,Total for all sectors,2009,456,4450,G,33727,G,144580,G
+8610000US40250,40250,"ZIP 40250 (Louisville, KY)",00,Total for all sectors,2009,10,b,S,120,G,533,G
+8610000US40251,40251,"ZIP 40251 (Louisville, KY)",00,Total for all sectors,2009,4,23,G,146,G,602,G
+8610000US40252,40252,"ZIP 40252 (Louisville, KY)",00,Total for all sectors,2009,12,51,G,396,G,1816,G
+8610000US40253,40253,"ZIP 40253 (Louisville, KY)",00,Total for all sectors,2009,14,126,H,1102,G,4423,G
+8610000US40255,40255,"ZIP 40255 (Louisville, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US40256,40256,"ZIP 40256 (Louisville, KY)",00,Total for all sectors,2009,8,c,D,D,D,D,D
+8610000US40257,40257,"ZIP 40257 (Louisville, KY)",00,Total for all sectors,2009,7,b,S,267,G,1496,G
+8610000US40258,40258,"ZIP 40258 (Louisville, KY)",00,Total for all sectors,2009,411,8441,G,63509,G,256105,G
+8610000US40259,40259,"ZIP 40259 (Louisville, KY)",00,Total for all sectors,2009,9,49,H,364,H,1512,H
+8610000US40261,40261,"ZIP 40261 (Louisville, KY)",00,Total for all sectors,2009,4,c,D,D,D,D,D
+8610000US40266,40266,"ZIP 40266 (Louisville, KY)",00,Total for all sectors,2009,1,c,D,D,D,D,D
+8610000US40268,40268,"ZIP 40268 (Louisville, KY)",00,Total for all sectors,2009,4,a,D,D,D,D,D
+8610000US40269,40269,"ZIP 40269 (Louisville, KY)",00,Total for all sectors,2009,20,275,G,1057,G,5327,G
+8610000US40270,40270,"ZIP 40270 (Louisville, KY)",00,Total for all sectors,2009,4,48,H,291,H,1193,G
+8610000US40272,40272,"ZIP 40272 (Louisville, KY)",00,Total for all sectors,2009,402,4511,G,29980,G,120802,G
+8610000US40280,40280,"ZIP 40280 (Louisville, KY)",00,Total for all sectors,2009,7,f,D,D,D,D,D
+8610000US40281,40281,"ZIP 40281 (Louisville, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40289,40289,"ZIP 40289 (Louisville, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40291,40291,"ZIP 40291 (Louisville, KY)",00,Total for all sectors,2009,476,4486,G,20076,G,84944,G
+8610000US40292,40292,"ZIP 40292 (Louisville, KY)",00,Total for all sectors,2009,14,e,S,S,S,9764,H
+8610000US40294,40294,"ZIP 40294 (Louisville, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US40295,40295,"ZIP 40295 (Louisville, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40297,40297,"ZIP 40297 (Louisville, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40298,40298,"ZIP 40298 (Louisville, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40299,40299,"ZIP 40299 (Louisville, KY)",00,Total for all sectors,2009,1497,29384,G,289508,G,1149088,G
+8610000US40310,40310,"ZIP 40310 (Burgin, KY)",00,Total for all sectors,2009,21,209,G,3833,G,14568,G
+8610000US40311,40311,"ZIP 40311 (Carlisle, KY)",00,Total for all sectors,2009,75,533,G,2911,G,12097,G
+8610000US40312,40312,"ZIP 40312 (Clay City, KY)",00,Total for all sectors,2009,53,438,G,2239,G,9329,G
+8610000US40313,40313,"ZIP 40313 (Clearfield, KY)",00,Total for all sectors,2009,15,70,G,196,H,806,G
+8610000US40317,40317,"ZIP 40317 (Elliottville, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40319,40319,"ZIP 40319 (Farmers, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40322,40322,"ZIP 40322 (Frenchburg, KY)",00,Total for all sectors,2009,42,359,H,1842,H,8543,G
+8610000US40324,40324,"ZIP 40324 (Georgetown, KY)",00,Total for all sectors,2009,794,19630,G,181966,H,798285,H
+8610000US40328,40328,"ZIP 40328 (Gravel Switch, KY)",00,Total for all sectors,2009,9,23,H,97,H,420,G
+8610000US40330,40330,"ZIP 40330 (Harrodsburg, KY)",00,Total for all sectors,2009,330,4863,G,45232,G,178583,G
+8610000US40334,40334,"ZIP 40334 (Hope, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US40336,40336,"ZIP 40336 (Irvine, KY)",00,Total for all sectors,2009,171,1628,H,8605,H,35412,H
+8610000US40337,40337,"ZIP 40337 (Jeffersonville, KY)",00,Total for all sectors,2009,29,262,H,1583,H,6094,H
+8610000US40339,40339,"ZIP 40339 (Keene, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40340,40340,"ZIP 40340 (Nicholasville, KY)",00,Total for all sectors,2009,13,93,G,637,G,2677,G
+8610000US40342,40342,"ZIP 40342 (Lawrenceburg, KY)",00,Total for all sectors,2009,322,3194,G,21214,G,88866,G
+8610000US40346,40346,"ZIP 40346 (Means, KY)",00,Total for all sectors,2009,7,c,D,D,D,D,D
+8610000US40347,40347,"ZIP 40347 (Midway, KY)",00,Total for all sectors,2009,53,606,H,4150,G,15906,H
+8610000US40348,40348,"ZIP 40348 (Millersburg, KY)",00,Total for all sectors,2009,8,e,D,D,D,D,D
+8610000US40350,40350,"ZIP 40350 (Moorefield, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40351,40351,"ZIP 40351 (Morehead, KY)",00,Total for all sectors,2009,424,7060,H,45058,H,183779,H
+8610000US40353,40353,"ZIP 40353 (Mount Sterling, KY)",00,Total for all sectors,2009,492,8271,G,57802,G,241661,G
+8610000US40355,40355,"ZIP 40355 (New Liberty, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40356,40356,"ZIP 40356 (Nicholasville, KY)",00,Total for all sectors,2009,911,11637,G,93780,G,389827,G
+8610000US40357,40357,"ZIP 40357 (North Middletown, KY)",00,Total for all sectors,2009,7,38,G,164,G,665,G
+8610000US40358,40358,"ZIP 40358 (Olympia, KY)",00,Total for all sectors,2009,8,85,G,555,G,4535,G
+8610000US40359,40359,"ZIP 40359 (Owenton, KY)",00,Total for all sectors,2009,110,1198,G,10710,H,42555,H
+8610000US40360,40360,"ZIP 40360 (Owingsville, KY)",00,Total for all sectors,2009,82,836,G,4721,G,18187,G
+8610000US40361,40361,"ZIP 40361 (Paris, KY)",00,Total for all sectors,2009,332,5429,G,44340,G,188327,G
+8610000US40362,40362,"ZIP 40362 (Paris, KY)",00,Total for all sectors,2009,21,77,G,427,G,1889,G
+8610000US40363,40363,"ZIP 40363 (Perry Park, KY)",00,Total for all sectors,2009,5,30,G,116,G,847,G
+8610000US40366,40366,"ZIP 40366 (Preston, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40370,40370,"ZIP 40370 (Sadieville, KY)",00,Total for all sectors,2009,18,55,G,284,G,1255,H
+8610000US40371,40371,"ZIP 40371 (Salt Lick, KY)",00,Total for all sectors,2009,36,143,G,804,G,3931,G
+8610000US40372,40372,"ZIP 40372 (Salvisa, KY)",00,Total for all sectors,2009,31,108,G,720,G,2668,G
+8610000US40374,40374,"ZIP 40374 (Sharpsburg, KY)",00,Total for all sectors,2009,13,117,H,682,G,3775,H
+8610000US40376,40376,"ZIP 40376 (Slade, KY)",00,Total for all sectors,2009,11,22,G,40,G,382,G
+8610000US40379,40379,"ZIP 40379 (Stamping Ground, KY)",00,Total for all sectors,2009,29,131,G,750,G,3207,G
+8610000US40380,40380,"ZIP 40380 (Stanton, KY)",00,Total for all sectors,2009,104,943,G,5732,G,24221,G
+8610000US40383,40383,"ZIP 40383 (Versailles, KY)",00,Total for all sectors,2009,489,6103,G,57010,G,224694,G
+8610000US40384,40384,"ZIP 40384 (Versailles, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US40385,40385,"ZIP 40385 (Waco, KY)",00,Total for all sectors,2009,19,c,S,403,H,2180,H
+8610000US40387,40387,"ZIP 40387 (Wellington, KY)",00,Total for all sectors,2009,12,b,D,D,D,D,D
+8610000US40390,40390,"ZIP 40390 (Wilmore, KY)",00,Total for all sectors,2009,82,2165,H,8599,G,33868,G
+8610000US40391,40391,"ZIP 40391 (Winchester, KY)",00,Total for all sectors,2009,758,11362,G,84628,G,345220,G
+8610000US40392,40392,"ZIP 40392 (Winchester, KY)",00,Total for all sectors,2009,30,683,H,8366,H,34502,H
+8610000US40402,40402,"ZIP 40402 (Annville, KY)",00,Total for all sectors,2009,29,406,G,2018,G,8175,G
+8610000US40403,40403,"ZIP 40403 (Berea, KY)",00,Total for all sectors,2009,389,6025,G,44663,G,194481,G
+8610000US40404,40404,"ZIP 40404 (Berea, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US40405,40405,"ZIP 40405 (Bighill, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US40409,40409,"ZIP 40409 (Brodhead, KY)",00,Total for all sectors,2009,32,281,G,1629,G,6953,G
+8610000US40410,40410,"ZIP 40410 (Bryantsville, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40419,40419,"ZIP 40419 (Crab Orchard, KY)",00,Total for all sectors,2009,22,93,G,283,G,1239,G
+8610000US40422,40422,"ZIP 40422 (Danville, KY)",00,Total for all sectors,2009,672,13246,H,99097,H,412160,H
+8610000US40423,40423,"ZIP 40423 (Danville, KY)",00,Total for all sectors,2009,27,316,G,1484,G,6712,G
+8610000US40434,40434,"ZIP 40434 (Gray Hawk, KY)",00,Total for all sectors,2009,5,36,G,120,G,463,G
+8610000US40437,40437,"ZIP 40437 (Hustonville, KY)",00,Total for all sectors,2009,40,211,G,814,G,3643,G
+8610000US40440,40440,"ZIP 40440 (Junction City, KY)",00,Total for all sectors,2009,20,79,G,394,G,2141,G
+8610000US40442,40442,"ZIP 40442 (Kings Mountain, KY)",00,Total for all sectors,2009,4,14,G,71,G,279,G
+8610000US40444,40444,"ZIP 40444 (Lancaster, KY)",00,Total for all sectors,2009,197,1223,G,7377,G,32105,G
+8610000US40445,40445,"ZIP 40445 (Livingston, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40446,40446,"ZIP 40446 (Lancaster, KY)",00,Total for all sectors,2009,7,b,D,D,D,D,D
+8610000US40447,40447,"ZIP 40447 (Mc Kee, KY)",00,Total for all sectors,2009,71,652,G,5261,G,23062,G
+8610000US40448,40448,"ZIP 40448 (Mc Kinney, KY)",00,Total for all sectors,2009,4,17,G,27,G,220,G
+8610000US40456,40456,"ZIP 40456 (Mount Vernon, KY)",00,Total for all sectors,2009,179,2073,H,16725,H,69602,H
+8610000US40460,40460,"ZIP 40460 (Orlando, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40461,40461,"ZIP 40461 (Paint Lick, KY)",00,Total for all sectors,2009,27,102,G,808,G,3342,G
+8610000US40464,40464,"ZIP 40464 (Parksville, KY)",00,Total for all sectors,2009,7,6,G,20,G,216,G
+8610000US40468,40468,"ZIP 40468 (Perryville, KY)",00,Total for all sectors,2009,18,73,G,333,G,1211,G
+8610000US40472,40472,"ZIP 40472 (Ravenna, KY)",00,Total for all sectors,2009,16,56,G,209,G,925,G
+8610000US40473,40473,"ZIP 40473 (Renfro Valley, KY)",00,Total for all sectors,2009,5,b,S,188,H,1286,H
+8610000US40475,40475,"ZIP 40475 (Richmond, KY)",00,Total for all sectors,2009,1129,13308,G,80457,G,341305,G
+8610000US40476,40476,"ZIP 40476 (Richmond, KY)",00,Total for all sectors,2009,39,1168,H,9796,H,42523,H
+8610000US40481,40481,"ZIP 40481 (Sandgap, KY)",00,Total for all sectors,2009,6,12,G,27,G,158,G
+8610000US40484,40484,"ZIP 40484 (Stanford, KY)",00,Total for all sectors,2009,202,3142,G,16609,G,72013,G
+8610000US40486,40486,"ZIP 40486 (Tyner, KY)",00,Total for all sectors,2009,6,69,G,423,G,1656,G
+8610000US40489,40489,"ZIP 40489 (Waynesburg, KY)",00,Total for all sectors,2009,26,145,G,607,G,2361,G
+8610000US40492,40492,"ZIP 40492 (Wildie, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40495,40495,"ZIP 40495 (Winston, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40502,40502,"ZIP 40502 (Lexington, KY)",00,Total for all sectors,2009,653,8198,G,80624,G,343042,G
+8610000US40503,40503,"ZIP 40503 (Lexington, KY)",00,Total for all sectors,2009,1433,22404,G,165359,G,699027,G
+8610000US40504,40504,"ZIP 40504 (Lexington, KY)",00,Total for all sectors,2009,683,14329,G,139979,G,574371,G
+8610000US40505,40505,"ZIP 40505 (Lexington, KY)",00,Total for all sectors,2009,802,15707,H,193193,H,750951,H
+8610000US40506,40506,"ZIP 40506 (Lexington, KY)",00,Total for all sectors,2009,20,133,G,612,G,2650,G
+8610000US40507,40507,"ZIP 40507 (Lexington, KY)",00,Total for all sectors,2009,631,8637,G,95329,G,376713,G
+8610000US40508,40508,"ZIP 40508 (Lexington, KY)",00,Total for all sectors,2009,508,12414,G,130198,G,532942,G
+8610000US40509,40509,"ZIP 40509 (Lexington, KY)",00,Total for all sectors,2009,1202,21328,G,172430,G,745292,G
+8610000US40510,40510,"ZIP 40510 (Lexington, KY)",00,Total for all sectors,2009,111,2490,G,23454,G,104773,G
+8610000US40511,40511,"ZIP 40511 (Lexington, KY)",00,Total for all sectors,2009,822,22586,G,206475,G,868917,G
+8610000US40512,40512,"ZIP 40512 (Lexington, KY)",00,Total for all sectors,2009,5,89,G,472,G,1934,G
+8610000US40513,40513,"ZIP 40513 (Lexington, KY)",00,Total for all sectors,2009,321,4390,G,32787,G,133758,G
+8610000US40514,40514,"ZIP 40514 (Lexington, KY)",00,Total for all sectors,2009,117,544,G,2881,G,13952,G
+8610000US40515,40515,"ZIP 40515 (Lexington, KY)",00,Total for all sectors,2009,323,2408,G,12472,G,54755,G
+8610000US40516,40516,"ZIP 40516 (Lexington, KY)",00,Total for all sectors,2009,44,3021,G,42008,G,171661,G
+8610000US40517,40517,"ZIP 40517 (Lexington, KY)",00,Total for all sectors,2009,478,5268,G,38926,G,164191,G
+8610000US40522,40522,"ZIP 40522 (Lexington, KY)",00,Total for all sectors,2009,13,22,G,181,G,960,G
+8610000US40523,40523,"ZIP 40523 (Lexington, KY)",00,Total for all sectors,2009,9,235,H,1835,H,8103,H
+8610000US40524,40524,"ZIP 40524 (Lexington, KY)",00,Total for all sectors,2009,6,20,G,43,G,360,H
+8610000US40533,40533,"ZIP 40533 (Lexington, KY)",00,Total for all sectors,2009,6,112,G,1039,G,5156,G
+8610000US40536,40536,"ZIP 40536 (Lexington, KY)",00,Total for all sectors,2009,6,e,D,D,D,D,D
+8610000US40544,40544,"ZIP 40544 (Lexington, KY)",00,Total for all sectors,2009,7,47,H,311,G,1203,H
+8610000US40546,40546,"ZIP 40546 (Lexington, KY)",00,Total for all sectors,2009,3,12,G,131,H,606,G
+8610000US40550,40550,"ZIP 40550 (Lexington, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40555,40555,"ZIP 40555 (Lexington, KY)",00,Total for all sectors,2009,17,340,G,2406,G,9554,G
+8610000US40574,40574,"ZIP 40574 (Lexington, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40575,40575,"ZIP 40575 (Lexington, KY)",00,Total for all sectors,2009,4,27,H,61,G,481,H
+8610000US40576,40576,"ZIP 40576 (Lexington, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40578,40578,"ZIP 40578 (Lexington, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40579,40579,"ZIP 40579 (Lexington, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40580,40580,"ZIP 40580 (Lexington, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40581,40581,"ZIP 40581 (Lexington, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US40582,40582,"ZIP 40582 (Lexington, KY)",00,Total for all sectors,2009,2,c,D,D,D,D,D
+8610000US40583,40583,"ZIP 40583 (Lexington, KY)",00,Total for all sectors,2009,9,640,G,9159,G,33191,G
+8610000US40588,40588,"ZIP 40588 (Lexington, KY)",00,Total for all sectors,2009,19,c,S,2833,H,12981,H
+8610000US40591,40591,"ZIP 40591 (Lexington, KY)",00,Total for all sectors,2009,10,39,G,274,G,1549,G
+8610000US40601,40601,"ZIP 40601 (Frankfort, KY)",00,Total for all sectors,2009,1103,14414,G,106894,G,446504,G
+8610000US40602,40602,"ZIP 40602 (Frankfort, KY)",00,Total for all sectors,2009,31,e,D,D,D,D,D
+8610000US40603,40603,"ZIP 40603 (Frankfort, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40604,40604,"ZIP 40604 (Frankfort, KY)",00,Total for all sectors,2009,6,36,G,213,G,811,G
+8610000US40621,40621,"ZIP 40621 (Frankfort, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40622,40622,"ZIP 40622 (Frankfort, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40701,40701,"ZIP 40701 (Corbin, KY)",00,Total for all sectors,2009,699,11263,H,77259,H,327855,H
+8610000US40702,40702,"ZIP 40702 (Corbin, KY)",00,Total for all sectors,2009,37,1390,H,11426,H,37718,H
+8610000US40729,40729,"ZIP 40729 (East Bernstadt, KY)",00,Total for all sectors,2009,51,752,G,5731,G,24890,G
+8610000US40730,40730,"ZIP 40730 (Emlyn, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40734,40734,"ZIP 40734 (Gray, KY)",00,Total for all sectors,2009,32,370,G,3118,G,12907,G
+8610000US40737,40737,"ZIP 40737 (Keavy, KY)",00,Total for all sectors,2009,5,a,D,D,D,D,D
+8610000US40740,40740,"ZIP 40740 (Lily, KY)",00,Total for all sectors,2009,22,305,G,2142,G,8724,G
+8610000US40741,40741,"ZIP 40741 (London, KY)",00,Total for all sectors,2009,765,14185,G,108542,G,456000,G
+8610000US40742,40742,"ZIP 40742 (London, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40743,40743,"ZIP 40743 (London, KY)",00,Total for all sectors,2009,49,1859,G,13739,G,56762,G
+8610000US40744,40744,"ZIP 40744 (London, KY)",00,Total for all sectors,2009,160,3065,G,20622,G,89676,G
+8610000US40759,40759,"ZIP 40759 (Rockholds, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40763,40763,"ZIP 40763 (Siler, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40769,40769,"ZIP 40769 (Williamsburg, KY)",00,Total for all sectors,2009,225,4455,G,21376,G,88988,G
+8610000US40771,40771,"ZIP 40771 (Woodbine, KY)",00,Total for all sectors,2009,9,37,G,119,G,483,G
+8610000US40801,40801,"ZIP 40801 (Ages Brookside, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US40803,40803,"ZIP 40803 (Asher, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40806,40806,"ZIP 40806 (Baxter, KY)",00,Total for all sectors,2009,36,221,G,1461,G,6980,G
+8610000US40807,40807,"ZIP 40807 (Benham, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US40808,40808,"ZIP 40808 (Big Laurel, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40810,40810,"ZIP 40810 (Bledsoe, KY)",00,Total for all sectors,2009,10,118,G,556,G,1558,G
+8610000US40813,40813,"ZIP 40813 (Calvin, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US40815,40815,"ZIP 40815 (Cawood, KY)",00,Total for all sectors,2009,11,52,H,484,H,2147,H
+8610000US40818,40818,"ZIP 40818 (Coalgood, KY)",00,Total for all sectors,2009,1,c,D,D,D,D,D
+8610000US40819,40819,"ZIP 40819 (Coldiron, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US40820,40820,"ZIP 40820 (Cranks, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US40823,40823,"ZIP 40823 (Cumberland, KY)",00,Total for all sectors,2009,63,921,G,9380,H,40021,H
+8610000US40824,40824,"ZIP 40824 (Dayhoit, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40826,40826,"ZIP 40826 (Eolia, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40827,40827,"ZIP 40827 (Essie, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40828,40828,"ZIP 40828 (Evarts, KY)",00,Total for all sectors,2009,33,228,G,1745,G,7045,G
+8610000US40829,40829,"ZIP 40829 (Grays Knob, KY)",00,Total for all sectors,2009,10,314,H,4295,H,16368,H
+8610000US40831,40831,"ZIP 40831 (Harlan, KY)",00,Total for all sectors,2009,230,2985,G,20528,G,83830,G
+8610000US40843,40843,"ZIP 40843 (Holmes Mill, KY)",00,Total for all sectors,2009,3,e,D,D,D,D,D
+8610000US40844,40844,"ZIP 40844 (Hoskinston, KY)",00,Total for all sectors,2009,3,9,G,30,G,114,G
+8610000US40845,40845,"ZIP 40845 (Hulen, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40847,40847,"ZIP 40847 (Kenvir, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40849,40849,"ZIP 40849 (Lejunior, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40854,40854,"ZIP 40854 (Loyall, KY)",00,Total for all sectors,2009,16,107,H,456,H,1828,H
+8610000US40855,40855,"ZIP 40855 (Lynch, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US40856,40856,"ZIP 40856 (Miracle, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40858,40858,"ZIP 40858 (Mozelle, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40862,40862,"ZIP 40862 (Partridge, KY)",00,Total for all sectors,2009,5,c,D,D,D,D,D
+8610000US40863,40863,"ZIP 40863 (Pathfork, KY)",00,Total for all sectors,2009,3,c,D,D,D,D,D
+8610000US40865,40865,"ZIP 40865 (Putney, KY)",00,Total for all sectors,2009,5,51,H,432,G,1458,H
+8610000US40868,40868,"ZIP 40868 (Stinnett, KY)",00,Total for all sectors,2009,5,13,G,42,G,202,G
+8610000US40870,40870,"ZIP 40870 (Totz, KY)",00,Total for all sectors,2009,6,77,G,608,G,2789,G
+8610000US40873,40873,"ZIP 40873 (Wallins Creek, KY)",00,Total for all sectors,2009,13,41,H,298,G,1453,G
+8610000US40874,40874,"ZIP 40874 (Warbranch, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40902,40902,"ZIP 40902 (Arjay, KY)",00,Total for all sectors,2009,5,c,D,D,D,D,D
+8610000US40903,40903,"ZIP 40903 (Artemus, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US40906,40906,"ZIP 40906 (Barbourville, KY)",00,Total for all sectors,2009,242,3333,G,20599,G,85950,G
+8610000US40913,40913,"ZIP 40913 (Beverly, KY)",00,Total for all sectors,2009,7,184,G,1500,G,4888,G
+8610000US40914,40914,"ZIP 40914 (Big Creek, KY)",00,Total for all sectors,2009,5,20,G,152,G,413,G
+8610000US40915,40915,"ZIP 40915 (Bimble, KY)",00,Total for all sectors,2009,6,21,G,124,H,538,H
+8610000US40921,40921,"ZIP 40921 (Bryants Store, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US40923,40923,"ZIP 40923 (Cannon, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40927,40927,"ZIP 40927 (Closplint, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40930,40930,"ZIP 40930 (Dewitt, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40932,40932,"ZIP 40932 (Fall Rock, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40935,40935,"ZIP 40935 (Flat Lick, KY)",00,Total for all sectors,2009,16,98,G,628,G,2248,G
+8610000US40939,40939,"ZIP 40939 (Fourmile, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US40940,40940,"ZIP 40940 (Frakes, KY)",00,Total for all sectors,2009,6,67,G,502,G,2199,G
+8610000US40941,40941,"ZIP 40941 (Garrard, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US40943,40943,"ZIP 40943 (Girdler, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US40946,40946,"ZIP 40946 (Green Road, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US40949,40949,"ZIP 40949 (Heidrick, KY)",00,Total for all sectors,2009,4,a,S,19,G,141,G
+8610000US40951,40951,"ZIP 40951 (Hima, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40953,40953,"ZIP 40953 (Hinkle, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40955,40955,"ZIP 40955 (Ingram, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US40958,40958,"ZIP 40958 (Kettle Island, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40962,40962,"ZIP 40962 (Manchester, KY)",00,Total for all sectors,2009,231,2131,G,13006,G,56521,G
+8610000US40965,40965,"ZIP 40965 (Middlesboro, KY)",00,Total for all sectors,2009,373,5194,G,34148,G,142619,G
+8610000US40972,40972,"ZIP 40972 (Oneida, KY)",00,Total for all sectors,2009,6,c,D,D,D,D,D
+8610000US40977,40977,"ZIP 40977 (Pineville, KY)",00,Total for all sectors,2009,139,1617,G,10148,G,40229,G
+8610000US40979,40979,"ZIP 40979 (Roark, KY)",00,Total for all sectors,2009,5,b,S,S,S,412,H
+8610000US40983,40983,"ZIP 40983 (Sextons Creek, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US40988,40988,"ZIP 40988 (Stoney Fork, KY)",00,Total for all sectors,2009,9,97,G,981,G,5667,G
+8610000US40997,40997,"ZIP 40997 (Walker, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41001,41001,"ZIP 41001 (Alexandria, KY)",00,Total for all sectors,2009,275,3268,H,18009,H,82775,H
+8610000US41002,41002,"ZIP 41002 (Augusta, KY)",00,Total for all sectors,2009,34,510,H,3685,H,15274,H
+8610000US41003,41003,"ZIP 41003 (Berry, KY)",00,Total for all sectors,2009,14,65,G,211,H,824,H
+8610000US41004,41004,"ZIP 41004 (Brooksville, KY)",00,Total for all sectors,2009,43,260,H,1181,H,5078,H
+8610000US41005,41005,"ZIP 41005 (Burlington, KY)",00,Total for all sectors,2009,281,3034,G,20188,G,90712,G
+8610000US41006,41006,"ZIP 41006 (Butler, KY)",00,Total for all sectors,2009,58,907,G,8083,G,31748,G
+8610000US41007,41007,"ZIP 41007 (California, KY)",00,Total for all sectors,2009,39,188,G,1020,G,4403,G
+8610000US41008,41008,"ZIP 41008 (Carrollton, KY)",00,Total for all sectors,2009,199,3037,G,29452,G,103062,G
+8610000US41010,41010,"ZIP 41010 (Corinth, KY)",00,Total for all sectors,2009,19,78,G,292,G,1479,G
+8610000US41011,41011,"ZIP 41011 (Covington, KY)",00,Total for all sectors,2009,798,23055,G,228905,G,925922,G
+8610000US41012,41012,"ZIP 41012 (Covington, KY)",00,Total for all sectors,2009,16,281,G,2906,G,14371,G
+8610000US41014,41014,"ZIP 41014 (Covington, KY)",00,Total for all sectors,2009,78,970,G,9056,G,39589,G
+8610000US41015,41015,"ZIP 41015 (Latonia, KY)",00,Total for all sectors,2009,286,2731,G,18394,G,76180,G
+8610000US41016,41016,"ZIP 41016 (Covington, KY)",00,Total for all sectors,2009,72,628,G,4512,G,18695,G
+8610000US41017,41017,"ZIP 41017 (Ft Mitchell, KY)",00,Total for all sectors,2009,999,20415,G,187435,G,816396,G
+8610000US41018,41018,"ZIP 41018 (Erlanger, KY)",00,Total for all sectors,2009,677,23301,G,232835,G,965421,G
+8610000US41019,41019,"ZIP 41019 (Covington, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41022,41022,"ZIP 41022 (Florence, KY)",00,Total for all sectors,2009,25,e,D,D,D,D,D
+8610000US41030,41030,"ZIP 41030 (Crittenden, KY)",00,Total for all sectors,2009,61,476,G,3116,G,13292,G
+8610000US41031,41031,"ZIP 41031 (Cynthiana, KY)",00,Total for all sectors,2009,285,3982,G,32958,H,129066,H
+8610000US41033,41033,"ZIP 41033 (De Mossville, KY)",00,Total for all sectors,2009,12,b,S,186,G,889,G
+8610000US41034,41034,"ZIP 41034 (Dover, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US41035,41035,"ZIP 41035 (Dry Ridge, KY)",00,Total for all sectors,2009,187,2594,H,14077,H,57961,H
+8610000US41037,41037,"ZIP 41037 (Elizaville, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41039,41039,"ZIP 41039 (Ewing, KY)",00,Total for all sectors,2009,20,54,G,235,G,1054,G
+8610000US41040,41040,"ZIP 41040 (Falmouth, KY)",00,Total for all sectors,2009,118,842,G,3821,G,16834,G
+8610000US41041,41041,"ZIP 41041 (Flemingsburg, KY)",00,Total for all sectors,2009,194,1989,H,12472,H,52493,H
+8610000US41042,41042,"ZIP 41042 (Florence, KY)",00,Total for all sectors,2009,1615,39293,G,337527,G,1357378,G
+8610000US41043,41043,"ZIP 41043 (Foster, KY)",00,Total for all sectors,2009,20,66,G,610,H,2809,G
+8610000US41044,41044,"ZIP 41044 (Germantown, KY)",00,Total for all sectors,2009,14,24,G,83,G,364,G
+8610000US41045,41045,"ZIP 41045 (Ghent, KY)",00,Total for all sectors,2009,27,2449,H,38798,H,139100,H
+8610000US41046,41046,"ZIP 41046 (Glencoe, KY)",00,Total for all sectors,2009,11,72,G,284,H,1362,H
+8610000US41048,41048,"ZIP 41048 (Hebron, KY)",00,Total for all sectors,2009,386,13735,G,124934,G,495442,G
+8610000US41049,41049,"ZIP 41049 (Hillsboro, KY)",00,Total for all sectors,2009,16,40,G,155,G,726,G
+8610000US41051,41051,"ZIP 41051 (Independence, KY)",00,Total for all sectors,2009,241,3190,G,33780,G,127048,G
+8610000US41052,41052,"ZIP 41052 (Jonesville, KY)",00,Total for all sectors,2009,3,24,G,56,H,231,H
+8610000US41053,41053,"ZIP 41053 (Kenton, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41054,41054,"ZIP 41054 (Mason, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41055,41055,"ZIP 41055 (Mayslick, KY)",00,Total for all sectors,2009,23,82,G,321,G,1384,G
+8610000US41056,41056,"ZIP 41056 (Maysville, KY)",00,Total for all sectors,2009,438,7312,G,56173,G,227153,G
+8610000US41059,41059,"ZIP 41059 (Melbourne, KY)",00,Total for all sectors,2009,34,214,H,1312,H,5758,H
+8610000US41061,41061,"ZIP 41061 (Milford, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41063,41063,"ZIP 41063 (Morning View, KY)",00,Total for all sectors,2009,24,102,G,511,G,1683,G
+8610000US41064,41064,"ZIP 41064 (Mount Olivet, KY)",00,Total for all sectors,2009,26,149,G,655,G,2632,G
+8610000US41071,41071,"ZIP 41071 (Newport, KY)",00,Total for all sectors,2009,477,8213,G,64309,G,267169,G
+8610000US41072,41072,"ZIP 41072 (Newport, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US41073,41073,"ZIP 41073 (Bellevue, KY)",00,Total for all sectors,2009,101,1467,G,8300,G,35542,G
+8610000US41074,41074,"ZIP 41074 (Dayton, KY)",00,Total for all sectors,2009,59,599,G,4946,G,20523,G
+8610000US41075,41075,"ZIP 41075 (Fort Thomas, KY)",00,Total for all sectors,2009,290,3521,G,27242,G,119297,G
+8610000US41076,41076,"ZIP 41076 (Newport, KY)",00,Total for all sectors,2009,351,6363,G,65507,G,244128,G
+8610000US41080,41080,"ZIP 41080 (Petersburg, KY)",00,Total for all sectors,2009,29,82,H,555,G,5184,G
+8610000US41081,41081,"ZIP 41081 (Plummers Landing, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41083,41083,"ZIP 41083 (Sanders, KY)",00,Total for all sectors,2009,7,100,G,384,G,1513,G
+8610000US41085,41085,"ZIP 41085 (Silver Grove, KY)",00,Total for all sectors,2009,17,339,H,4300,H,15604,H
+8610000US41086,41086,"ZIP 41086 (Sparta, KY)",00,Total for all sectors,2009,20,145,G,423,G,3862,G
+8610000US41091,41091,"ZIP 41091 (Union, KY)",00,Total for all sectors,2009,205,1288,G,8987,G,37890,G
+8610000US41092,41092,"ZIP 41092 (Verona, KY)",00,Total for all sectors,2009,47,371,G,2828,G,13828,G
+8610000US41093,41093,"ZIP 41093 (Wallingford, KY)",00,Total for all sectors,2009,22,129,H,517,H,2541,G
+8610000US41094,41094,"ZIP 41094 (Walton, KY)",00,Total for all sectors,2009,280,4401,G,37278,G,151168,G
+8610000US41095,41095,"ZIP 41095 (Warsaw, KY)",00,Total for all sectors,2009,63,584,G,2738,G,12326,G
+8610000US41096,41096,"ZIP 41096 (Washington, KY)",00,Total for all sectors,2009,2,c,D,D,D,D,D
+8610000US41097,41097,"ZIP 41097 (Williamstown, KY)",00,Total for all sectors,2009,117,1046,G,7282,G,31120,G
+8610000US41098,41098,"ZIP 41098 (Worthville, KY)",00,Total for all sectors,2009,6,a,S,58,G,243,G
+8610000US41099,41099,"ZIP 41099 (Newport, KY)",00,Total for all sectors,2009,12,c,D,D,D,D,D
+8610000US41101,41101,"ZIP 41101 (Ashland, KY)",00,Total for all sectors,2009,867,16237,G,139586,G,612153,G
+8610000US41102,41102,"ZIP 41102 (Ashland, KY)",00,Total for all sectors,2009,356,4558,G,38168,G,139217,G
+8610000US41105,41105,"ZIP 41105 (Ashland, KY)",00,Total for all sectors,2009,72,833,G,6794,G,31685,G
+8610000US41121,41121,"ZIP 41121 (Argillite, KY)",00,Total for all sectors,2009,10,45,H,206,G,937,G
+8610000US41124,41124,"ZIP 41124 (Blaine, KY)",00,Total for all sectors,2009,4,11,G,36,G,128,G
+8610000US41128,41128,"ZIP 41128 (Carter, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41129,41129,"ZIP 41129 (Catlettsburg, KY)",00,Total for all sectors,2009,165,3552,G,51059,G,220778,G
+8610000US41132,41132,"ZIP 41132 (Denton, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41135,41135,"ZIP 41135 (Emerson, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41139,41139,"ZIP 41139 (Flatwoods, KY)",00,Total for all sectors,2009,122,1219,G,6300,G,27891,G
+8610000US41141,41141,"ZIP 41141 (Garrison, KY)",00,Total for all sectors,2009,15,100,G,408,G,1898,G
+8610000US41142,41142,"ZIP 41142 (Grahn, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41143,41143,"ZIP 41143 (Grayson, KY)",00,Total for all sectors,2009,284,4266,G,23379,G,101554,G
+8610000US41144,41144,"ZIP 41144 (Greenup, KY)",00,Total for all sectors,2009,133,1563,G,10583,G,44001,G
+8610000US41146,41146,"ZIP 41146 (Hitchins, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41149,41149,"ZIP 41149 (Isonville, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41159,41159,"ZIP 41159 (Martha, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41164,41164,"ZIP 41164 (Olive Hill, KY)",00,Total for all sectors,2009,109,1186,G,4961,G,22032,G
+8610000US41166,41166,"ZIP 41166 (Quincy, KY)",00,Total for all sectors,2009,3,9,G,54,G,280,G
+8610000US41168,41168,"ZIP 41168 (Rush, KY)",00,Total for all sectors,2009,25,266,H,S,S,7524,H
+8610000US41169,41169,"ZIP 41169 (Russell, KY)",00,Total for all sectors,2009,107,826,G,6376,G,28977,G
+8610000US41171,41171,"ZIP 41171 (Sandy Hook, KY)",00,Total for all sectors,2009,44,308,G,1465,G,5953,G
+8610000US41173,41173,"ZIP 41173 (Soldier, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41174,41174,"ZIP 41174 (South Portsmouth, KY)",00,Total for all sectors,2009,12,90,H,290,G,1202,G
+8610000US41175,41175,"ZIP 41175 (South Shore, KY)",00,Total for all sectors,2009,57,665,G,4794,H,20296,H
+8610000US41179,41179,"ZIP 41179 (Vanceburg, KY)",00,Total for all sectors,2009,84,983,G,6687,G,27212,G
+8610000US41180,41180,"ZIP 41180 (Webbville, KY)",00,Total for all sectors,2009,4,12,G,67,G,290,G
+8610000US41181,41181,"ZIP 41181 (Willard, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41183,41183,"ZIP 41183 (Worthington, KY)",00,Total for all sectors,2009,14,169,G,1149,G,5213,G
+8610000US41189,41189,"ZIP 41189 (Tollesboro, KY)",00,Total for all sectors,2009,22,137,G,566,G,3340,G
+8610000US41201,41201,"ZIP 41201 (Adams, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41203,41203,"ZIP 41203 (Beauty, KY)",00,Total for all sectors,2009,4,a,D,D,D,D,D
+8610000US41204,41204,"ZIP 41204 (Boons Camp, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41214,41214,"ZIP 41214 (Debord, KY)",00,Total for all sectors,2009,13,109,G,1903,G,8188,G
+8610000US41216,41216,"ZIP 41216 (East Point, KY)",00,Total for all sectors,2009,12,50,G,301,G,1242,G
+8610000US41219,41219,"ZIP 41219 (Flatgap, KY)",00,Total for all sectors,2009,7,49,G,273,G,1004,G
+8610000US41222,41222,"ZIP 41222 (Hagerhill, KY)",00,Total for all sectors,2009,42,278,H,2033,H,7976,H
+8610000US41224,41224,"ZIP 41224 (Inez, KY)",00,Total for all sectors,2009,84,820,H,4165,H,17888,H
+8610000US41226,41226,"ZIP 41226 (Keaton, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41230,41230,"ZIP 41230 (Louisa, KY)",00,Total for all sectors,2009,196,2479,G,18967,G,75656,G
+8610000US41231,41231,"ZIP 41231 (Lovely, KY)",00,Total for all sectors,2009,47,1139,H,12654,G,55026,G
+8610000US41232,41232,"ZIP 41232 (Lowmansville, KY)",00,Total for all sectors,2009,11,69,G,457,G,1722,G
+8610000US41234,41234,"ZIP 41234 (Meally, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US41238,41238,"ZIP 41238 (Oil Springs, KY)",00,Total for all sectors,2009,12,115,G,973,G,4082,G
+8610000US41240,41240,"ZIP 41240 (Paintsville, KY)",00,Total for all sectors,2009,311,3698,G,21771,G,94097,G
+8610000US41250,41250,"ZIP 41250 (Pilgrim, KY)",00,Total for all sectors,2009,7,f,D,D,D,D,D
+8610000US41254,41254,"ZIP 41254 (River, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41255,41255,"ZIP 41255 (Sitka, KY)",00,Total for all sectors,2009,6,78,G,480,G,2006,G
+8610000US41256,41256,"ZIP 41256 (Staffordsville, KY)",00,Total for all sectors,2009,27,e,D,D,D,D,D
+8610000US41257,41257,"ZIP 41257 (Stambaugh, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41260,41260,"ZIP 41260 (Thelma, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41262,41262,"ZIP 41262 (Tomahawk, KY)",00,Total for all sectors,2009,6,40,G,197,G,826,G
+8610000US41263,41263,"ZIP 41263 (Tutor Key, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41264,41264,"ZIP 41264 (Ulysses, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41265,41265,"ZIP 41265 (Van Lear, KY)",00,Total for all sectors,2009,5,b,S,119,H,461,H
+8610000US41267,41267,"ZIP 41267 (Warfield, KY)",00,Total for all sectors,2009,15,113,G,478,G,2018,G
+8610000US41268,41268,"ZIP 41268 (West Van Lear, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US41274,41274,"ZIP 41274 (Wittensville, KY)",00,Total for all sectors,2009,8,36,H,203,G,683,H
+8610000US41301,41301,"ZIP 41301 (Campton, KY)",00,Total for all sectors,2009,61,445,G,2278,G,9751,G
+8610000US41311,41311,"ZIP 41311 (Beattyville, KY)",00,Total for all sectors,2009,94,1579,G,7765,G,32670,G
+8610000US41313,41313,"ZIP 41313 (Bethany, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41314,41314,"ZIP 41314 (Booneville, KY)",00,Total for all sectors,2009,44,377,H,2033,H,8599,H
+8610000US41317,41317,"ZIP 41317 (Clayhole, KY)",00,Total for all sectors,2009,6,a,S,41,G,192,G
+8610000US41332,41332,"ZIP 41332 (Hazel Green, KY)",00,Total for all sectors,2009,8,78,G,557,G,2837,G
+8610000US41339,41339,"ZIP 41339 (Jackson, KY)",00,Total for all sectors,2009,182,2205,G,14274,G,59087,G
+8610000US41347,41347,"ZIP 41347 (Lone, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41348,41348,"ZIP 41348 (Lost Creek, KY)",00,Total for all sectors,2009,14,52,G,438,G,1844,G
+8610000US41352,41352,"ZIP 41352 (Mize, KY)",00,Total for all sectors,2009,5,14,G,64,G,290,G
+8610000US41360,41360,"ZIP 41360 (Pine Ridge, KY)",00,Total for all sectors,2009,7,b,D,D,D,D,D
+8610000US41362,41362,"ZIP 41362 (Primrose, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41365,41365,"ZIP 41365 (Rogers, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41367,41367,"ZIP 41367 (Rowdy, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41385,41385,"ZIP 41385 (Vancleve, KY)",00,Total for all sectors,2009,5,66,G,105,G,466,G
+8610000US41386,41386,"ZIP 41386 (Vincent, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41390,41390,"ZIP 41390 (Whick, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41397,41397,"ZIP 41397 (Zoe, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41413,41413,"ZIP 41413 (Crockett, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US41425,41425,"ZIP 41425 (Ezel, KY)",00,Total for all sectors,2009,6,13,G,59,G,200,G
+8610000US41426,41426,"ZIP 41426 (Falcon, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41451,41451,"ZIP 41451 (Malone, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US41464,41464,"ZIP 41464 (Royalton, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41465,41465,"ZIP 41465 (Salyersville, KY)",00,Total for all sectors,2009,168,1582,G,11230,G,43226,G
+8610000US41472,41472,"ZIP 41472 (West Liberty, KY)",00,Total for all sectors,2009,156,1786,G,12023,G,50554,G
+8610000US41477,41477,"ZIP 41477 (Wrigley, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41501,41501,"ZIP 41501 (Pikeville, KY)",00,Total for all sectors,2009,765,12992,G,118141,G,469061,G
+8610000US41502,41502,"ZIP 41502 (Pikeville, KY)",00,Total for all sectors,2009,82,886,G,7702,G,31773,G
+8610000US41503,41503,"ZIP 41503 (South Williamson, KY)",00,Total for all sectors,2009,101,1930,G,11616,G,46576,G
+8610000US41512,41512,"ZIP 41512 (Ashcamp, KY)",00,Total for all sectors,2009,9,56,G,446,G,1688,G
+8610000US41513,41513,"ZIP 41513 (Belcher, KY)",00,Total for all sectors,2009,7,b,D,D,D,D,D
+8610000US41514,41514,"ZIP 41514 (Belfry, KY)",00,Total for all sectors,2009,57,645,G,5869,G,24064,G
+8610000US41517,41517,"ZIP 41517 (Burdine, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41519,41519,"ZIP 41519 (Canada, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41520,41520,"ZIP 41520 (Dorton, KY)",00,Total for all sectors,2009,12,108,G,674,G,2712,G
+8610000US41522,41522,"ZIP 41522 (Elkhorn City, KY)",00,Total for all sectors,2009,58,410,G,2532,G,10372,G
+8610000US41524,41524,"ZIP 41524 (Fedscreek, KY)",00,Total for all sectors,2009,9,405,G,6512,G,25100,G
+8610000US41526,41526,"ZIP 41526 (Fords Branch, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US41527,41527,"ZIP 41527 (Forest Hills, KY)",00,Total for all sectors,2009,4,17,G,64,G,278,G
+8610000US41528,41528,"ZIP 41528 (Freeburn, KY)",00,Total for all sectors,2009,4,a,D,D,D,D,D
+8610000US41531,41531,"ZIP 41531 (Hardy, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US41534,41534,"ZIP 41534 (Hellier, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41537,41537,"ZIP 41537 (Jenkins, KY)",00,Total for all sectors,2009,52,364,G,2730,G,8779,G
+8610000US41538,41538,"ZIP 41538 (Jonancy, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41539,41539,"ZIP 41539 (Kimper, KY)",00,Total for all sectors,2009,18,853,G,10762,G,43811,G
+8610000US41540,41540,"ZIP 41540 (Lick Creek, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41543,41543,"ZIP 41543 (Mc Andrews, KY)",00,Total for all sectors,2009,4,29,G,175,G,474,G
+8610000US41544,41544,"ZIP 41544 (Mc Carr, KY)",00,Total for all sectors,2009,17,c,S,S,S,3394,G
+8610000US41547,41547,"ZIP 41547 (Majestic, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41548,41548,"ZIP 41548 (Mouthcard, KY)",00,Total for all sectors,2009,10,35,H,257,G,1152,G
+8610000US41549,41549,"ZIP 41549 (Myra, KY)",00,Total for all sectors,2009,7,e,D,D,D,D,D
+8610000US41553,41553,"ZIP 41553 (Phelps, KY)",00,Total for all sectors,2009,43,355,H,2592,G,10129,G
+8610000US41554,41554,"ZIP 41554 (Phyllis, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41555,41555,"ZIP 41555 (Pinsonfork, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41557,41557,"ZIP 41557 (Raccoon, KY)",00,Total for all sectors,2009,16,c,S,1281,H,3038,H
+8610000US41558,41558,"ZIP 41558 (Ransom, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41559,41559,"ZIP 41559 (Regina, KY)",00,Total for all sectors,2009,12,b,S,408,H,1840,G
+8610000US41560,41560,"ZIP 41560 (Robinson Creek, KY)",00,Total for all sectors,2009,9,145,G,1346,G,4836,G
+8610000US41561,41561,"ZIP 41561 (Rockhouse, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41562,41562,"ZIP 41562 (Shelbiana, KY)",00,Total for all sectors,2009,16,c,S,744,H,3226,H
+8610000US41563,41563,"ZIP 41563 (Shelby Gap, KY)",00,Total for all sectors,2009,4,16,G,253,G,780,G
+8610000US41564,41564,"ZIP 41564 (Sidney, KY)",00,Total for all sectors,2009,14,f,D,D,D,D,D
+8610000US41566,41566,"ZIP 41566 (Steele, KY)",00,Total for all sectors,2009,4,b,D,D,D,D,D
+8610000US41567,41567,"ZIP 41567 (Stone, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41568,41568,"ZIP 41568 (Stopover, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41571,41571,"ZIP 41571 (Varney, KY)",00,Total for all sectors,2009,3,14,G,88,H,353,H
+8610000US41572,41572,"ZIP 41572 (Virgie, KY)",00,Total for all sectors,2009,40,183,H,1316,G,4993,G
+8610000US41601,41601,"ZIP 41601 (Allen, KY)",00,Total for all sectors,2009,54,530,G,3869,G,16035,G
+8610000US41602,41602,"ZIP 41602 (Auxier, KY)",00,Total for all sectors,2009,7,33,H,276,G,1161,G
+8610000US41603,41603,"ZIP 41603 (Banner, KY)",00,Total for all sectors,2009,17,109,G,688,G,2773,G
+8610000US41604,41604,"ZIP 41604 (Beaver, KY)",00,Total for all sectors,2009,4,12,G,35,G,105,G
+8610000US41605,41605,"ZIP 41605 (Betsy Layne, KY)",00,Total for all sectors,2009,26,231,G,1788,G,6571,G
+8610000US41606,41606,"ZIP 41606 (Bevinsville, KY)",00,Total for all sectors,2009,7,9,G,39,G,157,G
+8610000US41607,41607,"ZIP 41607 (Blue River, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41612,41612,"ZIP 41612 (Bypro, KY)",00,Total for all sectors,2009,5,21,G,212,G,802,G
+8610000US41615,41615,"ZIP 41615 (Dana, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41616,41616,"ZIP 41616 (David, KY)",00,Total for all sectors,2009,6,43,H,230,G,1080,G
+8610000US41619,41619,"ZIP 41619 (Drift, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41621,41621,"ZIP 41621 (Dwale, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41622,41622,"ZIP 41622 (Eastern, KY)",00,Total for all sectors,2009,7,b,D,D,D,D,D
+8610000US41630,41630,"ZIP 41630 (Garrett, KY)",00,Total for all sectors,2009,11,40,G,104,G,433,G
+8610000US41631,41631,"ZIP 41631 (Grethel, KY)",00,Total for all sectors,2009,5,31,G,553,G,1412,G
+8610000US41632,41632,"ZIP 41632 (Gunlock, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41635,41635,"ZIP 41635 (Harold, KY)",00,Total for all sectors,2009,34,338,H,2341,H,10318,H
+8610000US41636,41636,"ZIP 41636 (Hi Hat, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US41640,41640,"ZIP 41640 (Hueysville, KY)",00,Total for all sectors,2009,14,195,H,1935,G,7588,G
+8610000US41642,41642,"ZIP 41642 (Ivel, KY)",00,Total for all sectors,2009,26,301,G,2397,G,9577,G
+8610000US41643,41643,"ZIP 41643 (Lackey, KY)",00,Total for all sectors,2009,7,48,G,378,G,2113,G
+8610000US41645,41645,"ZIP 41645 (Langley, KY)",00,Total for all sectors,2009,12,78,G,677,G,2568,G
+8610000US41647,41647,"ZIP 41647 (Mc Dowell, KY)",00,Total for all sectors,2009,35,502,G,6498,G,33783,G
+8610000US41649,41649,"ZIP 41649 (Martin, KY)",00,Total for all sectors,2009,79,1008,G,8155,G,33263,G
+8610000US41650,41650,"ZIP 41650 (Melvin, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US41651,41651,"ZIP 41651 (Minnie, KY)",00,Total for all sectors,2009,10,b,D,D,D,D,D
+8610000US41653,41653,"ZIP 41653 (Prestonsburg, KY)",00,Total for all sectors,2009,421,5444,G,43656,G,178077,G
+8610000US41655,41655,"ZIP 41655 (Printer, KY)",00,Total for all sectors,2009,5,a,D,D,D,D,D
+8610000US41659,41659,"ZIP 41659 (Stanville, KY)",00,Total for all sectors,2009,26,239,G,2049,G,8599,G
+8610000US41660,41660,"ZIP 41660 (Teaberry, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US41663,41663,"ZIP 41663 (Tram, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US41666,41666,"ZIP 41666 (Wayland, KY)",00,Total for all sectors,2009,6,24,H,87,G,418,G
+8610000US41667,41667,"ZIP 41667 (Weeksbury, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41669,41669,"ZIP 41669 (Wheelwright, KY)",00,Total for all sectors,2009,4,c,D,D,D,D,D
+8610000US41701,41701,"ZIP 41701 (Hazard, KY)",00,Total for all sectors,2009,508,8186,G,74413,G,301090,G
+8610000US41702,41702,"ZIP 41702 (Hazard, KY)",00,Total for all sectors,2009,46,637,G,4297,G,17867,G
+8610000US41712,41712,"ZIP 41712 (Ary, KY)",00,Total for all sectors,2009,5,20,G,79,H,251,G
+8610000US41713,41713,"ZIP 41713 (Avawam, KY)",00,Total for all sectors,2009,3,32,G,115,G,509,G
+8610000US41714,41714,"ZIP 41714 (Bear Branch, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41719,41719,"ZIP 41719 (Bonnyman, KY)",00,Total for all sectors,2009,13,96,G,582,G,2455,G
+8610000US41721,41721,"ZIP 41721 (Buckhorn, KY)",00,Total for all sectors,2009,8,c,S,953,H,4146,H
+8610000US41722,41722,"ZIP 41722 (Bulan, KY)",00,Total for all sectors,2009,12,452,G,8372,G,18240,G
+8610000US41723,41723,"ZIP 41723 (Busy, KY)",00,Total for all sectors,2009,5,a,S,93,H,286,G
+8610000US41725,41725,"ZIP 41725 (Carrie, KY)",00,Total for all sectors,2009,4,29,H,230,G,856,G
+8610000US41727,41727,"ZIP 41727 (Chavies, KY)",00,Total for all sectors,2009,15,972,G,11999,G,37463,G
+8610000US41729,41729,"ZIP 41729 (Combs, KY)",00,Total for all sectors,2009,6,b,S,181,G,774,G
+8610000US41731,41731,"ZIP 41731 (Cornettsville, KY)",00,Total for all sectors,2009,12,142,H,954,H,3719,G
+8610000US41739,41739,"ZIP 41739 (Dwarf, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US41740,41740,"ZIP 41740 (Emmalena, KY)",00,Total for all sectors,2009,7,56,G,409,G,1686,G
+8610000US41743,41743,"ZIP 41743 (Fisty, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41745,41745,"ZIP 41745 (Gays Creek, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41746,41746,"ZIP 41746 (Happy, KY)",00,Total for all sectors,2009,8,47,H,135,H,604,H
+8610000US41749,41749,"ZIP 41749 (Hyden, KY)",00,Total for all sectors,2009,73,882,G,6198,G,27154,G
+8610000US41751,41751,"ZIP 41751 (Jeff, KY)",00,Total for all sectors,2009,13,c,D,D,D,D,D
+8610000US41754,41754,"ZIP 41754 (Krypton, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41759,41759,"ZIP 41759 (Sassafras, KY)",00,Total for all sectors,2009,3,c,D,D,D,D,D
+8610000US41760,41760,"ZIP 41760 (Scuddy, KY)",00,Total for all sectors,2009,3,26,G,167,G,764,G
+8610000US41762,41762,"ZIP 41762 (Sizerock, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41763,41763,"ZIP 41763 (Slemp, KY)",00,Total for all sectors,2009,5,b,S,183,H,752,G
+8610000US41764,41764,"ZIP 41764 (Smilax, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41766,41766,"ZIP 41766 (Thousandsticks, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41772,41772,"ZIP 41772 (Vest, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41773,41773,"ZIP 41773 (Vicco, KY)",00,Total for all sectors,2009,11,b,S,211,H,888,H
+8610000US41774,41774,"ZIP 41774 (Viper, KY)",00,Total for all sectors,2009,10,b,S,S,S,1033,H
+8610000US41776,41776,"ZIP 41776 (Wooton, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US41777,41777,"ZIP 41777 (Yeaddiss, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US41804,41804,"ZIP 41804 (Blackey, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41810,41810,"ZIP 41810 (Cromona, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41812,41812,"ZIP 41812 (Deane, KY)",00,Total for all sectors,2009,7,b,D,D,D,D,D
+8610000US41815,41815,"ZIP 41815 (Ermine, KY)",00,Total for all sectors,2009,7,56,G,383,G,1756,G
+8610000US41817,41817,"ZIP 41817 (Garner, KY)",00,Total for all sectors,2009,3,a,D,D,D,D,D
+8610000US41819,41819,"ZIP 41819 (Gordon, KY)",00,Total for all sectors,2009,4,54,G,610,H,2545,H
+8610000US41821,41821,"ZIP 41821 (Hallie, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41822,41822,"ZIP 41822 (Hindman, KY)",00,Total for all sectors,2009,78,788,G,5470,H,23713,H
+8610000US41824,41824,"ZIP 41824 (Isom, KY)",00,Total for all sectors,2009,28,297,G,2939,H,8699,G
+8610000US41825,41825,"ZIP 41825 (Jackhorn, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41826,41826,"ZIP 41826 (Jeremiah, KY)",00,Total for all sectors,2009,11,91,G,783,G,3030,G
+8610000US41828,41828,"ZIP 41828 (Kite, KY)",00,Total for all sectors,2009,15,48,G,411,G,1803,G
+8610000US41831,41831,"ZIP 41831 (Leburn, KY)",00,Total for all sectors,2009,13,56,G,547,G,2970,G
+8610000US41833,41833,"ZIP 41833 (Linefork, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41834,41834,"ZIP 41834 (Littcarr, KY)",00,Total for all sectors,2009,7,b,S,702,H,3355,H
+8610000US41835,41835,"ZIP 41835 (Mc Roberts, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US41836,41836,"ZIP 41836 (Mallie, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US41837,41837,"ZIP 41837 (Mayking, KY)",00,Total for all sectors,2009,8,165,H,1283,H,3970,H
+8610000US41838,41838,"ZIP 41838 (Millstone, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41839,41839,"ZIP 41839 (Mousie, KY)",00,Total for all sectors,2009,11,278,H,5588,H,13645,H
+8610000US41840,41840,"ZIP 41840 (Neon, KY)",00,Total for all sectors,2009,23,202,G,1194,H,5127,H
+8610000US41843,41843,"ZIP 41843 (Pine Top, KY)",00,Total for all sectors,2009,6,b,S,296,H,834,H
+8610000US41844,41844,"ZIP 41844 (Pippa Passes, KY)",00,Total for all sectors,2009,8,335,G,1733,G,7434,G
+8610000US41845,41845,"ZIP 41845 (Premium, KY)",00,Total for all sectors,2009,6,8,G,59,H,245,G
+8610000US41847,41847,"ZIP 41847 (Redfox, KY)",00,Total for all sectors,2009,9,b,S,799,H,2962,H
+8610000US41848,41848,"ZIP 41848 (Roxana, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41855,41855,"ZIP 41855 (Thornton, KY)",00,Total for all sectors,2009,3,a,S,23,G,135,G
+8610000US41858,41858,"ZIP 41858 (Whitesburg, KY)",00,Total for all sectors,2009,197,3011,G,26976,G,110371,G
+8610000US41859,41859,"ZIP 41859 (Dema, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41861,41861,"ZIP 41861 (Raven, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US41862,41862,"ZIP 41862 (Topmost, KY)",00,Total for all sectors,2009,7,26,G,187,G,431,G
+8610000US42001,42001,"ZIP 42001 (Paducah, KY)",00,Total for all sectors,2009,1169,21432,G,180428,H,721174,H
+8610000US42002,42002,"ZIP 42002 (Paducah, KY)",00,Total for all sectors,2009,82,1566,G,12026,G,50640,G
+8610000US42003,42003,"ZIP 42003 (Paducah, KY)",00,Total for all sectors,2009,780,11103,G,91289,G,385029,G
+8610000US42020,42020,"ZIP 42020 (Almo, KY)",00,Total for all sectors,2009,14,73,H,323,G,1978,G
+8610000US42021,42021,"ZIP 42021 (Arlington, KY)",00,Total for all sectors,2009,15,146,H,586,H,2648,G
+8610000US42022,42022,"ZIP 42022 (Bandana, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42023,42023,"ZIP 42023 (Bardwell, KY)",00,Total for all sectors,2009,37,265,G,1264,G,5318,G
+8610000US42024,42024,"ZIP 42024 (Barlow, KY)",00,Total for all sectors,2009,23,167,H,1331,H,5993,H
+8610000US42025,42025,"ZIP 42025 (Benton, KY)",00,Total for all sectors,2009,380,4055,G,23216,G,98399,G
+8610000US42027,42027,"ZIP 42027 (Boaz, KY)",00,Total for all sectors,2009,23,79,G,420,G,1630,G
+8610000US42028,42028,"ZIP 42028 (Burna, KY)",00,Total for all sectors,2009,6,23,G,114,G,491,G
+8610000US42029,42029,"ZIP 42029 (Calvert City, KY)",00,Total for all sectors,2009,177,4352,G,52597,H,209017,H
+8610000US42031,42031,"ZIP 42031 (Clinton, KY)",00,Total for all sectors,2009,68,768,G,4426,G,17169,G
+8610000US42032,42032,"ZIP 42032 (Columbus, KY)",00,Total for all sectors,2009,2,c,D,D,D,D,D
+8610000US42033,42033,"ZIP 42033 (Crayne, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42035,42035,"ZIP 42035 (Cunningham, KY)",00,Total for all sectors,2009,17,75,G,396,G,1953,G
+8610000US42036,42036,"ZIP 42036 (Dexter, KY)",00,Total for all sectors,2009,9,b,S,90,H,364,G
+8610000US42038,42038,"ZIP 42038 (Eddyville, KY)",00,Total for all sectors,2009,115,599,G,3233,G,14569,G
+8610000US42039,42039,"ZIP 42039 (Fancy Farm, KY)",00,Total for all sectors,2009,16,b,S,386,G,1806,G
+8610000US42040,42040,"ZIP 42040 (Farmington, KY)",00,Total for all sectors,2009,11,44,G,200,G,971,G
+8610000US42041,42041,"ZIP 42041 (Fulton, KY)",00,Total for all sectors,2009,96,1865,H,10627,H,43731,H
+8610000US42044,42044,"ZIP 42044 (Gilbertsville, KY)",00,Total for all sectors,2009,34,c,S,1016,H,4735,H
+8610000US42045,42045,"ZIP 42045 (Grand Rivers, KY)",00,Total for all sectors,2009,43,715,G,5601,G,27087,G
+8610000US42047,42047,"ZIP 42047 (Hampton, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42048,42048,"ZIP 42048 (Hardin, KY)",00,Total for all sectors,2009,37,204,G,843,G,4327,G
+8610000US42049,42049,"ZIP 42049 (Hazel, KY)",00,Total for all sectors,2009,25,80,G,348,G,1507,G
+8610000US42050,42050,"ZIP 42050 (Hickman, KY)",00,Total for all sectors,2009,46,516,G,4212,G,13754,G
+8610000US42051,42051,"ZIP 42051 (Hickory, KY)",00,Total for all sectors,2009,33,g,D,D,D,D,D
+8610000US42053,42053,"ZIP 42053 (Kevil, KY)",00,Total for all sectors,2009,58,782,H,10373,H,51526,H
+8610000US42054,42054,"ZIP 42054 (Kirksey, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US42055,42055,"ZIP 42055 (Kuttawa, KY)",00,Total for all sectors,2009,43,540,H,2297,H,10298,G
+8610000US42056,42056,"ZIP 42056 (La Center, KY)",00,Total for all sectors,2009,38,348,G,2019,G,7988,G
+8610000US42058,42058,"ZIP 42058 (Ledbetter, KY)",00,Total for all sectors,2009,29,482,G,2782,G,11324,G
+8610000US42060,42060,"ZIP 42060 (Lovelaceville, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42061,42061,"ZIP 42061 (Lowes, KY)",00,Total for all sectors,2009,4,a,S,29,G,83,G
+8610000US42064,42064,"ZIP 42064 (Marion, KY)",00,Total for all sectors,2009,154,1441,G,7938,G,32859,G
+8610000US42066,42066,"ZIP 42066 (Mayfield, KY)",00,Total for all sectors,2009,551,6747,G,44480,G,186530,G
+8610000US42069,42069,"ZIP 42069 (Melber, KY)",00,Total for all sectors,2009,14,72,G,324,G,1863,G
+8610000US42070,42070,"ZIP 42070 (Milburn, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US42071,42071,"ZIP 42071 (Murray, KY)",00,Total for all sectors,2009,748,12995,H,79917,H,332124,H
+8610000US42076,42076,"ZIP 42076 (New Concord, KY)",00,Total for all sectors,2009,9,99,H,363,G,1643,G
+8610000US42078,42078,"ZIP 42078 (Salem, KY)",00,Total for all sectors,2009,38,435,G,2898,H,13251,H
+8610000US42079,42079,"ZIP 42079 (Sedalia, KY)",00,Total for all sectors,2009,18,127,G,703,G,2412,G
+8610000US42081,42081,"ZIP 42081 (Smithland, KY)",00,Total for all sectors,2009,26,251,G,1760,G,7357,G
+8610000US42082,42082,"ZIP 42082 (Symsonia, KY)",00,Total for all sectors,2009,18,c,S,530,H,2117,H
+8610000US42083,42083,"ZIP 42083 (Tiline, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42085,42085,"ZIP 42085 (Water Valley, KY)",00,Total for all sectors,2009,7,22,G,102,G,344,G
+8610000US42086,42086,"ZIP 42086 (West Paducah, KY)",00,Total for all sectors,2009,43,248,G,1796,G,7605,G
+8610000US42087,42087,"ZIP 42087 (Wickliffe, KY)",00,Total for all sectors,2009,42,f,D,D,D,D,D
+8610000US42088,42088,"ZIP 42088 (Wingo, KY)",00,Total for all sectors,2009,20,66,G,228,G,976,G
+8610000US42101,42101,"ZIP 42101 (Bowling Green, KY)",00,Total for all sectors,2009,1240,25769,G,216275,G,917455,G
+8610000US42102,42102,"ZIP 42102 (Bowling Green, KY)",00,Total for all sectors,2009,104,2334,G,19233,G,80278,G
+8610000US42103,42103,"ZIP 42103 (Bowling Green, KY)",00,Total for all sectors,2009,389,4833,G,44098,G,177238,G
+8610000US42104,42104,"ZIP 42104 (Bowling Green, KY)",00,Total for all sectors,2009,782,12498,G,67771,G,281116,G
+8610000US42120,42120,"ZIP 42120 (Adolphus, KY)",00,Total for all sectors,2009,8,b,S,152,H,609,G
+8610000US42122,42122,"ZIP 42122 (Alvaton, KY)",00,Total for all sectors,2009,40,196,G,867,G,4403,G
+8610000US42123,42123,"ZIP 42123 (Austin, KY)",00,Total for all sectors,2009,11,24,G,77,G,326,G
+8610000US42127,42127,"ZIP 42127 (Cave City, KY)",00,Total for all sectors,2009,106,840,G,3519,G,15620,G
+8610000US42129,42129,"ZIP 42129 (Edmonton, KY)",00,Total for all sectors,2009,99,1372,H,6954,H,30047,H
+8610000US42130,42130,"ZIP 42130 (Eighty Eight, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42131,42131,"ZIP 42131 (Etoile, KY)",00,Total for all sectors,2009,3,9,G,44,H,184,H
+8610000US42133,42133,"ZIP 42133 (Fountain Run, KY)",00,Total for all sectors,2009,18,c,S,723,H,2953,H
+8610000US42134,42134,"ZIP 42134 (Franklin, KY)",00,Total for all sectors,2009,347,6959,G,45060,G,188836,G
+8610000US42135,42135,"ZIP 42135 (Franklin, KY)",00,Total for all sectors,2009,33,794,G,5712,G,26279,G
+8610000US42140,42140,"ZIP 42140 (Gamaliel, KY)",00,Total for all sectors,2009,25,205,G,854,G,3688,G
+8610000US42141,42141,"ZIP 42141 (Glasgow, KY)",00,Total for all sectors,2009,679,11238,G,80661,G,341732,G
+8610000US42142,42142,"ZIP 42142 (Glasgow, KY)",00,Total for all sectors,2009,28,472,G,4274,G,17944,G
+8610000US42151,42151,"ZIP 42151 (Hestand, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42152,42152,"ZIP 42152 (Hiseville, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US42154,42154,"ZIP 42154 (Knob Lick, KY)",00,Total for all sectors,2009,5,b,S,83,H,446,H
+8610000US42156,42156,"ZIP 42156 (Lucas, KY)",00,Total for all sectors,2009,5,15,G,69,G,414,G
+8610000US42159,42159,"ZIP 42159 (Oakland, KY)",00,Total for all sectors,2009,6,c,D,D,D,D,D
+8610000US42160,42160,"ZIP 42160 (Park City, KY)",00,Total for all sectors,2009,27,198,G,1186,G,4876,G
+8610000US42163,42163,"ZIP 42163 (Rocky Hill, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42164,42164,"ZIP 42164 (Scottsville, KY)",00,Total for all sectors,2009,223,2931,G,17181,G,72074,G
+8610000US42166,42166,"ZIP 42166 (Summer Shade, KY)",00,Total for all sectors,2009,14,213,G,1599,G,6343,G
+8610000US42167,42167,"ZIP 42167 (Tompkinsville, KY)",00,Total for all sectors,2009,166,2040,G,11885,G,50970,G
+8610000US42170,42170,"ZIP 42170 (Woodburn, KY)",00,Total for all sectors,2009,20,262,G,1541,G,7069,G
+8610000US42171,42171,"ZIP 42171 (Smiths Grove, KY)",00,Total for all sectors,2009,84,597,G,2262,G,9189,G
+8610000US42201,42201,"ZIP 42201 (Aberdeen, KY)",00,Total for all sectors,2009,3,b,D,D,D,D,D
+8610000US42202,42202,"ZIP 42202 (Adairville, KY)",00,Total for all sectors,2009,20,85,G,406,G,1711,G
+8610000US42204,42204,"ZIP 42204 (Allensville, KY)",00,Total for all sectors,2009,6,b,S,89,H,426,H
+8610000US42206,42206,"ZIP 42206 (Auburn, KY)",00,Total for all sectors,2009,59,458,G,2848,G,12362,G
+8610000US42207,42207,"ZIP 42207 (Bee Spring, KY)",00,Total for all sectors,2009,8,b,D,D,D,D,D
+8610000US42210,42210,"ZIP 42210 (Brownsville, KY)",00,Total for all sectors,2009,68,507,G,2578,G,10809,G
+8610000US42211,42211,"ZIP 42211 (Cadiz, KY)",00,Total for all sectors,2009,238,2324,G,15264,G,56509,G
+8610000US42214,42214,"ZIP 42214 (Center, KY)",00,Total for all sectors,2009,3,11,G,46,G,196,G
+8610000US42215,42215,"ZIP 42215 (Cerulean, KY)",00,Total for all sectors,2009,10,35,G,141,H,643,H
+8610000US42216,42216,"ZIP 42216 (Clifty, KY)",00,Total for all sectors,2009,4,a,D,D,D,D,D
+8610000US42217,42217,"ZIP 42217 (Crofton, KY)",00,Total for all sectors,2009,48,185,G,818,G,3786,G
+8610000US42219,42219,"ZIP 42219 (Dunbar, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42220,42220,"ZIP 42220 (Elkton, KY)",00,Total for all sectors,2009,116,969,G,4900,G,19508,G
+8610000US42221,42221,"ZIP 42221 (Fairview, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42223,42223,"ZIP 42223 (Fort Campbell, KY)",00,Total for all sectors,2009,86,2406,G,23431,G,93622,G
+8610000US42232,42232,"ZIP 42232 (Gracey, KY)",00,Total for all sectors,2009,12,31,H,146,G,569,G
+8610000US42234,42234,"ZIP 42234 (Guthrie, KY)",00,Total for all sectors,2009,40,337,G,2441,H,9443,H
+8610000US42236,42236,"ZIP 42236 (Herndon, KY)",00,Total for all sectors,2009,8,21,G,68,H,494,G
+8610000US42240,42240,"ZIP 42240 (Hopkinsville, KY)",00,Total for all sectors,2009,1003,16852,G,120642,G,504548,G
+8610000US42241,42241,"ZIP 42241 (Hopkinsville, KY)",00,Total for all sectors,2009,50,g,D,D,D,D,D
+8610000US42254,42254,"ZIP 42254 (La Fayette, KY)",00,Total for all sectors,2009,3,8,G,17,G,55,G
+8610000US42256,42256,"ZIP 42256 (Lewisburg, KY)",00,Total for all sectors,2009,35,178,G,1036,H,4626,G
+8610000US42259,42259,"ZIP 42259 (Mammoth Cave, KY)",00,Total for all sectors,2009,12,68,G,235,G,1295,G
+8610000US42261,42261,"ZIP 42261 (Morgantown, KY)",00,Total for all sectors,2009,183,1532,G,8933,G,40406,G
+8610000US42262,42262,"ZIP 42262 (Oak Grove, KY)",00,Total for all sectors,2009,96,1762,H,13594,H,54965,H
+8610000US42265,42265,"ZIP 42265 (Olmstead, KY)",00,Total for all sectors,2009,8,20,G,55,G,322,G
+8610000US42266,42266,"ZIP 42266 (Pembroke, KY)",00,Total for all sectors,2009,29,c,S,S,S,4263,H
+8610000US42273,42273,"ZIP 42273 (Rochester, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42274,42274,"ZIP 42274 (Rockfield, KY)",00,Total for all sectors,2009,14,60,G,219,G,1131,G
+8610000US42275,42275,"ZIP 42275 (Roundhill, KY)",00,Total for all sectors,2009,7,a,S,47,H,198,H
+8610000US42276,42276,"ZIP 42276 (Russellville, KY)",00,Total for all sectors,2009,371,5558,G,47701,G,189174,G
+8610000US42280,42280,"ZIP 42280 (Sharon Grove, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42283,42283,"ZIP 42283 (South Union, KY)",00,Total for all sectors,2009,5,c,D,D,D,D,D
+8610000US42285,42285,"ZIP 42285 (Sweeden, KY)",00,Total for all sectors,2009,4,23,G,125,H,433,H
+8610000US42286,42286,"ZIP 42286 (Trenton, KY)",00,Total for all sectors,2009,12,43,H,281,H,1161,H
+8610000US42301,42301,"ZIP 42301 (Owensboro, KY)",00,Total for all sectors,2009,1075,20467,G,144799,G,614958,G
+8610000US42302,42302,"ZIP 42302 (Owensboro, KY)",00,Total for all sectors,2009,61,1803,G,16164,G,71188,G
+8610000US42303,42303,"ZIP 42303 (Owensboro, KY)",00,Total for all sectors,2009,955,16031,G,130419,G,552638,G
+8610000US42304,42304,"ZIP 42304 (Owensboro, KY)",00,Total for all sectors,2009,13,276,G,3254,H,12841,H
+8610000US42320,42320,"ZIP 42320 (Beaver Dam, KY)",00,Total for all sectors,2009,140,3612,G,18241,G,79962,G
+8610000US42321,42321,"ZIP 42321 (Beech Creek, KY)",00,Total for all sectors,2009,1,b,D,D,D,D,D
+8610000US42322,42322,"ZIP 42322 (Beech Grove, KY)",00,Total for all sectors,2009,5,b,D,D,D,D,D
+8610000US42323,42323,"ZIP 42323 (Beechmont, KY)",00,Total for all sectors,2009,20,167,H,S,S,4944,H
+8610000US42324,42324,"ZIP 42324 (Belton, KY)",00,Total for all sectors,2009,8,43,G,167,G,748,G
+8610000US42325,42325,"ZIP 42325 (Bremen, KY)",00,Total for all sectors,2009,14,51,G,355,G,1247,G
+8610000US42327,42327,"ZIP 42327 (Calhoun, KY)",00,Total for all sectors,2009,71,477,G,2931,G,12316,G
+8610000US42328,42328,"ZIP 42328 (Centertown, KY)",00,Total for all sectors,2009,16,c,D,D,D,D,D
+8610000US42330,42330,"ZIP 42330 (Central City, KY)",00,Total for all sectors,2009,220,2950,G,24204,G,100802,G
+8610000US42332,42332,"ZIP 42332 (Cleaton, KY)",00,Total for all sectors,2009,2,b,D,D,D,D,D
+8610000US42333,42333,"ZIP 42333 (Cromwell, KY)",00,Total for all sectors,2009,7,b,S,534,H,2766,H
+8610000US42337,42337,"ZIP 42337 (Drakesboro, KY)",00,Total for all sectors,2009,15,189,G,2054,G,16836,G
+8610000US42338,42338,"ZIP 42338 (Dundee, KY)",00,Total for all sectors,2009,6,23,G,178,G,916,G
+8610000US42339,42339,"ZIP 42339 (Dunmor, KY)",00,Total for all sectors,2009,6,38,G,233,G,1050,G
+8610000US42343,42343,"ZIP 42343 (Fordsville, KY)",00,Total for all sectors,2009,23,455,G,2314,G,10417,G
+8610000US42344,42344,"ZIP 42344 (Graham, KY)",00,Total for all sectors,2009,13,310,G,2324,G,9449,G
+8610000US42345,42345,"ZIP 42345 (Greenville, KY)",00,Total for all sectors,2009,220,2434,G,14916,G,64824,G
+8610000US42347,42347,"ZIP 42347 (Hartford, KY)",00,Total for all sectors,2009,128,1030,G,6317,G,28760,G
+8610000US42348,42348,"ZIP 42348 (Hawesville, KY)",00,Total for all sectors,2009,74,2118,H,27921,H,110843,H
+8610000US42349,42349,"ZIP 42349 (Horse Branch, KY)",00,Total for all sectors,2009,7,31,G,273,G,1205,G
+8610000US42350,42350,"ZIP 42350 (Island, KY)",00,Total for all sectors,2009,15,74,H,367,H,1849,H
+8610000US42351,42351,"ZIP 42351 (Lewisport, KY)",00,Total for all sectors,2009,64,1452,G,15080,G,59466,G
+8610000US42352,42352,"ZIP 42352 (Livermore, KY)",00,Total for all sectors,2009,48,434,G,2957,G,12506,G
+8610000US42354,42354,"ZIP 42354 (Mc Henry, KY)",00,Total for all sectors,2009,4,22,G,98,G,549,G
+8610000US42355,42355,"ZIP 42355 (Maceo, KY)",00,Total for all sectors,2009,18,118,G,1124,G,4129,G
+8610000US42356,42356,"ZIP 42356 (Maple Mount, KY)",00,Total for all sectors,2009,2,c,D,D,D,D,D
+8610000US42361,42361,"ZIP 42361 (Olaton, KY)",00,Total for all sectors,2009,5,23,G,171,G,716,G
+8610000US42366,42366,"ZIP 42366 (Philpot, KY)",00,Total for all sectors,2009,61,523,G,3765,G,17210,G
+8610000US42367,42367,"ZIP 42367 (Powderly, KY)",00,Total for all sectors,2009,41,357,G,1978,G,9187,G
+8610000US42368,42368,"ZIP 42368 (Reynolds Station, KY)",00,Total for all sectors,2009,3,11,G,12,G,50,G
+8610000US42369,42369,"ZIP 42369 (Rockport, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42370,42370,"ZIP 42370 (Rosine, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42371,42371,"ZIP 42371 (Rumsey, KY)",00,Total for all sectors,2009,4,b,S,79,G,451,G
+8610000US42372,42372,"ZIP 42372 (Sacramento, KY)",00,Total for all sectors,2009,29,156,G,809,G,4116,G
+8610000US42374,42374,"ZIP 42374 (South Carrollton, KY)",00,Total for all sectors,2009,3,115,G,632,G,2724,G
+8610000US42375,42375,"ZIP 42375 (Stanley, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42376,42376,"ZIP 42376 (Utica, KY)",00,Total for all sectors,2009,60,330,G,2112,H,7681,H
+8610000US42378,42378,"ZIP 42378 (Whitesville, KY)",00,Total for all sectors,2009,40,245,G,1057,G,4384,G
+8610000US42403,42403,"ZIP 42403 (Blackford, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42404,42404,"ZIP 42404 (Clay, KY)",00,Total for all sectors,2009,34,381,G,3437,G,15730,G
+8610000US42406,42406,"ZIP 42406 (Corydon, KY)",00,Total for all sectors,2009,31,145,G,1011,G,4108,G
+8610000US42408,42408,"ZIP 42408 (Dawson Springs, KY)",00,Total for all sectors,2009,76,910,G,5695,G,20208,G
+8610000US42409,42409,"ZIP 42409 (Dixon, KY)",00,Total for all sectors,2009,38,270,H,1514,H,6919,H
+8610000US42410,42410,"ZIP 42410 (Earlington, KY)",00,Total for all sectors,2009,25,275,G,2776,G,9605,G
+8610000US42411,42411,"ZIP 42411 (Fredonia, KY)",00,Total for all sectors,2009,31,193,G,1281,G,5292,G
+8610000US42413,42413,"ZIP 42413 (Hanson, KY)",00,Total for all sectors,2009,29,e,D,D,D,D,D
+8610000US42419,42419,"ZIP 42419 (Henderson, KY)",00,Total for all sectors,2009,38,e,S,1950,G,9326,G
+8610000US42420,42420,"ZIP 42420 (Henderson, KY)",00,Total for all sectors,2009,955,13908,G,105638,G,428843,G
+8610000US42431,42431,"ZIP 42431 (Madisonville, KY)",00,Total for all sectors,2009,770,12279,G,104728,G,455540,G
+8610000US42436,42436,"ZIP 42436 (Manitou, KY)",00,Total for all sectors,2009,4,12,G,24,G,158,G
+8610000US42437,42437,"ZIP 42437 (Morganfield, KY)",00,Total for all sectors,2009,182,2668,G,18607,G,77510,G
+8610000US42440,42440,"ZIP 42440 (Mortons Gap, KY)",00,Total for all sectors,2009,14,154,G,984,G,4181,G
+8610000US42441,42441,"ZIP 42441 (Nebo, KY)",00,Total for all sectors,2009,17,f,D,D,D,D,D
+8610000US42442,42442,"ZIP 42442 (Nortonville, KY)",00,Total for all sectors,2009,41,216,G,1116,G,4801,G
+8610000US42444,42444,"ZIP 42444 (Poole, KY)",00,Total for all sectors,2009,12,60,G,342,G,1379,G
+8610000US42445,42445,"ZIP 42445 (Princeton, KY)",00,Total for all sectors,2009,250,3221,G,18925,G,83493,G
+8610000US42450,42450,"ZIP 42450 (Providence, KY)",00,Total for all sectors,2009,72,552,G,3081,G,13792,G
+8610000US42451,42451,"ZIP 42451 (Reed, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42452,42452,"ZIP 42452 (Robards, KY)",00,Total for all sectors,2009,23,2075,G,25788,G,94408,G
+8610000US42453,42453,"ZIP 42453 (Saint Charles, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US42455,42455,"ZIP 42455 (Sebree, KY)",00,Total for all sectors,2009,59,598,G,4367,G,17209,G
+8610000US42456,42456,"ZIP 42456 (Slaughters, KY)",00,Total for all sectors,2009,19,81,G,873,G,4012,G
+8610000US42457,42457,"ZIP 42457 (Smith Mills, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42458,42458,"ZIP 42458 (Spottsville, KY)",00,Total for all sectors,2009,6,69,G,534,G,2417,G
+8610000US42459,42459,"ZIP 42459 (Sturgis, KY)",00,Total for all sectors,2009,76,690,H,7275,H,27678,H
+8610000US42460,42460,"ZIP 42460 (Sullivan, KY)",00,Total for all sectors,2009,3,6,G,23,G,134,G
+8610000US42461,42461,"ZIP 42461 (Uniontown, KY)",00,Total for all sectors,2009,22,408,H,3224,H,13136,H
+8610000US42462,42462,"ZIP 42462 (Waverly, KY)",00,Total for all sectors,2009,18,581,H,10378,H,43635,H
+8610000US42463,42463,"ZIP 42463 (Wheatcroft, KY)",00,Total for all sectors,2009,3,36,G,344,G,1552,G
+8610000US42464,42464,"ZIP 42464 (White Plains, KY)",00,Total for all sectors,2009,17,83,G,458,G,1879,G
+8610000US42501,42501,"ZIP 42501 (Somerset, KY)",00,Total for all sectors,2009,722,11271,G,68493,G,289391,G
+8610000US42502,42502,"ZIP 42502 (Somerset, KY)",00,Total for all sectors,2009,39,789,G,4084,G,18737,G
+8610000US42503,42503,"ZIP 42503 (Somerset, KY)",00,Total for all sectors,2009,424,6577,G,50986,G,223316,G
+8610000US42516,42516,"ZIP 42516 (Bethelridge, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42518,42518,"ZIP 42518 (Bronston, KY)",00,Total for all sectors,2009,34,e,S,S,S,7340,H
+8610000US42519,42519,"ZIP 42519 (Burnside, KY)",00,Total for all sectors,2009,32,375,G,2415,G,10427,G
+8610000US42528,42528,"ZIP 42528 (Dunnville, KY)",00,Total for all sectors,2009,20,647,H,4065,G,21676,H
+8610000US42533,42533,"ZIP 42533 (Ferguson, KY)",00,Total for all sectors,2009,12,c,S,853,H,2949,H
+8610000US42539,42539,"ZIP 42539 (Liberty, KY)",00,Total for all sectors,2009,173,1749,G,8566,G,37655,G
+8610000US42541,42541,"ZIP 42541 (Middleburg, KY)",00,Total for all sectors,2009,6,b,D,D,D,D,D
+8610000US42544,42544,"ZIP 42544 (Nancy, KY)",00,Total for all sectors,2009,48,232,G,808,G,3744,G
+8610000US42553,42553,"ZIP 42553 (Science Hill, KY)",00,Total for all sectors,2009,51,284,G,1559,H,5941,H
+8610000US42558,42558,"ZIP 42558 (Tateville, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42564,42564,"ZIP 42564 (West Somerset, KY)",00,Total for all sectors,2009,10,e,D,D,D,D,D
+8610000US42565,42565,"ZIP 42565 (Windsor, KY)",00,Total for all sectors,2009,7,48,G,314,G,1422,G
+8610000US42566,42566,"ZIP 42566 (Yosemite, KY)",00,Total for all sectors,2009,4,29,G,127,G,502,G
+8610000US42567,42567,"ZIP 42567 (Eubank, KY)",00,Total for all sectors,2009,46,462,G,2256,G,9123,G
+8610000US42602,42602,"ZIP 42602 (Albany, KY)",00,Total for all sectors,2009,183,3207,H,19128,H,80913,H
+8610000US42603,42603,"ZIP 42603 (Alpha, KY)",00,Total for all sectors,2009,5,a,S,75,G,378,G
+8610000US42629,42629,"ZIP 42629 (Jamestown, KY)",00,Total for all sectors,2009,102,1528,H,9457,G,36906,G
+8610000US42631,42631,"ZIP 42631 (Marshes Siding, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42633,42633,"ZIP 42633 (Monticello, KY)",00,Total for all sectors,2009,323,4036,G,22427,G,94988,G
+8610000US42634,42634,"ZIP 42634 (Parkers Lake, KY)",00,Total for all sectors,2009,5,37,H,243,H,731,H
+8610000US42635,42635,"ZIP 42635 (Pine Knot, KY)",00,Total for all sectors,2009,32,348,G,1830,G,7425,G
+8610000US42638,42638,"ZIP 42638 (Revelo, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42642,42642,"ZIP 42642 (Russell Springs, KY)",00,Total for all sectors,2009,262,3106,G,16720,G,73105,G
+8610000US42647,42647,"ZIP 42647 (Stearns, KY)",00,Total for all sectors,2009,30,273,G,1260,G,5780,G
+8610000US42649,42649,"ZIP 42649 (Strunk, KY)",00,Total for all sectors,2009,5,12,G,119,G,297,G
+8610000US42653,42653,"ZIP 42653 (Whitley City, KY)",00,Total for all sectors,2009,91,767,G,4264,G,18241,G
+8610000US42701,42701,"ZIP 42701 (Elizabethtown, KY)",00,Total for all sectors,2009,1385,21849,G,155683,G,660900,G
+8610000US42702,42702,"ZIP 42702 (Elizabethtown, KY)",00,Total for all sectors,2009,40,1545,G,14679,G,42093,G
+8610000US42712,42712,"ZIP 42712 (Big Clifty, KY)",00,Total for all sectors,2009,14,48,H,190,G,798,G
+8610000US42713,42713,"ZIP 42713 (Bonnieville, KY)",00,Total for all sectors,2009,15,119,G,472,G,2125,H
+8610000US42715,42715,"ZIP 42715 (Breeding, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
+8610000US42716,42716,"ZIP 42716 (Buffalo, KY)",00,Total for all sectors,2009,19,71,G,256,G,1044,G
+8610000US42717,42717,"ZIP 42717 (Burkesville, KY)",00,Total for all sectors,2009,104,1056,G,5742,G,25365,G
+8610000US42718,42718,"ZIP 42718 (Campbellsville, KY)",00,Total for all sectors,2009,620,9332,G,56047,G,248300,G
+8610000US42719,42719,"ZIP 42719 (Campbellsville, KY)",00,Total for all sectors,2009,26,220,G,1117,G,4550,G
+8610000US42721,42721,"ZIP 42721 (Caneyville, KY)",00,Total for all sectors,2009,45,305,H,1967,G,7761,G
+8610000US42722,42722,"ZIP 42722 (Canmer, KY)",00,Total for all sectors,2009,5,11,G,50,G,220,G
+8610000US42724,42724,"ZIP 42724 (Cecilia, KY)",00,Total for all sectors,2009,43,426,G,2592,G,10883,G
+8610000US42726,42726,"ZIP 42726 (Clarkson, KY)",00,Total for all sectors,2009,69,469,H,2452,H,11150,H
+8610000US42728,42728,"ZIP 42728 (Columbia, KY)",00,Total for all sectors,2009,300,3964,G,22377,G,95137,G
+8610000US42729,42729,"ZIP 42729 (Cub Run, KY)",00,Total for all sectors,2009,11,34,G,120,G,535,G
+8610000US42731,42731,"ZIP 42731 (Dubre, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42732,42732,"ZIP 42732 (Eastview, KY)",00,Total for all sectors,2009,11,29,G,76,G,352,G
+8610000US42733,42733,"ZIP 42733 (Elk Horn, KY)",00,Total for all sectors,2009,5,12,G,S,S,285,H
+8610000US42740,42740,"ZIP 42740 (Glendale, KY)",00,Total for all sectors,2009,28,367,G,1377,G,5932,G
+8610000US42741,42741,"ZIP 42741 (Glens Fork, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42743,42743,"ZIP 42743 (Greensburg, KY)",00,Total for all sectors,2009,139,1111,G,6178,G,24936,G
+8610000US42746,42746,"ZIP 42746 (Hardyville, KY)",00,Total for all sectors,2009,5,37,G,146,G,570,G
+8610000US42748,42748,"ZIP 42748 (Hodgenville, KY)",00,Total for all sectors,2009,166,1550,G,8324,G,36182,G
+8610000US42749,42749,"ZIP 42749 (Horse Cave, KY)",00,Total for all sectors,2009,86,2550,H,18552,H,77471,H
+8610000US42753,42753,"ZIP 42753 (Knifley, KY)",00,Total for all sectors,2009,6,51,H,S,S,713,H
+8610000US42754,42754,"ZIP 42754 (Leitchfield, KY)",00,Total for all sectors,2009,313,4832,G,28188,G,119238,G
+8610000US42755,42755,"ZIP 42755 (Leitchfield, KY)",00,Total for all sectors,2009,15,144,H,838,H,3127,H
+8610000US42757,42757,"ZIP 42757 (Magnolia, KY)",00,Total for all sectors,2009,20,83,G,922,G,3420,G
+8610000US42758,42758,"ZIP 42758 (Mannsville, KY)",00,Total for all sectors,2009,3,17,G,66,G,310,G
+8610000US42759,42759,"ZIP 42759 (Marrowbone, KY)",00,Total for all sectors,2009,1,a,D,D,D,D,D
+8610000US42762,42762,"ZIP 42762 (Millwood, KY)",00,Total for all sectors,2009,8,64,H,444,H,2085,H
+8610000US42764,42764,"ZIP 42764 (Mount Sherman, KY)",00,Total for all sectors,2009,3,2,G,26,G,110,G
+8610000US42765,42765,"ZIP 42765 (Munfordville, KY)",00,Total for all sectors,2009,115,984,G,4911,G,22095,H
+8610000US42776,42776,"ZIP 42776 (Sonora, KY)",00,Total for all sectors,2009,28,412,H,2406,H,10531,H
+8610000US42782,42782,"ZIP 42782 (Summersville, KY)",00,Total for all sectors,2009,8,26,G,S,S,266,H
+8610000US42784,42784,"ZIP 42784 (Upton, KY)",00,Total for all sectors,2009,33,164,G,868,G,4498,G
+8610000US42788,42788,"ZIP 42788 (White Mills, KY)",00,Total for all sectors,2009,2,a,D,D,D,D,D
