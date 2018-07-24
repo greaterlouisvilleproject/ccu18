@@ -257,6 +257,7 @@ Race
 acs$race <- NA
 acs$race[acs$RACE == 1 & acs$HISPAN == 0] <- 0
 acs$race[acs$RACE == 2 & acs$HISPAN == 0] <- 1
+acs$race[acs$HISPAN == 1] <- 2
 ```
 
 **Create variables**
@@ -337,7 +338,7 @@ acs %<>%
 ```
 
 Disconnected Youth
-```{r}
+```{r, eval = FALSE}
 acs %<>%
   mutate(
     in_school = if_else(SCHOOL == 2, 1, 0),
@@ -364,7 +365,30 @@ svy_25_64 <- survey_df %>% subset(AGE >= 25 & AGE <= 64)
 acs_hhold <- acs[!duplicated(acs[c('YEAR', 'SERIAL')]),]
 survey_df_hhold <- svydesign(ids = ~1, weights = ~HHWT, data = acs_hhold)
 
-results <- svyby(~assoc_plus + bach_plus + grad + unemp + working_poverty, ~FIPS+YEAR+race, design = survey_df, svymean, na.rm = TRUE)
+#results <- svyby(~assoc_plus + bach_plus + grad + unemp + working_poverty, ~FIPS+YEAR+race, design = survey_df, svymean, na.rm = TRUE)
+
+results <- svyby(~bach_plus, ~FIPS+YEAR+race, design = survey_df, svymean, na.rm = TRUE)
+
+
+output <- results %>%
+  select(FIPS, race, year = YEAR, bach_plus) %>%
+  mutate_at(vars(bach_plus), function(x) {x * 100}) %>%
+  {
+    x <- .
+    full_join(
+      x %>% 
+        filter(race == 0) %>% 
+        select(-race) %>%
+        rename(bach_w = bach_plus),
+      x %>% 
+        filter(race == 2) %>%
+        select(-race) %>%
+        rename(bach_b = bach_plus),
+      by = c('FIPS', 'year'))
+  }
+```
+
+```{r, eval = FALSE}
 
 output <- results %>%
   select(FIPS, race, year = YEAR, assoc_plus, bach_plus, grad, unemp, working_poverty) %>%
@@ -460,7 +484,7 @@ dev.off()
 png("bach_black.png", 900, 600, res = 100, type = "cairo")
 graph_trendline(output, 
                 "bach_b",
-                plot_title = "Bachelor's Degrees of Higher, Black, Ages 25-34",
+                plot_title = "Bachelor's Degrees or Higher, Hispanic, Ages 25-34",
                 rollmean = 3,
                 xmin = 2005,
                 xmax = 2015,
