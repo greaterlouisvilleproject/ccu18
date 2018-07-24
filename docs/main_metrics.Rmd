@@ -269,6 +269,13 @@ make_map("per_25_64_bach_plus",
 rm(degree_map)
 ```
 
+## Peer Highlight
+```{r graph4}
+graph_trendline_change(data,
+                'per_25_64_bach_plus',
+                plot_title = 'Bachelor Degrees, Ages 25 to 64')
+
+```
 
 # Education: Young Adults
 
@@ -305,6 +312,14 @@ make_map("per_25_34_bach_plus",
          legend_title = "Bachelor<br/>Degrees")
 
 rm(degree_map)
+```
+
+## Peer Highlight
+```{r graph44}
+graph_trendline_change(data,
+                'per_25_34_bach_plus',
+                plot_title = 'Bachelor Degrees, Ages 25 to 34')
+
 ```
 
 # Jobs
@@ -434,7 +449,13 @@ make_map("median_earnings",
 rm(earn_map)
 ```
 
+## Peer Highlight
+```{r graph54}
+graph_trendline_change(data,
+                'median_earnings',
+                plot_title = 'Median Earnings')
 
+```
 
 # Health
 
@@ -457,6 +478,20 @@ rm(earn_map)
 
 ## Trendline
 ![](pct_pop_living_in_core_county_trendline.png)
+
+## Peer Highlight
+```{r graph49}
+qop <- read_csv('C:/Users/Harrison Kirby/Desktop/GLP/glp_website/output data/qp_data_fips.csv') %>% mutate(FIPS = as.character(FIPS)) %>% left_join(names)
+
+graph_trendline_change(qop,
+                'pct_pop_core_county',
+                oldest_year = 2010,
+                newest_year = 2015,
+                xmin = 2010,
+                xmax = 2015,
+                plot_title = 'Health Outcomes')
+
+```
 
 # Other fun new data
 
