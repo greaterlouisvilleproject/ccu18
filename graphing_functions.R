@@ -321,9 +321,19 @@ graph_trendline_change<-function(df,var, plot_title="",y_title = "", peers = "Cu
     ))  %>%
     select(city, category)
   
+  #calculate peer city mean
+  peer_mean = df %>% 
+    filter(city != "Louisville") %>%
+    group_by(year) %>%
+    summarise(var = mean(var, na.rm = TRUE)) %>%
+    mutate(
+      city = "Peer Mean",
+      category = "Peer Mean")
+  
   df <- df %>%
     filter(city %in% city_list$city) %>%
-    left_join(city_list, by = "city")
+    left_join(city_list, by = "city") %>%
+    bind_rows(peer_mean)
   
   #set x-axis labels based on break_settings parameter
   if(break_settings == ""){
@@ -333,7 +343,7 @@ graph_trendline_change<-function(df,var, plot_title="",y_title = "", peers = "Cu
   #initial line plot
   p <- ggplot(data = df,aes(x = year, y = var, colour = category))+
     geom_point(size = 1.8)+
-    geom_line(size = 1) + scale_colour_manual(values = c("blue", "darkgreen", "red"))
+    geom_line(size = 1) + scale_colour_manual(values = c("blue", "darkgreen", "red", "grey"))
   p <- p + theme_bw()
   midpoint <- (max(df$var, na.rm = TRUE) + min(df$var, na.rm = TRUE))/2
   border_space <- .1 * midpoint
@@ -460,7 +470,7 @@ graph_trendline_race_peer<-function(df,vars, plot_title="",y_title="Percent", pe
   data_long <- data_long[!is.na(data_long$value),]
   
   data_long$race[data_long$variable %in% c('var_white', 'white_q1', 'white_mean', 'white_q3')] <- "White"
-  data_long$race[data_long$variable %in% c('var_black', 'black_q1', 'black_mean', 'black_q3')] <- "African American"
+  data_long$race[data_long$variable %in% c('var_black', 'black_q1', 'black_mean', 'black_q3')] <- "Black"
   data_long$race[data_long$variable %in% c('var_hisp', 'hisp_q1', 'hisp_mean', 'hisp_q3')] <- "Hispanic"
   
   #initial line plot
@@ -538,186 +548,9 @@ graph_trendline_race_peer<-function(df,vars, plot_title="",y_title="Percent", pe
   p
 }
 
-#Trendline graph for white, black, and hispanic including peer city
-graph_trendline_race_peer_test<-function(df,vars, plot_title="",y_title="Percent", peers = "Current", 
-                                    caption_text = "", subtitle_text = "",
-                                    rollmean = 1, xmin = 2005, xmax = 2016,
-                                    break_settings = ""){
-  
-  #create a new variable to use var with the '$' operator
-  df$white <- df[[vars[1]]]
-  df$black <- df[[vars[2]]]
-  df$hisp  <- df[[vars[3]]]
-  
-  df %<>% select(FIPS, year, current, baseline, white, black, hisp) %>%
-    gather(white:hisp, key = "race", value = "value")
-  
-  #subset to peers and remove Louisville
-  if(peers=="Current"){
-    df.wol <- subset(df,current == 1 & FIPS!=21111)
-  }
-  
-  if(peers=="Baseline"){
-    df.wol <- subset(df,baseline == 1 & FIPS!=21111)
-  }
-  
-  #calculate 25th and 75th percentiles
-  output_wol = df %>% 
-    group_by(year, race) %>%
-    summarise(
-      q1   = quantile(value, prob = 0.25, na.rm = TRUE),
-      mean = mean(value, na.rm = TRUE),
-      q3   = quantile(value, prob = 0.75, na.rm = TRUE))
-  
-  #extract Louisville values
-  lville = df %>% 
-    filter(FIPS == 21111) %>% 
-    mutate(lou = value) %>%
-    select(year, race, lou)
-  
-  #join 25th percentile, 75th percentile, and Louisville values
-  dat = full_join(lville, output_wol, by = c("year", "race"))
-  
-  if(xmin == 2000 & rollmean == 3){
-    var_2000 <- dat$var[dat$year == 2000]
-    first_quarter_2000 <- dat$first_quarter[dat$year == 2000]
-    mean_2000 <- dat$mean[dat$year == 2000]
-    third_quarter_2000 <- dat$third_quarter[dat$year == 2000]
-  }
-  
-  #Calculate 3- or 5-year rolling average
-  if (rollmean == 3){
-    dat <- dat %>%
-      mutate_at(vars(lou, q1, mean, q3), rollmean3)
-    if(xmin != 2000){
-      dat <- dat %>% filter((year > xmin))
-      xmin = xmin +1
-    }
-    
-    dat <- dat %>% filter((year < xmax))
-    xmax = xmax -1
-    subtitle_text = "3-year rolling average"
-  }
-  if (rollmean == 5){
-    dat <- dat %>%
-      mutate_at(vars(lou, q1, mean, q3), rollmean5)
-    dat = dat %>% filter((year > xmin+1) & (year < xmax-1))
-    xmin = xmin + 2
-    xmax = xmax - 2
-    subtitle_text = "5-year rolling average"
-  }
-  
-  if(xmin == 2000 & rollmean == 3){
-    dat$var[dat$year == 2000] <- var_2000
-    dat$first_quarter[dat$year == 2000] <- first_quarter_2000
-    dat$mean[dat$year == 2000] <- mean_2000
-    dat$third_quarter[dat$year == 2000] <- third_quarter_2000
-  }
-  
-  #set x-axis labels based on break_settings parameter
-  if(break_settings == ""){
-    if(xmax - xmin > 5) {skip = 2}
-    else {skip = 1}
-    if((xmax - xmin) %% 2 == 0 || skip == 1){
-      break_settings = seq(xmin, xmax, skip)
-    } 
-    else{
-      break_settings = seq(xmin + 1, xmax, skip)
-    }
-  }
-  
-  print(dat)
-  #reshape data
-  data_long <- dat %>% select(year, race, everything()) %>% gather(lou:q3, key ='key', value ='value')
-  data_long <- data_long[!is.na(data_long$value),]
-  
-  #data_long$race[data_long$variable %in% c('var_white', 'white_q1', 'white_mean', 'white_q3')] <- "White"
-  #data_long$race[data_long$variable %in% c('var_black', 'black_q1', 'black_mean', 'black_q3')] <- "African American"
-  #data_long$race[data_long$variable %in% c('var_hisp', 'hisp_q1', 'hisp_mean', 'hisp_q3')] <- "Hispanic"
-  
-  data_long %<>%
-    mutate(grouping = paste0(race, key))
-  
-  #initial line plot
-  p <- ggplot(data = data_long,aes(x = year, y = value, color = grouping, linetype = key, alpha = key, group = grouping))+
-    geom_point(size = 1.8)+
-    geom_line(size = 1, aes(group = grouping))
-  p <- p + theme_bw()
-  midpoint <- (max(data_long$value, na.rm = TRUE)+min(data_long$value, na.rm = TRUE))/2
-  border_space <- .1 * midpoint
-  p <- p + ylim(c(min(data_long$value, na.rm = TRUE) - border_space, max(data_long$value, na.rm=TRUE) + border_space))
-  p<-p+scale_x_continuous(limits = c(xmin, xmax), breaks = break_settings)
-  p<-p+scale_y_continuous(labels = comma)
-  
-  print(unique(data_long$grouping))
-  print(unique(data_long$key))
-
-  # "whitelou"  "blacklou"  "hisplou"   "whiteq1"   "blackq1"   "hispq1"    "whitemean" "blackmean" "hispmean"  "whiteq3"   "blackq3"   "hispq3" 
-  
-  cols <- c("8" = "red", "4" = "blue", "6" = "darkgreen", "10" = "orange")
-  p + scale_colour_manual(values = cols)
-  
-  #add color and line types
-  cPalette <- c('whitelou' ='blue',   'blacklou' = 'red',  'hisplou' = 'darkgreen',
-                'whiteq1' = "black",  'blackq1' = "black", 'hispq1' = "black",
-                'whitemean' = "blue", 'blackmean' = "red", 'hispmean' = "black",
-                'whiteq3' = "black",  'blackq3' = "black", 'hispq3' = "black")
-  p <- p + 
-    scale_colour_manual(values = cPalette)
-  
-  shapes <- c('lou' = 'solid', 'q1' = 'dashed', 'q3' = 'dashed', 'mean' = 'dashed')
-  
-  p <- p + scale_linetype_manual(values = shapes)
-  
-  p <- p + scale_alpha_manual(values = c('lou' = 1, 'q1' = 0, 'q3' = 0, 'mean' = 1))
-  
-  #add remaining style and elements
-  p<-p+theme(text = element_text(family = "Museo Sans 300"),
-             legend.title=element_blank(),
-             legend.position = "top",
-             axis.text=element_text(size=24, family = "Museo Sans 300"),
-             axis.title = element_text(size = 24),
-             axis.ticks.y=element_blank(),
-             plot.title=element_text(size=36, hjust=.5, family = "Museo Sans 300",
-                                     margin=margin(b=10,unit="pt")),
-             legend.text=element_text(size=24, family = "Museo Sans 300"),
-             plot.caption = element_text(family = "Museo Sans 300"),
-             plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 20))
-  p<-p+labs(title=plot_title,x="Year",
-            y=y_title, caption = caption_text, subtitle = subtitle_text)
-  
-  ribbon_dat <- data_long %>% 
-    filter(key %in% c('q1', 'q3'))
-  
-  positions <- data.frame(
-    key = ribbon_dat$key,
-    race = ribbon_dat$race,
-    x  = ribbon_dat$year,
-    y  = ribbon_dat$value)
-  
-  positions <- positions %>% 
-  {
-    x <- .
-    bind_rows(
-      x %>% filter(key %in% c('q1')) %>% arrange(x), 
-      x %>% filter(key %in% c('q3')) %>% arrange(desc(x)))
-  }
-  
-  p <- p + geom_polygon(data = positions, 
-                        aes(x = x, y = y, group = race, fill = factor(race), color = factor(race)), 
-                        col = NA, alpha = 0.3)
-  
-  #p <- p + scale_fill_manual(values = c('#7fc97f', '#beaed4', '#fdc086'))
-  
-  p <- p + guides(color = FALSE, alpha = FALSE)
-  
-  p <- p+ theme(  legend.background = element_rect(fill="white"))
-  
-  p
-}
-
 graph_trendline_race_peer_two<-function(df,vars, plot_title="",y_title="Percent", peers = "Current", 
                                     caption_text = "", subtitle_text = "",
+                                    cat_labels = c("White", "Black"),
                                     rollmean = 1, xmin = 2005, xmax = 2016,
                                     break_settings = ""){
   
@@ -811,8 +644,8 @@ graph_trendline_race_peer_two<-function(df,vars, plot_title="",y_title="Percent"
   data_long <- melt(dat, id="year")
   data_long <- data_long[!is.na(data_long$value),]
   
-  data_long$race[data_long$variable %in% c('var_white', 'white_q1', 'white_mean', 'white_q3')] <- "White"
-  data_long$race[data_long$variable %in% c('var_black', 'black_q1', 'black_mean', 'black_q3')] <- "African American"
+  data_long$race[data_long$variable %in% c('var_white', 'white_q1', 'white_mean', 'white_q3')] <- cat_labels[1]
+  data_long$race[data_long$variable %in% c('var_black', 'black_q1', 'black_mean', 'black_q3')] <- cat_labels[2]
   
   #initial line plot
   p <- ggplot(data=data_long,aes(x = year, y = value, color = variable, linetype = variable, alpha = variable))+
@@ -1465,7 +1298,7 @@ ky_ed_data_long_trendline <- function(data_long, var = "var", value = "value", p
 #MAPS
 
 make_map <- function(var, name, units = "Percent",
-                     map_style = "sequential", legend_title = ""){
+                     map_style = "sequential", legend_title = "", palette = "", reverse = F){
   
   #renames var for use with the '$' operator
   map_jc@data$var <- map_jc@data[[var]]
@@ -1485,6 +1318,9 @@ make_map <- function(var, name, units = "Percent",
   }
   if(units == "minutes"){
     map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2)," minutes", sep = "")
+  }
+  if(units == "people"){
+    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2)," people", sep = "")
   }
   if(units == "none"){
     map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2), sep = "")
@@ -1510,6 +1346,99 @@ make_map <- function(var, name, units = "Percent",
   if(map_style == "divergent" | map_style == "Divergent"){
     col_palette = "RdYlGn"
   }
+  
+  if(palette != ""){
+    col_palette = palette
+  }
+  
+  pal <- brewer.pal(11, col_palette)
+  
+  if(reverse == T){
+    pal <- rev(pal)
+  }
+  
+  pal <- colorNumeric(
+    palette = pal,
+    domain = map_jc@data$var
+  )
+  
+  #Create map title using legend_title parameter
+  if(units == "Percent") {
+    title_text <- paste(legend_title, "(%)", sep = ' ')
+  }
+  if(units == "Dollars") {
+    title_text <- paste(legend_title, "($)", sep = ' ')
+  }
+  if(units == "minutes"){
+    title_text <- paste(legend_title, "(minutes)", sep = ' ')
+  }
+  if(units == "people"){
+    title_text <- paste(legend_title, "(people)", sep = ' ')
+  }
+  if(units == "none"){
+    title_text <- legend_title
+  }
+  
+  #create map
+  m <- leaflet(map_jc) %>%
+    addTiles() %>%
+    addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
+                opacity = 1.0, fillOpacity = 0.5,
+                fillColor = ~pal(var),
+                label = labels,
+                labelOptions = labelOptions(
+                  style = list("font-weight" = "normal", padding = "3px 8px"),
+                  textsize = "15px",
+                  direction = "auto"))%>%
+    addLegend(pal = pal, values = ~var, opacity = 0.7, title = title_text,
+              position = "bottomright")
+  
+  m
+}
+
+make_map_00 <- function(var, name, units = "Percent",
+                        map_style = "sequential", legend_title = ""){
+  
+  #renames var for use with the '$' operator
+  map_jc@data$var <- map_jc@data[[var]]
+  
+  #concatenate third line of text for tract labels using units parameter
+  if(units == "Percent"){
+    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2),"%", sep = "")
+  }
+  if(units == "Dollars"){
+    map_jc@data$l_line3 <- paste(name, ": $",
+                                 prettyNum(
+                                   signif(map_jc@data$var, 3),
+                                   big.mark = ",",
+                                   preserve.width = "none"
+                                 ),
+                                 sep = "")
+  }
+  if(units == "minutes"){
+    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2)," minutes", sep = "")
+  }
+  if(units == "people"){
+    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2)," people", sep = "")
+  }
+  if(units == "none"){
+    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2), sep = "")
+  }
+  
+  #combine lines of text into full formatted label
+  labels <- sprintf(map_jc@data$l_line3) %>% 
+    lapply(htmltools::HTML)
+  
+  labels[[190]] <- htmltools::HTML(sprintf("%s", "No residents")
+  )
+  
+  #Define palette using map_style parameter
+  if(map_style == "sequential" | map_style == "Sequential"){
+    col_palette = "BuPu"
+  }
+  if(map_style == "divergent" | map_style == "Divergent"){
+    col_palette = "RdYlGn"
+  }
   pal <- brewer.pal(11, col_palette)
   pal <- colorNumeric(
     palette = pal,
@@ -1525,6 +1454,9 @@ make_map <- function(var, name, units = "Percent",
   }
   if(units == "minutes"){
     title_text <- paste(legend_title, "(minutes)", sep = ' ')
+  }
+  if(units == "people"){
+    title_text <- paste(legend_title, "(people)", sep = ' ')
   }
   if(units == "none"){
     title_text <- legend_title
@@ -1610,6 +1542,75 @@ make_map_nh <- function(var, name, units = "Percent",
   m <- leaflet(map_jc_nh) %>%
     addTiles() %>%
     addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
+                opacity = 1.0, fillOpacity = 0.5,
+                fillColor = ~pal(var),
+                label = labels,
+                labelOptions = labelOptions(
+                  style = list("font-weight" = "normal", padding = "3px 8px"),
+                  textsize = "15px",
+                  direction = "auto"))%>%
+    addLegend(pal = pal, values = ~var, opacity = 0.7, title = title_text,
+              position = "bottomright")
+  m
+}
+
+make_map_block <- function(var, name, units = "Percent",
+                           map_style = "sequential", legend_title = ""){
+  
+  #renames var for use with the '$' operator
+  map_jc_block@data$var <- map_jc_block@data[[var]]
+  
+  #concatenate third line of text for tract labels using units parameter
+  if(units == "Percent"){
+    map_jc_block@data$l_line2 <- paste(name, ": ", round(map_jc_block@data$var, 2),"%", sep = "")
+  }
+  if(units == "Dollars"){
+    map_jc_block@data$l_line2 <- paste(name, ": $",
+                                     prettyNum(
+                                       signif(map_jc_block@data$var, 3),
+                                       big.mark = ",",
+                                       preserve.width = "none"
+                                     ),
+                                     sep = "")
+  }
+  if(units == "none"){
+    map_jc_block@data$l_line2 <- paste(name, ": ", round(map_jc_block@data$var, 2), sep = "")
+  }
+  
+  #combine lines of text into full formatted label
+  labels <- sprintf("%s<br/>%s",
+                    map_jc_block@data$l_line1, map_jc_block@data$l_line2
+  ) %>% 
+    lapply(htmltools::HTML)
+  
+  #Define palette using map_style parameter
+  if(map_style == "sequential" | map_style == "Sequential"){
+    col_palette = "BuPu"
+  }
+  if(map_style == "divergent" | map_style == "Divergent"){
+    col_palette = "RdYlGn"
+  }
+  pal <- brewer.pal(11, col_palette)
+  pal <- colorNumeric(
+    palette = pal,
+    domain = map_jc_block@data$var
+  )
+  
+  #Create map title using legend_title parameter
+  if(units == "Percent") {
+    title_text <- paste(legend_title, "(%)", sep = ' ')
+  }
+  if(units == "Dollars") {
+    title_text <- paste(legend_title, "($)", sep = ' ')
+  }
+  if(units == "none"){
+    title_text <- legend_title
+  }
+  
+  #create map
+  m <- leaflet(map_jc_block) %>%
+    addTiles() %>%
+    addPolygons(color = "#444444", weight = 0, smoothFactor = 0.5,
                 opacity = 1.0, fillOpacity = 0.5,
                 fillColor = ~pal(var),
                 label = labels,

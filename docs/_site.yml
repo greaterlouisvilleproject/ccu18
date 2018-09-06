@@ -18,3 +18,4 @@ output:
     theme: paper
     toc: true
     toc_float: true
+    toc_collapsed: false
