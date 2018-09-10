@@ -102,7 +102,7 @@ make_map_block("maxdown",
                units = "none")
 ```
 
-# Population in Core County
+# MM: Population in Core County
 ```{r data26, eval=FALSE}
 #Read in core county population data
 fips_core_county_pop <- read_csv("data/population_data_one_stl.csv")
@@ -145,7 +145,7 @@ data %<>% bind_df(fips_core_county_pop)
 rm(fips_core_county_pop, msa_fips_key, msa_pop_est)
 ```
 
-## Ranking
+## 1. Ranking
 ![](qp_pct_pop_core_county.png)
 ```{r graph26, eval = FALSE}
 rank_and_nb_group(data[data$year == 2015,],
@@ -153,7 +153,7 @@ rank_and_nb_group(data[data$year == 2015,],
                   plot_title = 'Percent of the population living in the Core County')
 ```
 
-## Trendline
+## 2. Trendline
 ![](pct_pop_living_in_core_county_trendline.png)
 ```{r graph 26.1, eval = FALSE}
 graph_trendline(data,
@@ -168,7 +168,6 @@ map_jc_00 = readOGR('data/maps/tract2000', layer = "tr21_d00",
 
 map_jc_00$TRACT <- as.numeric(map_jc_00$TRACT)
 
-# Pop
 ```{r popdata1}
 #Tract Map
 
@@ -200,7 +199,7 @@ pop_00 %<>%
 rm(crosswalk)  
 ```
 
-# Change in Population 2008-2014 {.tabset}
+## 3. Population Change in Louisville
 ```{r popdata}
 pop_time <- function(folder, starting_year = 2010){
   wd <- getwd()
@@ -261,8 +260,6 @@ pop$population_change_adj_scale[pop$population_change_adj > 100] <- NA
 map_data <- pop
 ```
 
-## Percent Change
-This map shows the change in the percentage of residents for each census tract. Data are five-year averages from 2008 and 2014.
 ```{r popmap}
 map_jc@data <- full_join(map_jc@data, pop, by = c('GEO_ID' = 'Id'))
 
@@ -300,131 +297,6 @@ map_jc@data$population_change_log
 rm(tract_id, pop_00, pop)
 ```
 
-va = "population_change"
-name = ""
-units = "Percent"
-map_style = "divergent"
-legend_title = ""
-palette = ""
-reverse = F
-  
-  #renames var for use with the '$' operator
-  map_jc@data$var <- map_jc@data[["population_change"]]
-  
-  #concatenate third line of text for tract labels using units parameter
-  if(units == "Percent"){
-    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2),"%", sep = "")
-  }
-  if(units == "Dollars"){
-    map_jc@data$l_line3 <- paste(name, ": $",
-                                 prettyNum(
-                                   signif(map_jc@data$var, 3),
-                                   big.mark = ",",
-                                   preserve.width = "none"
-                                 ),
-                                 sep = "")
-  }
-  if(units == "minutes"){
-    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2)," minutes", sep = "")
-  }
-  if(units == "people"){
-    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2)," people", sep = "")
-  }
-  if(units == "none"){
-    map_jc@data$l_line3 <- paste(name, ": ", round(map_jc@data$var, 2), sep = "")
-  }
-  
-  #combine lines of text into full formatted label
-  labels <- sprintf("%s<br/>%s<br/>%s",
-                    map_jc@data$l_line1, map_jc@data$l_line2, map_jc@data$l_line3
-                   ) %>% 
-            lapply(htmltools::HTML)
-  
-  labels[[190]] <- htmltools::HTML(sprintf("%s<br/>%s<br/>%s",
-                                           "Tract #: 980000",
-                                           "Louisville International Airport",
-                                           "No residents"
-                                          )
-                                  )
-                 
-  #Define palette using map_style parameter
-  if(map_style == "sequential" | map_style == "Sequential"){
-    col_palette = "BuPu"
-  }
-  if(map_style == "divergent" | map_style == "Divergent"){
-    col_palette = "RdYlGn"
-  }
-  
-  #pal <- brewer.pal(11, col_palette)
-  neg <- colorNumeric(
-    palette = "OrRd",
-    domain = subset(map_jc@data, var <= 0)$var
-  )
-  pos <- colorNumeric(
-    palette = "Greens",
-    domain = subset(map_jc@data, var > 0)$var
-  )
-  
-  pal <- colorNumeric(
-    palette = "Greens",
-    domain = map_jc@data$var
-  )
-  
-  pal <- function(x){
-    this <- pos(x)
-    that <- neg(x)
-    
-    color <- if_else(x > 0, this, that)
-    color <- replace_na(color, "#808080")
-    color
-  }
-  
-  #Create map title using legend_title parameter
-  if(units == "Percent") {
-    title_text <- paste(legend_title, "(%)", sep = ' ')
-  }
-  if(units == "Dollars") {
-    title_text <- paste(legend_title, "($)", sep = ' ')
-  }
-  if(units == "minutes"){
-    title_text <- paste(legend_title, "(minutes)", sep = ' ')
-  }
-  if(units == "people"){
-    title_text <- paste(legend_title, "(people)", sep = ' ')
-  }
-  if(units == "none"){
-    title_text <- legend_title
-  }
-  
-  #create map
-  m <- leaflet(map_jc) %>%
-    addTiles() %>%
-    addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
-                opacity = 1.0, fillOpacity = 0.5,
-                fillColor = ~pal(var),
-                label = labels,
-                labelOptions = labelOptions(
-                  style = list("font-weight" = "normal", padding = "3px 8px"),
-                  textsize = "15px",
-                  direction = "auto"))
-  %>%
-    addLegend(pal = pal, values = ~var, opacity = 0.7, title = title_text,
-              position = "bottomright")
-  m
-  pal2(2000)
-
-
-## Adjusted Change
-This map shows the percentage change in each county's population relative to the change in the entire county's population. 
-```{r}
-make_map("population_change_adj", 
-         name = "Population",
-         legend_title = "Population Change",
-         units = "Percent",
-         map_style = "divergent")
-```
-
-## Percent Change 2
 ```{r}
 make_map("population_change_scale", 
          name = "Population Change",
@@ -433,17 +305,35 @@ make_map("population_change_scale",
          map_style = "divergent")
 ```
 
-## Adjusted Change 2
-```{r}
-make_map("population_change_adj_scale", 
-         name = "Population Change",
-         legend_title = "Population Change",
-         units = "Percent",
-         map_style = "divergent")
+# Transportation
+```{r data311}
+commute <- read_csv('data/qop/ACS_16_5YR_B08303_with_ann.csv', skip = 1)
+
+commute %<>%
+  mutate(
+    total = `Estimate; Total:`) %>%
+  transmute(
+    Id,
+    fourtyfive_to_59 = `Estimate; Total: - 45 to 59 minutes` / total * 100,
+    sixty_to_89 = `Estimate; Total: - 60 to 89 minutes` / total * 100,
+    ninety_plus = `Estimate; Total: - 90 or more minutes` / total * 100,
+    extreme_commute = sixty_to_89 + ninety_plus,
+    long_commute = extreme_commute + fourtyfive_to_59)
+
+map_jc@data <- full_join(map_jc@data, commute, by = c('GEO_ID' = 'Id'))
+
 ```
 
+## 1. Long Commutes
+```{r graph312}
+make_map("extreme_commute", 
+         name = "Commute over 2 hours",
+         legend_title = "Commute <br>> 2 hours",
+         units = "Percent")
+```
 
-# Homeownership
+# Housing Affordbility
+## 2. Homeownership Ranking
 ```{r data22}
 tenure <- acs_time('/data/qop/B25003/')
 
@@ -460,86 +350,20 @@ data %<>% pull_peers_FIPS() %>% select(FIPS, city, year, current, baseline, ever
 rm(tenure)
 ```
 
-## Ranking
 ```{r graph22}
 rank_and_nb_group(data[data$year == 2016,],
                   'homeownership', 
                   plot_title = 'Homeownership, 2016')
 ```
 
-## Trendline {.tabset}
-
-### Overall
+## 3. Homeownership Trendline
 ```{r graph 23.1}
 graph_trendline(data,
                 'homeownership',
                 'Homeownership')
 ```
 
-### By Ethnicity
-```{r data23}
-tenure_white <- acs_time('/data/qop/B25003H/')
-
-tenure_white %<>%
-  mutate(
-    total = `Estimate; Total:`,
-    homeownership_white = `Estimate; Owner occupied` / total * 100) %>%
-  weight_stl('homeownership_white', 'total')
-
-tenure_black <- acs_time('/data/qop/B25003B/')
-
-tenure_black %<>%
-  mutate(
-    total = `Estimate; Total:`,
-    homeownership_black = `Estimate; Owner occupied` / total * 100) %>%
-  weight_stl('homeownership_black', 'total')
-
-tenure_hisp <- acs_time('/data/qop/B25003I/')
-
-tenure_hisp %<>%
-  mutate(
-    total = `Estimate; Total:`,
-    homeownership_hispanic = `Estimate; Owner occupied` / total * 100) %>%
-  weight_stl('homeownership_hispanic', 'total')
-
-data %<>% bind_df(tenure_white, tenure_black, tenure_hisp)
-
-data %<>% mutate(homeownership_gap_black = homeownership_white - homeownership_black)
-                  
-rm(tenure_white, tenure_black, tenure_hisp)
-```
-
-```{r graph23}
-graph_df <- data %>%
-  filter(FIPS == 21111)%>%
-  select(year, homeownership_white, homeownership_black, homeownership_hispanic)%>%
-  mutate_at(c('homeownership_white', 'homeownership_black', 'homeownership_hispanic'), rollmean3) %>%
-  gather(homeownership_white:homeownership_hispanic, 
-         key = "var", value = "value")%>%
-  arrange(var)
-
-graph_df$var <- factor(graph_df$var, levels = unique(graph_df$var))
-
-graph_trendline_race(
-  graph_df,
-  xmin = 2006,
-  xmax = 2015,
-  plot_title = "Homeownership by Ethnicity",
-  subtitle_text = '3-year rolling average',
-  labels = c("African American", "Hispanic", "White"),
-  y_title = "Percent",
-  color_pal = wes_palette("Moonrise2"))
-```
-
-### Gap
-```{r graph 23.2}
-graph_trendline(data, 
-                'homeownership_gap_black', 
-                plot_title = 'Homeownership Gap: Black and White Residents',
-                rollmean = 3)
-```
-
-## Map {.tabset}
+## 4. Homeownership Map 
 ```{r data24}
 tenure_map <- read_csv('data/qop/ACS_16_5YR_B25003_with_ann.csv', skip = 1)
 
@@ -592,35 +416,9 @@ map_data %<>% full_join(tenure_map)
 map_data %<>% full_join(burdened_map)
 ```
 
-### Homeownership
 ```{r graph24}
 map_jc@data <- full_join(map_jc@data, tenure_map, by = c('GEO_ID' = 'Id'))
 map_jc@data <- full_join(map_jc@data, burdened_map, by = c('GEO_ID' = 'Id'))
-```
-
-```{r}
-  pal1 <- colorBin(
-    palette = colorRampPalette(c("white", "red"))(3),
-    domain = map_jc@data$var
-  )
-  
-  pal2 <- colorBin(
-    palette = colorRampPalette(c("white", "blue"))(3),
-    domain = map_jc@data$var
-  )
-  
-  #create map
-  m <- leaflet(map_jc) %>%
-    addTiles() %>%
-    addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
-                opacity = 1.0, fillOpacity = 0.7,
-                fillColor = ~pal1(homeownership)) %>%
-    addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
-                opacity = 1.0, fillOpacity = 0.7,
-                fillColor = ~pal2(burdened))
-  
-  m
-  
 ```
 
 ```{r graph24.1}
@@ -630,15 +428,64 @@ make_map("homeownership",
          units = "Percent")
 ```
 
-### Burdened Households
-```{r graph24.2}
-make_map("burdened", 
-         name = "Burdened Households",
-         legend_title = "Burdened Households",
-         units = "Percent")
- 
-rm(tenure_map, burdened_map)
+## 5. Homeownership Growth
+```{r}
+graph_trendline_change(
+  data,
+  'homeownership',
+  plot_title = "Burdened Households")
 ```
+
+## 6. Homeownership by Race
+```{r data23}
+tenure_white <- acs_time('/data/qop/B25003H/')
+
+tenure_white %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership_white = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership_white', 'total')
+
+tenure_black <- acs_time('/data/qop/B25003B/')
+
+tenure_black %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership_black = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership_black', 'total')
+
+tenure_hisp <- acs_time('/data/qop/B25003I/')
+
+tenure_hisp %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    homeownership_hispanic = `Estimate; Owner occupied` / total * 100) %>%
+  weight_stl('homeownership_hispanic', 'total')
+
+data %<>% bind_df(tenure_white, tenure_black, tenure_hisp)
+
+data %<>% mutate(homeownership_gap_black = homeownership_white - homeownership_black)
+                  
+rm(tenure_white, tenure_black, tenure_hisp)
+```
+
+```{r graph23}
+graph_trendline_race_peer(
+  data, 
+  vars = c('homeownership_white', 'homeownership_black', 'homeownership_hispanic'),
+  plot_title = 'Homeownership by Race',
+  rollmean = 3)
+```
+
+## 7. Homeownership Gap
+```{r graph 23.2}
+graph_trendline(data, 
+                'homeownership_gap_black', 
+                plot_title = 'Homeownership Gap: Black and White Residents',
+                rollmean = 3)
+```
+
+## 8. Burdened HH Ranking
 
 ```{r, eval = FALSE}
 
@@ -737,9 +584,8 @@ shinyApp(ui = ui, server = server)
                     style = list("font-weight" = "normal", padding = "3px 8px"),
                     textsize = "15px",
                     direction = "auto"))
-```
- 
-  observe({
+    
+     observe({
      var <- input$variable
     
     leafletProxy("map", data = map_data) %>%
@@ -755,7 +601,8 @@ shinyApp(ui = ui, server = server)
       addLegend(pal = pal, values = ~var, opacity = 0.7, title = var,
              position = "bottomright")
   })
-
+```
+ 
 ```{r, eval = FALSE}
 #read the file into memory
 library(bigmemory)
@@ -799,21 +646,62 @@ burden %<>%
 
 burden_svy <- svydesign(ids = ~1, weights = ~PERWT, data = burden)
 
-burden_df <- svyby(~hcost_burdened, 
+burden_df_total <- svyby(~hcost_burdened, 
+                   ~FIPS+year, 
+                   design = burden_svy, 
+                   svymean, 
+                   na.rm = TRUE)
+
+burden_df_total %<>%
+  select(-se) %>%
+  mutate(hcost_burdened = hcost_burdened * 100)
+
+burden_df_rent <- svyby(~hcost_burdened, 
+                   ~FIPS+year+rent, 
+                   design = burden_svy, 
+                   svymean, 
+                   na.rm = TRUE)
+
+burden_df_rent %<>%
+  select(-se) %>%
+  mutate(hcost_burdened = hcost_burdened * 100) %>%
+  spread(key = rent, value = hcost_burdened) %>%
+  transmute(
+    FIPS, year,
+    hcost_burdened_homeowner = `0`,
+    hcost_burdened_renter = `1`)
+  
+burden_df_race <- svyby(~hcost_burdened, 
+                   ~FIPS+year+race, 
+                   design = burden_svy, 
+                   svymean, 
+                   na.rm = TRUE)
+
+burden_df_race %<>%
+  select(-se) %>%
+  mutate(hcost_burdened = hcost_burdened * 100) %>%
+  spread(key = race, value = hcost_burdened) %>%
+  transmute(
+    FIPS, year,
+    hcost_burdened_white = `1`,
+    hcost_burdened_black = `2`,
+    hcost_burdened_hisp = `3`)
+
+burden_df_rent_race <- svyby(~hcost_burdened, 
                    ~FIPS+race+year+rent, 
                    design = burden_svy, 
                    svymean, 
                    na.rm = TRUE) 
 
-burden_df %<>%
+burden_df_rent_race %<>%
   select(-se) %>%
   mutate(hcost_burdened = hcost_burdened * 100) %>%
   spread(key = race, value = hcost_burdened) %>%
   transmute(
     FIPS, year, rent,
-    hcost_burdened_white = `1`,
-    hcost_burdened_black = `2`,
-    hcost_burdened_hisp = `3`) %>%
+    h_burdened_white = `1`,
+    h_burdened_black = `2`,
+    h_burdened_hisp = `3`) %>%
   {
     x <- .
     full_join(
@@ -822,27 +710,79 @@ burden_df %<>%
         select(-rent),
       x %>% 
         filter(rent == 1) %>%
-        rename(rent_burdened_white = hcost_burdened_white,
-               rent_burdened_black = hcost_burdened_black,
-               rent_burdened_hisp = hcost_burdened_hisp) %>%
+        rename(rent_burdened_white = h_burdened_white,
+               rent_burdened_black = h_burdened_black,
+               rent_burdened_hisp = h_burdened_hisp) %>%
         select(-rent),
       by = c("FIPS", "year"))
   }
 
-burden_df %<>% pull_peers_FIPS()
+data %<>% 
+  bind_df(burden_df_total) %>% 
+  bind_df(burden_df_rent) %>% 
+  bind_df(burden_df_race) %>% 
+  bind_df(burden_df_rent_race)
+
+rm(burden_df_total, burden_df_race, burden_df_rent, burden_df_rent_race)
 ```
 
 ```{r}
-graph_trendline_race_peer(burden_df, 
-                          vars = c('hcost_burdened_white', 'hcost_burdened_black', 'hcost_burdened_hisp'),
-                          plot_title = 'Housing Burden by Ethnicity',
-                          rollmean = 3)
+rank_and_nb_group(data[data$year == 2016,],
+                  'hcost_burdened', 
+                  plot_title = 'Burdened Households, 2016')
+```
+          
+## 9. Burdened HH Trendine  
+```{r}
+graph_trendline(
+  data, 
+  'hcost_burdened',
+  plot_title = 'Burdened Households',
+  rollmean = 3)
 
 ```
 
+## 10. Burdened HH Map  
+```{r graph24.2}
+make_map("burdened", 
+         name = "Burdened Households",
+         legend_title = "Burdened Households",
+         units = "Percent")
+ 
+rm(tenure_map, burdened_map)
+```
 
+## 11. Burdened HH Growth  
+```{r}
+graph_trendline_change(
+  data,
+  'hcost_burdened',
+  plot_title = "Burdened Households")
+```
 
-# Change in Home Values by Zip {.tabset}
+## 12. Burdened HH by Race  
+```{r}
+graph_trendline_race_peer(
+  data, 
+  vars = c('hcost_burdened_white', 
+           'hcost_burdened_black', 
+           'hcost_burdened_hisp'),
+  plot_title = 'Housing Burden by Ethnicity',
+  rollmean = 3)
+```
+
+## 13. Burdened HH by homeownership
+
+I have to debug this graph to get the colors correct. The top group is renters, and the bottom is homeowners.
+```{r}
+graph_trendline_race_peer_two(
+  data,
+  vars = c("hcost_burdened_homeowner", "hcost_burdened_renter"),
+  plot_title = "Burdened Households by Homeownership",
+  cat_labels = c("Homeowners", "Renters"))
+```
+
+# Wealth Creation
 ```{r data25, warning=TRUE}
 map_data %<>% mutate(tract = str_sub(Id, start = 10))
 
@@ -874,7 +814,7 @@ map_jc_zip@data %<>% left_join(HPI_2017, by = c('ZIPCODE' = 'zip'))
 rm(HPI, HPI_2015, HPI_2017)
 ```
 
-## 2000 to 2017
+## 15. Home Price Changes 2000 to 2017
 ```{r graph25.3}
 make_map_zip("avg_change_2000", 
              name = "Average Home Price Increase",
@@ -882,297 +822,16 @@ make_map_zip("avg_change_2000",
              units = "Percent")
 ```
 
-## 2013 to 2017
-```{r graph25.2}
-make_map_zip("avg_change5", 
-             name = "Average Home Price Increase",
-             legend_title = "Average<br>Home Price<br>Increase",
-             units = "Percent")
-```
+# Poverty
 
-## 2017
-```{r graph25.1}
-make_map_zip("annual_change", 
-             name = "Average Home Price Increase",
-             legend_title = "Average<br>Home Price<br>Increase",
-             units = "Percent")
-```
+## 16. Child Poverty Ranking
 
-```{r data27}
-
-```
-
-```{r graph27}
-
-```
+## 17. Child Poverty Trendline
 
 # Segregation
-```{r data28}
-seg_data <- read_csv('data/qop/ACS_16_5YR_B03002_with_ann.csv', skip = 1)
 
-seg_data %<>%
-  transmute(
-    total = `Estimate; Total:`,
-    
-    pct_of_all_residents = total / sum(total) * 100,
-    
-    pct_black_tract = `Estimate; Not Hispanic or Latino: - Black or African American alone` / total * 100,
-    
-    pct_of_all_black_residents = 
-      `Estimate; Not Hispanic or Latino: - Black or African American alone` / 
-      sum(`Estimate; Not Hispanic or Latino: - Black or African American alone`) * 100) %>%
-  mutate(
-    pct_of_all_residents = round(pct_of_all_residents, 1),
-    pct_black_tract = round(pct_black_tract, 1),
-    pct_of_all_black_residents = round(pct_of_all_black_residents, 1)) %>%
-  arrange(desc(pct_of_all_black_residents))
+## 18. Racial Dissimilarity Ranking
+![](qp_racial_geography_rankings.png)
 
-seg_data$cumulative_pct_black_residents <- cumsum(seg_data$pct_of_all_black_residents)
-seg_data$cumuative_pct_all_residents <- cumsum(seg_data$pct_of_all_residents)
-
-seg_data %<>%
-  transmute(
-    `Percent of City in Tract` = pct_of_all_residents,
-    `Percent of Black Residents in Tract` = pct_of_all_black_residents,
-    `Percent of Tract that is Black` = pct_black_tract,
-    `Cumulative % of Black Residents` = cumulative_pct_black_residents,
-    `Cumulative % of All Residents` = cumuative_pct_all_residents)
-```
-
-Numbers do not add to 100% due to rounding.
-```{r graph28}
-kable(seg_data) %>%
-  kable_styling() %>%
-  scroll_box(width = "100%", height = "500px")
-```
-
-# Commute Time
-
-## Average Commute
-```{r data31}
-commute_time <- read_csv('data/qop/ACS_16_5YR_B08013_with_ann.csv', skip = 1)
-
-commute_num <- read_csv('data/qop/ACS_16_5YR_B08012_with_ann.csv', skip = 1)
-
-commute <- full_join(commute_time, commute_num)
-
-commute %<>%
-    mutate(time = as.numeric(`Estimate; Aggregate travel time to work (in minutes):`),
-           number = `Estimate; Total:`,
-           commute = time / number) %>%
-  select(Id, commute)
-```
-
-```{r graph31}
-map_jc@data <- full_join(map_jc@data, commute, by = c('GEO_ID' = 'Id'))
-
-make_map("commute", 
-         name = "Commute Time",
-         legend_title = "Commute Time",
-         units = "minutes")
-```
-
-## Extreme Commutes {.tabset}
-```{r data311}
-commute <- read_csv('data/qop/ACS_16_5YR_B08303_with_ann.csv', skip = 1)
-
-commute %<>%
-  mutate(
-    total = `Estimate; Total:`) %>%
-  transmute(
-    Id,
-    fourtyfive_to_59 = `Estimate; Total: - 45 to 59 minutes` / total * 100,
-    sixty_to_89 = `Estimate; Total: - 60 to 89 minutes` / total * 100,
-    ninety_plus = `Estimate; Total: - 90 or more minutes` / total * 100,
-    extreme_commute = sixty_to_89 + ninety_plus,
-    long_commute = extreme_commute + fourtyfive_to_59)
-```
-
-### 1.5+ hours
-```{r graph311}
-map_jc@data <- full_join(map_jc@data, commute, by = c('GEO_ID' = 'Id'))
-
-make_map("long_commute", 
-         name = "Commute Time",
-         legend_title = "Long Commute",
-         units = "Percent")
-```
-
-### 2+ hours
-```{r graph312}
-make_map("extreme_commute", 
-         name = "Commute Time",
-         legend_title = "Long Commute",
-         units = "Percent")
-```
-
-### 3+ hours
-```{r graph313}
-make_map("ninety_plus", 
-         name = "Commute Time",
-         legend_title = "Long Commute",
-         units = "Percent")
-```
-
-
-
-
-
-
-# Brain Drain {.tabset}
-
-## Net Migration
-```{r data29}
-inflow <- acs_time('/data/qop/B07009/')
-
-inflow %<>%
-  transmute(
-    FIPS = FIPS,
-    year = year,
-    
-    in_no_hs = 
-      `Estimate; Moved from different county within same state: - Less than high school graduate` +
-      `Estimate; Moved from different state: - Less than high school graduate` + 
-      `Estimate; Moved from abroad: - Less than high school graduate`,
-      
-    in_hs =
-      `Estimate; Moved from different county within same state: - High school graduate (includes equivalency)` +
-      `Estimate; Moved from different state: - High school graduate (includes equivalency)` +
-      `Estimate; Moved from abroad: - High school graduate (includes equivalency)`,
-    
-    in_some_col_assoc = 
-      `Estimate; Moved from different county within same state: - Some college or associate's degree` +
-      `Estimate; Moved from different state: - Some college or associate's degree` +
-      `Estimate; Moved from abroad: - Some college or associate's degree`,
-    
-    in_bach = 
-      `Estimate; Moved from different county within same state: - Bachelor's degree` +
-      `Estimate; Moved from different state: - Bachelor's degree` +
-      `Estimate; Moved from abroad: - Bachelor's degree`,
-    
-    in_grad = 
-      `Estimate; Moved from different county within same state: - Graduate or professional degree` +
-      `Estimate; Moved from different state: - Graduate or professional degree` +
-      `Estimate; Moved from abroad: - Graduate or professional degree`,
-      
-    in_bach_plus = in_bach + in_grad) %>%
-  mutate(FIPS = replace(FIPS, FIPS == '29189' | FIPS == '29510', 'MERGED')) %>%
-  group_by(FIPS, year) %>%
-  summarise_all(sum) %>%
-  ungroup()
-
-
-outflow <- acs_time('/data/qop/B07409/', starting_year = 2007)
-
-outflow %<>%
-  transmute(
-    FIPS = FIPS,
-    year = year,
-    
-    out_no_hs = 
-      `Estimate; Moved to different county within same state: - Less than high school graduate` +
-      `Estimate; Moved to different state: - Less than high school graduate`,
-    
-    out_hs = 
-      `Estimate; Moved to different county within same state: - High school graduate (includes equivalency)` +
-      `Estimate; Moved to different state: - High school graduate (includes equivalency)`,
-    
-    out_some_col_assoc = 
-      `Estimate; Moved to different county within same state: - Some college or associate's degree` +
-      `Estimate; Moved to different state: - Some college or associate's degree`,
-    
-    out_bach = 
-      `Estimate; Moved to different county within same state: - Bachelor's degree` +
-      `Estimate; Moved to different state: - Bachelor's degree`,
-    
-    out_grad = 
-      `Estimate; Moved to different county within same state: - Graduate or professional degree` +
-      `Estimate; Moved to different state: - Graduate or professional degree`,
-    
-    out_bach_plus = out_bach + out_grad) %>%
-  mutate(FIPS = replace(FIPS, FIPS == '29189' | FIPS == '29510', 'MERGED')) %>%
-  group_by(FIPS, year) %>%
-  summarise_all(sum) %>%
-  ungroup()
-
-migration <- full_join(inflow, outflow)
-
-migration %<>%
-  mutate(
-    net_no_hs = in_no_hs - out_no_hs,
-    net_hs = in_hs - out_hs,
-    net_some_col_assoc = in_some_col_assoc - out_some_col_assoc,
-    net_bach = in_bach - out_bach,
-    net_grad = in_grad - out_grad,
-    net_bach_plus = in_bach_plus - out_bach_plus)
-
-data %<>% bind_df(migration)
-
-rm(inflow, outflow, migration)
-```
-
-```{r graph29.5}
-graph_trendline(data,
-                'net_bach',
-                plot_title = "Net Migration: Bachelor's Degree Holders",
-                xmin = 2007,
-                rollmean = 3,
-                y_title = "Residents")
-
-graph_trendline(data,
-                'net_grad',
-                plot_title = 'Net Migration: Graduate Degree Holders',
-                xmin = 2007,
-                rollmean = 3,
-                y_title = "Residents")
-```
-
-```{r graph29.10}
-graph_trendline(data,
-                'in_bach',
-                plot_title = "In Migration: Bachelor's Degree Holders",
-                xmin = 2007,
-                rollmean = 3,
-                y_title = "Residents")
-
-graph_trendline(data,
-                'in_grad',
-                plot_title = 'In Migration: Graduate Degree Holders',
-                xmin = 2007,
-                rollmean = 3,
-                y_title = "Residents")
-```
-
-```{r graph29.11}
-graph_trendline(data,
-                'out_bach',
-                plot_title = "Out Migration: Bachelor's Degree Holders",
-                xmin = 2007,
-                rollmean = 3,
-                y_title = "Residents")
-
-graph_trendline(data,
-                'out_grad',
-                plot_title = 'Out Migration: Graduate Degree Holders',
-                xmin = 2007,
-                rollmean = 3,
-                y_title = "Residents")
-```
-
-This graph shows single-year estimates.
-```{r graph 29.6}
-graph_trendline(data,
-                'net_grad',
-                plot_title = "Net Migration: Graduate Degree or Higher",
-                xmin = 2007,
-                y_title = "Residents")
-```
-
-```{r graph29.2, eval = FALSE}
-graph_trendline_race_peer(data,
-                          'in_bach')
-
-graph_trendline(data,
-                'out_bach_plus')
-```
-
+## 18. Racial Dissimilarity Trendline
+![](qp_racial_geography_trendline.png)

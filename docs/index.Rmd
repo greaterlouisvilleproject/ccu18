@@ -81,7 +81,7 @@ web = TRUE
 <div style="margin-top:50px;">
 </div>
 
-# Bachelor's Degrees +
+# MM: Bachelor's Degrees +
 ## 1. Ranking
 
 ```{r data1}
@@ -448,12 +448,11 @@ graph_trendline_change(
 
 -----------------
 
-# Page 2
-## Education Pipeline
-### 1. Education Pipeline
+# Education Pipeline
+## 1. Education Pipeline
 ![](educ_pipeline.png)
 
-## Bachelor Degree Gap
+# Bachelor Degree Gap
 ### 2. Bachelor Degree Gap
 ```{r}
 data %<>%
@@ -468,9 +467,9 @@ graph_trendline(data,
 ```
 
 
-## Young Adult Associate Degrees
+# Young Adult Associate Degrees
 
-### 3. Ranking
+## 3. Ranking
 ```{r graph7.1}
 rank_and_nb_group(data[data$year == 2016,],
                   'per_25_34_bach_plus',
@@ -478,7 +477,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   subtitle_text = "Ages 25-34")
 ```
 
-### 4. Trendline
+## 4. Trendline
 ```{r}
 graph_trendline(data,
                 'per_25_34_bach_plus',
@@ -486,14 +485,14 @@ graph_trendline(data,
                 rollmean = 3)
 ```
 
-### 5. Growth
+## 5. Growth
 ```{r}
 graph_trendline_change(data,
                        'per_25_34_assoc_plus',
                        plot_title = "Associate Degrees or Higher, Ages 25-34, 2016")
 ```
 
-## Certificates
+# Certificates
 
 ```{r cert, eval = FALSE}
 certificates <- read_feather('data/education/certificates.feather')
@@ -584,7 +583,7 @@ data %<>%
 
 ```
 
-### 6. Ranking
+## 6. Ranking
 
 ```{r graphcert1}
 rank_and_nb_group(data[data$year == 2017,], 
@@ -592,7 +591,7 @@ rank_and_nb_group(data[data$year == 2017,],
                   plot_title = 'Certificates, 2017',
                   subtitle_text = 'Ages 25-64')
 ```
-## Disconnected Youth
+# Disconnected Youth
 ```{r data30.1, eval = FALSE}
 acs <- read_csv('data/educ/disconnected.csv')
 
@@ -681,7 +680,7 @@ rm(disconnected, disconnected_svy)
 ```
 Disconnected youth are ages 16 to 24 and are not working or in school.
 
-### 7. Ranking
+## 7. Ranking
 Disconnected youth are ages 16 to 24 and are not working or in school.
 
 ```{r graph30}
@@ -690,7 +689,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   plot_title = "Disconnected Youth, 2016")
 ```
 
-### 8. Trendline
+## 8. Trendline
 ```{r}
 graph_trendline(data,
                 'disconnected_youth',

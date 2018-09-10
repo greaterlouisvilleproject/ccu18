@@ -76,7 +76,7 @@ map_jc_zip@data$l_line1 <- paste0("Zip Code ", map_jc_zip@data$ZIPCODE)
 web = TRUE
 ```
 
-# Median earnings
+# MM: Median earnings
 
 ## 1. Ranking
 ```{r data9}
@@ -408,19 +408,16 @@ graph_trendline(
 
 ```
 
+# Earnings Gap
 
-
-# Page 2
-## Earnings Gap
-
-### 1. Black and White Residents
+## 1. Black and White Residents
 ```{r data13}
 data %<>%
   mutate(earnings_gap_black = median_earnings_white - median_earnings_black,
          earnings_gap_hispanic = median_earnings_white - median_earnings_hispanic)
 ```
 
-### 2. Hispanic and White Residents
+## 2. Hispanic and White Residents
 ```{r graph13}
 graph_trendline(data,
                 'earnings_gap_black',
@@ -435,7 +432,7 @@ graph_trendline(data,
                 rollmean = 5)
 ```
 
-## Job Distribution
+# Job Distribution
 ```{r data14}
 business_data <- business_time('/data/jobs/CBP/')
 
@@ -507,7 +504,7 @@ rm(zip_codes, business_data)
 map_jc_zip@data %<>% left_join(map_data_zip, by = c('ZIPCODE' = 'zip'))
 ```
 
-### 3. Businesses per Resident
+## 3. Businesses per Resident
 ```{r graph14.11}
 make_map_zip("businesses_per_resident", 
              name = "Businesses per Resident",
@@ -516,7 +513,7 @@ make_map_zip("businesses_per_resident",
              map_style = "sequential")
 ```
 
-### 4. Businesses per Resident Change
+## 4. Businesses per Resident Change
 ```{r graph14.12}
 make_map_zip("businesses_per_resident_change_5yr", 
              name = "Businesses per Resident",
@@ -525,7 +522,7 @@ make_map_zip("businesses_per_resident_change_5yr",
              map_style = "divergent")
 ```
 
-### 5. Jobs per Resident
+## 5. Jobs per Resident
 ```{r graph14.2}
 make_map_zip("jobs_per_resident", 
              name = "Jobs per Resident",
@@ -534,7 +531,7 @@ make_map_zip("jobs_per_resident",
              map_style = "sequential")
 ```
 
-### 6. Jobs per Resident Change
+## 6. Jobs per Resident Change
 ```{r}
 make_map_zip("jobs_per_resident_change_5yr", 
              name = "Jobs per Resident",
@@ -543,7 +540,7 @@ make_map_zip("jobs_per_resident_change_5yr",
              map_style = "divergent")
 ```
 
-## Unemployment
+# Unemployment
 
 ```{r graph15.1}
 unemp <- unemployment_time("/data/jobs/unemployment/")
@@ -572,14 +569,14 @@ data %<>% bind_df(unemp) %>% select(-city, -baseline, -current) %>% pull_peers_F
 
 ```
 
-### 7. Ranking
+## 7. Ranking
 ```{r graph 15.1}
 rank_and_nb_group(data[data$year == 2018,], 
                   'unemp_rate', 
                   plot_title = 'Unemployment, 2017')
 ```
 
-### 8. Trendline
+## 8. Trendline
 ```{r}
 graph_trendline(data,
                 'unemp_rate',
@@ -588,7 +585,7 @@ graph_trendline(data,
                 plot_title = 'Unemployment')
 ```
 
-### 9. By Race
+## 9. By Race
 ```{r data15.1, eval = FALSE}
 #White
 unemp_white <- acs_time("/data/jobs/B23002H/", starting_year = 2005)

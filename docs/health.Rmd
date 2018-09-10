@@ -76,9 +76,9 @@ map_jc_zip@data$l_line1 <- paste0("Zip Code ", map_jc_zip@data$ZIPCODE)
 web = TRUE
 ```
 
-# Health Outcomes Index
+# MM: Health Outcomes Index
 
-## Ranking
+## 1. Ranking
 ```{r data16.1, eval = FALSE}
 setwd("data/health/natality")
 
@@ -736,7 +736,7 @@ graph_trendline_race_peer_two(natality,
 
 ```
 ![](outcomes_ranking.png)
-## Trendline
+## 2. Trendline
 ```{r data17}
 
 ```
@@ -745,9 +745,8 @@ graph_trendline_race_peer_two(natality,
 
 ```
 ![](outcomes_trendline.png)
-# Page 2
 
-## Health Factors
+# Health Factors
 ```{r}
 chr <- read_csv("data/health/chr_measures_CSV_2018.csv")
 
@@ -870,7 +869,7 @@ data <- chr_z %>% pull_peers_FIPS()
   
 ```
 
-### 1. Social and Economic Factors
+## 1. Social and Economic Factors
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
                   "social_and_economic", 
@@ -880,7 +879,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-### 2. Health Behaviors
+## 2. Health Behaviors
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
                   "health_behaviors", 
@@ -890,7 +889,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-### 3. Clinical Care
+## 3. Clinical Care
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
                   "clinical_care", 
@@ -900,7 +899,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-### 4. Social and Economic Factors
+## 4. Social and Economic Factors
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
                   "physical_environment", 
@@ -910,7 +909,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-### Outcomes Index
+## Outcomes Index
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
                   "outcomes", 
@@ -920,7 +919,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-### Factor Index
+## Factor Index
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
                   "factors", 
@@ -930,7 +929,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-## Health Insurance
+# Health Insurance
 ```{r data20.1}
 insurance <- acs_time("/data/health/C27001/", starting_year = 2009)
 
@@ -957,7 +956,7 @@ data %<>% select(FIPS, city, year, current, baseline, everything())
 
 rm(insurance)
 ```
-### 5. Ranking
+## 5. Ranking
 
 ```{r graph 20.4}
 rank_and_nb_group(data[data$year == 2016,],
@@ -965,7 +964,7 @@ rank_and_nb_group(data[data$year == 2016,],
                   plot_title = 'Health Insurance, 2016')
 ```
 
-### 6. Trendline
+## 6. Trendline
 ```{r graph20}
 graph_trendline(data,
                 'insured_rate',
@@ -973,7 +972,7 @@ graph_trendline(data,
                 xmin = 2009)
 ```
 
-### 7. By Race
+## 7. By Race
 ```{r data20.2}
 insurance_white <- acs_time("/data/health/C27001H/", starting_year = 2009)
 
@@ -1032,7 +1031,7 @@ graph_trendline_race_peer(data,
                           plot_title = 'Health Insurance by Ethnicity')
 ```
 
-### 8. By Poverty
+## 8. By Poverty
 ```{r data21}
 uninsured_income_09 <- acs_time('/data/health/B27016/Y09/', starting_year = 2009)
 
@@ -1258,8 +1257,7 @@ ggplotly(ggplot(uninsured_graph, aes(x = year, y = value, color = key)) +
 rm(uninsured_graph)
 ```
 
-## Overdoses
-### Opioid Deaths
+# Overdoses
 ```{r opioid}
 opioid <- read_tsv('data/health/opioid/Underlying Cause of Death, 1999-2016.txt')
 
@@ -1352,9 +1350,9 @@ opioid %<>% pull_peers_FIPS()
 opioid %<>% bind_df(opioid_race)
 ```
 
-### 9. Ranking {.tabset}
+## 9. Ranking {.tabset}
 
-#### Mortality rate
+### Mortality rate
 ```{r}
 rank_and_nb_group(opioid[opioid$year == 2016,],
                   'overdose',
@@ -1363,7 +1361,7 @@ rank_and_nb_group(opioid[opioid$year == 2016,],
                   order = "Ascending")
 ```
 
-#### Percent of deaths
+### Percent of deaths
 ```{r}
 rank_and_nb_group(opioid[opioid$year == 2016,],
                   'overdose_per',
@@ -1372,9 +1370,9 @@ rank_and_nb_group(opioid[opioid$year == 2016,],
                   order = "Ascending")
 ```
 
-### 10. Trendline
+## 10. Trendline
 
-#### Mortality rate
+### Mortality rate
 ```{r}
 graph_trendline(opioid,
                 'overdose',
@@ -1383,7 +1381,7 @@ graph_trendline(opioid,
                 y_title = "Overdose Deaths per 100,000 residents")
 ```
 
-#### Percent of deaths
+### Percent of deaths
 ```{r}
 graph_trendline(opioid,
                 'overdose_per',
@@ -1392,9 +1390,9 @@ graph_trendline(opioid,
                 y_title = "Percent")
 ```
 
-### 11. Overdoses by Race
+## 11. Overdoses by Race
 
-#### Mortality rate
+### Mortality rate
 ```{r}
 graph_trendline_race_peer_two(opioid, 
                           vars = c('overdose_white', 'overdose_black'),
@@ -1404,7 +1402,7 @@ graph_trendline_race_peer_two(opioid,
                           rollmean = 3)
 ```
 
-#### Percent of deaths
+### Percent of deaths
 ```{r}
 graph_trendline_race_peer_two(opioid, 
                           vars = c('overdose_white_per', 'overdose_black_per'),
