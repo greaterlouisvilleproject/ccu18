@@ -377,7 +377,16 @@ make_map("median_earnings",
 rm(earn_map)
 ```
 
-## 4. By Race
+## 4. Peer Growth
+
+```{r graph4}
+graph_trendline_change(
+  data,
+  'median_earnings',
+  plot_title = "Median Earnings")
+```
+
+## 5. By Race
 
 ```{r graph 10.3}
 graph_trendline_race_peer(data, 
@@ -387,7 +396,7 @@ graph_trendline_race_peer(data,
                           y_title = 'Dollars')
 ```
 
-## 5. By Gender
+## 6. By Gender
 ```{r}
 graph_trendline_race_peer_two(
   data, 

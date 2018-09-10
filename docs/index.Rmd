@@ -437,7 +437,7 @@ graph_trendline_race_peer_two(data,
 
 ```
 
-## 5. Peer City Highlights
+## 5. Peer Growth
 
 ```{r graph4}
 graph_trendline_change(
@@ -485,7 +485,7 @@ graph_trendline(data,
                 rollmean = 3)
 ```
 
-## 5. Growth
+## 5. Peer Growth
 ```{r}
 graph_trendline_change(data,
                        'per_25_34_assoc_plus',

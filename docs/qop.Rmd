@@ -428,7 +428,7 @@ make_map("homeownership",
          units = "Percent")
 ```
 
-## 5. Homeownership Growth
+## 5. Homeownership Peer Growth
 ```{r}
 graph_trendline_change(
   data,
@@ -752,7 +752,7 @@ make_map("burdened",
 rm(tenure_map, burdened_map)
 ```
 
-## 11. Burdened HH Growth  
+## 11. Burdened HH Peer Growth  
 ```{r}
 graph_trendline_change(
   data,

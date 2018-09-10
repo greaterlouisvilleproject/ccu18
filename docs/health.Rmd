@@ -79,7 +79,7 @@ web = TRUE
 # MM: Health Outcomes Index
 
 ## 1. Ranking
-```{r data16.1, eval = FALSE}
+```{r natality}
 setwd("data/health/natality")
 
 natality <- wonder_time("2003-2006", "FIPS")
@@ -103,6 +103,10 @@ natality <- natality %>%
 natality$FIPS[natality$FIPS == 29189] <- "MERGED"
 
 natality <-  natality %>%  pull_peers_FIPS()
+```
+
+```{r natalityrace}
+setwd("data/health/natality")
 
 #Race
 natality_race_03_05 <- read_tsv('Natality, 2003-2006.txt')
@@ -158,12 +162,14 @@ natality_race <- natality_race %>%
       by = c("FIPS", "year"))
   }
 
-natality %<>% bind_df(natality_race)
+natality %<>% 
+  bind_df(natality_race) %>% 
+  select(FIPS, year, city, current, baseline, everything())
 
 rm(natality_race_03_05, natality_race_07_16, natality_race)
 ```
 
-```{r data16.2, eval = FALSE}
+```{r mortality}
 mortality_one <- read_tsv("data/health/mortality/one.txt")
 
 mortality_suppressed <- wonder_time_single("data/health/mortality/single-year")
@@ -250,10 +256,14 @@ mortality <- mortality %>%
   filter(age == 0) %>%
   select(FIPS, year, ypll)
 
+mortality %<>%
+  mutate(FIPS = as.numeric(FIPS)) %>%
+  weight_stl("ypll")
+
 rm(mortality_50, mortality_suppressed)
 ```
 
-```{r mortrace, eval = FALSE}
+```{r mortalityrace}
 mortality_one_race <- read_tsv("data/health/mortality/one_race.txt")
 
 mortality_one_race %<>%
@@ -318,9 +328,9 @@ mortality_race$deaths_white[mortality_race$FIPS == "51760" &
   mortality_race$deaths_white[mortality_race$FIPS == "51760" & 
                          mortality_race$year == 2012 &
                          mortality_race$age == 74]
-```
 
-```{r mort_t, eval = FALSE}
+#mort_t
+
 mortality_tot_suppressed <- wonder_time_single("data/health/mortality/single-year whiteblack")
 
 mortality_74 <- mortality_race %>%
@@ -358,9 +368,7 @@ mortality_race %<>%
               population_total = pop_tot_suppressed))
  }
 
-```
-
-```{r mort_wh, eval = FALSE}
+#mort_w
 mortality_white_suppressed <- wonder_time_single("data/health/mortality/single-year white")
 
 mortality_74 <- mortality_race %>%
@@ -400,9 +408,8 @@ mortality_race %<>%
  } %>%
   mutate(pop_black = population_tot - pop_white,
          deaths_black = deaths_tot - deaths_white)
-```
 
-```{r mortanalysis, eval = FALSE}
+#mortanalysis
 mortality_race %<>%
   transmute(
     FIPS, year, age,
@@ -432,10 +439,20 @@ mortality_race <- mortality_race %>%
   filter(age == 0) %>%
   select(FIPS, year, ypll_white, ypll_black)
 
-#rm(mortality_50, mortality_suppressed)
+mortality_race %<>%
+  mutate(FIPS = as.numeric(FIPS)) %>%
+  weight_stl(c("ypll_white", "ypll_black"))
+
+mortality %<>% bind_df(mortality_race)
+
+rm(mortality_74, mortality_age, mortality_one, mortality_one_race, mortality_one_totals, mortality_ten, mortality_tot_suppressed, mortality_white_suppressed, mortality_race)
 ```
 
-```{r data16.3, eval = FALSE}
+```{r brfssquick}
+brfss_results <- read_feather("data/health/brfss_results_basic.feather")
+```
+
+```{r brfss, eval = FALSE}
 brfss <- read_feather("data/health/brfss.feather")
 
 brfss <- brfss %>% rename(MSA = msa) %>% pull_peers_MSA()
@@ -497,55 +514,19 @@ brfss_results <- rbind(brfss_results, g_2015)
 g_2015$year <- 2016
 brfss_results <- rbind(brfss_results, g_2015)
 
-msa_fips <- read_csv('data/MSA to FIPS.csv') %>% select(-city) %>% mutate(FIPS = as.character(FIPS))
+brfss_results %<>% select(MSA, year, city, everything())
 
-natality <- left_join(natality, msa_fips)
-mortality <- left_join(mortality, msa_fips) %>% select(-FIPS)
+rm(g_2015, brfss, brfss_svy, std_pop)
 
-#Create index
-health_index <- full_join(mortality, natality, by = c("MSA", "year")) %>% select(-city)
-health_index <- full_join(health_index, brfss_results, by = c("MSA", "year"))
+write_feather(brfss_results, "data/health/brfss_results_basic.feather")
+```
 
-health_index <- health_index %>%
-  filter(current == 1) %>%
-  select(FIPS, year, ypll, pct_underweight, poor_or_fair, physdays, mentdays) %>%
-  filter(year > 2003)
+```{r quickbrfssrace}
+brfss_results_race <- read_feather("data/health/brfss_results.feather")
 
-# give St. Louis a new FIPS
-health_index$FIPS[health_index$FIPS == 29189] <- "MERGED"
+brfss_results <- full_join(brfss_results, brfss_results_race, by = c("MSA", "year"))
 
-#Create index
-norm_z <- function(x){
-z <- (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
-}
-
-health_z <- health_index
-health_z <- map_df(health_z, remove_var_label)
-
-health_z <- health_z %>%
-  group_by(year) %>%
-  mutate(ypll_index = norm_z(ypll),
-         pct_underweight_index = norm_z(pct_underweight),
-         poor_or_fair_index = norm_z(poor_or_fair),
-         physdays_index = norm_z(physdays),
-         mentdays_index = norm_z(mentdays)) %>%
-  ungroup()
-
-health_z <- health_z %>%
-  mutate(
-    health_index = 
-      -1 *
-      ypll_index*.5+
-      pct_underweight_index*.2+
-      poor_or_fair_index*.1+
-      physdays_index*.1+
-      mentdays_index*.1)
-
-data <- health_z %>% pull_peers_FIPS()
-
-"file:///C:/Users/Harrison Kirby/Desktop/GLP/ccu18/data/health/brfss_data_race.feather"
-
-rm(brfss, brfss_results, brfss_svy, brfss_svy_std, health_index, health_z, mortality, mortality_age, mortality_one, mortality_ten, std_pop, g_2015, msa_fips)
+rm(brfss_results_race)
 ```
 
 ```{r brfssrace, eval = FALSE}
@@ -646,6 +627,53 @@ brfss_results <- brfss_results %>%
                mentdays_hispanic = mentdays),
       by = c("MSA", "year"))
   }
+write_feather(brfss_results, "data/health/brfss_results.feather")
+```
+
+```{r process}
+msa_fips <- read_csv('data/MSA to FIPS.csv') %>% select(-city) %>% mutate(FIPS = as.character(FIPS))
+
+natality <- left_join(natality, msa_fips)
+
+#Create index
+health_index <- full_join(mortality, natality, by = c("FIPS", "year")) %>% select(-city)
+health_index <- full_join(health_index, brfss_results, by = c("MSA", "year"))
+
+health_index <- health_index %>%
+  filter(current == 1) %>%
+  select(-MSA) %>%
+  select( FIPS, year, city, current, baseline, everything()) %>%
+  filter(year > 2003)
+
+#Create index
+norm_z <- function(x){
+z <- (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
+}
+
+health_z <- health_index
+health_z <- map_df(health_z, remove_var_label)
+
+health_z <- health_z %>%
+  group_by(year) %>%
+  mutate(ypll_index = -1 * norm_z(ypll),
+         pct_underweight_index = -1 * norm_z(pct_underweight),
+         poor_or_fair_index = -1 * norm_z(poor_or_fair),
+         physdays_index = -1 * norm_z(physdays),
+         mentdays_index = -1 * norm_z(mentdays)) %>%
+  ungroup()
+
+health_z <- health_z %>%
+  mutate(
+    health_index = 
+      ypll_index * .5 +
+      pct_underweight_index * .2 +
+      poor_or_fair_index * .1 +
+      physdays_index * .1 +
+      mentdays_index * .1)
+
+data <- health_z
+
+rm(msa_fips, natality, mortality, brfss_results)
 ```
 
 ```{r graph16race, eval = FALSE}
@@ -681,34 +709,6 @@ graph_trendline_race_peer_two(mortality_race,
 ```
 
 ```{r, eval = FALSE}
-add_FIPS_to_MSA <- function(data){
-  
-  data$FIPS<-NA
-  data$FIPS[data$MSA == 24340] = 26081
-  data$FIPS[data$MSA == 41180] = 'MERGE'
-  data$FIPS[data$MSA == 36420] = 40109
-  data$FIPS[data$MSA == 46140] = 40143
-  data$FIPS[data$MSA == 24860] = 45045
-  data$FIPS[data$MSA == 28940] = 47093
-  data$FIPS[data$MSA == 13820] = 1073
-  data$FIPS[data$MSA == 31140] = 21111
-  data$FIPS[data$MSA == 26900] = 18097
-  data$FIPS[data$MSA == 28140] = 29095
-  data$FIPS[data$MSA == 36540] = 31055
-  data$FIPS[data$MSA == 24660] = 37081
-  data$FIPS[data$MSA == 16740] = 37119
-  data$FIPS[data$MSA == 18140] = 39049
-  data$FIPS[data$MSA == 17140] = 39061
-  data$FIPS[data$MSA == 34980] = 47037
-  data$FIPS[data$MSA == 32820] = 47157
-  data$FIPS[data$MSA == 27260] = 12031
-  data$FIPS[data$MSA == 39580] = 37183
-  data$FIPS[data$MSA == 19380] = 39113
-  data$FIPS[data$MSA == 40060] = 51760
-  
-  data
-}
-  
 
 brfss_results %<>% add_FIPS_to_MSA() %>% pull_peers_FIPS()
 
@@ -735,14 +735,25 @@ graph_trendline_race_peer_two(natality,
 
 
 ```
-![](outcomes_ranking.png)
-## 2. Trendline
-```{r data17}
 
+
+```{r}
+rank_and_nb_group(data[data$year == 2016,],
+                  "health_index", 
+                  plot_title = "Health Index, 2016",
+                  y_title = "Average Peer City", 
+                  text = FALSE,
+                  h_line = TRUE)
 ```
 
-```{r graph17}
+## 2. Trendline
 
+```{r graph17}
+graph_trendline(
+  data,
+  "health_index",
+  plot_title = "Health Index",
+  rollmean = 3)
 ```
 ![](outcomes_trendline.png)
 
@@ -904,26 +915,6 @@ rank_and_nb_group(data[data$year == 2016,],
 rank_and_nb_group(data[data$year == 2016,],
                   "physical_environment", 
                   plot_title = "Physical Environment, 2016",
-                  y_title = "Average Peer City", 
-                  text = FALSE,
-                  h_line = TRUE)
-```
-
-## Outcomes Index
-```{r}
-rank_and_nb_group(data[data$year == 2016,],
-                  "outcomes", 
-                  plot_title = "Outcomes, 2016",
-                  y_title = "Average Peer City", 
-                  text = FALSE,
-                  h_line = TRUE)
-```
-
-## Factor Index
-```{r}
-rank_and_nb_group(data[data$year == 2016,],
-                  "factors", 
-                  plot_title = "Factor Index, 2016",
                   y_title = "Average Peer City", 
                   text = FALSE,
                   h_line = TRUE)
