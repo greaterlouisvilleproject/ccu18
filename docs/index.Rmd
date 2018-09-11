@@ -591,6 +591,7 @@ rank_and_nb_group(data[data$year == 2017,],
                   plot_title = 'Certificates, 2017',
                   subtitle_text = 'Ages 25-64')
 ```
+
 # Disconnected Youth
 ```{r data30.1, eval = FALSE}
 acs <- read_csv('data/educ/disconnected.csv')

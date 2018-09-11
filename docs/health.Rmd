@@ -102,7 +102,7 @@ natality <- natality %>%
 
 natality$FIPS[natality$FIPS == 29189] <- "MERGED"
 
-natality <-  natality %>%  pull_peers_FIPS()
+natality <-  natality
 ```
 
 ```{r natalityrace}
@@ -164,7 +164,7 @@ natality_race <- natality_race %>%
 
 natality %<>% 
   bind_df(natality_race) %>% 
-  select(FIPS, year, city, current, baseline, everything())
+  select(FIPS, year, everything())
 
 rm(natality_race_03_05, natality_race_07_16, natality_race)
 ```
@@ -524,7 +524,7 @@ write_feather(brfss_results, "data/health/brfss_results_basic.feather")
 ```{r quickbrfssrace}
 brfss_results_race <- read_feather("data/health/brfss_results.feather")
 
-brfss_results <- full_join(brfss_results, brfss_results_race, by = c("MSA", "year"))
+brfss_results <- full_join(brfss_results, brfss_results_race, by = c("MSA", "year")) %>% select(-city)
 
 rm(brfss_results_race)
 ```
@@ -636,14 +636,14 @@ msa_fips <- read_csv('data/MSA to FIPS.csv') %>% select(-city) %>% mutate(FIPS =
 natality <- left_join(natality, msa_fips)
 
 #Create index
-health_index <- full_join(mortality, natality, by = c("FIPS", "year")) %>% select(-city)
+health_index <- full_join(mortality, natality, by = c("FIPS", "year"))
 health_index <- full_join(health_index, brfss_results, by = c("MSA", "year"))
 
 health_index <- health_index %>%
+  pull_peers_FIPS() %>%
   filter(current == 1) %>%
   select(-MSA) %>%
-  select( FIPS, year, city, current, baseline, everything()) %>%
-  filter(year > 2003)
+  select( FIPS, year, city, current, baseline, everything())
 
 #Create index
 norm_z <- function(x){
@@ -674,38 +674,6 @@ health_z <- health_z %>%
 data <- health_z
 
 rm(msa_fips, natality, mortality, brfss_results)
-```
-
-```{r graph16race, eval = FALSE}
-mortality_race %<>% pull_peers_FIPS()
-
-graph_trendline(
-  mortality_race,
-  var = 'ypll_white',
-  rollmean = 3,
-  plot_title = "Years of potential life lost per 100,000 White Residents",
-  y_title="Years",
-  xmin = 2000,
-  xmax = 2016,
-  caption_text = "Source: Greater Louisville Project 
-                  Data from the CDC")
-
-graph_trendline(
-  mortality_race,
-  var = 'ypll_black',
-  rollmean = 3,
-  plot_title = "Years of potential life lost per 100,000 White Residents",
-  y_title="Years",
-  xmin = 2000,
-  xmax = 2016,
-  caption_text = "Source: Greater Louisville Project 
-                  Data from the CDC")
-
-graph_trendline_race_peer_two(mortality_race, 
-                          vars = c('ypll_white', "ypll_black"),
-                          plot_title = "YPLL",
-                          xmin = 2000)
-
 ```
 
 ```{r, eval = FALSE}
@@ -755,7 +723,126 @@ graph_trendline(
   plot_title = "Health Index",
   rollmean = 3)
 ```
-![](outcomes_trendline.png)
+
+## 3. Years of Potential Life Lost {.tabset}
+
+### Overall
+
+```{r}
+graph_trendline(
+  data,
+  var = 'ypll',
+  rollmean = 3,
+  plot_title = "Years of potential life lost per 100,000 Residents",
+  y_title="Years",
+  xmin = 2000,
+  xmax = 2016)
+```
+
+### by Race
+
+```{r}
+graph_trendline_race_peer_two(data, 
+                          vars = c('ypll_white', "ypll_black"),
+                          plot_title = "YPLL",
+                          xmin = 2000)
+```
+
+## 4. Underweight Births {.tabset}
+
+### Overall
+
+```{r}
+graph_trendline(
+  data,
+  var = 'pct_underweight',
+  rollmean = 3,
+  plot_title = "Underweight Births",
+  y_title="Years",
+  xmin = 2003,
+  xmax = 2016)
+```
+
+### by Race
+
+```{r}
+graph_trendline_race_peer_two(data, 
+                          vars = c('pct_underweight_white', "pct_underweight_black"),
+                          plot_title = "Underweight Births",
+                          xmin = 2003)
+```
+
+## 5. Poor or Fair Health
+
+### Overall
+
+```{r}
+graph_trendline(
+  data,
+  var = 'poor_or_fair',
+  rollmean = 3,
+  plot_title = "Underweight Poor or Fair Health",
+  y_title="Years",
+  xmin = 2004,
+  xmax = 2016)
+```
+
+### by Race
+
+```{r}
+graph_trendline_race_peer(data, 
+                          vars = c('poor_or_fair_white', "poor_or_fair_black", "poor_or_fair_hispanic"),
+                          plot_title = "Poor or Fair Healthy",
+                          xmin = 2004)
+```
+
+## 6. Physically Healthy Days
+
+### Overall
+
+```{r}
+graph_trendline(
+  data,
+  var = 'physdays',
+  rollmean = 3,
+  plot_title = "Physically Healthy Days",
+  y_title="Years",
+  xmin = 2004,
+  xmax = 2016)
+```
+
+### by Race
+
+```{r}
+graph_trendline_race_peer(data, 
+                          vars = c('physdays_white', "physdays_black", "physdays_hispanic"),
+                          plot_title = "Physically Healthy Days",
+                          xmin = 2004)
+```
+
+## 7. Physically Healthy Days
+
+### Overall
+
+```{r}
+graph_trendline(
+  data,
+  var = 'mentdays',
+  rollmean = 3,
+  plot_title = "Mentally Healthy Days",
+  y_title="Years",
+  xmin = 2004,
+  xmax = 2016)
+```
+
+### by Race
+
+```{r}
+graph_trendline_race_peer(data, 
+                          vars = c('mentdays_white', "mentdays_black", "mentdays_hispanic"),
+                          plot_title = "Mentally Healthy Days",
+                          xmin = 2004)
+```
 
 # Health Factors
 ```{r}
