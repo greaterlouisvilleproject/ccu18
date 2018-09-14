@@ -95,14 +95,13 @@ natality <- natality %>%
   group_by(FIPS, year, underweight) %>%
   summarise(babies = sum(births, na.rm = TRUE)) %>%
   ungroup() %>%
-    mutate(pct_underweight = babies / sum(babies),
-         FIPS = as.character(FIPS)) %>%
+  group_by(FIPS, year) %>%
+  mutate(pct_underweight = babies / sum(babies) * 100) %>%
+  ungroup() %>%
   filter(underweight == 1) %>%
   select(-underweight, -babies)
 
 natality$FIPS[natality$FIPS == 29189] <- "MERGED"
-
-natality <-  natality
 ```
 
 ```{r natalityrace}
@@ -143,8 +142,10 @@ natality_race <- natality_race %>%
     babies = sum(babies, na.rm = TRUE)) %>%
   ungroup() %>%
   
-  mutate(pct_underweight = babies / sum(babies),
-         FIPS = as.character(FIPS)) %>%
+  group_by(FIPS, year) %>%
+  mutate(pct_underweight = babies / sum(babies) * 100) %>%
+  ungroup() %>%
+  
   filter(underweight == 1) %>%
   select(-underweight, -babies) %>%
   filter(race == "white" | race == "black") %>%
@@ -264,7 +265,12 @@ rm(mortality_50, mortality_suppressed)
 ```
 
 ```{r mortalityrace}
+
+#read in single-year race mortality data
+
 mortality_one_race <- read_tsv("data/health/mortality/one_race.txt")
+
+#clean data frame
 
 mortality_one_race %<>%
   filter(!is.na(Year)) %>%
@@ -277,7 +283,9 @@ mortality_one_race %<>%
     race = replace(race, race == "White", "white"),
     population = as.numeric(Population),
     deaths = as.numeric(Deaths))
-  
+
+#create new data frame from mortality_one containing one row for each combination of FIPS, year, and race. Then add existing data from mortlity_one_race
+
 mortality_race <- mortality_one %>%
   select(FIPS, year, age) %>%
   {
@@ -301,6 +309,7 @@ mortality_race <- mortality_one %>%
       by = c("FIPS", "year", "age"))
   }
 
+#read in mortality data for white and black residents that is not broken down by race, then clean data frame and add to mortality_race
 mortality_one_totals <- read_tsv("data/health/mortality/total_race.txt")
 
 mortality_one_totals %<>%
@@ -309,35 +318,41 @@ mortality_one_totals %<>%
     FIPS = `County Code`,
     year = Year,
     age = as.numeric(`Single-Year Ages Code`),
-    population_tot = as.numeric(Population),
+    pop_tot = as.numeric(Population),
     deaths_tot = as.numeric(Deaths))
 
 mortality_race %<>% 
   left_join(mortality_one_totals, by = c("FIPS", "year", "age")) 
 
-mortality_race$pop_white[mortality_race$FIPS == "51760" & 
-                         mortality_race$year == 2013 &
-                         mortality_race$age == 74] <-
-  mortality_race$pop_white[mortality_race$FIPS == "51760" & 
-                         mortality_race$year == 2012 &
-                         mortality_race$age == 74]
+#Fill any missing white values for age 74 using totals and data for black residents 
 
-mortality_race$deaths_white[mortality_race$FIPS == "51760" & 
-                         mortality_race$year == 2013 &
-                         mortality_race$age == 74] <-
-  mortality_race$deaths_white[mortality_race$FIPS == "51760" & 
-                         mortality_race$year == 2012 &
-                         mortality_race$age == 74]
+mortality_race %<>%
+  {
+    x <- .
+    bind_rows(
+      x %>% 
+        filter(is.na(pop_white) & age == 74) %>%
+        mutate(
+          pop_white = pop_tot - pop_black,
+          deaths_white = deaths_tot - deaths_black),
+      
+      x %>% 
+        filter(!(is.na(pop_white) & age == 74)))
+  }
 
-#mort_t
+#Read in death rates for ages added to death rates for age 74
 
 mortality_tot_suppressed <- wonder_time_single("data/health/mortality/single-year whiteblack")
+
+#filter mortality_race to age 74
 
 mortality_74 <- mortality_race %>%
   filter(age == 74) %>%
   rename(deaths74 = deaths_tot,
-         pop74 = population_tot) %>%
+         pop74 = pop_tot) %>%
   select(FIPS, year, deaths74, pop74)
+
+#add to new totals dataframe and subtract deaths for ages 74 from deaths for age 74 plus each other age to create variables for surpressed population andd death counts
 
 mortality_tot_suppressed %<>%
   select(
@@ -356,8 +371,10 @@ mortality_tot_suppressed %<>%
 #add to mortality data frame
 mortality_race %<>% left_join(mortality_tot_suppressed, by = c("FIPS", "year", "age"))
 
+
+#replace NA values with calculated values
 mortality_race %<>%
- {
+  {
    x <- .
    bind_rows(
      x %>%
@@ -365,17 +382,25 @@ mortality_race %<>%
      x %>%
        filter(is.na(deaths_tot)) %>%
        mutate(deaths_tot = deaths_tot_suppressed,
-              population_total = pop_tot_suppressed))
- }
+              pop_tot = pop_tot_suppressed))
+  } %>%
+  select(-deaths_tot_suppressed, -pop_tot_suppressed)
 
-#mort_w
+
+#repeat the process for white residents.
+
+#read in white data
 mortality_white_suppressed <- wonder_time_single("data/health/mortality/single-year white")
+
+#subset mortality_race to 74 year olds
 
 mortality_74 <- mortality_race %>%
   filter(age == 74) %>%
   rename(deaths74 = deaths_white,
          pop74 = pop_white) %>%
   select(FIPS, year, deaths74, pop74)
+
+#add to new totals dataframe and subtract deaths for ages 74 from deaths for age 74 plus each other age to create variables for surpressed population andd death counts 
 
 mortality_white_suppressed %<>%
   select(
@@ -395,6 +420,7 @@ mortality_white_suppressed %<>%
 #add to mortality data frame
 mortality_race %<>% left_join(mortality_white_suppressed, by = c("FIPS", "year", "age"))
 
+#replace NA values with calculated values, calculate black values based on complete white and total columns
 mortality_race %<>%
  {
    x <- .
@@ -406,16 +432,16 @@ mortality_race %<>%
        mutate(deaths_white = deaths_white_suppressed,
               pop_white = pop_white_suppressed))
  } %>%
-  mutate(pop_black = population_tot - pop_white,
-         deaths_black = deaths_tot - deaths_white)
-
-#mortanalysis
+ select(-deaths_white_suppressed, -pop_white_suppressed)
+ 
+#Clean data frame
 mortality_race %<>%
   transmute(
     FIPS, year, age,
     population_white = pop_white,
     population_black = pop_black,
-    deaths_white, deaths_black)
+    deaths_white, 
+    deaths_black)
 
 #YPLL Calculation
 
@@ -525,6 +551,10 @@ write_feather(brfss_results, "data/health/brfss_results_basic.feather")
 brfss_results_race <- read_feather("data/health/brfss_results.feather")
 
 brfss_results <- full_join(brfss_results, brfss_results_race, by = c("MSA", "year")) %>% select(-city)
+
+brfss_results %<>%
+  mutate(poor_or_fair = poor_or_fair * 100)
+            
 
 rm(brfss_results_race)
 ```
@@ -641,26 +671,23 @@ health_index <- full_join(health_index, brfss_results, by = c("MSA", "year"))
 
 health_index <- health_index %>%
   pull_peers_FIPS() %>%
-  filter(current == 1) %>%
   select(-MSA) %>%
-  select( FIPS, year, city, current, baseline, everything())
+  select(FIPS, year, city, current, baseline, everything())
 
 #Create index
 norm_z <- function(x){
-z <- (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
+  z <- (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
 }
 
-health_z <- health_index
+health_z <- health_index %>% filter(current == 1)
 health_z <- map_df(health_z, remove_var_label)
 
 health_z <- health_z %>%
   group_by(year) %>%
-  mutate(ypll_index = -1 * norm_z(ypll),
-         pct_underweight_index = -1 * norm_z(pct_underweight),
-         poor_or_fair_index = -1 * norm_z(poor_or_fair),
-         physdays_index = -1 * norm_z(physdays),
-         mentdays_index = -1 * norm_z(mentdays)) %>%
-  ungroup()
+  mutate_at(vars(5:22), norm_z) %>%
+  mutate_at(vars(5:22), funs(. * -1)) %>%
+  ungroup() %>%
+  rename_at(vars(6:23), paste0, "_index")
 
 health_z <- health_z %>%
   mutate(
@@ -669,41 +696,28 @@ health_z <- health_z %>%
       pct_underweight_index * .2 +
       poor_or_fair_index * .1 +
       physdays_index * .1 +
-      mentdays_index * .1)
+      mentdays_index * .1,
+    
+    health_index_white = 
+      ypll_white_index * .5 +
+      pct_underweight_white_index * .2 +
+      poor_or_fair_white_index * .1 +
+      physdays_white_index * .1 +
+      mentdays_white_index * .1,
+    
+    health_index_black = 
+      ypll_black_index * .5 +
+      pct_underweight_black_index * .2 +
+      poor_or_fair_black_index * .1 +
+      physdays_black_index * .1 +
+      mentdays_black_index * .1)
 
-data <- health_z
+data <- health_index %>% 
+  select(-city, -current, -baseline) %>%
+  bind_df(health_z)
 
 rm(msa_fips, natality, mortality, brfss_results)
 ```
-
-```{r, eval = FALSE}
-
-brfss_results %<>% add_FIPS_to_MSA() %>% pull_peers_FIPS()
-
-graph_trendline_race_peer(brfss_results, 
-                          vars = c('poor_or_fair_white', 'poor_or_fair_black', 'poor_or_fair_hispanic'),
-                          plot_title = "Poor or Fair Health by Ethnicity",
-                          rollmean = 5)
-
-graph_trendline_race_peer(brfss_results, 
-                          vars = c('physdays_white', 'physdays_black', 'physdays_hispanic'),
-                          plot_title = "Physically Unhealthy Days by Ethnicity",
-                          rollmean = 5,
-                          y_title="Days")
-
-graph_trendline_race_peer(brfss_results, 
-                          vars = c('mentdays_white', 'mentdays_black', 'mentdays_hispanic'),
-                          plot_title = "Mentally Unhealthy Days by Ethnicity",
-                          rollmean = 5,
-                          y_title="Days")
-
-graph_trendline_race_peer_two(natality, 
-                          vars = c('pct_underweight_white', 'pct_underweight_black'),
-                          plot_title = "PCT Underweight")
-
-
-```
-
 
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
@@ -714,13 +728,25 @@ rank_and_nb_group(data[data$year == 2016,],
                   h_line = TRUE)
 ```
 
-## 2. Trendline
+## 2. Trendline {.tabset}
+
+### Overall
 
 ```{r graph17}
 graph_trendline(
   data,
   "health_index",
   plot_title = "Health Index",
+  rollmean = 3)
+```
+
+### by Race
+```{r}
+graph_trendline_race_peer_two(
+  data, 
+  vars = c('health_index_white', "health_index_black"),
+  plot_title = "Health Index by Race",
+  xmin = 2005,
   rollmean = 3)
 ```
 
@@ -742,10 +768,12 @@ graph_trendline(
 ### by Race
 
 ```{r}
-graph_trendline_race_peer_two(data, 
-                          vars = c('ypll_white', "ypll_black"),
-                          plot_title = "YPLL",
-                          xmin = 2000)
+graph_trendline_race_peer_two(
+  data, 
+  vars = c('ypll_white', "ypll_black"),
+  plot_title = "YPLL",
+  xmin = 2000,
+  rollmean = 3)
 ```
 
 ## 4. Underweight Births {.tabset}
@@ -766,10 +794,12 @@ graph_trendline(
 ### by Race
 
 ```{r}
-graph_trendline_race_peer_two(data, 
-                          vars = c('pct_underweight_white', "pct_underweight_black"),
-                          plot_title = "Underweight Births",
-                          xmin = 2003)
+graph_trendline_race_peer_two(
+  data, 
+  vars = c('pct_underweight_white', "pct_underweight_black"),
+  plot_title = "Underweight Births",
+  xmin = 2003,
+  rollmean = 3)
 ```
 
 ## 5. Poor or Fair Health
@@ -781,8 +811,8 @@ graph_trendline(
   data,
   var = 'poor_or_fair',
   rollmean = 3,
-  plot_title = "Underweight Poor or Fair Health",
-  y_title="Years",
+  plot_title = "Poor or Fair Health",
+  y_title = "Percent",
   xmin = 2004,
   xmax = 2016)
 ```
@@ -790,10 +820,12 @@ graph_trendline(
 ### by Race
 
 ```{r}
-graph_trendline_race_peer(data, 
-                          vars = c('poor_or_fair_white', "poor_or_fair_black", "poor_or_fair_hispanic"),
-                          plot_title = "Poor or Fair Healthy",
-                          xmin = 2004)
+graph_trendline_race_peer(
+  data, 
+  vars = c('poor_or_fair_white', "poor_or_fair_black", "poor_or_fair_hispanic"),
+  plot_title = "Poor or Fair Healthy",
+  xmin = 2004,
+  rollmean = 3)
 ```
 
 ## 6. Physically Healthy Days
@@ -814,10 +846,12 @@ graph_trendline(
 ### by Race
 
 ```{r}
-graph_trendline_race_peer(data, 
-                          vars = c('physdays_white', "physdays_black", "physdays_hispanic"),
-                          plot_title = "Physically Healthy Days",
-                          xmin = 2004)
+graph_trendline_race_peer(
+  data, 
+  vars = c('physdays_white', "physdays_black", "physdays_hispanic"),
+  plot_title = "Physically Unhealthy Days",
+  xmin = 2004,
+  rollmean = 3)
 ```
 
 ## 7. Physically Healthy Days
@@ -1041,300 +1075,6 @@ rank_and_nb_group(data[data$year == 2016,],
                   'insured_rate',
                   plot_title = 'Health Insurance, 2016')
 ```
-
-## 6. Trendline
-```{r graph20}
-graph_trendline(data,
-                'insured_rate',
-                plot_title = 'Health Insurance',
-                xmin = 2009)
-```
-
-## 7. By Race
-```{r data20.2}
-insurance_white <- acs_time("/data/health/C27001H/", starting_year = 2009)
-
-insurance_white %<>%
-  mutate(
-    total = `Estimate; Total:`,
-    
-    uninsurance_rate_white =
-      (`Estimate; Under 18 years: - No health insurance coverage` +
-      `Estimate; 18 to 64 years: - No health insurance coverage` + 
-      `Estimate; 65 years and over: - No health insurance coverage`)
-      / total * 100,
-    
-    insured_rate_white = 100 - uninsurance_rate_white) %>%
-  weight_stl('insured_rate_white', 'total') 
-
-insurance_black <- acs_time("/data/health/C27001B/", starting_year = 2009)
-
-insurance_black %<>%
-  mutate(
-    total = `Estimate; Total:`,
-    
-    uninsurance_rate_black =
-      (`Estimate; Under 18 years: - No health insurance coverage` +
-      `Estimate; 18 to 64 years: - No health insurance coverage` + 
-      `Estimate; 65 years and over: - No health insurance coverage`)
-      / total * 100,
-    
-    insured_rate_black = 100 - uninsurance_rate_black) %>%
-  weight_stl('insured_rate_black', 'total') 
-
-insurance_hisp <- acs_time("/data/health/C27001I/", starting_year = 2009)
-
-insurance_hisp %<>%
-  mutate(
-    total = `Estimate; Total:`,
-    
-    uninsurance_rate_hispanic =
-      (`Estimate; Under 18 years: - No health insurance coverage` +
-      `Estimate; 18 to 64 years: - No health insurance coverage` + 
-      `Estimate; 65 years and over: - No health insurance coverage`)
-      / total * 100,
-    
-    insured_rate_hispanic = 100 - uninsurance_rate_hispanic) %>%
-  weight_stl('insured_rate_hispanic', 'total') 
-
-data %<>% bind_df(insurance_white, insurance_black, insurance_hisp)
-
-rm(insurance_white, insurance_black, insurance_hisp)
-```
-
-```{r graph20.2}
-graph_trendline_race_peer(data, 
-                          vars = c('insured_rate_white', 'insured_rate_black', 'insured_rate_hispanic'),
-                          xmin = 2009,
-                          plot_title = 'Health Insurance by Ethnicity')
-```
-
-## 8. By Poverty
-```{r data21}
-uninsured_income_09 <- acs_time('/data/health/B27016/Y09/', starting_year = 2009)
-
-uninsured_income_09 %<>%
-  mutate(
-    insured_per_0.5_pov = 
-      (`Estimate; Under 0.50 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; Under 0.50 of poverty threshold:`,
-    
-    insured_per_0.5_to_.99_pov = 
-      (`Estimate; 0.50 to .99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 0.50 to .99 of poverty threshold:`,
-    
-    insured_per_1_to_1.49_pov = 
-      (`Estimate; 1.00 to 1.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.49 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 1.00 to 1.49 of poverty threshold:`,
-    
-    insured_per_1.5_to_1.99_pov = 
-      (`Estimate; 1.50 to 1.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 1.50 to 1.99 of poverty threshold:`,
-    
-    insured_per_2_to_2.99_pov = 
-      (`Estimate; 2.00 to 2.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 2.00 to 2.99 of poverty threshold:`,
-    
-    insured_per_3_to_3.99_pov = 
-      (`Estimate; 3.00 to 3.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 3.00 to 3.99 of poverty threshold:`,
-    
-    insured_per_4_plus_pov = 
-      (`Estimate; 4.00 of poverty threshold and over: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 4.00 of poverty threshold and over:`,
-    
-    insured_pov = 
-      (`Estimate; Under 0.50 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /(`Estimate; Under 0.50 of poverty threshold:` +`Estimate; 0.50 to .99 of poverty threshold:`) * 100,
-    
-    insured_nonpov = 
-      (`Estimate; 1.00 to 1.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.49 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.99 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 65 years and over: - With health insurance coverage`)
-      /(`Estimate; 1.00 to 1.49 of poverty threshold:` + `Estimate; 1.50 to 1.99 of poverty threshold:` +
-        `Estimate; 2.00 to 2.99 of poverty threshold:` + `Estimate; 3.00 to 3.99 of poverty threshold:` +
-        `Estimate; 4.00 of poverty threshold and over:`) * 100) %>%
-  weight_stl(c('insured_per_0.5_pov', 'insured_per_0.5_to_.99_pov', 'insured_per_1_to_1.49_pov',
-               'insured_per_1.5_to_1.99_pov', 'insured_per_2_to_2.99_pov', 'insured_per_3_to_3.99_pov',
-               'insured_per_4_plus_pov', 'insured_pov', 'insured_nonpov')) %>%
-  mutate(insured_per_2_to_2.49_pov = NA,
-         insured_per_2.5_to_2.99_pov = NA,
-         insured_per_1_to_1.37_pov = NA,
-         insured_per_1.38_1.49_pov = NA)
-
-uninsured_income_11 <- acs_time('/data/health/B27016/Y11/', starting_year = 2011)
-
-uninsured_income_11 %<>%
-  mutate(
-    insured_per_0.5_pov = 
-      (`Estimate; Under 0.50 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; Under 0.50 of poverty threshold:`,
-    
-    insured_per_0.5_to_.99_pov = 
-      (`Estimate; 0.50 to .99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 0.50 to .99 of poverty threshold:`,
-    
-    insured_per_1_to_1.37_pov =
-      (`Estimate; 1.00 to 1.37 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.37 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.37 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 1.00 to 1.37 of poverty threshold:`,
-
-    insured_per_1.38_1.49_pov =
-      (`Estimate; 1.38 to 1.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 1.38 to 1.49 of poverty threshold:`,
-    
-    insured_per_1_to_1.49_pov = 
-      (`Estimate; 1.00 to 1.37 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.37 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.37 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      / (`Estimate; 1.00 to 1.37 of poverty threshold:` + `Estimate; 1.38 to 1.49 of poverty threshold:`),
-    
-    insured_per_1.5_to_1.99_pov = 
-      (`Estimate; 1.50 to 1.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 1.50 to 1.99 of poverty threshold:`,
-    
-    insured_per_2_to_2.49_pov =
-      (`Estimate; 2.00 to 2.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 2.00 to 2.49 of poverty threshold:`,
-
-    insured_per_2.5_to_2.99_pov =
-      (`Estimate; 2.50 to 2.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 2.50 to 2.99 of poverty threshold:`,
-
-    insured_per_2_to_2.99_pov = 
-      (`Estimate; 2.00 to 2.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      / (`Estimate; 2.00 to 2.49 of poverty threshold:` + `Estimate; 2.50 to 2.99 of poverty threshold:`),
-    
-    insured_per_3_to_3.99_pov =
-      (`Estimate; 3.00 to 3.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 3.00 to 3.99 of poverty threshold:`, 
-
-    insured_per_4_plus_pov = 
-      (`Estimate; 4.00 of poverty threshold and over: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 65 years and over: - With health insurance coverage`)
-      /`Estimate; 4.00 of poverty threshold and over:`,
-    
-    insured_pov = 
-      (`Estimate; Under 0.50 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; Under 0.50 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 0.50 to .99 of poverty threshold: - 65 years and over: - With health insurance coverage`)
-      /(`Estimate; Under 0.50 of poverty threshold:` +`Estimate; 0.50 to .99 of poverty threshold:`) * 100,
-    
-    insured_nonpov = 
-      (`Estimate; 1.00 to 1.37 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.37 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.00 to 1.37 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.38 to 1.49 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 1.50 to 1.99 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.00 to 2.49 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 2.50 to 2.99 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 3.00 to 3.99 of poverty threshold: - 65 years and over: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - Under 18 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 18 to 64 years: - With health insurance coverage` +
-      `Estimate; 4.00 of poverty threshold and over: - 65 years and over: - With health insurance coverage`)
-      /(`Estimate; 1.00 to 1.37 of poverty threshold:` + `Estimate; 1.38 to 1.49 of poverty threshold:` + `Estimate; 1.50 to 1.99 of poverty threshold:` +
-        `Estimate; 2.00 to 2.49 of poverty threshold:` + `Estimate; 2.50 to 2.99 of poverty threshold:` +
-        `Estimate; 3.00 to 3.99 of poverty threshold:` + `Estimate; 4.00 of poverty threshold and over:`) * 100) %>%
-  weight_stl(c('insured_per_0.5_pov', 'insured_per_0.5_to_.99_pov', 'insured_per_1_to_1.37_pov',
-               'insured_per_1.38_1.49_pov', 'insured_per_1_to_1.49_pov', 'insured_per_1.5_to_1.99_pov',
-               'insured_per_2_to_2.49_pov','insured_per_2.5_to_2.99_pov', 'insured_per_2_to_2.99_pov',
-               'insured_per_3_to_3.99_pov', 'insured_per_4_plus_pov', 'insured_pov', 'insured_nonpov'))
-
-uninsured_income <- bind_rows(uninsured_income_09, uninsured_income_11)
-
-data %<>% bind_df(uninsured_income)
-
-rm(uninsured_income_09, uninsured_income_11, uninsured_income)
-
-```
-
-```{r graph 21.1}
-graph_trendline_race_peer_two(data, 
-                          vars = c('insured_pov', 'insured_nonpov'),
-                          cat_labels = c("Poverty","Nonpoverty"),
-                          plot_title = "Health Insurance by Poverty Status",
-                          xmin = 2011)
-```
-
-```{r graph21, eval = FALSE}
-uninsured_graph <- data %>% 
-  gather(insured_per_0.5_pov:insured_per_1.38_1.49_pov, key = 'key', value = 'value') %>%
-  filter(FIPS == 21111) #change to data
-
-ggplotly(ggplot(uninsured_graph, aes(x = year, y = value, color = key)) + 
-  geom_line())
-
-rm(uninsured_graph)
-```
-
 # Overdoses
 ```{r opioid}
 opioid <- read_tsv('data/health/opioid/Underlying Cause of Death, 1999-2016.txt')
@@ -1428,9 +1168,24 @@ opioid %<>% pull_peers_FIPS()
 opioid %<>% bind_df(opioid_race)
 ```
 
-## 9. Ranking {.tabset}
+#overdose YPLL
+```{r, eval = FALSE}
+total_deaths <- read_tsv("data/health/opioid/total_deaths.txt")
 
-### Mortality rate
+total_deaths %<>% clean_wonder()
+
+non_overdose_deaths <- read_tsv("data/health/opioid/non_overdose_deaths.txt")
+
+non_overdose_deaths %<>% clean_wonder()
+
+suppressed_overdoses <- wonder_time_single("data/health/opioid")
+
+
+
+```
+
+## 9. Ranking
+
 ```{r}
 rank_and_nb_group(opioid[opioid$year == 2016,],
                   'overdose',
@@ -1439,18 +1194,8 @@ rank_and_nb_group(opioid[opioid$year == 2016,],
                   order = "Ascending")
 ```
 
-### Percent of deaths
-```{r}
-rank_and_nb_group(opioid[opioid$year == 2016,],
-                  'overdose_per',
-                  plot_title = 'Percent of Deaths that are Overdoses, 2016',
-                  y_title = "Percent",
-                  order = "Ascending")
-```
-
 ## 10. Trendline
 
-### Mortality rate
 ```{r}
 graph_trendline(opioid,
                 'overdose',
@@ -1459,18 +1204,8 @@ graph_trendline(opioid,
                 y_title = "Overdose Deaths per 100,000 residents")
 ```
 
-### Percent of deaths
-```{r}
-graph_trendline(opioid,
-                'overdose_per',
-                plot_title = 'Percent of Deaths that are Overdoses',
-                xmin = 2000,
-                y_title = "Percent")
-```
-
 ## 11. Overdoses by Race
 
-### Mortality rate
 ```{r}
 graph_trendline_race_peer_two(opioid, 
                           vars = c('overdose_white', 'overdose_black'),
@@ -1480,14 +1215,55 @@ graph_trendline_race_peer_two(opioid,
                           rollmean = 3)
 ```
 
-### Percent of deaths
+# Homocide / Suicide
+
 ```{r}
-graph_trendline_race_peer_two(opioid, 
-                          vars = c('overdose_white_per', 'overdose_black_per'),
-                          plot_title = "Overdoses by race",
-                          xmin = 2000,
-                          y_title = "Overdoses Deaths per 100,000",
-                          rollmean = 3)
+homocide <- read_tsv("data/health/homocide/total.txt")
+
+homocide %<>% 
+  clean_wonder() %>%
+  rename(homocide_rate = rate) %>%
+  weight_stl("homocide_rate", "population") %>%
+  pull_peers_FIPS()
 ```
 
+```{r}
+graph_trendline(
+  homocide,
+  "homocide_rate",
+  xmin = 2000,
+  plot_title = "Homocide Rate per 100,000",
+  rollmean = 3,
+  y_title = "Deaths per 100,000")
+```
 
+```{r}
+suicide <- read_tsv("data/health/suicide/total.txt")
+
+suicide %<>%
+  filter(!is.na(Year)) %>%
+  select(
+    FIPS = `County Code`,
+    year = Year,
+    pop = Population,
+    suicide_rate = `Age Adjusted Rate`) %>%
+  mutate_at(vars(year, pop, suicide_rate), as.numeric) %>%
+  weight_stl("suicide_rate", "pop") %>%
+  pull_peers_FIPS()
+```
+
+```{r}
+graph_trendline(
+  suicide,
+  "suicide_rate",
+  xmin = 2000,
+  plot_title = "Suicide Rate",
+  rollmean = 5,
+  y_title="Deaths per 100,000")
+```
+
+```{r}
+#Overdose contribution to health index
+#--need by single year age
+#--download data for deaths from all other sources, then subtract deaths from all sources except overdoses. #Substract.
+```

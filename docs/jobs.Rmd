@@ -80,32 +80,66 @@ web = TRUE
 
 ## 1. Ranking
 ```{r data9}
-earn_data <- acs_time("/data/jobs/S2001/")
+earn_data_05_16 <- acs_time("/data/jobs/S2001/05-16/")
+earn_data_17 <- acs_time("/data/jobs/S2001/17/", starting_year = 2017)
 
-earn_data <- earn_data %>%
+earn_data_05_16 %<>%
   select(FIPS, 
          year,
          pop = `Total; Estimate; Population 16 years and over with earnings`,
          pop_male =`Male; Estimate; Population 16 years and over with earnings`,
          pop_female = `Female; Estimate; Population 16 years and over with earnings`,
+         pop_ft = `Total; Estimate; Population 16 years and over with earnings - Full-time, year-round workers with earnings`,
+         pop_ft_male = `Male; Estimate; Population 16 years and over with earnings - Full-time, year-round workers with earnings`,
+         pop_ft_female = `Female; Estimate; Population 16 years and over with earnings - Full-time, year-round workers with earnings`,
+         
          median_earnings = `Total; Estimate; Population 16 years and over with earnings - Median earnings (dollars)`,
          median_earnings_male = `Male; Estimate; Population 16 years and over with earnings - Median earnings (dollars)`,
-         median_earnings_female = `Female; Estimate; Population 16 years and over with earnings - Median earnings (dollars)`) %>%
-  mutate(median_earnings = as.numeric(as.character(median_earnings)),
-         median_earnings_male = as.numeric(as.character(median_earnings_male)),
-         median_earnings_female = as.numeric(as.character(median_earnings_female)),
-         FIPS = as.character(FIPS))
+         median_earnings_female = `Female; Estimate; Population 16 years and over with earnings - Median earnings (dollars)`,
+         median_earnings_ft = `Total; Estimate; Population 16 years and over with earnings - Full-time, year-round workers with earnings - Mean earnings (dollars)`,
+         median_earnings_ft_male = `Male; Estimate; Population 16 years and over with earnings - Full-time, year-round workers with earnings - Median earnings (dollars)`,
+         median_earnings_ft_female = `Female; Estimate; Population 16 years and over with earnings - Full-time, year-round workers with earnings - Median earnings (dollars)`) %>%
+  mutate_at(vars(pop, pop_male, pop_female, pop_ft, pop_ft_male, pop_ft_female, 
+              median_earnings, median_earnings_male, median_earnings_female,
+              median_earnings_ft, median_earnings_ft_male, median_earnings_ft_female),
+            as.numeric)
+
+earn_data_17 %<>%
+  select(FIPS, 
+         year,
+         pop = `Total; Estimate; Population 16 years and over with earnings`,
+         pop_male =`Male; Estimate; Population 16 years and over with earnings`,
+         pop_female = `Female; Estimate; Population 16 years and over with earnings`,
+         pop_ft = `Total; Estimate; FULL-TIME, YEAR-ROUND WORKERS WITH EARNINGS`,
+         pop_ft_male = `Male; Estimate; FULL-TIME, YEAR-ROUND WORKERS WITH EARNINGS`,
+         pop_ft_female = `Female; Estimate; FULL-TIME, YEAR-ROUND WORKERS WITH EARNINGS`,
+         
+         median_earnings = `Total; Estimate; Median earnings (dollars)`,
+         median_earnings_male = `Male; Estimate; Median earnings (dollars)`,
+         median_earnings_female = `Female; Estimate; Median earnings (dollars)`,
+         median_earnings_ft = `Total; Estimate; Median earnings (dollars) for full-time, year-round workers with earnings`,
+         median_earnings_ft_male = `Male; Estimate; Mean earnings (dollars) for full-time, year-round workers with earnings`,
+         median_earnings_ft_female = `Female; Estimate; Mean earnings (dollars) for full-time, year-round workers with earnings`) %>%
+  mutate_at(vars(pop, pop_male, pop_female, pop_ft, pop_ft_male, pop_ft_female, 
+              median_earnings, median_earnings_male, median_earnings_female,
+              median_earnings_ft, median_earnings_ft_male, median_earnings_ft_female),
+            as.numeric)
+
+earn_data <- bind_rows(earn_data_05_16, earn_data_17)
 
 earn_data <- bind_df(
   earn_data %>% weight_stl("median_earnings", "pop"),
   earn_data %>% weight_stl("median_earnings_male", "pop_male"),
-  earn_data %>% weight_stl("median_earnings_female", "pop_female"))
+  earn_data %>% weight_stl("median_earnings_female", "pop_female"),
+  earn_data %>% weight_stl("median_earnings_ft", "pop_ft"),
+  earn_data %>% weight_stl("median_earnings_ft_male", "pop_ft_male"),
+  earn_data %>% weight_stl("median_earnings_ft_female", "pop_ft_female"))
 
 data <- earn_data
 
 data %<>% pull_peers_FIPS() %>% select(FIPS, city, year, current, baseline, everything())
 
-rm(earn_data)
+rm(earn_data_05_16, earn_data_17, earn_data)
 ```
 
 ```{r MSA counties, eval = FALSE}
@@ -239,11 +273,12 @@ rpp$`2005` <- rpp$`2008`
 rpp$`2006` <- rpp$`2008`
 rpp$`2007` <- rpp$`2008`
 rpp$`2016` <- rpp$`2015`
+rpp$`2017` <- rpp$`2015`
 
 rpp <- rpp %>%
   filter(LineCode == 4) %>%
   select(-GeoFips, -LineCode, -Description) %>%
-  gather(2:13, key = year, value = "rpp") %>%
+  gather(2:14, key = year, value = "rpp") %>%
   mutate(year = as.numeric(year))
 
 rpp$MSA <- substr(rpp$GeoName, 0, unlist(gregexpr(pattern = " \\(", rpp$GeoName)) -1 )
@@ -291,7 +326,7 @@ data %<>% left_join(cpi, by = "year")
 
 data %<>%
   group_by(city) %>%
-  mutate(base_cpi = cpi[year == 2016],
+  mutate(base_cpi = cpi[year == 2017],
          cpi_index = base_cpi/cpi) %>%
   ungroup() %>%
   select(-cpi, -base_cpi)
@@ -300,15 +335,16 @@ rpp_col_adj <- function(x){
   x *  data$rpp_index * data$cpi_index
 }
 
-data %<>% mutate_at(vars(median_earnings, median_earnings_male, median_earnings_female), rpp_col_adj)
+data %<>% mutate_at(vars(median_earnings, median_earnings_male, median_earnings_female, 
+                         median_earnings_ft, median_earnings_ft_male, median_earnings_ft_female), rpp_col_adj)
 
 rm(rpp, cpi)
 ```
 
 ```{r graph9}
-rank_and_nb_group(data[data$year == 2016,], 
+rank_and_nb_group(data[data$year == 2017,], 
                   'median_earnings',
-                  plot_title = 'Median Earnings, 2016')
+                  plot_title = 'Median Earnings, 2017')
 ```
 
 ## 2. Trendline
@@ -353,7 +389,8 @@ rm(earn_data_white, earn_data_black, earn_data_hisp)
 graph_trendline(data,
                 'median_earnings',
                 plot_title = 'Median Earnings',
-                y_title = 'Dollars')
+                y_title = 'Dollars',
+                xmax = 2017)
 ```
 
 ## 3. Map
@@ -383,7 +420,8 @@ rm(earn_map)
 graph_trendline_change(
   data,
   'median_earnings',
-  plot_title = "Median Earnings")
+  plot_title = "Median Earnings",
+  xmax = 2017)
 ```
 
 ## 5. By Race
@@ -393,7 +431,8 @@ graph_trendline_race_peer(data,
                           vars = c('median_earnings_white', 'median_earnings_black', 'median_earnings_hispanic'),
                           plot_title = 'Median Earnings by Ethnicity',
                           rollmean = 3,
-                          y_title = 'Dollars')
+                          y_title = 'Dollars',
+                          xmax = 2017)
 ```
 
 ## 6. By Gender
@@ -403,7 +442,8 @@ graph_trendline_race_peer_two(
   vars = c('median_earnings_male', 'median_earnings_female'),
   cat_labels = c("Male","Female"),
   plot_title = "Median Earnings by Gender",
-  y_title = "Dollars")
+  y_title = "Dollars",
+  xmax = 2017)
 
 data %<>%
   mutate(wage_gap = median_earnings_female / median_earnings_male * 100)
@@ -413,7 +453,8 @@ graph_trendline(
   "wage_gap",
   plot_title = "Wage Gap: Males and Females",
   y_title = "Percent",
-  rollmean = 5)
+  rollmean = 5,
+  xmax = 2017)
 
 ```
 
@@ -432,13 +473,15 @@ graph_trendline(data,
                 'earnings_gap_black',
                 plot_title = 'Earnings Gap: Black and White Residents',
                 y_title = "Dollars",
-                rollmean = 5)
+                rollmean = 5,
+                xmax = 2017)
 
 graph_trendline(data,
                 'earnings_gap_hispanic',
                 plot_title = 'Earnings Gap: Hispanic and White Residents',
                 y_title = "Dollars",
-                rollmean = 5)
+                rollmean = 5,
+                xmax = 2017)
 ```
 
 # Job Distribution
@@ -513,24 +556,6 @@ rm(zip_codes, business_data)
 map_jc_zip@data %<>% left_join(map_data_zip, by = c('ZIPCODE' = 'zip'))
 ```
 
-## 3. Businesses per Resident
-```{r graph14.11}
-make_map_zip("businesses_per_resident", 
-             name = "Businesses per Resident",
-             legend_title = "Businesses<br/>per res",
-             units = "none",
-             map_style = "sequential")
-```
-
-## 4. Businesses per Resident Change
-```{r graph14.12}
-make_map_zip("businesses_per_resident_change_5yr", 
-             name = "Businesses per Resident",
-             legend_title = "Businesses<br/>per res",
-             units = "Percent",
-             map_style = "divergent")
-```
-
 ## 5. Jobs per Resident
 ```{r graph14.2}
 make_map_zip("jobs_per_resident", 
@@ -572,7 +597,7 @@ unemp18 %<>%
          FIPS = as.character(as.numeric(FIPS))) %>%
   pull_peers_FIPS(add_info = FALSE)
 
-unemp <- bind_rows(unemp, unemp18)
+unemp <- bind_rows(unemp, unemp18) %>% weight_stl("unemp_rate") 
 
 data %<>% bind_df(unemp) %>% select(-city, -baseline, -current) %>% pull_peers_FIPS()
 
@@ -582,7 +607,7 @@ data %<>% bind_df(unemp) %>% select(-city, -baseline, -current) %>% pull_peers_F
 ```{r graph 15.1}
 rank_and_nb_group(data[data$year == 2018,], 
                   'unemp_rate', 
-                  plot_title = 'Unemployment, 2017',
+                  plot_title = 'Unemployment, 2018',
                   order = "Ascending")
 ```
 
@@ -752,7 +777,7 @@ rm(unemp_hisp)
 
 ```{r graph15}
 xmin <- 2005
-xmax <- 2016
+xmax <- 2017
 df <- data
 rollmean <- 3
 

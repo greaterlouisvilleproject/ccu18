@@ -351,16 +351,17 @@ rm(tenure)
 ```
 
 ```{r graph22}
-rank_and_nb_group(data[data$year == 2016,],
+rank_and_nb_group(data[data$year == 2017,],
                   'homeownership', 
-                  plot_title = 'Homeownership, 2016')
+                  plot_title = 'Homeownership, 2017')
 ```
 
 ## 3. Homeownership Trendline
 ```{r graph 23.1}
 graph_trendline(data,
                 'homeownership',
-                'Homeownership')
+                'Homeownership',
+                xmax = 2017)
 ```
 
 ## 4. Homeownership Map 
@@ -433,7 +434,8 @@ make_map("homeownership",
 graph_trendline_change(
   data,
   'homeownership',
-  plot_title = "Burdened Households")
+  plot_title = "Burdened Households",
+  xmax = 2017)
 ```
 
 ## 6. Homeownership by Race
