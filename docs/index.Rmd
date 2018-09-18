@@ -472,7 +472,8 @@ graph_trendline_change(
   data,
   'per_25_64_bach_plus',
   plot_title = "Bachelor's Degrees, Ages 25 to 64",
-  xmax = 2017)
+  xmax = 2017,
+  newest_year = 2017)
 ```
 
 -----------------
@@ -515,7 +516,8 @@ graph_trendline(data,
 graph_trendline_change(data,
                        'per_25_34_bach_plus',
                        plot_title = "Bachelor's Degrees or Higher, Ages 25-34, 2016",
-                       xmax = 2017)
+                       xmax = 2017,
+                       newest_year = 2017)
 ```
 
 # Associate Degrees / Certificates

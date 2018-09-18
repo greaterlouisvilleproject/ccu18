@@ -80,7 +80,9 @@ web = TRUE
 
 ## 1. Ranking
 ```{r data9}
-earn_data_05_16 <- acs_time("/data/jobs/S2001/05-16/")
+setwd("C:/Users/Harrison Kirby/Desktop/GLP/ccu18")
+
+earn_data_05_16 <- acs_time("/data/jobs/S2001/05/")
 earn_data_17 <- acs_time("/data/jobs/S2001/17/", starting_year = 2017)
 
 earn_data_05_16 %<>%
@@ -421,7 +423,8 @@ graph_trendline_change(
   data,
   'median_earnings',
   plot_title = "Median Earnings",
-  xmax = 2017)
+  xmax = 2017,
+  newest_year = 2017)
 ```
 
 ## 5. By Race
@@ -486,6 +489,7 @@ graph_trendline(data,
 
 # Job Distribution
 ```{r data14}
+setwd("C:/Users/Harrison Kirby/Desktop/GLP/ccu18")
 business_data <- business_time('/data/jobs/CBP/')
 
 #Join to Louisville Zip codes
@@ -577,6 +581,7 @@ make_map_zip("jobs_per_resident_change_5yr",
 # Unemployment
 
 ```{r graph15.1}
+setwd("C:/Users/Harrison Kirby/Desktop/GLP/ccu18")
 unemp <- unemployment_time("/data/jobs/unemployment/")
 
 unemp %<>%

@@ -196,6 +196,8 @@ mortality_50 <- mortality_one %>%
   rename(deaths50 = deaths) %>%
   select(FIPS, year, deaths50)
 
+
+
 mortality_suppressed %<>%
   select(
     FIPS = `County Code`,
@@ -233,6 +235,7 @@ std_pop %<>%
   mutate(age_pct_std = pop / sum(pop)) %>%
   select(age, age_pct_std)
 
+
 mortality <- mortality_one %>%
   left_join(std_pop) %>%
   group_by(FIPS, year) %>%
@@ -262,6 +265,28 @@ mortality %<>%
   weight_stl("ypll")
 
 rm(mortality_50, mortality_suppressed)
+
+std_pop <- 
+    data.frame(
+      age_var = 0:10,
+      weight = c(
+        0.013818,
+        0.055317,
+        0.145565,
+        0.138646,
+        0.135573,
+        0.162613,
+        0.134834,
+        0.087247,
+        0.066037,
+        0.044842,
+        0.015508))
+
+std_pop <- std_pop %>%
+    filter(age_var %in% 1:9) %>%
+    mutate(weight = weight / sum(weight))
+
+
 ```
 
 ```{r mortalityrace}
@@ -997,7 +1022,7 @@ chr_z %<>%
     vars(names(chr_z)[names(chr_z) %!in% c("FIPS", "year", "outcomes", "health_behaviors", "clinical_care", "social_and_economic", "physical_environment", "factors")]),
     funs(paste0(., "_z")))
 
-data <- chr_z %>% pull_peers_FIPS()
+data %<>% bind_df(chr_z)
   
 ```
 
@@ -1075,9 +1100,10 @@ rank_and_nb_group(data[data$year == 2016,],
                   'insured_rate',
                   plot_title = 'Health Insurance, 2016')
 ```
+
 # Overdoses
-```{r opioid}
-opioid <- read_tsv('data/health/opioid/Underlying Cause of Death, 1999-2016.txt')
+```{r race, eval = FALSE}
+opioid <- read_tsv('data/health/overdoses/overdose.txt')
 
 opioid %<>%
   filter(!is.na(Year)) %>%
@@ -1107,7 +1133,7 @@ opioid %<>%
     overdose,
     overdose_per)
 
-opioid_race <- read_tsv('data/health/opioid/Underlying Cause of Death, 1999-2016 race.txt')
+opioid_race <- read_tsv('data/health/overdoses/overdose_race.txt')
 
 opioid_race %<>%
   #delete notes rows
@@ -1168,27 +1194,209 @@ opioid %<>% pull_peers_FIPS()
 opioid %<>% bind_df(opioid_race)
 ```
 
-#overdose YPLL
-```{r, eval = FALSE}
-total_deaths <- read_tsv("data/health/opioid/total_deaths.txt")
+```{r}
+#read in, clean, and join files:
 
-total_deaths %<>% clean_wonder()
+#total number of deaths
+total_deaths <- read_tsv("data/health/overdoses/age/total_deaths.txt")
 
-non_overdose_deaths <- read_tsv("data/health/opioid/non_overdose_deaths.txt")
+#total number of non-overdose deaths
+non_od_deaths <- read_tsv("data/health/overdoses/age/non_overdose_deaths.txt")
 
-non_overdose_deaths %<>% clean_wonder()
+#total number of deaths for each age combined with age 74
+unsuppressed_total_deaths <- wonder_time_single("data/health/overdoses/age/single-age_total_deaths")
 
-suppressed_overdoses <- wonder_time_single("data/health/opioid")
+#total number of non-overdose deaths for each age combined with age 74
+unsuppressed_non_od_deaths <- wonder_time_single("data/health/overdoses/age/single-age_non_od_deaths")
+
+total_deaths %<>% 
+  clean_wonder() %>%
+  rename(total_deaths = deaths)
+
+non_od_deaths %<>% 
+  clean_wonder() %>%
+  rename(non_od_deaths = deaths) %>%
+  select(-population)
+
+unsuppressed_total_deaths %<>%
+  clean_wonder() %>%
+  rename(total_deaths_plus_74 = deaths,
+         pop_plus_74 = population)
+
+unsuppressed_non_od_deaths %<>%
+  clean_wonder() %>%
+  rename(non_od_deaths_plus_74 = deaths) %>%
+  select(-population)
+
+overdose <- 
+  full_join(total_deaths, non_od_deaths, by =  c("FIPS", "year", "age")) %>%
+  full_join(unsuppressed_total_deaths, by =  c("FIPS", "year", "age")) %>%
+  full_join(unsuppressed_non_od_deaths, by =  c("FIPS", "year", "age"))
+
+#extract values for age 74 and append to data frame
+overdose74 <- overdose %>%
+  filter(age == 74) %>%
+  select(
+    FIPS, year,
+    total_deaths_74 = total_deaths,
+    non_od_deaths_74 = non_od_deaths)
+
+overdose %<>%
+  filter(age < 75) %>%
+  left_join(overdose74, by = c("FIPS", "year"))
+
+#calculate missing values by subtracting the value for age 74 from (the value for that age + the value for age 74)
+overdose %<>%
+  {
+    x <- .
+    bind_rows(
+      x %>% filter(age < 50) %>%
+        mutate(
+          total_deaths = total_deaths_plus_74 - total_deaths_74,
+          non_od_deaths = non_od_deaths_plus_74 - non_od_deaths_74),
+      x %>% filter(age >= 50))
+  }
+
+#calculate overdose rates
+overdose %<>%
+  mutate(od_deaths = total_deaths - non_od_deaths) %>%
+  select(FIPS, year, age, population, od_deaths) %>%
+  stl_adj_wonder()
+
+#ypll calculation
+overdose_ypll <- overdose %>%
+  group_by(FIPS, year) %>%
+  mutate(
+    years_lost = 75 - age,
+    od_years_lost = od_deaths * years_lost) %>%
+  ungroup() %>%
+  age_adj_rate(var = "od_years_lost") %>%
+  rename(overdose_ypll = rate)
+
+od_rate <- overdose %>%
+  age_adj_rate(var = "od_deaths") %>%
+  rename(overdose_rate = rate)
+
+overdose_count <- overdose %>%
+  select(-age) %>%
+  group_by(FIPS, year) %>%
+  summarise_all(sum) %>%
+  ungroup() %>%
+  select(FIPS, year, od_deaths) %>%
+  rename(overdoses = od_deaths)
+
+overdose <- bind_df(overdose_ypll, od_rate, overdose_count)
+```
+
+```{r}
+setwd("data/health/overdoses/cause/all_years")
+
+cocaine <- read_tsv("cocaine.txt")
+fentanyl <- read_tsv("fentanyl.txt")
+heroin <- read_tsv("heroin.txt")
+meth <- read_tsv("methamphetamine.txt")
+opioid <- read_tsv("opioid.txt")
+prescription <- read_tsv("prescription opioid.txt")
+
+cocaine %<>%
+  clean_wonder() %>%
+  rename(cocaine = deaths)
+
+fentanyl %<>%
+  clean_wonder() %>%
+  rename(fentanyl = deaths) %>%
+  select(-population)
+
+heroin %<>%
+  clean_wonder() %>%
+  rename(heroin = deaths) %>%
+  select(-population)
+
+meth %<>%
+  clean_wonder() %>%
+  rename(meth = deaths) %>%
+  select(-population)
+
+opioid %<>% 
+  clean_wonder() %>%
+  rename(opioid = deaths) %>%
+  select(-population)
+  
+prescription %<>%
+  clean_wonder() %>%
+  rename(prescription = deaths) %>%
+  select(-population)
+
+od_all_years <- full_join(cocaine, fentanyl) %>%
+  full_join(heroin) %>%
+  full_join(meth) %>%
+  full_join(opioid) %>%
+  full_join(prescription)
+
+od_all_years %<>%
+  rename_at(vars(cocaine, fentanyl, heroin, meth, opioid, prescription, population), paste0, "_all")
 
 
+setwd("../single-year_excluded")
+
+opioid <- wonder_time_single("opioid", seq_var = "year", start = 1999)
+prescription <- wonder_time_single("prescription opioid", seq_var = "year", start = 1999)
+other <- wonder_time_single("other", seq_var = "year", start = 1999)
+
+opioid %<>% 
+  clean_wonder() %>%
+  rename(opioid = deaths) %>%
+  select(-population)
+  
+prescription %<>%
+  clean_wonder() %>%
+  rename(prescription = deaths) %>%
+  select(-population)
+
+other %<>%
+  clean_wonder() %>%
+  mutate(
+    cod = replace(cod, cod == "T40.1", "heroin"),
+    cod = replace(cod, cod == "T40.4", "fentanyl"),
+    cod = replace(cod, cod == "T40.5", "cocaine"),
+    cod = replace(cod, cod == "T43.6", "meth")) %>%
+  spread(key = "cod", value = "deaths")
+
+od_excluding <- full_join(opioid, prescription) %>%
+  full_join(other)
+
+od_excluding %<>%
+  rename_at(vars(cocaine, fentanyl, heroin, meth, opioid, prescription, population), paste0, "_excluding")
+
+od <- full_join(od_all_years, od_excluding, by = "FIPS")
+
+od %<>%
+  transmute(
+    FIPS, year,
+    population = population_all - population_excluding,
+    cocaine = cocaine_all - cocaine_excluding, 
+    fentanyl = fentanyl_all - fentanyl_excluding, 
+    heroin = heroin_all - heroin_excluding, 
+    meth = meth_all - meth_excluding, 
+    opioid = opioid_all - opioid_excluding, 
+    prescription = prescription_all - prescription_excluding) %>%
+  stl_adj_wonder() %>%
+  select(-population)
+#%>% mutate_at(vars(cocaine, fentanyl, heroin, meth, opioid, prescription), . / population * 100000)
+           
+overdose %<>% bind_df(od) 
+
+overdose$FIPS <- replace(overdose$FIPS, overdose$FIPS == "01073", "1073")
+
+data %<>% bind_df(overdose) %>% select(-city, -baseline, -current) %>% pull_peers_FIPS()
 
 ```
 
 ## 9. Ranking
 
 ```{r}
-rank_and_nb_group(opioid[opioid$year == 2016,],
-                  'overdose',
+rank_and_nb_group(data[data$year == 2016,],
+                  'overdose_rate',
                   plot_title = 'Overdoses, 2016',
                   y_title = "Overdose Deaths per 100,000 residents",
                   order = "Ascending")
@@ -1197,28 +1405,142 @@ rank_and_nb_group(opioid[opioid$year == 2016,],
 ## 10. Trendline
 
 ```{r}
-graph_trendline(opioid,
-                'overdose',
+graph_trendline(data,
+                'overdose_rate',
                 plot_title = 'Overdoses',
                 xmin = 2000,
                 y_title = "Overdose Deaths per 100,000 residents")
 ```
 
-## 11. Overdoses by Race
+## Overdoses by Drug
 
 ```{r}
-graph_trendline_race_peer_two(opioid, 
-                          vars = c('overdose_white', 'overdose_black'),
-                          plot_title = "Overdoses by race",
-                          xmin = 2000,
-                          y_title = "Overdoses Deaths per 100,000",
-                          rollmean = 3)
+graph_df <- data %>% 
+  filter(FIPS == 21111) %>%
+  select(-FIPS) %>%
+  select(year, overdoses, cocaine, fentanyl, heroin, meth, opioid, prescription) %>%
+  gather(2:8, key = "CoD", value = "deaths")
+
+graph_df$CoD <- factor(graph_df$CoD, 
+                       levels = c("overdoses", "opioid", 
+                                  "fentanyl", "heroin",
+                                  "prescription", "meth", 
+                                  "cocaine"),
+                       labels = c("Total Overdoses", "All Opioids", 
+                                  "Fentanyl", "Heroin",
+                                  "Prescription Opioids", "Meth",
+                                  "Cocaine"))
+
+ggplot(graph_df, aes(x = year, y = deaths, color = CoD)) +
+  geom_line(size = 1) +
+  geom_point(size = 1.8) +
+  scale_color_hue(
+    labels = c(
+      overdoses = "ods",
+      cocaine = "Cocaine",
+      fentanyl =  "Fentanyl",
+      heroin = "Heroin",
+      meth = "Meth",
+      opioid = "All Opioids",
+      prescription = "Prescription Opioids"
+    )) +
+  theme_bw() + 
+  theme(text = element_text(family = "Museo Sans 300"),
+             legend.title=element_blank(),
+             legend.position = "right",
+             axis.text=element_text(size=24, family = "Museo Sans 300"),
+             axis.ticks.y=element_blank(),
+             plot.title=element_text(size=36, hjust=.5, family = "Museo Sans 300",
+                                     margin=margin(b=10,unit="pt")),
+             axis.title = element_text(size = 24),
+             legend.text=element_text(size=12, family = "Museo Sans 300"),
+             plot.caption = element_text(family = "Museo Sans 300"),
+             plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 18)) + 
+  labs(title = "Overdose Deaths by Drug", 
+       x = "Year",
+       y = "overdoses", 
+       caption = "Deaths can involve multiple drugs, so numbers do not usm to 100%.")
+  
+
 ```
 
-# Homocide / Suicide
-
+## Overdose Hypothetical
 ```{r}
-homocide <- read_tsv("data/health/homocide/total.txt")
+data %<>%
+  mutate(ypll_minus_od = ypll - overdose_ypll)
+
+hyp <- data %>%
+  filter(current == 1) %>%
+  group_by(year) %>%
+  mutate(ypll_minus_od_index = -1 * norm_z(ypll_minus_od)) %>%
+  ungroup()
+
+hyp %<>%
+  mutate(
+    health_index_minus_od = 
+      ypll_minus_od_index * .5 +
+      pct_underweight_index * .2 +
+      poor_or_fair_index * .1 +
+      physdays_index * .1 +
+      mentdays_index * .1)
+
+```
+
+## YPLL with and without overdoses {.tabset}
+
+### Unadjusted
+```{r}
+graph_trendline(
+  hyp,
+  var = 'ypll',
+  rollmean = 3,
+  plot_title = "Years of potential life lost per 100,000 Residents",
+  y_title="Years",
+  xmin = 2000,
+  xmax = 2016)
+```
+
+### Removing ODs
+```{r}
+graph_trendline(
+  hyp,
+  var = 'ypll_minus_od',
+  rollmean = 3,
+  plot_title = "Years of potential life lost per 100,000 Residents",
+  y_title="Years",
+  xmin = 2000,
+  xmax = 2016)
+```
+
+## Health Index with and without overdoses {.tabset}
+
+### Unadjusted
+```{r}
+graph_trendline(
+  hyp,
+  var = 'health_index',
+  rollmean = 3,
+  plot_title = "Health Index",
+  y_title="Years",
+  xmin = 2005,
+  xmax = 2016)
+```
+
+### Without ODs
+```{r}
+graph_trendline(
+  hyp,
+  var = 'health_index_minus_od',
+  rollmean = 3,
+  plot_title = "Health Index",
+  y_title="Years",
+  xmin = 2005,
+  xmax = 2016)
+```
+
+# Homocide {.tabset}
+```{r}
+homocide <- read_tsv("data/health/homocide/homocide.txt")
 
 homocide %<>% 
   clean_wonder() %>%
@@ -1227,16 +1549,28 @@ homocide %<>%
   pull_peers_FIPS()
 ```
 
+## 3-year average
 ```{r}
 graph_trendline(
   homocide,
   "homocide_rate",
   xmin = 2000,
-  plot_title = "Homocide Rate per 100,000",
+  plot_title = "Homocide Rate",
   rollmean = 3,
   y_title = "Deaths per 100,000")
 ```
 
+## single-year
+```{r}
+graph_trendline(
+  homocide,
+  "homocide_rate",
+  xmin = 2000,
+  plot_title = "Homocide Rate",
+  y_title = "Deaths per 100,000")
+```
+
+# Suicide {.tabset}
 ```{r}
 suicide <- read_tsv("data/health/suicide/total.txt")
 
@@ -1252,18 +1586,44 @@ suicide %<>%
   pull_peers_FIPS()
 ```
 
+## 3-year average
 ```{r}
 graph_trendline(
   suicide,
   "suicide_rate",
   xmin = 2000,
   plot_title = "Suicide Rate",
-  rollmean = 5,
+  rollmean = 3,
   y_title="Deaths per 100,000")
 ```
 
+## single-year
 ```{r}
-#Overdose contribution to health index
-#--need by single year age
-#--download data for deaths from all other sources, then subtract deaths from all sources except overdoses. #Substract.
+graph_trendline(
+  suicide,
+  "suicide_rate",
+  xmin = 2000,
+  plot_title = "Suicide Rate",
+  y_title="Deaths per 100,000")
+```
+
+# Life Expectancy
+```{r data11}
+life_expectancy <- read_csv("data/health/KY_A.csv")
+
+life_expectancy %<>% 
+  mutate(TRACT = as.numeric(TRACT2KX),
+         life_expectancy = `e(0)`) %>%
+  select(TRACT, life_expectancy)
+```
+
+```{r graph11}
+map_jc@data <- left_join(map_jc@data, life_expectancy)
+
+make_map("life_expectancy", 
+         name = "Life Expectancy",
+         legend_title = "Life<br/>Expectancy",
+         units = "years")
+
+rm(life_expectancy)
 ```

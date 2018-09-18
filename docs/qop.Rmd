@@ -170,8 +170,6 @@ map_jc_00$TRACT <- as.numeric(map_jc_00$TRACT)
 
 ```{r popdata1}
 #Tract Map
-
-
 pop_00 <- read_csv('data/qop/population/DEC_00_SF1_P001_with_ann.csv', skip = 1)
 
 pop_00 %<>%
@@ -824,11 +822,115 @@ make_map_zip("avg_change_2000",
              units = "Percent")
 ```
 
-# Poverty
+# Child Poverty
 
-## 16. Child Poverty Ranking
+Reads in child poverty data, calculates the percentage of children living in poverty by city, and appends the variable to 'qp_data_fips'
+```{r}
+pov = acs_time("/data/qop/B17001/")
 
-## 17. Child Poverty Trendline
+pov = pov %>%
+  mutate(
+    under_5_per =
+      (`Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` +
+       `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`
+      ) /
+      (
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - Under 5 years` +
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - Under 5 years` +
+      `Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` +
+      `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`
+      ),
+    
+    five_to_17_under = 
+       `Estimate; Income in the past 12 months below poverty level: - Male: - 5 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Male: - 6 to 11 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Male: - 12 to 14 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Male: - 15 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Male: - 16 and 17 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Female: - 5 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Female: - 6 to 11 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Female: - 12 to 14 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Female: - 15 years` + 
+       `Estimate; Income in the past 12 months below poverty level: - Female: - 16 and 17 years`,
+
+    five_to_17_over =  
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - 5 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - 6 to 11 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - 12 to 14 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - 15 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - 16 and 17 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - 5 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - 6 to 11 years` +
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - 12 to 14 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - 15 years` + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - 16 and 17 years`,
+
+    five_to_17_per = five_to_17_under / (five_to_17_over + five_to_17_under),
+    
+    child_under = 
+      five_to_17_under +
+      `Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` + 
+      `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`,
+    
+    child_over = 
+      five_to_17_over + 
+      `Estimate; Income in the past 12 months at or above poverty level: - Female: - Under 5 years` +
+      `Estimate; Income in the past 12 months at or above poverty level: - Male: - Under 5 years`,
+    
+    child_total = child_under + child_over,
+    
+    child_per = child_under / (child_total)
+)
+
+child_pov_data <- pov %>%
+  select(FIPS, year, child_per, child_total)
+
+child_pov_data$FIPS[child_pov_data$FIPS == "01073"] = "1073"
+
+child_pov_stl <- child_pov_data %>%
+  filter(FIPS == 29189 | FIPS == 29510) %>%
+  select(-FIPS) %>%
+  group_by(year) %>%
+  summarise_each(funs(weighted.mean(.,child_total)), -child_total) %>%
+  ungroup()
+
+child_pov_stl$FIPS <- "MERGED"
+  
+child_pov_data <- child_pov_data %>%
+  filter(!(FIPS == 29189 | FIPS == 29510)) %>%
+  bind_rows(child_pov_stl) %>%
+  mutate(child_per = child_per *100)%>%
+  select(-child_total)
+
+data %<>% bind_df(child_pov)
+```
+
+## 16. Ranking
+```{r}
+rank_and_nb_group(data[data$year == 2017,],
+                  "child_per", 
+                  plot_title = "Child Poverty",
+                  y_title = "Poverty")
+```
+
+## 17. Trendline {.tabset}
+
+### 3-year average
+```{r}
+graph_trendline(
+  data,
+  "child_per",
+  plot_title = "Child Poverty",
+  rollmean = 3)
+```
+
+### single-year
+```{r}
+graph_trendline(
+  data,
+  "child_per",
+  plot_title = "Child Poverty")
+```
 
 # Segregation
 
