@@ -30,7 +30,6 @@ library(scales)
 library(rgdal)
 library(RColorBrewer)
 library(leaflet)
-library(shiny)
 
 #Make the dplyr select function the default over the plotly select function
 select <- function(...){dplyr::select(...)}
@@ -40,37 +39,37 @@ select <- function(...){dplyr::select(...)}
 source('helper_functions.R')
 ```
 
-```{r graphing}
+```{r graphingqop}
 source('graphing_functions.R')
 
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
 #Tract Map
-map_jc = readOGR('data/maps/tract', layer = "JC Tracts",
+map_tract = readOGR('data/maps/tract', layer = "tract",
                  GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
 
-map_jc$TRACT <- as.numeric(map_jc$TRACT)
+map_tract$TRACT <- as.numeric(map_tract$TRACT)
 
 nh_names <- read_csv('data/maps/tract_to_nh.csv')
 
 nh_names$Id2 <- substr(nh_names$Id2, 6, 13)
 nh_names$Id2 <- as.numeric(nh_names$Id2)
 
-map_jc@data <- full_join(map_jc@data, nh_names, by = c('TRACT' = 'Id2'))
+map_tract@data <- full_join(map_tract@data, nh_names, by = c('TRACT' = 'Id2'))
 
-map_jc@data$l_line1 <- paste("Tract #:", map_jc@data$TRACT, "in the")
-map_jc@data$l_line2 <- paste(map_jc@data$Neighborhood, "neighborhood")
+map_tract@data$l_line1 <- paste("Tract #:", map_tract@data$TRACT, "in the")
+map_tract@data$l_line2 <- paste(map_tract@data$Neighborhood, "neighborhood")
 
 rm(nh_names)
 
 #Zip Code map
-map_jc_zip = readOGR('data/maps/zip', layer = 'Jefferson_County_KY_ZIP_Codes',
+map_zip = readOGR('data/maps/zip', layer = 'Jefferson_County_KY_ZIP_Codes',
                      GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
 
-map_jc_zip$ZIPCODE <- as.numeric(map_jc_zip$ZIPCODE)
+map_zip$ZIPCODE <- as.numeric(map_zip$ZIPCODE)
 
-map_jc_zip@data$l_line1 <- paste0("Zip Code ", map_jc_zip@data$ZIPCODE)
+map_zip@data$l_line1 <- paste0("Zip Code ", map_zip@data$ZIPCODE)
 ```
 
 ```{r Website / output toggle}
@@ -259,19 +258,18 @@ map_data <- pop
 ```
 
 ```{r popmap}
-map_jc@data <- full_join(map_jc@data, pop, by = c('GEO_ID' = 'Id'))
+map_tract@data <- full_join(map_tract@data, pop, by = c('GEO_ID' = 'Id'))
 
-map_jc@data$population_change_pos <- replace(map_jc@data$population_change, map_jc@data$population_change < 0 , NA)
+map_tract@data$population_change_pos <- replace(map_tract@data$population_change, map_tract@data$population_change < 0 , NA)
 
-map_jc@data$population_change_pos_log <- log(map_jc@data$population_change_pos)
-map_jc@data$population_change_log <- map_jc@data$population_change - min(map_jc@data$population_change, na.rm = TRUE) + 1
-map_jc@data$population_change_log <- log(map_jc@data$population_change_log)
+map_tract@data$population_change_pos_log <- log(map_tract@data$population_change_pos)
+map_tract@data$population_change_log <- map_tract@data$population_change - min(map_tract@data$population_change, na.rm = TRUE) + 1
+map_tract@data$population_change_log <- log(map_tract@data$population_change_log)
 
 
 
-map_jc@data$population_change_neg <- replace(map_jc@data$population_change, map_jc@data$population_change > 0 , NA)
+map_tract@data$population_change_neg <- replace(map_tract@data$population_change, map_tract@data$population_change > 0 , NA)
 
-source('graphing_functions.R')
 make_map("population_change_pos", 
          name = "Population",
          legend_title = "Population Growth",
@@ -291,7 +289,7 @@ make_map("population_change_neg",
          palette = "Reds",
          reverse = T)
 
-map_jc@data$population_change_log
+map_tract@data$population_change_log
 rm(tract_id, pop_00, pop)
 ```
 
@@ -318,7 +316,7 @@ commute %<>%
     extreme_commute = sixty_to_89 + ninety_plus,
     long_commute = extreme_commute + fourtyfive_to_59)
 
-map_jc@data <- full_join(map_jc@data, commute, by = c('GEO_ID' = 'Id'))
+map_tract@data <- full_join(map_tract@data, commute, by = c('GEO_ID' = 'Id'))
 
 ```
 
@@ -416,8 +414,8 @@ map_data %<>% full_join(burdened_map)
 ```
 
 ```{r graph24}
-map_jc@data <- full_join(map_jc@data, tenure_map, by = c('GEO_ID' = 'Id'))
-map_jc@data <- full_join(map_jc@data, burdened_map, by = c('GEO_ID' = 'Id'))
+map_tract@data <- full_join(map_tract@data, tenure_map, by = c('GEO_ID' = 'Id'))
+map_tract@data <- full_join(map_tract@data, burdened_map, by = c('GEO_ID' = 'Id'))
 ```
 
 ```{r graph24.1}
@@ -514,14 +512,14 @@ ui <- fluidPage(
 server <- function(input,output, session){
   
   output$map <- renderLeaflet({
-    map_jc@data$variable <- map_jc@data[[input$var]]
+    map_tract@data$variable <- map_tract@data[[input$var]]
     
     pal <- colorNumeric(
       palette = brewer.pal(11, "BuPu"),
-      domain = map_jc@data$variable
+      domain = map_tract@data$variable
     )
     
-    m <- leaflet(map_jc) %>%
+    m <- leaflet(map_tract) %>%
       addTiles() %>%
       addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
                   opacity = 1.0, fillOpacity = 0.5,
@@ -531,8 +529,8 @@ server <- function(input,output, session){
                     style = list("font-weight" = "normal", padding = "3px 8px"),
                     textsize = "15px",
                     direction = "auto"),
-                  layerId = map_jc@data$TRACT) #%>%
-      #addLayersControl(baseGroups = map_jc@data$TRACT)
+                  layerId = map_tract@data$TRACT) #%>%
+      #addLayersControl(baseGroups = map_tract@data$TRACT)
     m
   })
   
@@ -572,9 +570,9 @@ shinyApp(ui = ui, server = server)
 
      pal <- colorNumeric(
       palette = brewer.pal(11, "BuPu"),
-      domain = map_jc@data$homeownership
+      domain = map_tract@data$homeownership
     )
-    m <- leaflet(map_jc) %>%
+    m <- leaflet(map_tract) %>%
       addTiles() %>%
       addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
                   opacity = 1.0, fillOpacity = 0.5,
@@ -624,7 +622,7 @@ output %<>% process_microdata()
 write_feather(output, 'data/qop/burdened.feather')
 ```
 
-```{r burden2}
+```{r burden2, eval = FALSE}
 burden <- read_feather('data/qop/burdened.feather')
 
 burden %<>% filter(PERNUM == 1)
@@ -633,7 +631,7 @@ burden$OWNCOST[burden$OWNCOST == 99999] <- NA
 burden$FTOTINC[burden$FTOTINC == 99999] <- NA
 
 burden$hcost <- apply(burden[ ,c("OWNCOST", "RENTGRS")], 1, max, na.rm = TRUE)
-burden$hcost_burdened <- if_else(burden$hcost*12/burden$FTOTINC > .30, 1, 0)
+burden$burdened <- if_else(burden$hcost*12/burden$FTOTINC > .30, 1, 0)
 
 burden$rent <- if_else(burden$RENTGRS > 0 & is.na(burden$OWNCOST), 1, 0) 
 
@@ -646,7 +644,7 @@ burden %<>%
 
 burden_svy <- svydesign(ids = ~1, weights = ~PERWT, data = burden)
 
-burden_df_total <- svyby(~hcost_burdened, 
+burden_df_total <- svyby(~burdened, 
                    ~FIPS+year, 
                    design = burden_svy, 
                    svymean, 
@@ -654,9 +652,9 @@ burden_df_total <- svyby(~hcost_burdened,
 
 burden_df_total %<>%
   select(-se) %>%
-  mutate(hcost_burdened = hcost_burdened * 100)
+  mutate(burdened = burdened * 100)
 
-burden_df_rent <- svyby(~hcost_burdened, 
+burden_df_rent <- svyby(~burdened, 
                    ~FIPS+year+rent, 
                    design = burden_svy, 
                    svymean, 
@@ -664,14 +662,14 @@ burden_df_rent <- svyby(~hcost_burdened,
 
 burden_df_rent %<>%
   select(-se) %>%
-  mutate(hcost_burdened = hcost_burdened * 100) %>%
-  spread(key = rent, value = hcost_burdened) %>%
+  mutate(burdened = burdened * 100) %>%
+  spread(key = rent, value = burdened) %>%
   transmute(
     FIPS, year,
-    hcost_burdened_homeowner = `0`,
-    hcost_burdened_renter = `1`)
+    burdened_homeowner = `0`,
+    burdened_renter = `1`)
   
-burden_df_race <- svyby(~hcost_burdened, 
+burden_df_race <- svyby(~burdened, 
                    ~FIPS+year+race, 
                    design = burden_svy, 
                    svymean, 
@@ -679,15 +677,15 @@ burden_df_race <- svyby(~hcost_burdened,
 
 burden_df_race %<>%
   select(-se) %>%
-  mutate(hcost_burdened = hcost_burdened * 100) %>%
-  spread(key = race, value = hcost_burdened) %>%
+  mutate(burdened = burdened * 100) %>%
+  spread(key = race, value = burdened) %>%
   transmute(
     FIPS, year,
-    hcost_burdened_white = `1`,
-    hcost_burdened_black = `2`,
-    hcost_burdened_hisp = `3`)
+    burdened_white = `1`,
+    burdened_black = `2`,
+    burdened_hisp = `3`)
 
-burden_df_rent_race <- svyby(~hcost_burdened, 
+burden_df_rent_race <- svyby(~burdened, 
                    ~FIPS+race+year+rent, 
                    design = burden_svy, 
                    svymean, 
@@ -695,8 +693,8 @@ burden_df_rent_race <- svyby(~hcost_burdened,
 
 burden_df_rent_race %<>%
   select(-se) %>%
-  mutate(hcost_burdened = hcost_burdened * 100) %>%
-  spread(key = race, value = hcost_burdened) %>%
+  mutate(burdened = burdened * 100) %>%
+  spread(key = race, value = burdened) %>%
   transmute(
     FIPS, year, rent,
     h_burdened_white = `1`,
@@ -723,12 +721,83 @@ data %<>%
   bind_df(burden_df_race) %>% 
   bind_df(burden_df_rent_race)
 
+write_feather(data, "data/qop/burden_skip.feather")
+```
+
+```{r}
+data <- read_feather("data/qop/burden_skip.feather")
+
+housing_pie <- data %>%
+  filter(year == 2016) %>%
+  filter(FIPS == 21111) %>%
+  transmute(
+    FIPS, year, city, baseline, current,
+    white_hburdened = h_burdened_white * homeownership_white / 100,
+    white_h_unburdened = (100 - h_burdened_white) * homeownership_white / 100,
+    white_rentburdened = rent_burdened_white * (100 - homeownership_white) / 100,
+    white_rent_unburdened = (100 - rent_burdened_white) * (100 - homeownership_white) / 100,
+    black_hburdened = h_burdened_black * homeownership_black / 100,
+    black_h_unburdened = (100 - h_burdened_black) * homeownership_black / 100,
+    black_rentburdened = rent_burdened_black * (100 - homeownership_black) / 100,
+    black_rent_unburdened = (100 - rent_burdened_black) * (100 - homeownership_black) / 100) %>%
+  {
+    x <- .
+    bind_rows(
+      x %>% 
+        transmute(
+          FIPS, year,
+          race = "white",
+          hburdened = white_hburdened,
+          non_hburdened = white_h_unburdened,
+          rentburdened = white_rentburdened, 
+          non_rentburdened = white_rent_unburdened),
+      x %>% 
+        transmute(
+          FIPS, year, 
+          race = "black",
+          hburdened = black_hburdened,
+          non_hburdened = black_h_unburdened,
+          rentburdened = black_rentburdened, 
+          non_rentburdened = black_rent_unburdened)) %>%
+      gather(4:7, key = "variable", value = "percent")
+  }
+
+housing_pie$variable <- 
+  factor(housing_pie$variable,
+         levels = c("rentburdened", "non_rentburdened", "hburdened", "non_hburdened"),
+         labels = c("Burdened renters", "Affordable renters", "Burdened homeowners", "Afforable homeowners"))
+
+housing_pie$race <- 
+  factor(housing_pie$race, 
+         levels = c("white", "black"), 
+         labels = c("White", "Black"))
+
+ggplot(housing_pie, aes(x = race, y = percent, fill = variable)) +
+  geom_bar(stat = "identity") +
+  theme_bw() + 
+  theme(text = element_text(family = "Museo Sans 300"),
+             legend.title=element_blank(),
+             legend.position = "right",
+             axis.text=element_text(size=24, family = "Museo Sans 300"),
+             axis.ticks.y=element_blank(),
+             plot.title=element_text(size=36, hjust=.5, family = "Museo Sans 300",
+                                     margin=margin(b=10,unit="pt")),
+             axis.title = element_text(size = 24),
+             legend.text=element_text(size=18, family = "Museo Sans 300"),
+             plot.caption = element_text(family = "Museo Sans 300", size = 18),
+             plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 18)) + 
+  labs(title = "Homeownership and Affordability", 
+       x = "",
+       y = "", 
+       caption = "Deaths can involve multiple drugs, so numbers do not sum to 100%.")
+
+
 rm(burden_df_total, burden_df_race, burden_df_rent, burden_df_rent_race)
 ```
 
 ```{r}
 rank_and_nb_group(data[data$year == 2016,],
-                  'hcost_burdened', 
+                  'burdened', 
                   plot_title = 'Burdened Households, 2016')
 ```
           
@@ -736,7 +805,7 @@ rank_and_nb_group(data[data$year == 2016,],
 ```{r}
 graph_trendline(
   data, 
-  'hcost_burdened',
+  'burdened',
   plot_title = 'Burdened Households',
   rollmean = 3)
 
@@ -756,7 +825,7 @@ rm(tenure_map, burdened_map)
 ```{r}
 graph_trendline_change(
   data,
-  'hcost_burdened',
+  'burdened',
   plot_title = "Burdened Households")
 ```
 
@@ -764,9 +833,9 @@ graph_trendline_change(
 ```{r}
 graph_trendline_race_peer(
   data, 
-  vars = c('hcost_burdened_white', 
-           'hcost_burdened_black', 
-           'hcost_burdened_hisp'),
+  vars = c('burdened_white', 
+           'burdened_black', 
+           'burdened_hisp'),
   plot_title = 'Housing Burden by Ethnicity',
   rollmean = 3)
 ```
@@ -777,7 +846,7 @@ I have to debug this graph to get the colors correct. The top group is renters, 
 ```{r}
 graph_trendline_race_peer_two(
   data,
-  vars = c("hcost_burdened_homeowner", "hcost_burdened_renter"),
+  vars = c("burdened_homeowner", "burdened_renter"),
   plot_title = "Burdened Households by Homeownership",
   cat_labels = c("Homeowners", "Renters"))
 ```
@@ -808,18 +877,20 @@ HPI %<>%
 HPI_2015 <- HPI %>% filter(year == 2015) %>% select(zip, avg_change5)
 HPI_2017 <- HPI %>% filter(year == 2017) %>% select(zip, annual_change, avg_change_2000)
 
-map_jc_zip@data %<>% left_join(HPI_2015, by = c('ZIPCODE' = 'zip'))
-map_jc_zip@data %<>% left_join(HPI_2017, by = c('ZIPCODE' = 'zip'))
+map_zip@data %<>% left_join(HPI_2015, by = c('ZIPCODE' = 'zip'))
+map_zip@data %<>% left_join(HPI_2017, by = c('ZIPCODE' = 'zip'))
 
 rm(HPI, HPI_2015, HPI_2017)
 ```
 
 ## 15. Home Price Changes 2000 to 2017
 ```{r graph25.3}
-make_map_zip("avg_change_2000", 
-             name = "Average Home Price Increase",
-             legend_title = "Average<br>Home Price<br>Increase",
-             units = "Percent")
+make_map(
+  "avg_change_2000", 
+  map_obj = "map_zip",
+   name = "Average Home Price Increase",
+   legend_title = "Average<br>Home Price<br>Increase",
+   units = "Percent")
 ```
 
 # Child Poverty
@@ -902,12 +973,14 @@ child_pov_data <- child_pov_data %>%
   mutate(child_per = child_per *100)%>%
   select(-child_total)
 
-data %<>% bind_df(child_pov)
+child <- child_pov_data %>% pull_peers_FIPS()
+
+data %<>% bind_df(child_pov_data)
 ```
 
 ## 16. Ranking
 ```{r}
-rank_and_nb_group(data[data$year == 2017,],
+rank_and_nb_group(child[child$year == 2017,],
                   "child_per", 
                   plot_title = "Child Poverty",
                   y_title = "Poverty")
@@ -918,18 +991,20 @@ rank_and_nb_group(data[data$year == 2017,],
 ### 3-year average
 ```{r}
 graph_trendline(
-  data,
+  child,
   "child_per",
   plot_title = "Child Poverty",
-  rollmean = 3)
+  rollmean = 3,
+  xmax = 2017)
 ```
 
 ### single-year
 ```{r}
 graph_trendline(
-  data,
+  child,
   "child_per",
-  plot_title = "Child Poverty")
+  plot_title = "Child Poverty",
+  xmax = 2017)
 ```
 
 # Segregation

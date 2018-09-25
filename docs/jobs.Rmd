@@ -39,37 +39,37 @@ select <- function(...){dplyr::select(...)}
 source('helper_functions.R')
 ```
 
-```{r graphing}
+```{r graphingjob}
 source('graphing_functions.R')
 
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
 #Tract Map
-map_jc = readOGR('data/maps/tract', layer = "JC Tracts",
+map_tract = readOGR('data/maps/tract', layer = "tract",
                  GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
 
-map_jc$TRACT <- as.numeric(map_jc$TRACT)
+map_tract$TRACT <- as.numeric(map_tract$TRACT)
 
 nh_names <- read_csv('data/maps/tract_to_nh.csv')
 
 nh_names$Id2 <- substr(nh_names$Id2, 6, 13)
 nh_names$Id2 <- as.numeric(nh_names$Id2)
 
-map_jc@data <- full_join(map_jc@data, nh_names, by = c('TRACT' = 'Id2'))
+map_tract@data <- full_join(map_tract@data, nh_names, by = c('TRACT' = 'Id2'))
 
-map_jc@data$l_line1 <- paste("Tract #:", map_jc@data$TRACT, "in the")
-map_jc@data$l_line2 <- paste(map_jc@data$Neighborhood, "neighborhood")
+map_tract@data$l_line1 <- paste("Tract #:", map_tract@data$TRACT, "in the")
+map_tract@data$l_line2 <- paste(map_tract@data$Neighborhood, "neighborhood")
 
 rm(nh_names)
 
 #Zip Code map
-map_jc_zip = readOGR('data/maps/zip', layer = 'Jefferson_County_KY_ZIP_Codes',
+map_zip = readOGR('data/maps/zip', layer = 'Jefferson_County_KY_ZIP_Codes',
                      GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
 
-map_jc_zip$ZIPCODE <- as.numeric(map_jc_zip$ZIPCODE)
+map_zip$ZIPCODE <- as.numeric(map_zip$ZIPCODE)
 
-map_jc_zip@data$l_line1 <- paste0("Zip Code ", map_jc_zip@data$ZIPCODE)
+map_zip@data$l_line1 <- paste0("Zip Code ", map_zip@data$ZIPCODE)
 ```
 
 ```{r Website / output toggle}
@@ -406,12 +406,13 @@ earn_map %<>% select(Id, median_earnings = `Total; Estimate; Median earnings (do
 ```
 
 ```{r graph11}
-map_jc@data <- full_join(map_jc@data, earn_map, by = c('GEO_ID' = 'Id'))
+map_tract@data <- full_join(map_tract@data, earn_map, by = c('GEO_ID' = 'Id'))
 
-make_map("median_earnings", 
-         name = "Median Earnings",
-         legend_title = "Median<br/>Earnings",
-         units = "Dollars")
+make_map(
+  "median_earnings", 
+   name = "Median Earnings",
+   legend_title = "Median<br/>Earnings",
+   units = "Dollars")
 
 rm(earn_map)
 ```
@@ -557,25 +558,29 @@ rm(zip_codes, business_data)
 ```
 
 ```{r graph14}
-map_jc_zip@data %<>% left_join(map_data_zip, by = c('ZIPCODE' = 'zip'))
+map_zip@data %<>% left_join(map_data_zip, by = c('ZIPCODE' = 'zip'))
 ```
 
 ## 5. Jobs per Resident
 ```{r graph14.2}
-make_map_zip("jobs_per_resident", 
-             name = "Jobs per Resident",
-             legend_title = "Jobs<br/>per res",
-             units = "none",
-             map_style = "sequential")
+make_map(
+  "jobs_per_resident", 
+  name = "Jobs per Resident",
+  map_obj = "map_zip",
+  legend_title = "Jobs<br/>per res",
+  units = "Percent",
+  map_style = "divergent")
 ```
 
 ## 6. Jobs per Resident Change
 ```{r}
-make_map_zip("jobs_per_resident_change_5yr", 
-             name = "Jobs per Resident",
-             legend_title = "Jobs<br/>per res",
-             units = "Percent",
-             map_style = "divergent")
+make_map(
+  "jobs_per_resident_change_5yr", 
+  name = "Jobs per Resident",
+  map_obj = "map_zip",
+  legend_title = "Jobs<br/>per res",
+  units = "Percent",
+  map_style = "divergent")
 ```
 
 # Unemployment
@@ -942,4 +947,42 @@ p <- p + guides(linetype = FALSE, color = FALSE, alpha = FALSE)
 
 p
 
+```
+
+```{r}
+output <- data %>%
+  select(-baseline, -current, -city) %>%
+  {
+    x <- .
+    rbind(
+      x %>%
+        filter(FIPS == 21111) %>% 
+        select(-FIPS) %>%
+        mutate(observation_type = "Louisville"),
+      x %>%
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(quantile, prob = 0.25, na.rm = TRUE) %>%
+        mutate(observation_type = "Q1"),
+      x %>%
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(mean, na.rm = TRUE) %>%
+        mutate(observation_type = "mean"),
+      x %>%  
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(quantile, prob = 0.75, na.rm = TRUE) %>%
+        mutate(observation_type = "Q3"))
+  }
+
+output %<>%
+  select(year, observation_type, everything()) %>%
+  select(-cpi_index) %>%
+  mutate_if(is.numeric, round, digits = 1)
+
+write_csv(output, "output_data/jobs.csv")
 ```

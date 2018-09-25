@@ -41,27 +41,27 @@ select <- function(...){dplyr::select(...)}
 source('helper_functions.R')
 ```
 
-```{r graphing, cache = FALSE}
+```{r graphingedu}
 source('graphing_functions.R')
 
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
 #Tract Map
-map_jc = readOGR('data/maps/tract', layer = "JC Tracts",
+map_tract = readOGR('data/maps/tract', layer = "tract",
                  GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
 
-map_jc$TRACT <- as.numeric(map_jc$TRACT)
+map_tract$TRACT <- as.numeric(map_tract$TRACT)
 
 nh_names <- read_csv('data/maps/tract_to_nh.csv')
 
 nh_names$Id2 <- substr(nh_names$Id2, 6, 13)
 nh_names$Id2 <- as.numeric(nh_names$Id2)
 
-map_jc@data <- full_join(map_jc@data, nh_names, by = c('TRACT' = 'Id2'))
+map_tract@data <- full_join(map_tract@data, nh_names, by = c('TRACT' = 'Id2'))
 
-map_jc@data$l_line1 <- paste("Tract #:", map_jc@data$TRACT, "in the")
-map_jc@data$l_line2 <- paste(map_jc@data$Neighborhood, "neighborhood")
+map_tract@data$l_line1 <- paste("Tract #:", map_tract@data$TRACT, "in the")
+map_tract@data$l_line2 <- paste(map_tract@data$Neighborhood, "neighborhood")
 
 rm(nh_names)
 
@@ -326,11 +326,12 @@ rm(degree_white_05, degree_white_08, degree_white, degree_black_05, degree_black
 ### 3-yr average
 
 ```{r}
-graph_trendline(data,
-                'per_25_64_bach_plus',
-                plot_title = "Bachelor's Degrees, Ages 25-64",
-                rollmean = 3,
-                xmax = 2017)
+graph_trendline(
+  data,
+  'per_25_64_bach_plus',
+  plot_title = "Bachelor's Degrees, Ages 25-64",
+  rollmean = 3,
+  xmax = 2017)
 ```
 
 ### single-year
@@ -414,13 +415,18 @@ map_data <- degree_map
 ```
 
 ```{r map3}
-map_jc@data<-full_join(map_jc@data, degree_map, by = c('GEO_ID' = 'Id'))
+map_tract@data<-full_join(map_tract@data, degree_map, by = c('GEO_ID' = 'Id'))
 
-make_map("per_25_64_bach_plus", 
-         name = "Bachelor's Degrees or Higher",
-         legend_title = "Bachelor<br/>Degrees")
+source('graphing_functions.R')
+
+make_map(
+  "per_25_64_bach_plus", 
+  name = "Bachelor's Degrees or Higher",
+  legend_title = "Bachelor<br/>Degrees")
 
 rm(degree_map)
+
+exists("dog")
 ```
 
 ## 4. By race {.tabset}
@@ -637,4 +643,42 @@ graph_trendline(data,
                 'per_25_64_assoc_plus',
                 plot_title = "Associate Degrees, Ages 25-64",
                 xmax = 2017)
+```
+
+```{r}
+output <- data %>%
+  select(-baseline, -current, -city) %>%
+  {
+    x <- .
+    rbind(
+      x %>%
+        filter(FIPS == 21111) %>% 
+        select(-FIPS) %>%
+        mutate(observation_type = "Louisville"),
+      x %>%
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(quantile, prob = 0.25, na.rm = TRUE) %>%
+        mutate(observation_type = "Q1"),
+      x %>%
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(mean, na.rm = TRUE) %>%
+        mutate(observation_type = "mean"),
+      x %>%  
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(quantile, prob = 0.75, na.rm = TRUE) %>%
+        mutate(observation_type = "Q3"))
+  }
+
+output %<>%
+  select(year, observation_type, everything()) %>%
+  select(-degree, -cert_degree) %>%
+  mutate_if(is.numeric, round, digits = 1)
+
+write_csv(output, "output_data/education.csv")
 ```

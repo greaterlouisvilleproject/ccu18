@@ -39,27 +39,27 @@ select <- function(...){dplyr::select(...)}
 source('helper_functions.R')
 ```
 
-```{r graphing}
+```{r graphinghealth}
 source('graphing_functions.R')
 
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
 #Tract Map
-map_jc = readOGR('data/maps/tract', layer = "JC Tracts",
+map_tract = readOGR('data/maps/tract', layer = "tract",
                  GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
 
-map_jc$TRACT <- as.numeric(map_jc$TRACT)
+map_tract$TRACT <- as.numeric(map_tract$TRACT)
 
 nh_names <- read_csv('data/maps/tract_to_nh.csv')
 
 nh_names$Id2 <- substr(nh_names$Id2, 6, 13)
 nh_names$Id2 <- as.numeric(nh_names$Id2)
 
-map_jc@data <- full_join(map_jc@data, nh_names, by = c('TRACT' = 'Id2'))
+map_tract@data <- full_join(map_tract@data, nh_names, by = c('TRACT' = 'Id2'))
 
-map_jc@data$l_line1 <- paste("Tract #:", map_jc@data$TRACT, "in the")
-map_jc@data$l_line2 <- paste(map_jc@data$Neighborhood, "neighborhood")
+map_tract@data$l_line1 <- paste("Tract #:", map_tract@data$TRACT, "in the")
+map_tract@data$l_line2 <- paste(map_tract@data$Neighborhood, "neighborhood")
 
 rm(nh_names)
 
@@ -70,6 +70,17 @@ map_jc_zip = readOGR('data/maps/zip', layer = 'Jefferson_County_KY_ZIP_Codes',
 map_jc_zip$ZIPCODE <- as.numeric(map_jc_zip$ZIPCODE)
 
 map_jc_zip@data$l_line1 <- paste0("Zip Code ", map_jc_zip@data$ZIPCODE)
+
+#Market Area
+
+map_market = readOGR('data/maps/market area', layer = "market area",
+                 GDAL1_integer64_policy = TRUE, stringsAsFactors = FALSE, verbose = FALSE)
+
+map_market@data %<>% rename(market = Area)
+
+map_market@data$l_line1 <- map_market@data$market
+
+#map_market@data$l_line1 <- map_jc_@data$ZIPCODE
 ```
 
 ```{r Website / output toggle}
@@ -265,28 +276,6 @@ mortality %<>%
   weight_stl("ypll")
 
 rm(mortality_50, mortality_suppressed)
-
-std_pop <- 
-    data.frame(
-      age_var = 0:10,
-      weight = c(
-        0.013818,
-        0.055317,
-        0.145565,
-        0.138646,
-        0.135573,
-        0.162613,
-        0.134834,
-        0.087247,
-        0.066037,
-        0.044842,
-        0.015508))
-
-std_pop <- std_pop %>%
-    filter(age_var %in% 1:9) %>%
-    mutate(weight = weight / sum(weight))
-
-
 ```
 
 ```{r mortalityrace}
@@ -1414,12 +1403,13 @@ graph_trendline(data,
 
 ## Overdoses by Drug
 
-```{r}
+```{r fig.width = 10}
 graph_df <- data %>% 
   filter(FIPS == 21111) %>%
   select(-FIPS) %>%
   select(year, overdoses, cocaine, fentanyl, heroin, meth, opioid, prescription) %>%
-  gather(2:8, key = "CoD", value = "deaths")
+  gather(2:8, key = "CoD", value = "deaths") %>%
+  filter(year > 1999)
 
 graph_df$CoD <- factor(graph_df$CoD, 
                        levels = c("overdoses", "opioid", 
@@ -1444,6 +1434,7 @@ ggplot(graph_df, aes(x = year, y = deaths, color = CoD)) +
       opioid = "All Opioids",
       prescription = "Prescription Opioids"
     )) +
+  scale_x_continuous(limits = c(2000, 2016), breaks = seq(2000, 2016, 4)) +
   theme_bw() + 
   theme(text = element_text(family = "Museo Sans 300"),
              legend.title=element_blank(),
@@ -1453,13 +1444,62 @@ ggplot(graph_df, aes(x = year, y = deaths, color = CoD)) +
              plot.title=element_text(size=36, hjust=.5, family = "Museo Sans 300",
                                      margin=margin(b=10,unit="pt")),
              axis.title = element_text(size = 24),
-             legend.text=element_text(size=12, family = "Museo Sans 300"),
-             plot.caption = element_text(family = "Museo Sans 300"),
+             legend.text=element_text(size=18, family = "Museo Sans 300"),
+             plot.caption = element_text(family = "Museo Sans 300", size = 18),
              plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 18)) + 
   labs(title = "Overdose Deaths by Drug", 
        x = "Year",
        y = "overdoses", 
-       caption = "Deaths can involve multiple drugs, so numbers do not usm to 100%.")
+       caption = "Deaths can involve multiple drugs, so numbers do not sum to 100%.")
+
+
+graph_df <- data %>% 
+  filter(FIPS == 21111) %>%
+  select(-FIPS) %>%
+  select(year, overdoses, cocaine, fentanyl, heroin, meth, opioid, prescription) %>%
+  gather(2:8, key = "CoD", value = "deaths") %>%
+  filter(year > 2010)
+
+graph_df$CoD <- factor(graph_df$CoD, 
+                       levels = c("overdoses", "opioid", 
+                                  "fentanyl", "heroin",
+                                  "prescription", "meth", 
+                                  "cocaine"),
+                       labels = c("Total Overdoses", "All Opioids", 
+                                  "Fentanyl", "Heroin",
+                                  "Prescription Opioids", "Meth",
+                                  "Cocaine"))
+
+ggplot(graph_df, aes(x = year, y = deaths, color = CoD)) +
+  geom_line(size = 1) +
+  geom_point(size = 1.8) +
+  scale_color_hue(
+    labels = c(
+      overdoses = "ods",
+      cocaine = "Cocaine",
+      fentanyl =  "Fentanyl",
+      heroin = "Heroin",
+      meth = "Meth",
+      opioid = "All Opioids",
+      prescription = "Prescription Opioids"
+    )) +
+  scale_x_continuous(limits = c(2011, 2016), breaks = seq(2011, 2016, 1)) +
+  theme_bw() + 
+  theme(text = element_text(family = "Museo Sans 300"),
+             legend.title=element_blank(),
+             legend.position = "right",
+             axis.text=element_text(size=24, family = "Museo Sans 300"),
+             axis.ticks.y=element_blank(),
+             plot.title=element_text(size=36, hjust=.5, family = "Museo Sans 300",
+                                     margin=margin(b=10,unit="pt")),
+             axis.title = element_text(size = 24),
+             legend.text=element_text(size=18, family = "Museo Sans 300"),
+             plot.caption = element_text(family = "Museo Sans 300", size = 18),
+             plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 18)) + 
+  labs(title = "Overdose Deaths by Drug", 
+       x = "Year",
+       y = "overdoses", 
+       caption = "Deaths can involve multiple drugs, so numbers do not sum to 100%.")
   
 
 ```
@@ -1540,22 +1580,23 @@ graph_trendline(
 
 # Homocide {.tabset}
 ```{r}
-homocide <- read_tsv("data/health/homocide/homocide.txt")
+homicide <- read_tsv("data/health/homicide/homicide.txt")
 
-homocide %<>% 
+homicide %<>% 
   clean_wonder() %>%
-  rename(homocide_rate = rate) %>%
-  weight_stl("homocide_rate", "population") %>%
-  pull_peers_FIPS()
+  rename(homicide_rate = rate) %>%
+  weight_stl("homicide_rate", "population") 
+
+data %<>% bind_df(homicide)
 ```
 
 ## 3-year average
 ```{r}
 graph_trendline(
-  homocide,
-  "homocide_rate",
+  data,
+  "homicide_rate",
   xmin = 2000,
-  plot_title = "Homocide Rate",
+  plot_title = "Homicide Rate",
   rollmean = 3,
   y_title = "Deaths per 100,000")
 ```
@@ -1563,10 +1604,10 @@ graph_trendline(
 ## single-year
 ```{r}
 graph_trendline(
-  homocide,
-  "homocide_rate",
+  data,
+  "homicide_rate",
   xmin = 2000,
-  plot_title = "Homocide Rate",
+  plot_title = "Homicide Rate",
   y_title = "Deaths per 100,000")
 ```
 
@@ -1582,14 +1623,15 @@ suicide %<>%
     pop = Population,
     suicide_rate = `Age Adjusted Rate`) %>%
   mutate_at(vars(year, pop, suicide_rate), as.numeric) %>%
-  weight_stl("suicide_rate", "pop") %>%
-  pull_peers_FIPS()
+  weight_stl("suicide_rate", "pop")
+
+data %<>% bind_df(suicide)
 ```
 
 ## 3-year average
 ```{r}
 graph_trendline(
-  suicide,
+  data,
   "suicide_rate",
   xmin = 2000,
   plot_title = "Suicide Rate",
@@ -1600,7 +1642,7 @@ graph_trendline(
 ## single-year
 ```{r}
 graph_trendline(
-  suicide,
+  data,
   "suicide_rate",
   xmin = 2000,
   plot_title = "Suicide Rate",
@@ -1609,21 +1651,80 @@ graph_trendline(
 
 # Life Expectancy
 ```{r data11}
+#USALEEP
 life_expectancy <- read_csv("data/health/KY_A.csv")
 
-life_expectancy %<>% 
-  mutate(TRACT = as.numeric(TRACT2KX),
-         life_expectancy = `e(0)`) %>%
-  select(TRACT, life_expectancy)
+life_expectancy %<>%
+  transmute(
+    tract = as.character(`Tract ID`),
+    life_expectancy = `e(0)`,
+    se = `se(e(0))`,
+    obs_type = `Abridged life table flag`)
+
+#CHE
+life_expectancy_che <- read_csv("data/health/CHE life expectancy.csv")
+
+life_expectancy_che %<>%
+  rename(
+    market = `Market Area`,
+    life_expectancy = `5 Year Life Expectancy`)
+
+map_market@data %<>% full_join(life_expectancy_che)
+
 ```
 
 ```{r graph11}
-map_jc@data <- left_join(map_jc@data, life_expectancy)
+map_tract@data %<>% 
+  mutate(
+    tract = str_sub(GEO_ID, 10))
 
-make_map("life_expectancy", 
-         name = "Life Expectancy",
-         legend_title = "Life<br/>Expectancy",
-         units = "years")
+map_tract@data <- left_join(map_tract@data, life_expectancy)
+
+make_map(
+  "life_expectancy", 
+  name = "Life Expectancy",
+  legend_title = "Life<br/>Expectancy",
+  map_obj = "map_market",
+  units = "years")
 
 rm(life_expectancy)
+
+map_market@data
+```
+
+```{r}
+output <- data %>%
+  select(-baseline, -current, -city) %>%
+  {
+    x <- .
+    rbind(
+      x %>%
+        filter(FIPS == 21111) %>% 
+        select(-FIPS) %>%
+        mutate(observation_type = "Louisville"),
+      x %>%
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(quantile, prob = 0.25, na.rm = TRUE) %>%
+        mutate(observation_type = "Q1"),
+      x %>%
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(mean, na.rm = TRUE) %>%
+        mutate(observation_type = "mean"),
+      x %>%  
+        filter(FIPS != 21111) %>%
+        select(-FIPS) %>%
+        group_by(year) %>%
+        summarise_all(quantile, prob = 0.75, na.rm = TRUE) %>%
+        mutate(observation_type = "Q3"))
+  }
+
+output %<>%
+  select(year, observation_type, everything()) %>%
+  mutate_if(is.numeric, round, digits = 1)
+
+write_csv(output, "output_data/health.csv")
 ```
