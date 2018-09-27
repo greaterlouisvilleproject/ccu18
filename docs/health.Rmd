@@ -10,6 +10,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.showte
 
 ```{r libraries}
 #Data
+library(glptools)
 library(survey)
 library(tidyverse)
 library(magrittr)
@@ -35,13 +36,7 @@ library(leaflet)
 select <- function(...){dplyr::select(...)}
 ```
 
-```{r functions}
-source('helper_functions.R')
-```
-
 ```{r graphinghealth}
-source('graphing_functions.R')
-
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
@@ -1076,7 +1071,7 @@ insurance %<>%
   weight_stl('insured_rate', 'total')
 
 
-data %<>% bind_df(insurance)
+data %<>% bind_df(insurance) %>%select(-baseline, -current, -city) %>% pull_peers_FIPS()
 
 data %<>% select(FIPS, city, year, current, baseline, everything())
 
@@ -1085,9 +1080,9 @@ rm(insurance)
 ## 5. Ranking
 
 ```{r graph 20.4}
-rank_and_nb_group(data[data$year == 2016,],
+rank_and_nb_group(data[data$year == 2017,],
                   'insured_rate',
-                  plot_title = 'Health Insurance, 2016')
+                  plot_title = 'Health Insurance, 2017')
 ```
 
 # Overdoses
@@ -1388,7 +1383,8 @@ rank_and_nb_group(data[data$year == 2016,],
                   'overdose_rate',
                   plot_title = 'Overdoses, 2016',
                   y_title = "Overdose Deaths per 100,000 residents",
-                  order = "Ascending")
+                  order = "Ascending",
+                  subtitle_text = "Age-adjusted")
 ```
 
 ## 10. Trendline
@@ -1398,10 +1394,11 @@ graph_trendline(data,
                 'overdose_rate',
                 plot_title = 'Overdoses',
                 xmin = 2000,
-                y_title = "Overdose Deaths per 100,000 residents")
+                y_title = "Overdose Deaths per 100,000 residents",
+                subtitle_text = "Age-adjusted")
 ```
 
-## Overdoses by Drug
+## 11. Overdoses by Drug
 
 ```{r fig.width = 10}
 graph_df <- data %>% 
@@ -1504,7 +1501,94 @@ ggplot(graph_df, aes(x = year, y = deaths, color = CoD)) +
 
 ```
 
-## Overdose Hypothetical
+# Homocide {.tabset}
+```{r}
+homicide <- read_tsv("data/health/homicide/homicide.txt")
+
+homicide %<>% 
+  clean_wonder() %>%
+  rename(homicide_rate = rate) %>%
+  weight_stl("homicide_rate", "population") 
+
+data %<>% bind_df(homicide)
+```
+
+## 3-year average
+```{r}
+graph_trendline(
+  data,
+  "homicide_rate",
+  xmin = 2000,
+  plot_title = "Homicide Rate",
+  rollmean = 3,
+  y_title = "Deaths per 100,000",
+  subtitle_text = "Age-adjusted ")
+```
+
+## single-year
+```{r}
+graph_trendline(
+  data,
+  "homicide_rate",
+  xmin = 2000,
+  plot_title = "Homicide Rate",
+  y_title = "Deaths per 100,000",
+  subtitle_text = "Age-adjusted ")
+```
+
+# Life Expectancy {.tabset}
+```{r data11}
+#USALEEP
+life_expectancy <- read_csv("data/health/KY_A.csv")
+
+life_expectancy %<>%
+  transmute(
+    tract = as.character(`Tract ID`),
+    life_expectancy = `e(0)`,
+    se = `se(e(0))`,
+    obs_type = `Abridged life table flag`)
+
+#CHE
+life_expectancy_che <- read_csv("data/health/CHE life expectancy.csv")
+
+life_expectancy_che %<>%
+  rename(
+    market = `Market Area`,
+    life_expectancy = `5 Year Life Expectancy`)
+```
+
+## tract (RWJF CHR)
+```{r}
+map_tract@data %<>% 
+  mutate(
+    tract = str_sub(GEO_ID, 10))
+
+map_tract@data <- left_join(map_tract@data, life_expectancy)
+
+make_map(
+  "life_expectancy", 
+  name = "Life Expectancy",
+  legend_title = "Life<br/>Expectancy",
+  units = "years")
+```
+
+## market area (CHE)
+```{r graph11}
+map_market@data %<>% full_join(life_expectancy_che)
+
+make_map(
+  "life_expectancy", 
+  name = "Life Expectancy",
+  legend_title = "Life<br/>Expectancy",
+  map_obj = "map_market",
+  units = "years")
+
+rm(life_expectancy)
+```
+
+#Other data (not for Thursday)
+
+## Overdose Hypothetical (not in report)
 ```{r}
 data %<>%
   mutate(ypll_minus_od = ypll - overdose_ypll)
@@ -1526,7 +1610,7 @@ hyp %<>%
 
 ```
 
-## YPLL with and without overdoses {.tabset}
+## YPLL with and without overdoses (not in report) {.tabset}
 
 ### Unadjusted
 ```{r}
@@ -1552,7 +1636,7 @@ graph_trendline(
   xmax = 2016)
 ```
 
-## Health Index with and without overdoses {.tabset}
+## Health Index with and without overdoses (nt in report){.tabset}
 
 ### Unadjusted
 ```{r}
@@ -1578,40 +1662,9 @@ graph_trendline(
   xmax = 2016)
 ```
 
-# Homocide {.tabset}
-```{r}
-homicide <- read_tsv("data/health/homicide/homicide.txt")
 
-homicide %<>% 
-  clean_wonder() %>%
-  rename(homicide_rate = rate) %>%
-  weight_stl("homicide_rate", "population") 
 
-data %<>% bind_df(homicide)
-```
-
-## 3-year average
-```{r}
-graph_trendline(
-  data,
-  "homicide_rate",
-  xmin = 2000,
-  plot_title = "Homicide Rate",
-  rollmean = 3,
-  y_title = "Deaths per 100,000")
-```
-
-## single-year
-```{r}
-graph_trendline(
-  data,
-  "homicide_rate",
-  xmin = 2000,
-  plot_title = "Homicide Rate",
-  y_title = "Deaths per 100,000")
-```
-
-# Suicide {.tabset}
+## Suicide (not in report) {.tabset}
 ```{r}
 suicide <- read_tsv("data/health/suicide/total.txt")
 
@@ -1628,7 +1681,7 @@ suicide %<>%
 data %<>% bind_df(suicide)
 ```
 
-## 3-year average
+### 3-year average
 ```{r}
 graph_trendline(
   data,
@@ -1639,7 +1692,7 @@ graph_trendline(
   y_title="Deaths per 100,000")
 ```
 
-## single-year
+### single-year
 ```{r}
 graph_trendline(
   data,
@@ -1649,48 +1702,7 @@ graph_trendline(
   y_title="Deaths per 100,000")
 ```
 
-# Life Expectancy
-```{r data11}
-#USALEEP
-life_expectancy <- read_csv("data/health/KY_A.csv")
 
-life_expectancy %<>%
-  transmute(
-    tract = as.character(`Tract ID`),
-    life_expectancy = `e(0)`,
-    se = `se(e(0))`,
-    obs_type = `Abridged life table flag`)
-
-#CHE
-life_expectancy_che <- read_csv("data/health/CHE life expectancy.csv")
-
-life_expectancy_che %<>%
-  rename(
-    market = `Market Area`,
-    life_expectancy = `5 Year Life Expectancy`)
-
-map_market@data %<>% full_join(life_expectancy_che)
-
-```
-
-```{r graph11}
-map_tract@data %<>% 
-  mutate(
-    tract = str_sub(GEO_ID, 10))
-
-map_tract@data <- left_join(map_tract@data, life_expectancy)
-
-make_map(
-  "life_expectancy", 
-  name = "Life Expectancy",
-  legend_title = "Life<br/>Expectancy",
-  map_obj = "map_market",
-  units = "years")
-
-rm(life_expectancy)
-
-map_market@data
-```
 
 ```{r}
 output <- data %>%

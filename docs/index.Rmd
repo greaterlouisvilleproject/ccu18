@@ -12,6 +12,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.showte
 
 ```{r libraries, cache = FALSE}
 #Data
+library(glptools)
 library(survey)
 library(tidyverse)
 library(magrittr)
@@ -37,13 +38,7 @@ library(leaflet)
 select <- function(...){dplyr::select(...)}
 ```
 
-```{r functions}
-source('helper_functions.R')
-```
-
 ```{r graphingedu}
-source('graphing_functions.R')
-
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
@@ -80,6 +75,18 @@ web = TRUE
 
 <div style="margin-top:50px;">
 </div>
+
+```{r, eval = FALSE}
+library(roxygen2)
+library(devtools)
+getwd()
+setwd("../../glptools")
+document()
+setwd("..")
+install("glptools")
+library(glptools)
+
+```
 
 # MM: Bachelor's Degrees +
 ## 1. Ranking
@@ -155,11 +162,83 @@ degree_df %<>%
         x %>% weight_stl(c('per_25_64_assoc_plus', 'per_25_64_bach_plus', 'per_25_64_grad'), 'num_25_64'))
     }
 
-data <- degree_df
+degree_2000 <- read_csv("data/education/DEC_00_SF3_PCT025_with_ann.csv", skip = 1)
+  
+degree_2000 %<>%
+  transmute(
+    FIPS = as.character(as.numeric(Id2)),
+    year = 2000,
+    
+    num_young = 
+      `Male: - 25 to 34 years:` + `Female: - 25 to 34 years:`,
+    
+    num_total = 
+      `Male: - 25 to 34 years:` + `Male: - 35 to 44 years:` + `Male: - 45 to 64 years:` + 
+      `Female: - 25 to 34 years:` + `Female: - 35 to 44 years:` + `Female: - 45 to 64 years:`,
+    
+    per_25_34_assoc = 
+     (`Male: - 25 to 34 years: - Associate degree` + 
+      `Female: - 25 to 34 years: - Associate degree`) /
+      num_young * 100,
+      
+    per_25_34_bach = 
+     (`Male: - 25 to 34 years: - Bachelor's degree`+ 
+      `Female: - 25 to 34 years: - Bachelor's degree`) /
+      num_young * 100,
+    
+    per_25_34_grad = 
+     (`Male: - 25 to 34 years: - Graduate or professional degree`+ 
+      `Female: - 25 to 34 years: - Graduate or professional degree`) / 
+      num_young * 100,
+    
+    per_25_34_assoc_plus = per_25_34_assoc + per_25_34_bach + per_25_34_grad,
+    
+    per_25_34_bach_plus = per_25_34_bach + per_25_34_grad,
+    
+
+    per_25_64_assoc = 
+     (`Male: - 25 to 34 years: - Associate degree` + 
+      `Male: - 35 to 44 years: - Associate degree` + 
+      `Male: - 45 to 64 years: - Associate degree` + 
+      `Female: - 25 to 34 years: - Associate degree` +
+      `Female: - 35 to 44 years: - Associate degree` +
+      `Female: - 45 to 64 years: - Associate degree`) / 
+      num_total * 100,
+    
+    per_25_64_bach = 
+     (`Male: - 25 to 34 years: - Bachelor's degree` +  
+      `Male: - 35 to 44 years: - Bachelor's degree` + 
+      `Male: - 45 to 64 years: - Bachelor's degree` + 
+      `Female: - 25 to 34 years: - Bachelor's degree` + 
+      `Female: - 35 to 44 years: - Bachelor's degree` + 
+      `Female: - 45 to 64 years: - Bachelor's degree`) /
+      num_total * 100,
+    
+    per_25_64_grad = 
+     (`Male: - 25 to 34 years: - Graduate or professional degree` + 
+      `Male: - 35 to 44 years: - Graduate or professional degree` + 
+      `Male: - 45 to 64 years: - Graduate or professional degree` + 
+      `Female: - 25 to 34 years: - Graduate or professional degree` + 
+      `Female: - 35 to 44 years: - Graduate or professional degree` + 
+      `Female: - 45 to 64 years: - Graduate or professional degree`) / 
+      num_total * 100,
+    
+    per_25_64_assoc_plus = per_25_64_assoc + per_25_64_bach + per_25_64_grad,
+    
+    per_25_64_bach_plus = per_25_64_bach + per_25_64_grad) %>%
+    {
+      x <- .
+      full_join(
+        x %>% weight_stl(c('per_25_34_assoc_plus', 'per_25_34_bach_plus', 'per_25_34_grad'), 'num_young'),
+        x %>% weight_stl(c('per_25_64_assoc_plus', 'per_25_64_bach_plus', 'per_25_64_grad'), 'num_total'))
+    }
+
+degree <- bind_rows(degree_df, degree_2000)
+data <- degree
 
 data %<>% pull_peers_FIPS() %>% select(FIPS, city, year, current, baseline, everything())
 
-rm(degree_df)
+rm(degree_df, degree_2000, degree)
 ```
 
 ```{r graph1}
@@ -172,9 +251,34 @@ rank_and_nb_group(data[data$year == 2017,],
 ## 2. Trendline {.tabset}
 ```{r data2}
 #White
+degree_white_00 <- read_csv("data/education/DEC_00_SF3_P148I_with_ann.csv", skip = 1)
 degree_white_05 <- acs_time("/data/education/B15002H/Y05/", starting_year = 2005)
 degree_white_08 <- acs_time("/data/education/B15002H/Y08/", starting_year = 2008)
 
+degree_white_00 %<>%
+  mutate(
+    FIPS = as.numeric(Id2),
+    year = 2000,
+    
+    total = `Total:`,
+    
+    assoc_plus_per_white =
+       (`Male: - Associate degree` +
+        `Male: - Bachelor's degree` +
+        `Male: - Graduate or professional degree` + 
+        `Female: - Associate degree` + 
+        `Female: - Bachelor's degree` + 
+        `Female: - Graduate or professional degree`)
+        / total * 100,
+    
+    bach_plus_per_white = 
+       (`Male: - Bachelor's degree` +
+        `Male: - Graduate or professional degree` + 
+        `Female: - Bachelor's degree` + 
+        `Female: - Graduate or professional degree`)
+        / total * 100) %>%
+  select(FIPS, year, assoc_plus_per_white, bach_plus_per_white, total)
+      
 degree_white_05 <- degree_white_05 %>%
   mutate(
     total = `Estimate; Total:`,
@@ -217,12 +321,38 @@ degree_white_08 <- degree_white_08 %>%
          /total * 100) %>%
   select(FIPS, year, assoc_plus_per_white, bach_plus_per_white, total)
 
-degree_white <- bind_rows(degree_white_05, degree_white_08) %>%
-  weight_stl(c('assoc_plus_per_white', 'bach_plus_per_white'), 'total')
+degree_white <- bind_rows(degree_white_00, degree_white_05, degree_white_08) %>%
+  weight_stl(c('assoc_plus_per_white', 'bach_plus_per_white'), 'total') %>%
+  pull_peers_FIPS(add_info = FALSE)
 
 #Black
+degree_black_00 <- read_csv("data/education/DEC_00_SF3_P148B_with_ann.csv", skip = 1)
 degree_black_05 = acs_time("/data/education/B15002B/Y05/", starting_year = 2005)
 degree_black_08 = acs_time("/data/education/B15002B/Y08/", starting_year = 2008)
+
+degree_black_00 %<>%
+  mutate(
+    FIPS = as.numeric(Id2),
+    year = 2000,
+    
+    total = `Total:`,
+    
+    assoc_plus_per_black =
+       (`Male: - Associate degree` +
+        `Male: - Bachelor's degree` +
+        `Male: - Graduate or professional degree` + 
+        `Female: - Associate degree` + 
+        `Female: - Bachelor's degree` + 
+        `Female: - Graduate or professional degree`)
+        / total * 100,
+    
+    bach_plus_per_black = 
+       (`Male: - Bachelor's degree` +
+        `Male: - Graduate or professional degree` + 
+        `Female: - Bachelor's degree` + 
+        `Female: - Graduate or professional degree`)
+        / total * 100) %>%
+  select(FIPS, year, assoc_plus_per_black, bach_plus_per_black, total)
 
 degree_black_05 %<>%
   mutate(
@@ -266,8 +396,9 @@ degree_black_08 %<>%
         /total * 100) %>% 
   select(FIPS, year, assoc_plus_per_black, bach_plus_per_black, total)
 
-degree_black = bind_rows(degree_black_05, degree_black_08) %>%
-  weight_stl(c('assoc_plus_per_black', 'bach_plus_per_black'), 'total')
+degree_black = bind_rows(degree_black_00, degree_black_05, degree_black_08) %>%
+  weight_stl(c('assoc_plus_per_black', 'bach_plus_per_black'), 'total') %>%
+  pull_peers_FIPS(add_info = FALSE)
 
 #Hispanic
 degree_hispanic_05 = acs_time("/data/education/B15002I/Y05/", starting_year = 2005)
@@ -320,7 +451,7 @@ degree_hispanic = bind_rows(degree_hispanic_05, degree_hispanic_08) %>%
 
 data %<>% bind_df(degree_white, degree_black, degree_hispanic)
 
-rm(degree_white_05, degree_white_08, degree_white, degree_black_05, degree_black_08, degree_black, degree_hispanic_05, degree_hispanic_08, degree_hispanic)
+rm(degree_white_00, degree_white_05, degree_white_08, degree_white, degree_black_00, degree_black_05, degree_black_08, degree_black, degree_hispanic_05, degree_hispanic_08, degree_hispanic)
 ```
 
 ### 3-yr average
@@ -331,16 +462,19 @@ graph_trendline(
   'per_25_64_bach_plus',
   plot_title = "Bachelor's Degrees, Ages 25-64",
   rollmean = 3,
+  xmin = 2000,
   xmax = 2017)
 ```
 
 ### single-year
 
 ```{r graph2.1}
-graph_trendline(data,
-                'per_25_64_bach_plus',
-                plot_title = "Bachelor's Degrees, Ages 25-64",
-                xmax = 2017)
+graph_trendline(
+  data,
+  'per_25_64_bach_plus',
+  plot_title = "Bachelor's Degrees, Ages 25-64",
+  xmin = 2000,
+  xmax = 2017)
 ```
 
 ## 3. Map
@@ -417,42 +551,41 @@ map_data <- degree_map
 ```{r map3}
 map_tract@data<-full_join(map_tract@data, degree_map, by = c('GEO_ID' = 'Id'))
 
-source('graphing_functions.R')
-
 make_map(
   "per_25_64_bach_plus", 
   name = "Bachelor's Degrees or Higher",
   legend_title = "Bachelor<br/>Degrees")
 
 rm(degree_map)
-
-exists("dog")
 ```
 
 ## 4. By race {.tabset}
 
 ### 3-year average
 
-```{r}
-graph_trendline_race_peer(data,
-                vars = c("bach_plus_per_white", "bach_plus_per_black", "bach_plus_per_hispanic"),
-                "Bachelor's Degrees or Higher by Ethnicity",
-                subtitle_text = 'Ages 25-64, ',
-                rollmean = 3,
-                xmax = 2017,
-                y_title = "Percentage Points")
+```{r, fig.width=10}
+graph_trendline_race_peer_two(
+  data,
+  vars = c("bach_plus_per_white", "bach_plus_per_black"),
+  "Bachelor's Degrees or Higher by Ethnicity",
+  subtitle_text = 'Ages 25-64, ',
+  rollmean = 3,
+  xmin = 2000,
+  xmax = 2017,
+  y_title = "Percentage Points")
 ```
 
 ### single-year
 
-```{r graph2.3}
-graph_trendline_race_peer(data,
-                vars = c("bach_plus_per_white", "bach_plus_per_black", "bach_plus_per_hispanic"),
-                "Bachelor's Degrees or Higher by Ethnicity",
-                subtitle_text = 'Ages 25-64, ',
-                rollmean = 3,
-                xmax = 2017,
-                y_title = "Percentage Points")
+```{r graph2.3, fig.width=10}
+graph_trendline_race_peer_two(
+  data,
+  vars = c("bach_plus_per_white", "bach_plus_per_black"),
+  "Bachelor's Degrees or Higher by Ethnicity",
+  subtitle_text = 'Ages 25-64',
+  xmin = 2000,
+  xmax = 2017,
+  y_title = "Percentage Points")
 ```
 
 ```{r graph2.4, eval =FALSE}
@@ -471,18 +604,27 @@ graph_trendline_race_peer_two(data,
 
 ```
 
-## 5. Peer Growth
+## 5. Peer Growth {.tabset}
 
+### Since 2000
+```{r}
+graph_trendline_change(
+  data,
+  'per_25_64_bach_plus',
+  plot_title = "Bachelor's Degrees, Ages 25 to 64",
+  xmin = 2000,
+  y_title = "Percent")
+```
+
+### Since 2005
 ```{r graph4}
 graph_trendline_change(
   data,
   'per_25_64_bach_plus',
   plot_title = "Bachelor's Degrees, Ages 25 to 64",
-  xmax = 2017,
-  newest_year = 2017)
+  y_title = "Percent")
 ```
 
------------------
 
 # Education Pipeline
 ## 1. Education Pipeline
@@ -506,6 +648,7 @@ graph_trendline(data,
                 'per_25_34_bach_plus',
                 plot_title = "Bachelor's Degrees or Higher, Ages 25-34",
                 rollmean = 3,
+                xmin = 2000,
                 xmax = 2017)
 ```
 
@@ -514,17 +657,32 @@ graph_trendline(data,
 graph_trendline(data,
                 'per_25_34_bach_plus',
                 plot_title = "Bachelor's Degrees or Higher, Ages 25-34",
+                xmin = 2000,
                 xmax = 2017)
 ```
 
-## 4. Peer Growth
+## 4. Peer Growth {.tabset}
+
+### Since 2000
 ```{r}
-graph_trendline_change(data,
-                       'per_25_34_bach_plus',
-                       plot_title = "Bachelor's Degrees or Higher, Ages 25-34, 2016",
-                       xmax = 2017,
-                       newest_year = 2017)
+graph_trendline_change(
+  data,
+  'per_25_34_bach_plus',
+  plot_title = "Bachelor's Degrees or Higher, Ages 25-34, 2016",
+  xmin = 2000,
+  y_title = "Percent")
 ```
+
+### Since 2005
+```{r}
+graph_trendline_change(
+  data,
+  'per_25_34_bach_plus',
+  plot_title = "Bachelor's Degrees or Higher, Ages 25-34, 2016",
+  xmin = 2005,
+  y_title = "Percent")
+```
+
 
 # Associate Degrees / Certificates
 
@@ -615,6 +773,7 @@ data %<>%
   full_join(cert_df, by = c('FIPS', 'year')) %>%
   pull_peers_FIPS()
 
+rm(cert_df, cert_df_degree, cert_df_lou, cert_df_young, certificates, certificates_young, cert_svy, names)
 ```
 
 ## 5. Certificate Ranking
@@ -632,8 +791,9 @@ rank_and_nb_group(data[data$year == 2017,],
 ```{r}
 graph_trendline(data,
                 'per_25_64_assoc_plus',
-                plot_title = "Associate Degrees, Ages 25-64",
+                plot_title = "Associate Degrees or Higher, Ages 25-64",
                 rollmean = 3,
+                xmin = 2000,
                 xmax = 2017)
 ```
 
@@ -641,7 +801,8 @@ graph_trendline(data,
 ```{r}
 graph_trendline(data,
                 'per_25_64_assoc_plus',
-                plot_title = "Associate Degrees, Ages 25-64",
+                plot_title = "Associate Degrees or Higher, Ages 25-64",
+                xmin = 2000,
                 xmax = 2017)
 ```
 

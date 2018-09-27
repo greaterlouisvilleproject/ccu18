@@ -10,6 +10,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.showte
 
 ```{r libraries}
 #Data
+library(glptools)
 library(survey)
 library(tidyverse)
 library(magrittr)
@@ -35,13 +36,7 @@ library(leaflet)
 select <- function(...){dplyr::select(...)}
 ```
 
-```{r functions}
-source('helper_functions.R')
-```
-
 ```{r graphingqop}
-source('graphing_functions.R')
-
 font_add("Museo Sans 300", "MuseoSans_300.otf")
 font_add("Museo Sans 300 Italic", "MuseoSans_300_Italic.otf")
 
@@ -260,45 +255,16 @@ map_data <- pop
 ```{r popmap}
 map_tract@data <- full_join(map_tract@data, pop, by = c('GEO_ID' = 'Id'))
 
-map_tract@data$population_change_pos <- replace(map_tract@data$population_change, map_tract@data$population_change < 0 , NA)
-
-map_tract@data$population_change_pos_log <- log(map_tract@data$population_change_pos)
-map_tract@data$population_change_log <- map_tract@data$population_change - min(map_tract@data$population_change, na.rm = TRUE) + 1
-map_tract@data$population_change_log <- log(map_tract@data$population_change_log)
-
-
-
-map_tract@data$population_change_neg <- replace(map_tract@data$population_change, map_tract@data$population_change > 0 , NA)
-
-make_map("population_change_pos", 
-         name = "Population",
-         legend_title = "Population Growth",
-         units = "Percent",
-         palette = "Greens")
-
-make_map("population_change_log", 
-         name = "Population",
-         legend_title = "Log of Population Growth",
-         units = "Percent",
-         map_style = "Divergent")
-
-make_map("population_change_neg", 
-         name = "Population",
-         legend_title = "Population Loss",
-         units = "Percent",
-         palette = "Reds",
-         reverse = T)
-
-map_tract@data$population_change_log
 rm(tract_id, pop_00, pop)
 ```
 
 ```{r}
-make_map("population_change_scale", 
+make_map("population_change", 
          name = "Population Change",
          legend_title = "Population Change",
          units = "Percent",
-         map_style = "divergent")
+         map_style = "divergent",
+         continuous = FALSE)
 ```
 
 # Transportation
@@ -331,19 +297,29 @@ make_map("extreme_commute",
 # Housing Affordbility
 ## 2. Homeownership Ranking
 ```{r data22}
-tenure <- acs_time('/data/qop/B25003/')
+tenure_00 <- read_csv("data/qop/DEC_00_SF3_H007_with_ann.csv", skip = 1)
+tenure_05_17 <- acs_time('/data/qop/B25003/')
 
-tenure %<>%
+tenure_00 %<>%
+  mutate(
+    FIPS = as.numeric(Id2),
+    year = 2000,
+    total = `Total:`,
+    homeownership = `Owner occupied` / total * 100)
+
+tenure_05_17 %<>%
   mutate(
     total = `Estimate; Total:`,
-    homeownership = `Estimate; Owner occupied` / total * 100) %>%
+    homeownership = `Estimate; Owner occupied` / total * 100) 
+
+tenure <- bind_rows(tenure_00, tenure_05_17) %>%
   weight_stl('homeownership', 'total')
 
 data <- tenure
 
 data %<>% pull_peers_FIPS() %>% select(FIPS, city, year, current, baseline, everything())
 
-rm(tenure)
+rm(tenure, tenure_00, tenure_05_17)
 ```
 
 ```{r graph22}
@@ -354,10 +330,12 @@ rank_and_nb_group(data[data$year == 2017,],
 
 ## 3. Homeownership Trendline
 ```{r graph 23.1}
-graph_trendline(data,
-                'homeownership',
-                'Homeownership',
-                xmax = 2017)
+graph_trendline(
+  data,
+  'homeownership',
+  'Homeownership',
+  xmin = 2000,
+  xmax = 2017)
 ```
 
 ## 4. Homeownership Map 
@@ -430,27 +408,85 @@ make_map("homeownership",
 graph_trendline_change(
   data,
   'homeownership',
-  plot_title = "Burdened Households",
-  xmax = 2017)
+  plot_title = "Homeownership",
+  xmax = 2017,
+  xmin = 2000)
 ```
 
 ## 6. Homeownership by Race
 ```{r data23}
-tenure_white <- acs_time('/data/qop/B25003H/')
+tenure_white_00_pop <- read_csv("data/qop/DEC_00_SF1_H011I_with_ann.csv", skip = 1)
+tenure_white_00_homes <- read_csv("data/qop/DEC_00_SF1_H012I_with_ann.csv", skip = 1)
+tenure_white_05_17 <- acs_time('/data/qop/B25003H/')
 
-tenure_white %<>%
+tenure_white_00_pop %<>%
+  transmute(
+    FIPS = Id2,
+    year = 2000,
+    homeown_pop = `Owner occupied`,
+    renting_pop = `Renter occupied`)
+
+tenure_white_00_homes %<>%
+   transmute(
+    FIPS = Id2,
+    year = 2000,
+    avg_home_size = `Owner occupied`,
+    avg_rent_size = `Renter occupied`)
+
+tenure_white_00 <- bind_df(tenure_white_00_pop, tenure_white_00_homes) %>%
+  mutate(
+    FIPS = as.numeric(FIPS),
+    total_homes = homeown_pop / avg_home_size,
+    total_apartments = renting_pop / avg_rent_size,
+    
+    total = total_homes + total_apartments,
+    
+    homeownership_white = total_homes / total * 100)
+
+tenure_white_05_17 %<>%
   mutate(
     total = `Estimate; Total:`,
-    homeownership_white = `Estimate; Owner occupied` / total * 100) %>%
+    homeownership_white = `Estimate; Owner occupied` / total * 100) 
+
+tenure_white <- bind_rows(tenure_white_00, tenure_white_05_17) %>%
   weight_stl('homeownership_white', 'total')
 
-tenure_black <- acs_time('/data/qop/B25003B/')
+tenure_black_00_pop <- read_csv("data/qop/DEC_00_SF1_H011B_with_ann.csv", skip = 1)
+tenure_black_00_homes <- read_csv("data/qop/DEC_00_SF1_H012B_with_ann.csv", skip = 1)
+tenure_black_05_17 <- acs_time('/data/qop/B25003B/')
 
-tenure_black %<>%
+tenure_black_00_pop %<>%
+  transmute(
+    FIPS = Id2,
+    year = 2000,
+    homeown_pop = `Owner occupied`,
+    renting_pop = `Renter occupied`)
+
+tenure_black_00_homes %<>%
+   transmute(
+    FIPS = Id2,
+    year = 2000,
+    avg_home_size = `Owner occupied`,
+    avg_rent_size = `Renter occupied`)
+
+tenure_black_00 <- bind_df(tenure_black_00_pop, tenure_black_00_homes) %>%
+  mutate(
+    FIPS = as.numeric(FIPS),
+    total_homes = homeown_pop / avg_home_size,
+    total_apartments = renting_pop / avg_rent_size,
+    
+    total = total_homes + total_apartments,
+    
+    homeownership_black = total_homes / total * 100)
+
+tenure_black_05_17 %<>%
   mutate(
     total = `Estimate; Total:`,
-    homeownership_black = `Estimate; Owner occupied` / total * 100) %>%
+    homeownership_black = `Estimate; Owner occupied` / total * 100) 
+
+tenure_black <- bind_rows(tenure_black_00, tenure_black_05_17) %>%
   weight_stl('homeownership_black', 'total')
+
 
 tenure_hisp <- acs_time('/data/qop/B25003I/')
 
@@ -464,13 +500,15 @@ data %<>% bind_df(tenure_white, tenure_black, tenure_hisp)
 
 data %<>% mutate(homeownership_gap_black = homeownership_white - homeownership_black)
                   
-rm(tenure_white, tenure_black, tenure_hisp)
+rm(tenure_white, tenure_white_00, tenure_white_00_homes, tenure_white_00_pop, tenure_white_05_17,
+   tenure_black, tenure_black_00, tenure_black_00_homes, tenure_black_00_pop, tenure_black_05_17,
+   tenure_hisp)
 ```
 
-```{r graph23}
-graph_trendline_race_peer(
+```{r graph23, fig.width=10}
+graph_trendline_race_peer_two(
   data, 
-  vars = c('homeownership_white', 'homeownership_black', 'homeownership_hispanic'),
+  vars = c('homeownership_white', 'homeownership_black'),
   plot_title = 'Homeownership by Race',
   rollmean = 3)
 ```
@@ -786,10 +824,9 @@ ggplot(housing_pie, aes(x = race, y = percent, fill = variable)) +
              legend.text=element_text(size=18, family = "Museo Sans 300"),
              plot.caption = element_text(family = "Museo Sans 300", size = 18),
              plot.subtitle = element_text(family = "Museo Sans 300", hjust = 0.5, size = 18)) + 
-  labs(title = "Homeownership and Affordability", 
+  labs(title = "Homeownership, Affordability, and Race", 
        x = "",
-       y = "", 
-       caption = "Deaths can involve multiple drugs, so numbers do not sum to 100%.")
+       y = "")
 
 
 rm(burden_df_total, burden_df_race, burden_df_rent, burden_df_rent_race)
@@ -826,24 +863,23 @@ rm(tenure_map, burdened_map)
 graph_trendline_change(
   data,
   'burdened',
-  plot_title = "Burdened Households")
+  plot_title = "Burdened Households",
+  xmax = 2016)
 ```
 
 ## 12. Burdened HH by Race  
-```{r}
-graph_trendline_race_peer(
+```{r, fig.width=10}
+graph_trendline_race_peer_two(
   data, 
-  vars = c('burdened_white', 
-           'burdened_black', 
-           'burdened_hisp'),
-  plot_title = 'Housing Burden by Ethnicity',
+  vars = c('burdened_white', 'burdened_black'),
+  plot_title = 'Housing Burden by Race',
   rollmean = 3)
 ```
 
 ## 13. Burdened HH by homeownership
 
 I have to debug this graph to get the colors correct. The top group is renters, and the bottom is homeowners.
-```{r}
+```{r, fig.width=10}
 graph_trendline_race_peer_two(
   data,
   vars = c("burdened_homeowner", "burdened_renter"),
@@ -897,21 +933,62 @@ make_map(
 
 Reads in child poverty data, calculates the percentage of children living in poverty by city, and appends the variable to 'qp_data_fips'
 ```{r}
+pov_2000 <- read_csv('data/qop/DEC_00_SF3_PCT049_with_ann.csv', skip = 1)
 pov = acs_time("/data/qop/B17001/")
 
+pov_2000 %<>%
+  mutate(
+    FIPS = as.numeric(Id2),
+    year = 2000,
+    
+    under_5_under = 
+      `Income in 1999 below poverty level: - Male: - Under 5 years` +
+      `Income in 1999 below poverty level: - Female: - Under 5 years`,
+    
+    under_5_over = 
+      `Income in 1999 at or above poverty level: - Male: - Under 5 years` + 
+      `Income in 1999 at or above poverty level: - Female: - Under 5 years`,
+    
+    five_to_17_under = 
+      `Income in 1999 below poverty level: - Male: - 5 years` + 
+      `Income in 1999 below poverty level: - Male: - 6 to 11 years` + 
+      `Income in 1999 below poverty level: - Male: - 12 to 14 years` + 
+      `Income in 1999 below poverty level: - Male: - 15 years` + 
+      `Income in 1999 below poverty level: - Male: - 16 and 17 years` + 
+      `Income in 1999 below poverty level: - Female: - 5 years` + 
+      `Income in 1999 below poverty level: - Female: - 6 to 11 years` + 
+      `Income in 1999 below poverty level: - Female: - 12 to 14 years` + 
+      `Income in 1999 below poverty level: - Female: - 15 years` + 
+      `Income in 1999 below poverty level: - Female: - 16 and 17 years` ,
+    
+    five_to_17_over = 
+      `Income in 1999 at or above poverty level: - Male: - 6 to 11 years` + 
+      `Income in 1999 at or above poverty level: - Male: - 12 to 14 years` + 
+      `Income in 1999 at or above poverty level: - Male: - 15 years` + 
+      `Income in 1999 at or above poverty level: - Male: - 16 and 17 years` + 
+      `Income in 1999 at or above poverty level: - Female: - 5 years` + 
+      `Income in 1999 at or above poverty level: - Female: - 6 to 11 years` + 
+      `Income in 1999 at or above poverty level: - Female: - 12 to 14 years` + 
+      `Income in 1999 at or above poverty level: - Female: - 15 years` + 
+      `Income in 1999 at or above poverty level: - Female: - 16 and 17 years`,
+
+    child_total = under_5_under + under_5_over + five_to_17_over + five_to_17_under,
+
+    child_per = (under_5_under + five_to_17_under) / child_total * 100)
+  
+      
 pov = pov %>%
   mutate(
-    under_5_per =
-      (`Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` +
-       `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`
-      ) /
-      (
+    under_5_under = 
+      `Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` +
+      `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`,
+    
+    under_5_over = 
       `Estimate; Income in the past 12 months at or above poverty level: - Male: - Under 5 years` +
       `Estimate; Income in the past 12 months at or above poverty level: - Female: - Under 5 years` +
       `Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` +
-      `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`
-      ),
-    
+      `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`,
+
     five_to_17_under = 
        `Estimate; Income in the past 12 months below poverty level: - Male: - 5 years` + 
        `Estimate; Income in the past 12 months below poverty level: - Male: - 6 to 11 years` + 
@@ -935,54 +1012,26 @@ pov = pov %>%
       `Estimate; Income in the past 12 months at or above poverty level: - Female: - 12 to 14 years` + 
       `Estimate; Income in the past 12 months at or above poverty level: - Female: - 15 years` + 
       `Estimate; Income in the past 12 months at or above poverty level: - Female: - 16 and 17 years`,
-
-    five_to_17_per = five_to_17_under / (five_to_17_over + five_to_17_under),
     
-    child_under = 
-      five_to_17_under +
-      `Estimate; Income in the past 12 months below poverty level: - Male: - Under 5 years` + 
-      `Estimate; Income in the past 12 months below poverty level: - Female: - Under 5 years`,
-    
-    child_over = 
-      five_to_17_over + 
-      `Estimate; Income in the past 12 months at or above poverty level: - Female: - Under 5 years` +
-      `Estimate; Income in the past 12 months at or above poverty level: - Male: - Under 5 years`,
-    
-    child_total = child_under + child_over,
-    
-    child_per = child_under / (child_total)
-)
+    child_total = under_5_under + under_5_over + five_to_17_over + five_to_17_under,
 
-child_pov_data <- pov %>%
-  select(FIPS, year, child_per, child_total)
+    child_per = (under_5_under + five_to_17_under) / child_total * 100)
 
-child_pov_data$FIPS[child_pov_data$FIPS == "01073"] = "1073"
+child_pov <- bind_rows(pov_2000, pov)
 
-child_pov_stl <- child_pov_data %>%
-  filter(FIPS == 29189 | FIPS == 29510) %>%
-  select(-FIPS) %>%
-  group_by(year) %>%
-  summarise_each(funs(weighted.mean(.,child_total)), -child_total) %>%
-  ungroup()
+child_pov %<>% weight_stl("child_per", "child_total") %>% 
+  pull_peers_FIPS(add_info = FALSE)
 
-child_pov_stl$FIPS <- "MERGED"
-  
-child_pov_data <- child_pov_data %>%
-  filter(!(FIPS == 29189 | FIPS == 29510)) %>%
-  bind_rows(child_pov_stl) %>%
-  mutate(child_per = child_per *100)%>%
-  select(-child_total)
+data %<>% bind_df(child_pov)
 
-child <- child_pov_data %>% pull_peers_FIPS()
-
-data %<>% bind_df(child_pov_data)
+rm(pov_2000, pov, child_pov)
 ```
 
 ## 16. Ranking
 ```{r}
-rank_and_nb_group(child[child$year == 2017,],
+rank_and_nb_group(data[data$year == 2017,],
                   "child_per", 
-                  plot_title = "Child Poverty",
+                  plot_title = "Child Poverty, 2017",
                   y_title = "Poverty")
 ```
 
@@ -991,19 +1040,21 @@ rank_and_nb_group(child[child$year == 2017,],
 ### 3-year average
 ```{r}
 graph_trendline(
-  child,
+  data,
   "child_per",
   plot_title = "Child Poverty",
   rollmean = 3,
+  xmin = 2000,
   xmax = 2017)
 ```
 
 ### single-year
 ```{r}
 graph_trendline(
-  child,
+  data,
   "child_per",
   plot_title = "Child Poverty",
+  xmin = 2000,
   xmax = 2017)
 ```
 
