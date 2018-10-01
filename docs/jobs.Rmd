@@ -817,27 +817,158 @@ graph_trendline_race_peer_two(
 
 
 # High Wage Occupations
-```{r, eval = FALSE}
-occupation <- acs_time("data/jobs/B24010")
+```{r}
+occupation_00 <- read_csv("data/jobs/DEC_00_SF3_P050_with_ann.csv", skip = 1)
+occupation_05 <- acs_time("/data/jobs/B24010/05/", starting_year = 2005)
+occupation_10 <- acs_time("/data/jobs/B24010/10/", starting_year = 2010)
+occupation_15 <- acs_time("/data/jobs/B24010/15/", starting_year = 2015)
 
-occupation %<>%
+occupation_00 %<>%
+  mutate(
+    FIPS =as.numeric(Id2),
+    year = 2000,
+    
+    total = `Total:`,
+    
+    high_wage =
+      `Male: - Management, professional, and related occupations:` +
+      `Male: - Service occupations: - Protective service occupations:` +
+      `Male: - Construction, extraction, and maintenance occupations: - Installation, maintenance, and repair occupations` +
+      `Female: - Management, professional, and related occupations:` +
+      `Female: - Service occupations: - Protective service occupations:` +
+      `Female: - Construction, extraction, and maintenance occupations: - Installation, maintenance, and repair occupations`,
+    
+    high_wage_per = high_wage / total * 100)
+
+occupation_05 %<>%
   mutate(
     total = `Estimate; Total:`,
     
     high_wage = 
       `Estimate; Male: - Management, professional, and related occupations:` +
-      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers including supervisors
-` +
-      ``
+      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers including supervisors` +
+      `Estimate; Male: - Construction, extraction, maintenance, and repair occupations: - Installation, maintenance, and repair occupations:` + 
+      `Estimate; Female: - Management, professional, and related occupations:` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - Law enforcement workers including supervisors` +
+      `Estimate; Female: - Construction, extraction, maintenance, and repair occupations: - Installation, maintenance, and repair occupations:`,
 
+       high_wage_per = high_wage / total * 100)
 
-            as.numeric(`Total; Estimate; Civilian employed population 16 years and over - Management, professional, and related occupations:`) + 
-            as.numeric(`Total; Estimate; Civilian employed population 16 years and over - Service occupations: - Protective service occupations: - Law enforcement workers including supervisors`) + 
-            as.numeric(`Total; Estimate; Civilian employed population 16 years and over - Construction, extraction, maintenance, and repair occupations: - Installation, maintenance, and repair occupations`)
-           )
-           /as.numeric(`Total; Estimate; Civilian employed population 16 years and over`),
-         
-         total_num = as.numeric(`Total; Estimate; Civilian employed population 16 years and over`)
+occupation_10 %<>%
+   mutate(
+    total = `Estimate; Total:`,
+    
+    high_wage = 
+      `Estimate; Male: - Management, business, science, and arts occupations:` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Male: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:` + 
+      `Estimate; Female: - Management, business, science, and arts occupations:` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Female: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:`,
+
+       high_wage_per = high_wage / total * 100)
+
+occupation_15 %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    
+    high_wage = 
+      `Estimate; Male: - Management, business, science, and arts occupations:` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Male: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:` +
+      `Estimate; Female: - Management, business, science, and arts occupations:` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Female: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:`,
+    
+    high_wage_per = high_wage / total * 100)
+
+occupation <- bind_rows(occupation_00, occupation_05, occupation_10, occupation_15) %>% 
+  weight_stl("high_wage_per", "total") %>% pull_peers_FIPS(add_info = FALSE)
+
+data %<>% bind_df(occupation)
+
+rm(occupation_00, occupation_05, occupation_10, occupation_15, occupation)
+```
+
+```{r, eval = FALSE}
+occupation_05 <- acs_time("/data/jobs/B24010B/05/", starting_year = 2005)
+occupation_10 <- acs_time("/data/jobs/B24010B/10/", starting_year = 2010)
+occupation_15 <- acs_time("/data/jobs/B24010B/15/", starting_year = 2015)
+
+occupation_05 %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    
+    high_wage = 
+      `Estimate; Male: - Management, professional, and related occupations:` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers including supervisors` +
+      `Estimate; Male: - Construction, extraction, maintenance, and repair occupations: - Installation, maintenance, and repair occupations:` + 
+      `Estimate; Female: - Management, professional, and related occupations:` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - Law enforcement workers including supervisors` +
+      `Estimate; Female: - Construction, extraction, maintenance, and repair occupations: - Installation, maintenance, and repair occupations:`,
+
+       high_wage_per = high_wage / total * 100)
+
+occupation_10 %<>%
+   mutate(
+    total = `Estimate; Total:`,
+    
+    high_wage = 
+      `Estimate; Male: - Management, business, science, and arts occupations:` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Male: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:` + 
+      `Estimate; Female: - Management, business, science, and arts occupations:` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Female: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:`,
+
+       high_wage_per = high_wage / total * 100)
+
+occupation_15 %<>%
+  mutate(
+    total = `Estimate; Total:`,
+    
+    high_wage = 
+      `Estimate; Male: - Management, business, science, and arts occupations:` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Male: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Male: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:` +
+      `Estimate; Female: - Management, business, science, and arts occupations:` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - Law enforcement workers` +
+      `Estimate; Female: - Service occupations: - Protective service occupations: - First-line supervisors of law enforcement workers` +
+      `Estimate; Female: - Natural resources, construction, and maintenance occupations: - Installation, maintenance, and repair occupations:`,
+    
+    high_wage_per = high_wage / total * 100)
+
+occupation <- bind_rows(occupation_00, occupation_05, occupation_10, occupation_15) %>% 
+  weight_stl("high_wage_per", "total") %>% 
+  rename(high_wage_black = high_wage_per)
+  pull_peers_FIPS(add_info = FALSE)
+```
+
+## 10. Ranking
+```{r}
+rank_and_nb_group(
+  data[data$year == 2017,], 
+  'high_wage_per',
+  plot_title = 'High Wage Occupations, 2017')
+```
+
+## 11. Trendline
+```{r}
+graph_trendline(
+  data,
+  'high_wage_per',
+  plot_title = 'High Wage Occupations',
+  y_title = 'Percent',
+  xmin = 2000,
+  xmax = 2017,
+  rollmean = 3)
 ```
 
 ```{r}
